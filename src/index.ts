@@ -31,4 +31,5 @@ export default {
 } satisfies Plugin;
 
 export * from "./components";
+export * from './services';
 export * from "./types";
