@@ -10,6 +10,6 @@ type HighlightStyle = {
 };
 
 export type HightlightTextProps = {
-  highlightText: HighlightText;
-  highlightStyle: HighlightStyle;
+  highlightText?: HighlightText;
+  highlightStyle?: HighlightStyle;
 };
