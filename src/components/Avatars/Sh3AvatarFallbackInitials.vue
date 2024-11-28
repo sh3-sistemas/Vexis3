@@ -4,21 +4,16 @@
 
 <script lang="ts" setup>
 import { computed, type PropType, toRef } from "vue";
-import { Avatar, type AvatarProps } from "primevue";
+import { Avatar } from "primevue";
+import type { Sh3AvatarProps } from "./types";
 
 defineOptions({
   inheritAttrs: false,
 });
 
-type Profile = {
-  name: string;
-};
-
-type Sh3Avatar = AvatarProps & Profile;
-
 const props = defineProps({
   profile: {
-    type: Object as PropType<Sh3Avatar>,
+    type: Object as PropType<Sh3AvatarProps>,
     required: true,
     default: () => {
       return {
