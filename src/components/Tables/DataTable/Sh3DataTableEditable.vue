@@ -1,0 +1,152 @@
+<template>
+  <DataTable
+    v-bind="props"
+    v-model:selection="selected"
+    v-model:editing-rows="editingRows"
+    edit-mode="row"
+    :value="items"
+    :selection-mode="undefined"
+    paginator
+    striped-rows
+    :rows-per-page-options="[5, 10, 20, 50]"
+    paginator-template="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
+    current-page-report-template="{first} a {last} de {totalRecords}"
+    @update:selection="selectRow"
+    @page="emits('page', $event)"
+  >
+    <!-- Paginator section -->
+    <template #paginatorend>
+      <Sh3Button
+        type="button"
+        icon="pi pi-refresh"
+        text
+        @click="emits('refresh')"
+      />
+    </template>
+    <template #empty>
+      <SearchNotFound />
+    </template>
+    <Column v-if="selectionMode" :selection-mode="selectionMode" class="w-10" />
+    <Column
+      v-for="col of columns.filter((x) => x.visible != false)"
+      :key="col.field"
+      :field="col.field"
+      :header="col.header"
+      :sortable="col.sortable"
+      :pt="{ sortBadge: 'hidden' }"
+    >
+      <template #body="{ data: row, field }">
+        <Checkbox
+          v-if="col.filterType.toLowerCase() == 'boolean'"
+          v-model="row[field]"
+          disabled
+          :binary="true"
+        />
+        <div v-else-if="col.cellFormater">
+          <component :is="col.cellFormater" v-bind="{ row, field }"></component>
+        </div>
+        <div v-else>{{ row[field] }}</div>
+      </template>
+      <template v-if="col.editable != false" #editor="{ data: row, field }">
+        <InputText
+          v-if="col.filterType.toLowerCase() != 'boolean'"
+          v-model="row[field]"
+          :type="col.filterType.toLowerCase()"
+        />
+        <Checkbox v-else v-model="row[field]" :binary="true" />
+      </template>
+    </Column>
+    <Column class="w-20">
+      <template #body="{ data: row }">
+        <Sh3Button
+          icon-pos="right"
+          class="!flex mx-auto"
+          icon="pi pi-pencil"
+          :disabled="editingRows.length > 0"
+          @click="newEdit(row)"
+        />
+      </template>
+      <template #editor="{ data: row, index }">
+        <Sh3Button
+          v-tooltip.top="saveTooltip"
+          icon-pos="right"
+          variant="text"
+          icon="pi pi-check"
+          @click="updateRow(row)"
+        />
+        <Sh3Button
+          v-tooltip.top="cancelTooltip"
+          icon-pos="right"
+          variant="text"
+          icon="pi pi-times"
+          @click="cancelEdit(row, index)"
+        />
+      </template>
+    </Column>
+  </DataTable>
+</template>
+
+<script lang="ts" setup>
+import DataTable from "primevue/datatable";
+import Column from "primevue/column";
+import InputText from "primevue/inputtext";
+import Checkbox from "primevue/checkbox";
+import type { Sh3DataTableEditableProps } from "./types";
+import SearchNotFound from "./fragments/SearchNotFound.vue";
+
+import { saveTooltip, cancelTooltip } from "./fragments/tooltip";
+
+defineOptions({
+  inheritAttrs: false,
+});
+
+const props = withDefaults(defineProps<Sh3DataTableEditableProps>(), {
+  emptyString: "Nenhum Registro encontrado",
+  dataKey: "id",
+});
+
+const modelState = {
+  required: false,
+  default: [],
+};
+
+const selected = defineModel<Array<object>>("selection", modelState);
+const editingRows = defineModel<Array<object>>("editingRows", modelState);
+const items = defineModel<Array<object>>("items", modelState);
+
+const emits = defineEmits(["refresh", "page"]);
+
+const newEdit = (row: object) => {
+  if (selected.value.length) {
+    selected.value = [];
+  }
+  editingRows.value = [...editingRows.value, row];
+};
+
+const cancelEdit = (row: Record<string, any>, index: number) => {
+  editingRows.value = [];
+  if (row[props.dataKey as any] && !props.value) return;
+  items.value.splice(index, 1);
+};
+
+const selectRow = () => {
+  if (editingRows.value.length) {
+    selected.value = [];
+  }
+};
+
+const startNewRow = () => {
+  const newRow = { [props.dataKey as any]: null };
+  props.columns.forEach(({ field, default: defaultValue }) => {
+    if (defaultValue !== undefined) {
+      newRow[field] = defaultValue;
+    }
+  });
+
+  items.value[items.value.length] = newRow;
+  editingRows.value.push(items.value[items.value.length - 1]);
+  selected.value = [];
+};
+
+defineExpose({ startNewRow });
+</script>

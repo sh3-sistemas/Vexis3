@@ -2,7 +2,7 @@ import tailwindTheme from "./src/theme";
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: ['selector', ':root[class="app-dark"]'],
+  darkMode: ["selector", ':root[class="app-dark"]'],
   content: [
     "./public/index.html",
     "./index.html",

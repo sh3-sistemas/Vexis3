@@ -1,6 +1,6 @@
 <template>
   <Button
-    :ptOptions="{ mergeProps: true }"
+    :pt-options="{ mergeProps: true }"
     class="w-[40px] h-[40px]"
     v-bind="$attrs"
   >

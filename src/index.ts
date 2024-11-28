@@ -1,5 +1,5 @@
 import "./assets/main.css";
-import 'vue-toastification/dist/index.css'
+import "vue-toastification/dist/index.css";
 
 import type { App, Plugin } from "vue";
 import * as components from "./components";
@@ -12,15 +12,15 @@ import ConfirmationService from "primevue/confirmationservice";
 import ToastService from "primevue/toastservice";
 
 /** Toastification Config. */
-import Toast from 'vue-toastification'
+import Toast from "vue-toastification";
 import { toastOptions } from "./services/toast/notification/types";
 
 export default {
   install: (app: App) => {
     app.use(PrimeVue, {
       pt: vexis3,
-      theme: 'none',
-      ripple: true
+      theme: "none",
+      ripple: true,
     });
 
     app.directive("tooltip", Tooltip);
@@ -37,5 +37,5 @@ export default {
 } satisfies Plugin;
 
 export * from "./components";
-export * from './services';
+export * from "./services";
 export * from "./types";

@@ -1,6 +1,6 @@
 <template>
   <div class="panel-button">
-    <Sh3IconButton @click="toggle" v-bind="buttonProps">
+    <Sh3IconButton v-bind="buttonProps" @click="toggle">
       <slot name="button"></slot>
     </Sh3IconButton>
 

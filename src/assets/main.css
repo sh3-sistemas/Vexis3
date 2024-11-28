@@ -1,4 +1,3 @@
-
 /* @layer tailwind-base, primevue, tailwind-utilities;
 
 @layer tailwind-base {
@@ -9,7 +8,6 @@
   @tailwind components;
   @tailwind utilities;
 } */
-
 
 /* Use @import */
 @import "tailwindcss/base";

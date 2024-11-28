@@ -32,7 +32,7 @@ export default {
     },
     colors: {
       ...pallet,
-      ...actions
+      ...actions,
     },
   },
 };

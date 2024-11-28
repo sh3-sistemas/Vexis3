@@ -6,6 +6,9 @@ import type { FetchParams, UseFetchState } from "./types";
 import { NetworkStatus } from "@apollo/client";
 import type { ClientDict } from "../types";
 
+/**
+ *
+ */
 export default function useFetch<T>() {
   const clients = inject<ClientDict<T>>("clients") as ClientDict<T>;
   const state: UseFetchState<T> = reactive({
@@ -23,7 +26,7 @@ export default function useFetch<T>() {
     options = {},
   }: FetchParams) => {
     const { loading, error, onError, onResult, refetch } = provideApolloClients(
-      clients
+      clients,
     )(() => useQuery<T>(query, variables, options));
 
     state.loading = loading.value;

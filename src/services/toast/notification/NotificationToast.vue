@@ -4,7 +4,7 @@
     :class="
       twMerge(
         'flex items-center w-full md:max-w-xs p-4 mb-4 text-mercury-800 bg-white rounded-lg shadow-md',
-        styles.box
+        styles.box,
       )
     "
     role="alert"
@@ -24,7 +24,7 @@
         twMerge(
           'ml-auto -mx-1.5 -my-1.5 text-mercury-600 rounded-lg focus:ring-2 focus:ring-mercury-300 p-1.5 hover:bg-mercury-100 inline-flex h-8 w-8 items-center justify-center',
           styles.box,
-          styles.hover
+          styles.hover,
         )
       "
       data-dismiss-target="#toast-success"

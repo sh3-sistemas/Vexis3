@@ -3,7 +3,7 @@
     :class="
       twMerge(
         'title-container inline-flex text-lg text-mercury-950',
-        highlightStyle.main
+        highlightStyle.main,
       )
     "
   >
@@ -17,9 +17,9 @@
 
 <script setup lang="ts">
 import { twMerge } from "tailwind-merge";
-import type { HightlightTextProps } from "./types";
+import type { HightlightTitleProps } from "./types";
 
-withDefaults(defineProps<HightlightTextProps>(), {
+withDefaults(defineProps<HightlightTitleProps>(), {
   highlightText: () => {
     return {
       title: "Olá,",
