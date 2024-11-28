@@ -14,7 +14,7 @@
       "import": "./dist/vexis3.js",
       "require": "./dist/vexis3.umd.cjs"
     },
-    "./style.css": "./dist/style.css"
+    "./types/buttons": "./dist/types/src/components/buttons/types/index.d.ts"
   },
   "scripts": {
     "dev": "vite",

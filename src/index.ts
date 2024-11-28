@@ -1,4 +1,5 @@
 import "./assets/main.css";
+import 'vue-toastification/dist/index.css'
 
 import type { App, Plugin } from "vue";
 import * as components from "./components";
@@ -8,8 +9,11 @@ import PrimeVue from "primevue/config";
 import vexis3 from "@/theme/vexis3";
 import Tooltip from "primevue/tooltip";
 import ConfirmationService from "primevue/confirmationservice";
-
 import ToastService from "primevue/toastservice";
+
+/** Toastification Config. */
+import Toast from 'vue-toastification'
+import { toastOptions } from "./services/toast/notification/types";
 
 export default {
   install: (app: App) => {
@@ -22,6 +26,8 @@ export default {
     app.directive("tooltip", Tooltip);
     app.use(ConfirmationService);
     app.use(ToastService);
+
+    app.use(Toast, toastOptions);
 
     for (const key in components) {
       // @ts-expect-error components defined by any
