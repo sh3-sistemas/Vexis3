@@ -1,2 +1,3 @@
 export * from "./Buttons";
-export * from './Typography';
+export * from "./Tabs";
+export * from "./Typography";
