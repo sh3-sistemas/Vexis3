@@ -4,5 +4,6 @@ export * from "./Cards";
 export * from "./Dialogs";
 export * from "./Drawers";
 export * from "./Dropdowns";
+export * from "./Inputs";
 export * from "./Tabs";
 export * from "./Typography";
