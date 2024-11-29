@@ -7,5 +7,6 @@ export * from "./Dropdowns";
 export * from "./Inputs";
 export * from "./Links";
 export * from "./Modals";
+export * from "./Navigation";
 export * from "./Tabs";
 export * from "./Typography";
