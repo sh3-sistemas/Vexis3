@@ -1,8 +1,8 @@
 import type { cardVariation } from "./types";
 
 export const notice = <cardVariation>{
-  cardStyle: "bg-mercury-100/80 hover:bg-mercury-100",
-  circleStyle: "bg-selenium-400",
+  cardStyle: "bg-surface-100/80 hover:bg-surface-100",
+  circleStyle: "bg-primary-400",
   iconVariation: "entypo:megaphone",
   iconColor: "white",
 };

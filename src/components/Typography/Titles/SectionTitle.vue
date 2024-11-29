@@ -1,6 +1,6 @@
 <template>
   <span
-    :class="twMerge('inline-flex text-mercury-950 text-base uppercase', style)"
+    :class="twMerge('inline-flex text-surface-950 text-base uppercase', style)"
   >
     {{ title }}
   </span>
