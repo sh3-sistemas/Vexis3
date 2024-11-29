@@ -10,4 +10,5 @@ export * from "./Links";
 export * from "./Modals";
 export * from "./Navigation";
 export * from "./Tabs";
+export * from "./Tags";
 export * from "./Typography";
