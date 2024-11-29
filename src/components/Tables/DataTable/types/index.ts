@@ -3,15 +3,11 @@
  * [Primevue Based](https://v3.primevue.org/datatable)
  * @module dataTables
  */
+import type { ColumnProps, TagProps } from "primevue";
 import type { DataTableProps } from "primevue/datatable";
-
-export type Action = {
-  color: string;
-  icon: string;
-  action: (item: any) => void;
-  permission: (item: any) => boolean | true;
-  disabled: (item: any) => boolean | false;
-};
+import { FilterMatchMode, FilterOperator } from "@primevue/core/api";
+import { markRaw } from "vue";
+import { SelectFilterTag, TextFilter, DateFilter } from "../../Filters";
 
 type ItemColum = {
   field: any;
@@ -28,6 +24,43 @@ export type Sh3DataTableEditableProps = DataTableProps & {
   updateRow: (row: object) => void;
   columns: Array<ItemColum>;
   emptyString: string;
+};
+
+export const filterComponents = {
+  SelectFilterTag: markRaw(SelectFilterTag),
+  TextFilter: markRaw(TextFilter),
+  DateFilter: markRaw(DateFilter),
+};
+
+export type Action = {
+  color: string;
+  icon: string;
+  action: (item: any) => void;
+  permission: (item: any) => boolean | true;
+  disabled: (item: any) => boolean | false;
+};
+
+export type DataTableItemColumn = {
+  field: string;
+  header: string;
+  type?: "tag" | "download" | "actions";
+  props?: ColumnProps & { tag?: (item: any) => TagProps };
+  filter?: {
+    operator: keyof typeof FilterOperator;
+    matchMode: keyof typeof FilterMatchMode;
+    type: keyof typeof filterComponents;
+    options: any[];
+  };
+};
+
+export type SelectionMode = "single" | "multiple" | undefined | null;
+
+export type Sh3DataTableProps = {
+  empty: string;
+  items: Array<any>;
+  columns: Array<DataTableItemColumn>;
+  actions: Array<Action>;
+  selectionMode?: SelectionMode;
 };
 
 /**

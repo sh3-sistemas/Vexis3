@@ -8,8 +8,10 @@
     :rows-per-page-options="[5, 10, 20, 50]"
     paginator-template="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
     current-page-report-template="{first} a {last} de {totalRecords}"
+    v-bind="$attrs"
   >
     <!-- Paginator section -->
+    <template #paginatorstart> </template>
     <template #paginatorend>
       <Button
         type="button"
@@ -79,70 +81,35 @@
 <script lang="ts" setup>
 import DataTable from "primevue/datatable";
 import Button from "primevue/button";
-import Column, { type ColumnProps } from "primevue/column";
-import Tag, { type TagProps } from "primevue/tag";
+import Column from "primevue/column";
+import Tag from "primevue/tag";
 import { Icon } from "@iconify/vue";
-import { markRaw, useAttrs, type PropType } from "vue";
+import { useAttrs } from "vue";
 import { twMerge } from "tailwind-merge";
-import { FilterMatchMode, FilterOperator } from "@primevue/core/api";
 import { useFilterTable } from "../Filters/composables";
-
-import { SelectFilterTag } from "../Filters";
-import { TextFilter } from "../Filters";
-import { DateFilter } from "../Filters";
 import SearchNotFound from "./fragments/SearchNotFound.vue";
-import type { Action } from "./types";
+import {
+  type Action,
+  type DataTableItemColumn,
+  type Sh3DataTableProps,
+  filterComponents,
+} from "./types";
 
-const attrs = useAttrs();
-
-const filterComponents = {
-  SelectFilterTag: markRaw(SelectFilterTag),
-  TextFilter: markRaw(TextFilter),
-  DateFilter: markRaw(DateFilter),
-};
-
-export type ItemColum = {
-  field: string;
-  header: string;
-  type?: "tag" | "download" | "actions";
-  props?: ColumnProps & { tag?: (item: any) => TagProps };
-  filter?: {
-    operator: keyof typeof FilterOperator;
-    matchMode: keyof typeof FilterMatchMode;
-    type: keyof typeof filterComponents;
-    options: any[];
-  };
-};
-
-type SelectionMode = "single" | "multiple" | undefined;
-
-const props = defineProps({
-  empty: {
-    type: String,
-    default: "Nenhum item encontrado.",
-  },
-  items: {
-    type: Array as PropType<Array<any>>,
-    default: () => <any[]>[],
-  },
-  columns: {
-    type: Array as PropType<Array<ItemColum>>,
-    default: () => <ItemColum[]>[],
-  },
-  actions: {
-    type: Array as PropType<Array<Action>>,
-    default: () => <Action[]>[],
-  },
-  selectionMode: {
-    type: String as PropType<SelectionMode>,
-    default: null,
-  },
-});
-
-const emits = defineEmits(["refresh"]);
 defineOptions({
   inheritAttrs: true,
 });
+
+const attrs = useAttrs();
+
+const props = withDefaults(defineProps<Sh3DataTableProps>(), {
+  empty: "Nenhum item encontrado.",
+  items: () => <any[]>[],
+  columns: () => <DataTableItemColumn[]>[],
+  actions: () => <Action[]>[],
+  selectionMode: null,
+});
+
+const emits = defineEmits(["refresh"]);
 
 const { filters } = useFilterTable(attrs.filterDisplay, props.columns);
 </script>

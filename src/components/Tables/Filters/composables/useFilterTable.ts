@@ -1,5 +1,5 @@
 import { ref, onBeforeMount } from "vue";
-import type { ItemColum } from "../../DataTable/Sh3DataTable.vue";
+import type { DataTableItemColumn } from "../../DataTable/types";
 
 /**
  * Custom hook for managing filter functionality in a table based on PrimeVue premises.
@@ -9,7 +9,7 @@ import type { ItemColum } from "../../DataTable/Sh3DataTable.vue";
  */
 export default function useFilterTable(
   filterDisplay: string | unknown,
-  columns: Array<ItemColum>,
+  columns: Array<DataTableItemColumn>,
 ) {
   // state encapsulated and managed by the composable
   const filters = ref();
@@ -19,7 +19,7 @@ export default function useFilterTable(
    * @param col - The column object.
    * @returns The field value.
    */
-  const getField = (col: ItemColum): string => {
+  const getField = (col: DataTableItemColumn): string => {
     if (!col.props) return col.field;
     return (
       col.props.filterField ? col.props.filterField : col.field
@@ -31,7 +31,7 @@ export default function useFilterTable(
    * @param col - The column object.
    * @returns The filter model template.
    */
-  const getFilterModelTemplate = (col: ItemColum) => {
+  const getFilterModelTemplate = (col: DataTableItemColumn) => {
     return { value: null, matchMode: col.filter?.matchMode };
   };
 
@@ -41,7 +41,7 @@ export default function useFilterTable(
    * @param filterModel - The filter model.
    */
   const mountMenuFilter = (
-    col: ItemColum,
+    col: DataTableItemColumn,
     filterModel: { [key: string]: any },
     dynamicFilter: { [key: string]: any },
   ) => {
@@ -59,7 +59,7 @@ export default function useFilterTable(
    * @param filterModel - The filter model.
    */
   const mountRowFilter = (
-    col: ItemColum,
+    col: DataTableItemColumn,
     filterModel: { [key: string]: any },
     dynamicFilter: { [key: string]: any },
   ) => {

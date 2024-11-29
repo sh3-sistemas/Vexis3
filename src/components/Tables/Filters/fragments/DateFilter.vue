@@ -4,18 +4,26 @@
     <InputText v-model="inputDate" placeholder="Search" />
   </IconField>
 
-  <OverlayPanel ref="op" append-to="body">
+  <Popover ref="op" append-to="body">
     <div class="overlay-wrapper flex flex-col gap-y-2">
       <div class="max-min-calendar-wrapper">
         <div class="flex gap-4">
-          <Calendar v-model="minDate" placeholder="Min." v-bind="maxMinProps" />
+          <DatePicker
+            v-model="minDate"
+            placeholder="Min."
+            v-bind="maxMinProps"
+          />
           <Divider />
-          <Calendar v-model="maxDate" placeholder="Máx." v-bind="maxMinProps" />
+          <DatePicker
+            v-model="maxDate"
+            placeholder="Máx."
+            v-bind="maxMinProps"
+          />
           <Sh3Button label="Ok" @click="selectDate" />
         </div>
       </div>
       <div class="flex justify-content-center items-center w-full flex-col">
-        <Calendar
+        <DatePicker
           v-model="date"
           selection-mode="range"
           inline
@@ -27,23 +35,23 @@
         >
       </div>
     </div>
-  </OverlayPanel>
+  </Popover>
 </template>
 
 <script setup lang="ts">
 import { ref, watch, computed, type PropType } from "vue";
-import Calendar, { type CalendarProps } from "primevue/calendar";
-import OverlayPanel from "primevue/overlaypanel";
+import DatePicker, { type DatePickerProps } from "primevue/datepicker";
+import Popover from "primevue/popover";
 import IconField from "primevue/iconfield";
 import InputIcon from "primevue/inputicon";
 import InputText from "primevue/inputtext";
 import Divider from "primevue/divider";
 import { Sh3Button } from "@/components/Buttons";
-import type { ItemColum } from "@/components/Tables/DataTable/Sh3DataTable.vue";
+import type { DataTableItemColumn } from "../../DataTable/types";
 
 const props = defineProps({
   col: {
-    type: Object as PropType<ItemColum>,
+    type: Object as PropType<DataTableItemColumn>,
     default: () => {
       return {
         filter: {
@@ -66,7 +74,7 @@ const inputDate = ref();
 
 const minDate = ref();
 const maxDate = ref();
-const maxMinProps = <CalendarProps>{
+const maxMinProps = <DatePickerProps>{
   showIcon: true,
   iconDisplay: "input",
   dateFormat: "dd/mm/yy",

@@ -1,6 +1,6 @@
-import type { ItemColum } from "../../../DataTable/Sh3DataTable.vue";
+import type { DataTableItemColumn } from "@/components/Tables/DataTable/types";
 
 export type FilterProps = {
-  col: ItemColum;
+  col: DataTableItemColumn;
   filterCallback: () => void;
 };

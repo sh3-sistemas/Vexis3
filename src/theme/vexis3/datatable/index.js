@@ -8,6 +8,9 @@ export default {
 
       // Size
       { "h-full": props.scrollable && props.scrollHeight === "flex" },
+
+      // Shape
+      "border-spacing-0 border-separate",
     ],
   }),
   mask: {
@@ -46,15 +49,13 @@ export default {
   }),
   header: ({ props }) => ({
     class: [
-      "font-bold",
+      "font-semibold",
 
       // Shape
-      props.showGridlines
-        ? "border-x border-t border-b-0"
-        : "border-y border-x-0",
+      props.showGridlines ? "border-b" : "border-b border-x-0",
 
       // Spacing
-      "p-4",
+      "py-3.5 px-3",
 
       // Color
       "bg-surface-0 dark:bg-surface-900",
@@ -75,8 +76,9 @@ export default {
   }),
   tbody: ({ instance, context }) => ({
     class: [
+      "border-t border-mercury-300 dark:border-surface-600",
       {
-        "sticky z-20": instance.frozenRow && context.scrollable,
+        "sticky z-20 font-semibold": instance.frozenRow && context.scrollable,
       },
       "bg-surface-0 dark:bg-surface-900",
     ],
@@ -400,7 +402,7 @@ export default {
   bodyRow: ({ context, props, parent }) => ({
     class: [
       // Color
-      { "bg-highlight": context.selected },
+      { "!bg-highlight": context.selected },
       {
         "bg-surface-0 text-surface-600 dark:text-white/80 dark:bg-surface-900":
           !context.selected,

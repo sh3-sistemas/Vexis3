@@ -105,14 +105,18 @@ const props = withDefaults(defineProps<Sh3DataTableEditableProps>(), {
   dataKey: "id",
 });
 
-const modelState = {
+const selected = defineModel<Array<object>>("selection", {
   required: false,
   default: [],
-};
-
-const selected = defineModel<Array<object>>("selection", modelState);
-const editingRows = defineModel<Array<object>>("editingRows", modelState);
-const items = defineModel<Array<object>>("items", modelState);
+});
+const editingRows = defineModel<Array<object>>("editingRows", {
+  required: false,
+  default: [],
+});
+const items = defineModel<Array<object>>("items", {
+  required: false,
+  default: [],
+});
 
 const emits = defineEmits(["refresh", "page"]);
 

@@ -1,4 +1,5 @@
 import "./assets/main.css";
+import "primeicons/primeicons.css";
 import "vue-toastification/dist/index.css";
 
 import type { App, Plugin } from "vue";
