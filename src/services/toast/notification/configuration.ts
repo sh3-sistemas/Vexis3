@@ -1,27 +1,27 @@
 import type { NotificationConfiguration, NotificationType } from "./types";
 export default {
   success: {
-    colors: "text-grass-500 bg-grass-200 rounded-lg",
-    hover: "hover:bg-grass-300",
-    box: "bg-grass-100 text-grass-950",
+    colors: "text-jade-500 bg-jade-200 rounded-lg",
+    hover: "hover:bg-jade-300",
+    box: "bg-jade-100 text-jade-950",
     icon: "heroicons-solid:check",
   },
   info: {
-    colors: "text-selenium-500 bg-selenium-200 rounded-lg",
-    hover: "hover:bg-selenium-300",
-    box: "bg-selenium-100 text-selenium-950",
+    colors: "text-primary-500 bg-primary-200 rounded-lg",
+    hover: "hover:bg-primary-300",
+    box: "bg-primary-100 text-primary-950",
     icon: "heroicons-solid:information-circle",
   },
   warning: {
-    colors: "text-amber-500 bg-amber-200 rounded-lg",
-    hover: "hover:bg-amber-300",
-    box: "bg-amber-100 text-amber-950",
+    colors: "text-sulfur-500 bg-sulfur-200 rounded-lg",
+    hover: "hover:bg-sulfur-300",
+    box: "bg-sulfur-100 text-sulfur-950",
     icon: "heroicons-solid:exclamation-triangle",
   },
   error: {
-    colors: "text-red-500 bg-red-200 rounded-lg",
-    hover: "hover:bg-red-300",
-    box: "bg-red-100 text-red-950",
+    colors: "text-ruby-500 bg-ruby-200 rounded-lg",
+    hover: "hover:bg-ruby-300",
+    box: "bg-ruby-100 text-ruby-950",
     icon: "heroicons-solid:shield-exclamation",
   },
 } as Record<NotificationType, NotificationConfiguration>;

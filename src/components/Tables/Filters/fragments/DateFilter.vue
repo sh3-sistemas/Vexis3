@@ -30,7 +30,7 @@
           date-format="dd/mm/yy"
         />
 
-        <span v-if="countDaysBeetweenDates" class="text-selenium-800 my-2">
+        <span v-if="countDaysBeetweenDates" class="text-primary-800 my-2">
           {{ countDaysBeetweenDates }} dias selecionados</span
         >
       </div>

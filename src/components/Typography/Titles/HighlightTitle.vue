@@ -8,7 +8,7 @@
     "
   >
     <span class="pr-1"> {{ highlightText.title }} </span>
-    <span :class="twMerge('text-selenium-700', highlightStyle.name)">
+    <span :class="twMerge('text-primary-700', highlightStyle.name)">
       {{ highlightText.name }}
     </span>
     <span> {{ highlightText.extra }} </span>
