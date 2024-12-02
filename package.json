@@ -14,15 +14,15 @@
       "import": "./dist/vexis3.js",
       "require": "./dist/vexis3.umd.cjs"
     },
-    "./style.css": "./dist/style.css"
+    "./types/buttons": "./dist/types/src/components/buttons/types/index.d.ts"
   },
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check \"build-only {@}\" --",
+    "build": "run-p type-check \"build-only {@}\" -- --declaration --emitDeclarationOnly",
     "preview": "vite preview",
     "test:unit": "vitest",
     "build-only": "vite build",
-    "type-check": "vue-tsc --build --force --declaration --emitDeclarationOnly",
+    "type-check": "vue-tsc --build --force",
     "lint": "eslint . --fix",
     "format": "prettier --write src/",
     "clean": "find . -type f -name 'vite.config.*.timestamp-*' -ls -delete 2>/dev/null"
@@ -36,14 +36,19 @@
     "@": "./dist"
   },
   "dependencies": {
+    "@apollo/client": "^3.11.10",
     "@primevue/themes": "^4.2.3",
+    "graphql": "^16.9.0",
+    "graphql-tag": "^2.12.6",
+    "primeicons": "^7.0.0",
     "@vueform/plugin-mask": "^1.0.7",
     "@vueform/vueform": "^1.11.0",
     "flowbite": "^2.5.2",
     "primevue": "^4.2.3",
     "tailwindcss-primeui": "^0.3.4",
-    "vee-validate": "^4.14.7",
-    "vue": "^3.5.12"
+    "vue": "^3.5.12",
+    "vue-toastification": "^2.0.0-rc.5",
+    "vee-validate": "^4.14.7"
   },
   "devDependencies": {
     "@iconify/vue": "^4.1.2",
@@ -52,19 +57,23 @@
     "@types/node": "^22.9.0",
     "@vitejs/plugin-vue": "^5.1.4",
     "@vitest/eslint-plugin": "1.1.7",
+    "@vue/apollo-composable": "^4.2.1",
+    "@vue/apollo-util": "^4.0.0-beta.6",
     "@vue/eslint-config-prettier": "^10.1.0",
     "@vue/eslint-config-typescript": "^14.1.3",
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.5.1",
     "autoprefixer": "^10.4.20",
     "eslint": "^9.14.0",
+    "eslint-plugin-jsdoc": "^50.6.0",
     "eslint-plugin-vue": "^9.30.0",
     "jsdom": "^25.0.1",
     "npm-run-all2": "^7.0.1",
     "postcss": "^8.4.49",
     "postcss-import": "^16.1.0",
-    "prettier": "^3.3.3",
+    "prettier": "^3.4.1",
     "sass-embedded": "^1.81.0",
+    "prettier": "^3.3.3",
     "tailwind-merge": "^2.5.5",
     "tailwindcss": "^3.4.15",
     "typescript": "~5.6.3",

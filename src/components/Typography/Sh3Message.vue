@@ -1,5 +1,5 @@
 <template>
-  <Message :ptOptions="{ mergeProps: true }" v-bind="$attrs">
+  <Message :pt-options="{ mergeProps: true }" v-bind="$attrs">
     <slot></slot>
   </Message>
 </template>

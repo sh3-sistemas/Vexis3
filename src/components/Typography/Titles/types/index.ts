@@ -9,7 +9,7 @@ type HighlightStyle = {
   name: string;
 };
 
-export type HightlightTextProps = {
+export type HightlightTitleProps = {
   highlightText?: HighlightText;
-  highlightStyle?: HighlightStyle;
+  highlightStyle: HighlightStyle;
 };

@@ -1,5 +1,5 @@
 <template>
-  <Button :label="label" :ptOptions="{ mergeProps: true }" v-bind="$attrs" />
+  <Button :label="label" :pt-options="{ mergeProps: true }" v-bind="$attrs" />
 </template>
 
 <script lang="ts" setup>

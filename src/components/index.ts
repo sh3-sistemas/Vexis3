@@ -12,6 +12,7 @@ export * from "./Links";
 export * from "./Modals";
 export * from "./Navigation";
 export * from "./Sidebars";
+export * from "./Tables";
 export * from "./Tabs";
 export * from "./Tags";
 export * from "./Typography";
