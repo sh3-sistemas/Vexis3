@@ -37,9 +37,12 @@
   },
   "dependencies": {
     "@primevue/themes": "^4.2.3",
+    "@vueform/plugin-mask": "^1.0.7",
+    "@vueform/vueform": "^1.11.0",
     "flowbite": "^2.5.2",
     "primevue": "^4.2.3",
     "tailwindcss-primeui": "^0.3.4",
+    "vee-validate": "^4.14.7",
     "vue": "^3.5.12"
   },
   "devDependencies": {

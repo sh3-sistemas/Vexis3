@@ -11,8 +11,12 @@ import ConfirmationService from "primevue/confirmationservice";
 
 import ToastService from "primevue/toastservice";
 
+import Vueform from "@vueform/vueform";
+import vueformConfig from "../vueform.config";
+
 export default {
   install: (app: App) => {
+    app.use(Vueform, vueformConfig);
     app.use(PrimeVue, {
       pt: vexis3,
       theme: 'none',
