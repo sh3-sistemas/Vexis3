@@ -1,4 +1,4 @@
-import { pallet, actions } from "./pallets";
+import { pallet, actions, modules } from "./pallets";
 
 export default {
   fontFamily: {
@@ -32,7 +32,8 @@ export default {
     },
     colors: {
       ...pallet,
-      ...actions
+      ...actions,
+      ...modules,
     },
   },
 };
