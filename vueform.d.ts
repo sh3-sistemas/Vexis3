@@ -1,1 +1,1 @@
-declare module '@vueform/vueform/tailwind';
+declare module "@vueform/vueform/tailwind";

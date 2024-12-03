@@ -1,4 +1,4 @@
-import type { ItemColum } from "@/components/Tables/DataTable/Sh3DataTable.vue";
+import type { DataTableItemColumn } from "@/components/Tables/DataTable/types";
 import type { DocumentNode } from "graphql";
 
 /**
@@ -8,7 +8,7 @@ export type ModuleMeta = {
   /**
    * The list of columns for the module.
    */
-  columns: ItemColum[];
+  columns: DataTableItemColumn[];
 };
 
 /**
