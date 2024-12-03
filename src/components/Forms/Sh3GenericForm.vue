@@ -5,8 +5,8 @@
     :display-errors="false"
     :endpoint="false"
     :disabled="!options.crud.save"
-    @submit="submitForm"
     v-bind="$attrs"
+    @submit="submitForm"
   >
     <slot name="form" :form="form$"></slot>
     <GroupElement

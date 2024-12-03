@@ -19,7 +19,7 @@
         :text="text"
         :rounded="rounded"
         :icons="icons"
-        :iconPos="iconPos"
+        :icon-pos="iconPos"
         v-bind="{
           ...button,
           ...aria,
@@ -34,6 +34,7 @@
 import { ref } from "vue";
 import { defineElement, ButtonElement } from "@vueform/vueform";
 import { classes } from "@vueform/vueform/dist/tailwind";
+import type { Sh3FormButtonProps } from "./types";
 
 export default defineElement({
   ...ButtonElement,
@@ -80,9 +81,9 @@ export default defineElement({
       required: false,
       default: "",
     },
-    ...ButtonElement.props,
+    ...(ButtonElement as any).props,
   },
-  setup(props, context) {
+  setup(props: Sh3FormButtonProps, context: any) {
     const { severity, danger, secondary } = props;
 
     if (!severity && danger) {
@@ -93,7 +94,7 @@ export default defineElement({
       props.severity = "secondary";
     }
 
-    const element = ButtonElement.setup(props, context);
+    const element = (ButtonElement as any).setup(props, context);
     const defaultClasses = ref({
       ...classes.EditorElement,
     });
@@ -101,7 +102,7 @@ export default defineElement({
     return {
       defaultClasses,
       ...element,
-    };
+    } as Sh3FormButtonProps;
   },
-});
+}) satisfies ButtonElement;
 </script>

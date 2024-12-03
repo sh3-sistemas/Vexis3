@@ -34,7 +34,7 @@ export default {
     ],
   },
   loadingIcon: {
-    class: "w-8 h-8 animate-spin",
+    class: "w-8 h-8 animate-spin text-primary-600",
   },
   tableContainer: ({ props }) => ({
     class: [

@@ -7,6 +7,7 @@
         :key="field"
         :icon="icon ?? ''"
         rounded
+        severity="info"
       >
         <div class="tag-template-wrapper whitespace-nowrap flex">
           <div class="tag-template-wrapper--field mr-1">{{ field }}:</div>

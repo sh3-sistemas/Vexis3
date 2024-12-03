@@ -1,9 +1,10 @@
 <template>
   <DataTable
-    v-bind="props"
+    v-bind="$attrs"
     v-model:selection="selected"
     v-model:editing-rows="editingRows"
     edit-mode="row"
+    :data-key="dataKey"
     :value="items"
     :selection-mode="undefined"
     paginator
@@ -15,6 +16,7 @@
     @page="emits('page', $event)"
   >
     <!-- Paginator section -->
+    <template #paginatorstart> </template>
     <template #paginatorend>
       <Sh3Button
         type="button"
