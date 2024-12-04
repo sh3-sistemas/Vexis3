@@ -40,14 +40,14 @@ defineOptions({
 const model = defineModel<string | number>("value", { default: 0 });
 const emits = defineEmits(["changeRoute"]);
 
-const buttonClass = "bg-transparent rounded-3xl shadow-lg";
+const buttonClass = "max-h-11 bg-transparent rounded-xl shadow-md";
 const tabListPT = {
   activeBar: { class: "hidden" },
-  tabList: { class: "border-0" },
+  tabList: { class: "max-h-11 border-0 gap-x-1 mb-[-5px]" },
   nextButton: { class: buttonClass },
   prevButton: { class: buttonClass },
 };
 const tabPT = {
-  root: { class: "w-40" },
+  root: { class: "w-48 pt-3 rounded-t-xl border-0" },
 };
 </script>
