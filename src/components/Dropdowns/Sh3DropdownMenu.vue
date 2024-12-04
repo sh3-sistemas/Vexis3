@@ -1,5 +1,10 @@
 <template>
-  <PanelMenu class="w-full md:w-[20rem]" v-bind="$attrs">
+  <PanelMenu
+    class="w-full md:w-[20rem]"
+    v-bind="$attrs"
+    :pt="panelMenuPT"
+    :pt-options="{ mergeProps: true }"
+  >
     <!-- demonstrate Vue 3 dynamic slot/template pass through -->
     <template
       v-for="(slot, index) of slotNames"
@@ -22,4 +27,12 @@ const slotNames = Object.keys(slots) as unknown;
 defineOptions({
   inheritAttrs: false,
 });
+
+const panelMenuPT = {
+  panel: { class: "!mb-1 !p-0 border-0" },
+  headerContent: { class: "hover:bg-transparent !text-surface-900" },
+  content: { class: "!pl-0" },
+  submenu: { class: "!pl-0" },
+  itemContent: { class: "!text-surface-900" },
+};
 </script>
