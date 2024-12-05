@@ -14,7 +14,7 @@ export const returnBaseActions: DialogBase = {
   iconColor: "text-amber-600",
   icon: PrimeIcons.EXCLAMATION_CIRCLE,
   rejectClass: "p-button-outlined p-button-sm",
-  acceptClass: "warning",
+  acceptClass: "warn",
   rejectLabel: "Cancelar",
   acceptLabel: "Retornar",
 };

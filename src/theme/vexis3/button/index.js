@@ -183,12 +183,12 @@ export default {
           !props.text &&
           !props.outlined &&
           !props.plain,
-        "bg-sulfur-500 dark:bg-sulfur-400":
+        "bg-amber-600 dark:bg-amber-400":
           props.severity === "warn" &&
           !props.text &&
           !props.outlined &&
           !props.plain,
-        "border border-sulfur-500 dark:border-sulfur-400":
+        "border border-amber-600 dark:border-amber-400":
           props.severity === "warn" &&
           !props.text &&
           !props.outlined &&
@@ -196,12 +196,12 @@ export default {
       },
       // Warning Text Button
       {
-        "text-sulfur-500 dark:text-sulfur-400":
+        "text-amber-600 dark:text-amber-400":
           props.text && props.severity === "warn" && !props.plain,
       },
       // Warning Outlined Button
       {
-        "text-sulfur-500 border border-sulfur-500 hover:bg-sulfur-300/10":
+        "text-amber-600 border border-amber-600 hover:bg-amber-300/20":
           props.outlined && props.severity === "warn" && !props.plain,
       },
 
@@ -389,19 +389,19 @@ export default {
 
       // Warning
       {
-        "hover:bg-sulfur-600 dark:hover:bg-sulfur-300 hover:border-sulfur-600 dark:hover:border-sulfur-300":
+        "hover:bg-amber-600 dark:hover:bg-amber-300 hover:border-amber-600 dark:hover:border-amber-300":
           props.severity === "warn" &&
           !props.text &&
           !props.outlined &&
           !props.plain,
       },
       {
-        "focus:ring-sulfur-500 dark:focus:ring-sulfur-400":
+        "focus:ring-amber-600 dark:focus:ring-amber-400":
           props.severity === "warn",
       },
       // Text & Outlined Button
       {
-        "hover:bg-sulfur-300/10":
+        "hover:bg-amber-300/20":
           (props.text || props.outlined) &&
           props.severity === "warn" &&
           !props.plain,

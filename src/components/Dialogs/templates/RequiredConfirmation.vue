@@ -13,7 +13,7 @@
       />
     </div>
     <div
-      class="border-circle bg-primary inline-flex justify-center items-center h-6rem w-6rem"
+      class="border-circle bg-white inline-flex justify-center items-center h-6rem w-6rem"
     >
       <i :class="['text-5xl', message?.icon, message?.iconColor]"></i>
     </div>
