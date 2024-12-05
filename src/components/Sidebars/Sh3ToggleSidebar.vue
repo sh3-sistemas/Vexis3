@@ -4,7 +4,7 @@
       twMerge(
         'toggle-sidebar--wrapper h-full flex flex-col gap-2 pt-6 pb-3 bg-white',
         styling.container,
-        isOpen ? 'opened' : 'closed'
+        isOpen ? 'opened' : 'closed',
       )
     "
   >
@@ -12,7 +12,7 @@
       :class="
         twMerge(
           'toggle-sidebar--header-wrapper flex flex-col w-full items-center',
-          isOpen ? 'px-5' : 'px-1'
+          isOpen ? 'px-5' : 'px-1',
         )
       "
     >
@@ -21,7 +21,7 @@
           twMerge(
             'toggle-sidebar-header--title-wrapper w-full inline-flex items-start gap-4',
             isOpen ? 'justify-start' : 'pl-2',
-            styling.header
+            styling.header,
           )
         "
       >
@@ -46,7 +46,7 @@
         twMerge(
           'toggle-sidebar--body overflow-y-auto grow',
           styling.body,
-          isOpen ? 'overflow-y-auto' : 'overflow-hidden'
+          isOpen ? 'overflow-y-auto' : 'overflow-hidden',
         )
       "
     >
@@ -57,7 +57,6 @@
     </div>
   </div>
   <Sh3IconButton
-    @click="toggleSidebar()"
     class="!w-7 !h-7 shrink-0 mt-16 -ml-6 relative !bg-surface-300 !hover:bg-surface-400 !active:bg-primary-300 !shadow !ring-0 !ring-transparent"
     severity="secondary"
     :icon="{
@@ -65,6 +64,7 @@
       styling: 'w-5 h-auto text-white',
     }"
     rounded
+    @click="toggleSidebar()"
   />
 </template>
 <script setup lang="ts">

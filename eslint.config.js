@@ -33,6 +33,7 @@ export default [
       //jsdoc rules
       // "jsdoc/require-description": "warn",
       // "jsdoc/check-values": "warn",
+      "vue/block-lang": ["warn"],
 
       //vue rules
       "vue/multi-word-component-names": [

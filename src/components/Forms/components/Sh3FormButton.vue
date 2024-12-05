@@ -1,5 +1,5 @@
 <!-- CustomElement.vue -->
-
+<!-- eslint-disable vue/block-lang -->
 <template>
   <ElementLayout ref="container" :class="[containerClass]">
     <template #element>
@@ -30,11 +30,10 @@
   </ElementLayout>
 </template>
 
-<script lang="ts">
+<script>
 import { ref } from "vue";
 import { defineElement, ButtonElement } from "@vueform/vueform";
 import { classes } from "@vueform/vueform/dist/tailwind";
-import type { Sh3FormButtonProps } from "./types";
 
 export default defineElement({
   ...ButtonElement,
@@ -81,9 +80,9 @@ export default defineElement({
       required: false,
       default: "",
     },
-    ...(ButtonElement as any).props,
+    ...ButtonElement.props,
   },
-  setup(props: Sh3FormButtonProps, context: any) {
+  setup(props, context) {
     const { severity, danger, secondary } = props;
 
     if (!severity && danger) {
@@ -94,7 +93,7 @@ export default defineElement({
       props.severity = "secondary";
     }
 
-    const element = (ButtonElement as any).setup(props, context);
+    const element = ButtonElement.setup(props, context);
     const defaultClasses = ref({
       ...classes.EditorElement,
     });
@@ -102,7 +101,7 @@ export default defineElement({
     return {
       defaultClasses,
       ...element,
-    } as Sh3FormButtonProps;
+    };
   },
-}) satisfies ButtonElement;
+});
 </script>

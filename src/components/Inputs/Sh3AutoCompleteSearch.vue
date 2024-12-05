@@ -8,11 +8,12 @@
       v-model="value"
       class="inputSearch !border-none"
       :suggestions="filtered"
-      @complete="search"
       placeholder="Pesquisar"
       v-bind="$attrs"
+      @complete="search"
     >
-      <template v-for="(_, slot) in slots" v-slot:[slot]="scope">
+      <template #empty> Nenhum resultado encontrado </template>
+      <template v-for="(_, slot) in slots" #[slot]="scope">
         <slot :name="slot" v-bind="scope || {}"></slot>
       </template>
     </AutoComplete>
@@ -40,15 +41,9 @@ defineOptions({
 const attrs = useAttrs();
 const slots = useSlots() as unknown as AutoCompleteSlots;
 
-const props = defineProps({
-  items: {
-    type: Array<Sh3AutoCompleteItem>,
-    default: () => [],
-  },
-  optionFilter: {
-    type: String,
-    default: "filter",
-  },
+const props = withDefaults(defineProps<Sh3AutoCompleteProps>(), {
+  items: () => [],
+  optionFilter: "filter",
 });
 
 const suggestions = toRef(props, "items");
@@ -74,7 +69,7 @@ const search = (event: any) => {
       handleSuggestion(suggestion),
       [props.optionFilter],
       query,
-      FilterMatchMode.CONTAINS
+      FilterMatchMode.CONTAINS,
     );
 
     if (filteredItems && filteredItems.length) {
