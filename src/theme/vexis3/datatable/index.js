@@ -34,7 +34,7 @@ export default {
     ],
   },
   loadingIcon: {
-    class: "w-8 h-8 animate-spin",
+    class: "w-8 h-8 animate-spin text-primary-600",
   },
   tableContainer: ({ props }) => ({
     class: [
@@ -129,7 +129,7 @@ export default {
           ? "py-[0.375rem] px-2"
           : context?.size === "large"
             ? "py-[0.9375rem] px-5"
-            : "py-3 px-4",
+            : "py-3.5 px-4",
 
         // Color
         (props.sortable === "" || props.sortable) && context.sorted

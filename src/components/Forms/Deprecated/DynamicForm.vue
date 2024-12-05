@@ -1,5 +1,5 @@
 <template>
-  <Form v-slot="{ handleSubmit, resetForm }" @submit="onSubmit" id="zodForm">
+  <Form id="zodForm" v-slot="{ handleSubmit, resetForm }" @submit="onSubmit">
     <form
       :id="formId"
       @submit="
@@ -33,23 +33,23 @@
         >
           <div :class="colPlacement">
             <Field
-              :validate-on-input="false"
               :id="name"
+              v-slot="{ field }"
+              :validate-on-input="false"
               :name="name"
               v-bind="attrs"
-              v-slot="{ field }"
             >
               <Sh3Input
                 v-if="as !== 'select'"
                 :type="type"
                 :label="label"
                 :placeholder="placeholder"
-                :validateSuccess="validateSuccess"
+                :validate-success="validateSuccess"
                 :disabled="disabled"
                 :success-message="successMessage"
                 :variation="variation"
                 v-bind="field"
-                :inputType="inputType"
+                :input-type="inputType"
                 :size="size"
               />
               <Sh3Select
@@ -57,23 +57,23 @@
                 :type="type"
                 :label="label"
                 :placeholder="placeholder"
-                :validateSuccess="validateSuccess"
+                :validate-success="validateSuccess"
                 :disabled="disabled"
                 :success-message="successMessage"
                 :variation="variation"
                 v-bind="field"
-                :inputType="inputType"
+                :input-type="inputType"
                 :options="options"
                 :size="size"
                 :config="config"
-                @selectChange="(e) => emits('selectChange', e)"
+                @select-change="(e) => emits('selectChange', e)"
               />
 
               <template v-if="children && children.length">
                 <component
+                  :is="tag"
                   v-for="({ tag, text, ...childAttrs }, idx) in children"
                   :key="idx"
-                  :is="tag"
                   v-bind="childAttrs"
                 >
                   {{ text }}
@@ -112,6 +112,6 @@ configure({
 
 const emits = defineEmits(["submittedForm", "selectChange"]);
 const onSubmit = (values: ValueOfFieldSchema) => {
-  emits("submittedForm", {...values});
+  emits("submittedForm", { ...values });
 };
 </script>

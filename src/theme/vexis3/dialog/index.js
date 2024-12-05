@@ -38,7 +38,7 @@ export default {
       "shrink-0",
 
       // Spacing
-      "p-6",
+      "p-6 pt-4",
 
       // Shape
       "rounded-tl-lg",
@@ -46,8 +46,8 @@ export default {
 
       // Colors
       "text-surface-700 dark:text-surface-0/80",
-      "border border-b-0",
-      "border-surface-200 dark:border-surface-700",
+      // "border border-b-0",
+      // "border-surface-200 dark:border-surface-700",
     ],
   },
   title: {
@@ -72,8 +72,8 @@ export default {
 
       // Colors
       "text-surface-700 dark:text-surface-0/80",
-      "border border-t-0 border-b-0",
-      "border-surface-200 dark:border-surface-700",
+      // "border border-t-0 border-b-0",
+      // "border-surface-200 dark:border-surface-700",
 
       // Misc
       "overflow-y-auto",

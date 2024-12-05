@@ -1,5 +1,5 @@
 <!-- CustomElement.vue -->
-
+<!-- eslint-disable vue/block-lang -->
 <template>
   <ElementLayout ref="container" :class="[containerClass]">
     <template #element>
@@ -19,7 +19,7 @@
         :text="text"
         :rounded="rounded"
         :icons="icons"
-        :iconPos="iconPos"
+        :icon-pos="iconPos"
         v-bind="{
           ...button,
           ...aria,
@@ -30,7 +30,7 @@
   </ElementLayout>
 </template>
 
-<script lang="ts">
+<script>
 import { ref } from "vue";
 import { defineElement, ButtonElement } from "@vueform/vueform";
 import { classes } from "@vueform/vueform/dist/tailwind";
