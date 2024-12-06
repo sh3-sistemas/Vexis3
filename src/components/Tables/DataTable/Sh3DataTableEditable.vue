@@ -9,6 +9,10 @@
     :selection-mode="undefined"
     paginator
     striped-rows
+    show-headers
+    :loading="loading"
+    :removable-sort="removableSort"
+    :rows="rows"
     :rows-per-page-options="[5, 10, 20, 50]"
     paginator-template="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
     current-page-report-template="{first} a {last} de {totalRecords}"
@@ -64,25 +68,33 @@
           icon-pos="right"
           class="!flex mx-auto"
           icon="pi pi-pencil"
+          icon-class="text-sm"
+          text
           :disabled="editingRows.length > 0"
           @click="newEdit(row)"
         />
       </template>
       <template #editor="{ data: row, index }">
-        <Sh3Button
-          v-tooltip.top="saveTooltip"
-          icon-pos="right"
-          variant="text"
-          icon="pi pi-check"
-          @click="updateRow(row)"
-        />
-        <Sh3Button
-          v-tooltip.top="cancelTooltip"
-          icon-pos="right"
-          variant="text"
-          icon="pi pi-times"
-          @click="cancelEdit(row, index)"
-        />
+        <div class="flex flex-row">
+          <Sh3Button
+            v-tooltip.top="saveTooltip"
+            icon-pos="right"
+            variant="text"
+            icon="pi pi-check"
+            icon-class="text-sm"
+            text
+            @click="updateRow(row)"
+          />
+          <Sh3Button
+            v-tooltip.top="cancelTooltip"
+            icon-pos="right"
+            variant="text"
+            icon="pi pi-times"
+            icon-class="text-sm"
+            text
+            @click="cancelEdit(row, index)"
+          />
+        </div>
       </template>
     </Column>
   </DataTable>

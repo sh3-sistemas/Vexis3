@@ -7,6 +7,7 @@
         <Sh3AvatarFallbackInitials
           :profile="avatar.profile"
           :avatarStyle="avatar.style"
+          class="text-4xl w-[92px] h-[92px]"
         />
       </div>
       <div

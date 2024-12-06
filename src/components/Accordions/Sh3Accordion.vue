@@ -1,7 +1,7 @@
 <template>
   <Accordion
-    :value="items.length > 0 ? '0' : ''"
-    :class="twMerge('AccordionRoot space-y-2 pr-2', style.root)"
+    :value="items.length > 0 ? 0 : ''"
+    :class="twMerge('AccordionRoot space-y-2 pr-2 scroll-smooth', style.root)"
     :multiple="false"
   >
     <AccordionPanel
@@ -10,8 +10,12 @@
       :value="index"
       class="AccordionItem"
     >
-      <AccordionHeader class="flex"> {{ item.title }} </AccordionHeader>
-      <AccordionContent class="AccordionContent">
+      <AccordionHeader
+        class="flex !font-normal !text-surface-900 bg-surface-50"
+      >
+        {{ item.title }}
+      </AccordionHeader>
+      <AccordionContent class="overflow-hidden flex flex-row">
         <slot :item="item"></slot>
       </AccordionContent>
     </AccordionPanel>
