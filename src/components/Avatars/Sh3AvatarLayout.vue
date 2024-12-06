@@ -6,8 +6,9 @@
       <div class="avatar-container z-10 py-2.5 inline-flex justify-center">
         <Sh3AvatarFallbackInitials
           :profile="avatar.profile"
-          :avatarStyle="avatar.style"
-          class="text-4xl w-[92px] h-[92px]"
+          :avatar-style="avatar.style"
+          size="xlarge"
+          class="!text-4xl w-[92px] h-[92px] outline outline-surface-0 outline-8"
         />
       </div>
       <div
