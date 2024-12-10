@@ -11,6 +11,10 @@ export type ConfigurationMap = {
    */
   name: string;
   /**
+   * Display the prefix of the project module.
+   */
+  prefix: string;
+  /**
    * Styling configurations for the project template.
    */
   styles: GeneralStyles;

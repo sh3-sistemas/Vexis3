@@ -1,3 +1,6 @@
+import type { OperationVariables } from "@apollo/client";
+import type { DocumentParameter } from "@vue/apollo-composable/dist/useQuery.js";
+
 export type FetchOptions = {
   /**
    * O identificador único do cliente que está realizando a operação de busca.
@@ -17,12 +20,12 @@ export type FetchOptions = {
   page: number;
 };
 
-export type Fetch = {
+export type Fetch<T> = {
   /**
    * Objeto que contém os critérios da consulta principal.
    * Aqui podem estar condições como chaves de pesquisa, datas, etc.
    */
-  query: object;
+  query: DocumentParameter<T, OperationVariables>;
 
   /**
    * Um objeto que define filtros adicionais aplicados à busca.

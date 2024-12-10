@@ -2,6 +2,7 @@ import {
   ApolloClient,
   InMemoryCache,
   createHttpLink,
+  type DocumentNode,
   type NormalizedCacheObject,
 } from "@apollo/client/core";
 import {
@@ -59,7 +60,9 @@ export const createSH3ApolloClient = (
   });
 };
 
-export const getQueryName = (query: { definitions: any[] }) => {
+export const getQueryName = (
+  query: { definitions: any[] } | DocumentNode | null,
+) => {
   if (!query) return null;
   const definition = query.definitions.find((def) => def.operation == "query");
   if (!definition) return null;

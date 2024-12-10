@@ -65,9 +65,9 @@ export default {
   text: {
     class: [
       "p-3",
-      "bg-surface-700",
-      "text-white",
-      "leading-none",
+      "bg-surface-0",
+      "text-surface-900",
+      "text-xs leading-none",
       "rounded-md",
       "whitespace-pre-line",
       "break-words",

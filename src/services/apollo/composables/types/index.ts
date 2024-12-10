@@ -12,6 +12,7 @@ import type { DocumentNode } from "graphql";
 export enum FORM_MODE {
   INCLUIR = "incluir",
   LOCALIZAR = "localizar",
+  NOTSET = "",
 }
 export enum CRUD_EVENTS {
   "onCreate" = "create",

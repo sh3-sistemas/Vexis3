@@ -20,3 +20,5 @@ export type DialogBase = Partial<ConfirmationOptions> & {
    **/
   iconColor: string;
 };
+
+export type V3ConfirmationOptions = ConfirmationOptions;

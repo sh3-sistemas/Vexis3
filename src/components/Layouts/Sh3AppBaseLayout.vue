@@ -9,7 +9,7 @@
       <!--  <Sh3RightDrawer /> -->
       <div class="system">
         <div
-          class="system--wrapper w-dvw overflow-auto h-auto md:!h-[calc(100dvh-73px)] flex flex-row gap-2 bg-surface-50"
+          class="system--wrapper w-dvw overflow-auto h-auto md:!h-[calc(100dvh-73px)] flex flex-row gap-2 bg-surface-100"
         >
           <Sh3ToggleSidebar
             ref="sidebar"

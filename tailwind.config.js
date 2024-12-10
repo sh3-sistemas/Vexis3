@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 import tailwindTheme from "./src/theme";
 
 /** @type {import('tailwindcss').Config} */
@@ -15,7 +16,9 @@ export default {
   theme: {
     ...tailwindTheme,
   },
-  // plugins: [require("flowbite/plugin"), require("@vueform/vueform/tailwind")],
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  plugins: [require("tailwindcss-primeui"), require("flowbite/plugin"), require("@vueform/vueform/tailwind")],
+  plugins: [
+    require("tailwindcss-primeui"),
+    require("flowbite/plugin"),
+    require("@vueform/vueform/tailwind"),
+  ],
 };

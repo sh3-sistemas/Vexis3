@@ -13,7 +13,7 @@
  * console.log(variables);
  * // Saída: { name: 'John', age: '30' }
  */
-export const resolveFormDataVariables = (FormData) => {
+export const resolveFormDataVariables = (FormData: FormData): object => {
   let variables = {};
   for (const [key, value] of FormData.entries()) {
     variables = { ...variables, [key]: value };

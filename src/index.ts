@@ -19,8 +19,17 @@ import { toastOptions } from "./services/toast/notification/types";
 import Vueform from "@vueform/vueform";
 import vueformConfig from "../vueform.config";
 
+import { ApolloClient } from "@apollo/client";
+
 export default {
-  install: (app: App) => {
+  install: (
+    app: App,
+    options: {
+      apollo: {
+        clients: Record<string, any>;
+      };
+    },
+  ) => {
     app.use(Vueform, vueformConfig);
     app.use(PrimeVue, {
       pt: vexis3,
@@ -34,6 +43,12 @@ export default {
 
     app.use(Toast, toastOptions);
 
+    const { clients } = options.apollo;
+    app.provide("clients", clients);
+    app.provide(ApolloClient, {
+      ...clients,
+    });
+
     for (const key in components) {
       // @ts-expect-error components defined by any
       app.component(key, components[key]);
@@ -44,3 +59,4 @@ export default {
 export * from "./components";
 export * from "./services";
 export * from "./types";
+export * from "./utils";

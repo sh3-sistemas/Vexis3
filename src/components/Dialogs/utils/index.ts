@@ -62,7 +62,7 @@ export const deletionBaseActions: DialogBase = {
  */
 const dialogBase = (
   options: ConfirmationOptions,
-  base: DialogBase
+  base: DialogBase,
 ): ConfirmationOptions => {
   const { accept, reject } = options;
 
@@ -84,7 +84,7 @@ const dialogBase = (
  * @returns {ConfirmationOptions} - Um objeto contendo todas as opções combinadas para o diálogo de exclusão.
  */
 export const deletionDialogBase = (
-  options: ConfirmationOptions
+  options: ConfirmationOptions,
 ): ConfirmationOptions => dialogBase(options, deletionBaseActions);
 
 /**
@@ -94,7 +94,7 @@ export const deletionDialogBase = (
  * @returns {ConfirmationOptions} - Um objeto contendo todas as opções combinadas para o diálogo de confirmação.
  */
 export const confirmationDialogBase = (
-  options: ConfirmationOptions
+  options: ConfirmationOptions,
 ): ConfirmationOptions => dialogBase(options, confirmationBaseActions);
 
 /**
@@ -104,5 +104,5 @@ export const confirmationDialogBase = (
  * @returns {ConfirmationOptions} - Um objeto contendo todas as opções combinadas para o diálogo de retorno.
  */
 export const returnDialogBase = (
-  options: ConfirmationOptions
+  options: ConfirmationOptions,
 ): ConfirmationOptions => dialogBase(options, returnBaseActions);

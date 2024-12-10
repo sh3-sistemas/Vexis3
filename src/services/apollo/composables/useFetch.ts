@@ -1,10 +1,20 @@
 import { provideApolloClients, useQuery } from "@vue/apollo-composable";
-import { inject, reactive, toRefs } from "vue";
+import { inject, reactive, toRefs, type Ref } from "vue";
 
 import { logErrorMessages } from "@vue/apollo-util";
-import type { FetchParams, UseFetchState } from "./types";
-import { NetworkStatus } from "@apollo/client";
+import type { FetchParams, RefetechFn, UseFetchState } from "./types";
+import { ApolloError, NetworkStatus } from "@apollo/client";
 import type { ClientDict } from "../types";
+
+export type FetchQuery<T> = ({
+  query,
+  variables,
+  options,
+}: FetchParams<T>) => Promise<{
+  loading: Ref<boolean, boolean>;
+  error: Ref<ApolloError | null, ApolloError | null>;
+  refetch: RefetechFn<T>;
+}>;
 
 /**
  *
