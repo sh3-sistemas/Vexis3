@@ -19,6 +19,7 @@ import type { DefineComponent } from "vue";
  */
 
 export type CrudOptions = {
+  edit: boolean;
   delete: boolean;
   save: boolean;
   cancel: boolean;

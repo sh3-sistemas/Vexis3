@@ -24,6 +24,7 @@ export type Sh3DataTableEditableProps = DataTableProps & {
   updateRow: (row: object) => void;
   columns: Array<ItemColum>;
   emptyString: string;
+  disabled: boolean;
 };
 
 export const filterComponents = {

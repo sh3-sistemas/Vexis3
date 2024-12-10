@@ -5,10 +5,11 @@
     :display-errors="false"
     :endpoint="false"
     :disabled="!options.crud.save"
+    :add-classes="options.crud.edit ? undefined : disableAll"
     v-bind="$attrs"
     @submit="submitForm"
   >
-    <slot name="form" :form="form$"></slot>
+    <slot name="form" :form="form$" :edit="options.crud.edit"></slot>
     <GroupElement
       name="actionButtons"
       :columns="{ container: 12, label: 3, wrapper: 12 }"
@@ -26,6 +27,15 @@
         @click="deletion"
       />
       <slot name="actions"></slot>
+      <Sh3FormButton
+        v-if="!options.crud.edit"
+        name="edit"
+        :container-class="options.crud.cancel ? 'col-start-10' : 'col-start-11'"
+        button-label="Editar"
+        :columns="1"
+        full
+        @click="emits('edit', form$)"
+      />
       <Sh3FormButton
         v-if="options.crud.cancel"
         name="cancel"
@@ -68,6 +78,7 @@ const props = withDefaults(defineProps<Sh3GenericFormProps>(), {
       crud: {
         cancel: true,
         delete: false,
+        edit: false,
         save: false,
       },
     };
@@ -79,6 +90,7 @@ const form$ = ref<Vueform>();
 const emits = defineEmits<{
   setup: [form$: typeof form$];
   cancel: [form$: typeof form$ | any];
+  edit: [form$: typeof form$ | any];
 }>();
 
 const syncForm = (data: any) =>
@@ -96,4 +108,12 @@ const deletion = () => {
 
 onMounted(() => emits("setup", form$));
 defineExpose({ clearForm, deletion, syncForm });
+const disableString = "form-bg-disabled pointer-events-none";
+const disableAll = {
+  TextElement: { input: disableString },
+  TextareaElement: { input: disableString },
+  EditorElement: { input: disableString },
+  RadiogroupElement: { wrapper: disableString },
+  ListComponent: disableString,
+};
 </script>

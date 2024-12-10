@@ -16,7 +16,6 @@
     :rows-per-page-options="[5, 10, 20, 50]"
     paginator-template="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
     current-page-report-template="{first} a {last} de {totalRecords}"
-    @update:selection="selectRow"
     @page="emits('page', $event)"
   >
     <!-- Paginator section -->
@@ -32,14 +31,23 @@
     <template #empty>
       <SearchNotFound />
     </template>
-    <Column v-if="selectionMode" :selection-mode="selectionMode" class="w-10" />
+    <Column
+      v-if="selectionMode"
+      :selection-mode="selectionMode"
+      class="w-10"
+      :pt-options="{ mergeProps: true }"
+      :pt="{
+        pcHeaderCheckbox: checkboxClass,
+        pcRowCheckbox: checkboxClass,
+      }"
+    />
     <Column
       v-for="col of columns.filter((x) => x.visible != false)"
       :key="col.field"
       :field="col.field"
       :header="col.header"
       :sortable="col.sortable"
-      :pt="{ sortBadge: 'hidden' }"
+      :pt="{ pcSortBadge: { root: 'hidden' } }"
     >
       <template #body="{ data: row, field }">
         <Checkbox
@@ -70,7 +78,7 @@
           icon="pi pi-pencil"
           icon-class="text-sm"
           text
-          :disabled="editingRows.length > 0"
+          :disabled="editingRows.length > 0 || disabled"
           @click="newEdit(row)"
         />
       </template>
@@ -101,6 +109,7 @@
 </template>
 
 <script lang="ts" setup>
+import { computed } from "vue";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import InputText from "primevue/inputtext";
@@ -117,6 +126,7 @@ defineOptions({
 const props = withDefaults(defineProps<Sh3DataTableEditableProps>(), {
   emptyString: "Nenhum Registro encontrado",
   dataKey: "id",
+  disabled: false,
 });
 
 const selected = defineModel<Array<object>>("selection", {
@@ -147,12 +157,6 @@ const cancelEdit = (row: Record<string, any>, index: number) => {
   items.value.splice(index, 1);
 };
 
-const selectRow = () => {
-  if (editingRows.value.length) {
-    selected.value = [];
-  }
-};
-
 const startNewRow = () => {
   const newRow = { [props.dataKey as any]: null };
   props.columns.forEach(({ field, default: defaultValue }) => {
@@ -167,4 +171,16 @@ const startNewRow = () => {
 };
 
 defineExpose({ startNewRow });
+
+const checkboxClass = computed(() => {
+  return {
+    root:
+      props.disabled || editingRows.value.length
+        ? "rounded flex w-5 form-bg-disabled pointer-events-none"
+        : "rounded flex w-5 bg-white",
+    input:
+      "w-5 h-5 rounded bg-transparent !ring-0 border border-surface-300 cursor-pointer",
+    box: "hidden",
+  };
+});
 </script>
