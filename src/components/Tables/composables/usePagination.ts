@@ -1,5 +1,5 @@
 import type { DataTablePageEvent } from "primevue/datatable";
-import { onMounted, toRefs, watchEffect } from "vue";
+import { onMounted, toRefs, watchEffect, type Ref } from "vue";
 import type { Fetch } from "../types";
 import type { FetchQuery } from "@/services/apollo/composables/useFetch";
 import type { RefetechFn } from "@/services";
@@ -13,7 +13,7 @@ import type { RefetechFn } from "@/services";
 export default function usePagination<T>(
   fetch: FetchQuery<T>,
   config: Fetch<T>,
-  refetch: RefetechFn<T>,
+  refetch: Ref<RefetechFn<T>>,
 ) {
   const { query, options, filterQuery } = toRefs(config);
   const limit = options.value.limit ?? 10;
@@ -21,9 +21,8 @@ export default function usePagination<T>(
   const filter = filterQuery?.value ?? {};
 
   watchEffect(async () => {
-    console.log({ refetch });
-    if (!(refetch as any).value) return;
-    await (refetch as any).value({
+    if (!refetch.value) return;
+    await refetch.value({
       ...filterQuery.value,
       page,
       limit,
@@ -40,7 +39,7 @@ export default function usePagination<T>(
 
   const getPage = async (pageEvent: DataTablePageEvent) => {
     const { page, filters } = pageEvent;
-    await (refetch as any).value({
+    await refetch.value({
       ...filter,
       ...filters,
       page,

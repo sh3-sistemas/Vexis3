@@ -1,6 +1,5 @@
 <template>
   <DataTable
-    v-bind="$attrs"
     v-model:selection="selected"
     v-model:editing-rows="editingRows"
     edit-mode="row"
@@ -13,9 +12,12 @@
     :loading="loading"
     :removable-sort="removableSort"
     :rows="rows"
+    :pt="pt"
+    :pt-options="ptOptions"
     :rows-per-page-options="[5, 10, 20, 50]"
     paginator-template="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
     current-page-report-template="{first} a {last} de {totalRecords}"
+    v-bind="$attrs"
     @update:selection="selectRow"
     @page="emits('page', $event)"
   >

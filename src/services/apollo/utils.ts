@@ -61,7 +61,7 @@ export const createSH3ApolloClient = (
 };
 
 export const getQueryName = (
-  query: { definitions: any[] } | DocumentNode | null,
+  query: { definitions: any[] } | DocumentNode | null | undefined,
 ) => {
   if (!query) return null;
   const definition = query.definitions.find((def) => def.operation == "query");

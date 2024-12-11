@@ -21,10 +21,11 @@ export type FetchQuery<T> = ({
  */
 export default function useFetch<T>() {
   const clients = inject<ClientDict<T>>("clients") as ClientDict<T>;
+
   const state: UseFetchState<T> = reactive({
     data: {} as any,
     count: 0,
-    loading: false,
+    loading: undefined,
     refetch: undefined,
     networkStatus: NetworkStatus.setVariables,
   });
@@ -39,12 +40,11 @@ export default function useFetch<T>() {
       clients,
     )(() => useQuery<T>(query, variables, options));
 
-    state.loading = loading.value;
+    state.loading = loading;
     state.refetch = refetch;
 
     onResult((result) => {
       state.data = result.data;
-      state.loading = result.loading;
       state.count =
         result.data && Array.isArray(result.data) ? result.data.length : 0;
     });

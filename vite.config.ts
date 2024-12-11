@@ -52,6 +52,7 @@ export default defineConfig({
         "radix-vue",
         "flowbite",
         "graphql",
+        "vueform",
       ],
       output: {
         manualChunks: (id) => {

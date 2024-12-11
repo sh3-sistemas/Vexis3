@@ -8,6 +8,7 @@ import type {
   VariablesParameter,
 } from "@vue/apollo-composable/dist/useQuery.js";
 import type { DocumentNode } from "graphql";
+import type { Ref } from "vue";
 
 export enum FORM_MODE {
   INCLUIR = "incluir",
@@ -53,11 +54,16 @@ export type FetchParams<
   options: OptionsParameter<TResult, TVariables>;
 };
 
-export type UseFetchState<T> = Omit<ApolloQueryResult<T>, "data"> & {
+export type UseFetchState<T> = Omit<
+  ApolloQueryResult<T>,
+  "data" | "loading"
+> & {
   count: number;
+  loading: Ref<boolean> | undefined;
   refetch: RefetechFn<T> | undefined;
   data: T | T[];
 };
+
 export type RefetechFn<T> = (
   variables?: OperationVariables | undefined,
 ) => Promise<ApolloQueryResult<T>> | undefined;

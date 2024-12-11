@@ -1,4 +1,5 @@
-import type { DataTablePageEvent } from "primevue";
+import type { ObjectElement } from "@vueform/vueform";
+import type { ColumnProps, DataTablePageEvent } from "primevue";
 import type { FunctionalComponent, SVGAttributes } from "vue";
 
 /**
@@ -20,3 +21,5 @@ export type CustomIcon =
   | string;
 
 export type DataTablePaginationEvent = DataTablePageEvent;
+export type DataTableColumnProps = ColumnProps;
+export type VueFormObjectElement = ObjectElement;
