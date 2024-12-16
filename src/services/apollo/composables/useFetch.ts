@@ -21,7 +21,6 @@ export type FetchQuery<T> = ({
  */
 export default function useFetch<T>() {
   const clients = inject<ClientDict<T>>("clients") as ClientDict<T>;
-
   const state: UseFetchState<T> = reactive({
     data: {} as any,
     count: 0,

@@ -35,6 +35,7 @@
       <SearchNotFound />
     </template>
     <Column v-if="selectionMode" :selection-mode="selectionMode" class="w-10" />
+    <Column field="cargo.descricao" header="coluna de descricao"></Column>
     <Column
       v-for="col of columns.filter((x) => x.visible != false)"
       :key="col.field"
@@ -53,7 +54,7 @@
         <div v-else-if="col.cellFormater">
           <component :is="col.cellFormater" v-bind="{ row, field }"></component>
         </div>
-        <div v-else>{{ row[field] }}</div>
+        <div v-else>{{ getValueByPath(row, field) }}</div>
       </template>
       <template v-if="col.editable != false" #editor="{ data: row, field }">
         <InputText
@@ -111,6 +112,7 @@ import type { Sh3DataTableEditableProps } from "./types";
 import SearchNotFound from "./fragments/SearchNotFound.vue";
 
 import { saveTooltip, cancelTooltip } from "./fragments/tooltip";
+import { getValueByPath } from "./utils";
 
 defineOptions({
   inheritAttrs: false,

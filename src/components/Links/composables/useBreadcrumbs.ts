@@ -1,6 +1,10 @@
 import type { AllMenu } from "@/utils";
 import { computed, ref, type Ref } from "vue";
-import type { RouteMeta, RouteRecordRaw } from "vue-router";
+import type {
+  RouteLocationNormalizedLoadedGeneric,
+  RouteMeta,
+  RouteRecordRaw,
+} from "vue-router";
 
 /**
  * Cria um objeto breadcrumb pai adicionando uma propriedade breadCrumb à propriedade meta do objeto pai.
@@ -65,15 +69,19 @@ export default function useBreadCrumbs(allMenu: Ref<Array<AllMenu>>) {
       });
     };
 
-    console.log({ allMenu });
     if (!allMenu) return [];
     mountBreadCrumbs(allMenu.value);
+    console.log(allMenu.value);
     return groupWithChildren.value.flat(1);
   });
 
-  const getBreadCrumb = (route: RouteRecordRaw) => {
+  const getBreadCrumb = (
+    route: RouteRecordRaw | RouteLocationNormalizedLoadedGeneric,
+  ) => {
     const routeMenu: (AllMenu & { meta?: RouteMeta }) | undefined =
       breadCrumbFilter.value.find((menu) => menu.name == route.name);
+
+    console.log({ routeMenu, breadCrumbFilter });
     if (!routeMenu) return [];
     return routeMenu.meta?.breadCrumb;
   };
