@@ -25,12 +25,12 @@ export default function useFetch<T>() {
     data: {} as any,
     count: 0,
     loading: undefined,
-    refetch: undefined,
+    refetch: () => undefined,
     networkStatus: NetworkStatus.setVariables,
   });
 
   // Encapsulate the query inside an async function that you will return
-  const fetch = async ({
+  const fetch: FetchQuery<T> = async ({
     query,
     variables = {},
     options = {},

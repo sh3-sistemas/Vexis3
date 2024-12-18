@@ -71,7 +71,7 @@ export default function useBreadCrumbs(allMenu: Ref<Array<AllMenu>>) {
 
     if (!allMenu) return [];
     mountBreadCrumbs(allMenu.value);
-    console.log(allMenu.value);
+    // console.log(allMenu.value);
     return groupWithChildren.value.flat(1);
   });
 
@@ -81,7 +81,7 @@ export default function useBreadCrumbs(allMenu: Ref<Array<AllMenu>>) {
     const routeMenu: (AllMenu & { meta?: RouteMeta }) | undefined =
       breadCrumbFilter.value.find((menu) => menu.name == route.name);
 
-    console.log({ routeMenu, breadCrumbFilter });
+    // console.log({ routeMenu, breadCrumbFilter });
     if (!routeMenu) return [];
     return routeMenu.meta?.breadCrumb;
   };

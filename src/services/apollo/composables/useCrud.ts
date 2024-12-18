@@ -1,7 +1,7 @@
-import { toRefs } from "vue";
+import { inject, toRefs } from "vue";
 import { customToast as toast } from "@/services/toast/customToast";
 import { logErrorMessages } from "@vue/apollo-util";
-import { useMutation } from "@vue/apollo-composable";
+import { provideApolloClients, useMutation } from "@vue/apollo-composable";
 import {
   CRUD_EVENTS,
   type CrudEventKey,
@@ -9,6 +9,7 @@ import {
   type UseCrudProps,
 } from "./types";
 import type { ApolloError } from "@apollo/client";
+import type { ClientDict } from "../types";
 
 /**
  *
@@ -19,23 +20,30 @@ export default function useCrud<T>(
   props: UseCrudProps<T>,
   emits: UseCrudEmits,
 ) {
+  const clients = inject<ClientDict<T>>("clients") as ClientDict<T>;
   const { crud, clientId, onDoneCallback, toastResponse } = toRefs(props);
 
   const {
     mutate: mutateCreate,
     onDone: onDoneCreate,
     onError: onErrorCreate,
-  } = useMutation(crud.value?.create, { clientId: clientId.value });
+  } = provideApolloClients(clients)(() =>
+    useMutation(crud.value?.create, { clientId: clientId.value }),
+  );
   const {
     mutate: mutateUpdate,
     onDone: onDoneUpdate,
     onError: onErrorUpdate,
-  } = useMutation(crud.value?.update, { clientId: clientId.value });
+  } = provideApolloClients(clients)(() =>
+    useMutation(crud.value?.update, { clientId: clientId.value }),
+  );
   const {
     mutate: mutateDeletion,
     onDone: onDoneDeletion,
     onError: onErrorDeletion,
-  } = useMutation(crud.value?.delete, { clientId: clientId.value });
+  } = provideApolloClients(clients)(() =>
+    useMutation(crud.value?.delete, { clientId: clientId.value }),
+  );
 
   const onDone = (event: CrudEventKey, response: object) => {
     if (toastResponse.value.enable) {

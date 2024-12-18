@@ -35,7 +35,6 @@
       <SearchNotFound />
     </template>
     <Column v-if="selectionMode" :selection-mode="selectionMode" class="w-10" />
-    <Column field="cargo.descricao" header="coluna de descricao"></Column>
     <Column
       v-for="col of columns.filter((x) => x.visible != false)"
       :key="col.field"

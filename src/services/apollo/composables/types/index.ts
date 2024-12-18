@@ -27,15 +27,18 @@ export type CrudOperations = {
   delete: DocumentNode;
   update: DocumentNode;
 };
+
+export type ToastResponse = {
+  delete?: string;
+  create?: string;
+  update?: string;
+  enable: boolean;
+};
+
 export type UseCrudProps<T> = {
   crud: CrudOperations;
   clientId: string;
-  toastResponse: {
-    delete?: string;
-    create?: string;
-    update?: string;
-    enable: boolean;
-  };
+  toastResponse: ToastResponse;
   variablesCallback?: (localizar: T, form: T) => T;
   onDoneCallback?: (event: CrudEventKey, response: object) => void;
 };
@@ -60,7 +63,7 @@ export type UseFetchState<T> = Omit<
 > & {
   count: number;
   loading: Ref<boolean> | undefined;
-  refetch: RefetechFn<T> | undefined;
+  refetch: RefetechFn<T>;
   data: T | T[];
 };
 

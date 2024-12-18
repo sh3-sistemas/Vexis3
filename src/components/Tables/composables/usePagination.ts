@@ -1,8 +1,7 @@
 import type { DataTablePageEvent } from "primevue/datatable";
-import { onMounted, toRefs, watchEffect, type Ref } from "vue";
+import { onMounted, toRefs, watchEffect } from "vue";
 import type { Fetch } from "../types";
-import type { FetchQuery } from "@/services/apollo/composables/useFetch";
-import type { RefetechFn } from "@/services";
+import { useFetch } from "@/services";
 
 /**
  *
@@ -10,32 +9,22 @@ import type { RefetechFn } from "@/services";
  * @param config
  * @param refetch
  */
-export default function usePagination<T>(
-  fetch: FetchQuery<T>,
-  config: Fetch<T>,
-  refetch: Ref<RefetechFn<T>>,
-) {
+export default function usePagination<T>(config: Fetch<T>) {
+  const { fetch, data, refetch, loading } = useFetch<T>();
   const { query, options, filterQuery } = toRefs(config);
   const limit = options.value.limit ?? 10;
   const page = options.value.page ?? 1;
   const filter = filterQuery?.value ?? {};
 
-  watchEffect(async () => {
-    if (!refetch.value) return;
-    await refetch.value({
-      ...filterQuery.value,
-      page,
-      limit,
-    });
-  });
-
-  onMounted(async () => {
+  const getData = async () =>
     await fetch({
       query: query.value,
-      variables: { limit, page, ...filter },
+      variables: { limit, page, ...filterQuery.value },
       options: options.value,
     });
-  });
+
+  watchEffect(async () => getData());
+  onMounted(async () => getData());
 
   const getPage = async (pageEvent: DataTablePageEvent) => {
     const { page, filters } = pageEvent;
@@ -47,5 +36,5 @@ export default function usePagination<T>(
     });
   };
 
-  return { getPage };
+  return { getPage, fetch, data, loading, refetch };
 }
