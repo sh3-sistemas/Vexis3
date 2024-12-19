@@ -42,6 +42,7 @@ const emits = defineEmits(["changeRoute"]);
 
 const buttonClass = "max-h-11 bg-transparent rounded-xl shadow-md";
 const tabListPT = {
+  root: { class: "mb-[-9px] z-20" },
   activeBar: { class: "hidden" },
   tabList: { class: "max-h-11 border-0 gap-x-1 mb-[-5px]" },
   nextButton: { class: buttonClass },
