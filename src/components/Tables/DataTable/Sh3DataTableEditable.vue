@@ -21,7 +21,15 @@
     @page="emits('page', $event)"
   >
     <!-- Paginator section -->
-    <template #paginatorstart> </template>
+    <template #paginatorstart>
+      <Sh3Button
+        text
+        icon="pi pi-trash"
+        :severity="selected.length < 1 ? '' : 'danger'"
+        :disabled="selected.length < 1"
+        @click="emits('deleteSelection')"
+      />
+    </template>
     <template #paginatorend>
       <Sh3Button
         type="button"
@@ -162,7 +170,7 @@ const items = defineModel<Array<object>>("items", {
   default: [],
 });
 
-const emits = defineEmits(["refresh", "page"]);
+const emits = defineEmits(["refresh", "page", "deleteSelection"]);
 
 const newEdit = (row: object) => {
   if (selected.value.length) {
