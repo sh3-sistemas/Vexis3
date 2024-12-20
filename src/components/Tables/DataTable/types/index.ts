@@ -18,12 +18,14 @@ type ItemColum = {
   visible: boolean;
   editable: boolean;
   cellFormater: object;
+  cellFormaterEdit: { component: object; props: object; name?: string };
 };
 
 export type Sh3DataTableEditableProps = DataTableProps & {
   updateRow: (row: object) => void;
   columns: Array<ItemColum>;
   emptyString: string;
+  disabled: boolean;
 };
 
 export const filterComponents = {
