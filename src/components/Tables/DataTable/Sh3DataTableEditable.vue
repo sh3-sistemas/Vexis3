@@ -35,6 +35,7 @@
     <template #empty>
       <SearchNotFound />
     </template>
+    <Column v-if="rowExpansion" expander style="width: 5rem" />
     <Column v-if="selectionMode" :selection-mode="selectionMode" class="w-10" />
     <Column
       v-for="col of columns.filter((x) => x.visible != false)"
