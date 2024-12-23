@@ -1,12 +1,12 @@
 export default (theme: any) => ({
-  primary: theme("colors.selenium.500"),
-  primaryDarker: theme("colors.selenium.100"), // defaults to 10% darker primary
+  primary: theme("colors.primary.500"),
+  primaryDarker: theme("colors.primary.100"), // defaults to 10% darker primary
 
-  danger: theme("colors.red.500"),
-  dangerLighter: theme("colors.red.100"),
+  danger: theme("colors.ruby.500"),
+  dangerLighter: theme("colors.ruby.100"),
 
-  success: theme("colors.grass.500"),
-  successLighter: theme("colors.grass.100"),
+  success: theme("colors.jade.500"),
+  successLighter: theme("colors.jade.100"),
 
   ringColor: theme("colors.mercury.100"), // defaults to primary with `ringOpacity` alpha
   ringWidth: theme("ringWidth.2"),
@@ -372,7 +372,7 @@ export default (theme: any) => ({
     inputDanger: "var(--vf-bg-input)",
     inputSuccess: "var(--vf-bg-input)",
     disabled: theme("colors.mercury.50"),
-    selected: theme("colors.selenium.300"), // Option hover, cbgroup blocks selected
+    selected: theme("colors.primary.300"), // Option hover, cbgroup blocks selected
     passive: "var(--vf-gray-300)",
     icon: "var(--vf-gray-500)",
     danger: "var(--vf-danger-lighter)",
@@ -413,7 +413,6 @@ export default (theme: any) => ({
   },
 
   borderColors: {
-    disabled: "#ff0000",
     input: theme("colors.mercury.100"),
     inputFocus: "var(--vf-primary)",
     inputHover: "var(--vf-border-color-input)",

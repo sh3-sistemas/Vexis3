@@ -22,7 +22,7 @@
             </template>
           </Sh3ToggleSidebar>
           <div
-            class="system--content-wrapper grow bg-inherit p-4 mr-4 flex flex-col gap-4 overflow-auto"
+            class="system--content-wrapper grow bg-inherit p-4 pl-0 flex flex-col gap-4 overflow-auto"
           >
             <AppBaseToolbar v-if="!toolbar.hidden" v-bind="toolbar">
               <template v-for="slot in toolbarSlots" #[slot]>
@@ -39,7 +39,7 @@
                   @change-route="(name) => emits('tabChangeRoute', name)"
                 />
                 <div
-                  class="system-content-general--main grow overflow-auto rounded-xl px-6 pt-6 pb-4 z-10 bg-white"
+                  class="system-content-general--main grow overflow-auto rounded-xl px-6 pt-6 pb-4 z-10 bg-white rounded-t-none"
                 >
                   <div class="system-content-general--main h-full">
                     <slot></slot>

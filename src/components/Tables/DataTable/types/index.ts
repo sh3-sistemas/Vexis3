@@ -61,6 +61,7 @@ export type Sh3DataTableProps = {
   columns: Array<DataTableItemColumn>;
   actions: Array<Action>;
   selectionMode?: SelectionMode;
+  rowExpansion?: boolean;
 };
 
 /**

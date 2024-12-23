@@ -1,6 +1,7 @@
 <template>
   <DataTable
     v-model:filters="filters"
+    v-model:expanded-rows="expandedRows"
     :value="items"
     paginator
     striped-rows
@@ -23,6 +24,7 @@
     <template #empty>
       <SearchNotFound />
     </template>
+    <Column v-if="rowExpansion" expander style="width: 5rem" />
     <Column
       v-if="selectionMode"
       :selection-mode="selectionMode"
@@ -75,6 +77,14 @@
         </div>
       </template>
     </Column>
+
+    <template
+      v-for="(slot, index) of slotNames"
+      :key="index"
+      #[slot]="slotProps"
+    >
+      <slot :name="slot" v-bind="{ ...(slotProps as object) }" />
+    </template>
   </DataTable>
 </template>
 
@@ -94,12 +104,17 @@ import {
   type Sh3DataTableProps,
   filterComponents,
 } from "./types";
+import { ref, useSlots } from "vue";
 
 defineOptions({
   inheritAttrs: true,
 });
 
 const attrs = useAttrs();
+const slots = useSlots();
+// Assert type here to prevent errors in template
+const slotNames = Object.keys(slots) as unknown;
+const expandedRows = ref({});
 
 const props = withDefaults(defineProps<Sh3DataTableProps>(), {
   empty: "Nenhum item encontrado.",
@@ -107,6 +122,7 @@ const props = withDefaults(defineProps<Sh3DataTableProps>(), {
   columns: () => <DataTableItemColumn[]>[],
   actions: () => <Action[]>[],
   selectionMode: null,
+  rowExpansion: false,
 });
 
 const emits = defineEmits(["refresh"]);

@@ -8,7 +8,7 @@ import {
   type UseCrudEmits,
   type UseCrudProps,
 } from "./types";
-import type { ApolloError } from "@apollo/client";
+import type { ApolloError } from "@apollo/client/core";
 import type { ClientDict } from "../types";
 
 /**

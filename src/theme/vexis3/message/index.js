@@ -3,7 +3,7 @@ export default {
     class: [
       // Spacing and Shape
       "rounded-md",
-      "outline",
+      "outline outline-1",
 
       // Colors
       {
