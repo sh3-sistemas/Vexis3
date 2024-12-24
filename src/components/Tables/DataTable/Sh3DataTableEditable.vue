@@ -2,6 +2,7 @@
   <DataTable
     v-model:selection="selected"
     v-model:editing-rows="editingRows"
+    v-model:expanded-rows="expandedRows"
     edit-mode="row"
     :data-key="dataKey"
     :value="items"
@@ -41,6 +42,7 @@
     <template #empty>
       <SearchNotFound />
     </template>
+    <Column v-if="rowExpansion" expander style="width: 5rem" />
     <Column
       v-if="selectionMode"
       :selection-mode="selectionMode"
@@ -133,10 +135,19 @@
         </div>
       </template>
     </Column>
+
+    <template
+      v-for="(slot, index) of slotNames"
+      :key="index"
+      #[slot]="slotProps"
+    >
+      <slot :name="slot" v-bind="{ ...(slotProps as object) }" />
+    </template>
   </DataTable>
 </template>
 
 <script lang="ts" setup>
+import { ref, useSlots } from "vue";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import InputText from "primevue/inputtext";
@@ -155,6 +166,7 @@ const props = withDefaults(defineProps<Sh3DataTableEditableProps>(), {
   emptyString: "Nenhum Registro encontrado",
   dataKey: "id",
   disabled: false,
+  rowExpansion: false,
 });
 
 const selected = defineModel<Array<object>>("selection", {
@@ -171,6 +183,11 @@ const items = defineModel<Array<object>>("items", {
 });
 
 const emits = defineEmits(["refresh", "page", "deleteSelection"]);
+
+const slots = useSlots();
+// Assert type here to prevent errors in template
+const slotNames = Object.keys(slots) as unknown;
+const expandedRows = ref({});
 
 const newEdit = (row: object) => {
   if (selected.value.length) {

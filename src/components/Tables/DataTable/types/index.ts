@@ -26,6 +26,7 @@ export type Sh3DataTableEditableProps = DataTableProps & {
   columns: Array<ItemColum>;
   emptyString: string;
   disabled: boolean;
+  rowExpansion?: boolean;
 };
 
 export const filterComponents = {
@@ -63,6 +64,7 @@ export type Sh3DataTableProps = {
   columns: Array<DataTableItemColumn>;
   actions: Array<Action>;
   selectionMode?: SelectionMode;
+  rowExpansion?: boolean;
 };
 
 /**

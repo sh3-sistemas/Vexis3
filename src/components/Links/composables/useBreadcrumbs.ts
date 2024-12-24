@@ -23,7 +23,7 @@ export const createParentBreadCrumb = (
       ...parent.meta,
       breadCrumb: parent.meta
         ? parent.meta.breadCrumb
-        : [{ label: parent.name }],
+        : [{ label: parent.title }],
     },
   };
 };
@@ -33,12 +33,12 @@ export const createParentBreadCrumb = (
  * @returns {Array} - Um array de itens filhos com breadcrumbs.
  */
 export const createChildrenBreadCrumb = (
-  parent: RouteRecordRaw,
+  parent: RouteRecordRaw & AllMenu,
 ): Array<RouteRecordRaw> => {
-  if (!parent.meta) return [];
   return parent.children?.map((child) => {
+    console.log(parent.meta?.breadCrumb);
     const breadCrumb = [
-      ...(parent.meta?.breadCrumb ?? []),
+      ...(parent.meta?.breadCrumb || []),
       { label: (child as RouteRecordRaw & { title: string }).title },
     ];
     return {
@@ -71,7 +71,6 @@ export default function useBreadCrumbs(allMenu: Ref<Array<AllMenu>>) {
 
     if (!allMenu) return [];
     mountBreadCrumbs(allMenu.value);
-    // console.log(allMenu.value);
     return groupWithChildren.value.flat(1);
   });
 
@@ -81,7 +80,6 @@ export default function useBreadCrumbs(allMenu: Ref<Array<AllMenu>>) {
     const routeMenu: (AllMenu & { meta?: RouteMeta }) | undefined =
       breadCrumbFilter.value.find((menu) => menu.name == route.name);
 
-    // console.log({ routeMenu, breadCrumbFilter });
     if (!routeMenu) return [];
     return routeMenu.meta?.breadCrumb;
   };

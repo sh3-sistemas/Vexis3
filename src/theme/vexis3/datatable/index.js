@@ -134,12 +134,12 @@ export default {
         // Color
         (props.sortable === "" || props.sortable) && context.sorted
           ? "bg-highlight"
-          : "bg-surface-50 text-surface-700 dark:text-white/80 dark:bg-surface-800",
+          : "bg-surface-100 text-surface-700 dark:text-white/80 dark:bg-surface-800",
         "border-surface-200 dark:border-surface-700 ",
 
         // States
         {
-          "hover:bg-surface-100 dark:hover:bg-surface-800/50":
+          "hover:bg-surface-200 dark:hover:bg-surface-800/50":
             (props.sortable === "" || props.sortable) && !context?.sorted,
         },
         "focus-visible:outline-none focus-visible:outline-offset-0 focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400",
