@@ -1,5 +1,6 @@
 <template>
   <Tabs
+    v-if="router.currentRoute.value.meta.isTab"
     v-model:value="model"
     :scrollable="true"
     v-bind="$attrs"
@@ -16,6 +17,7 @@
         :value="index"
         :pt="tabPT"
         :pt-options="{ mergeProps: true }"
+        :disabled="disabled"
       >
         {{ tab.label }}
       </Tab>
@@ -28,10 +30,10 @@ import Tabs from "primevue/tabs";
 import TabList from "primevue/tablist";
 import Tab from "primevue/tab";
 import type { Sh3RouterLinkTabsProps } from "./types";
+import { useRouter } from "vue-router";
+import { watch } from "vue";
 
-withDefaults(defineProps<Sh3RouterLinkTabsProps>(), {
-  tabGroup: () => [],
-});
+const { tabGroup = [] } = defineProps<Sh3RouterLinkTabsProps>();
 
 defineOptions({
   inheritAttrs: false,
@@ -51,4 +53,16 @@ const tabListPT = {
 const tabPT = {
   root: { class: "w-48 pt-3 rounded-t-xl border-0" },
 };
+
+const router = useRouter();
+watch(
+  router.currentRoute,
+  (newRoute) => {
+    const index = tabGroup.findIndex(
+      (item: { name: string }) => item.name == newRoute.name,
+    );
+    if (index != -1) model.value = index;
+  },
+  { immediate: true },
+);
 </script>
