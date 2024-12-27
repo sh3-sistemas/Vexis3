@@ -3,6 +3,7 @@ import { computed, ref, type Ref } from "vue";
 import type {
   RouteLocationNormalizedLoadedGeneric,
   RouteMeta,
+  RouteRecordNameGeneric,
   RouteRecordRaw,
 } from "vue-router";
 
@@ -35,7 +36,7 @@ export const createParentBreadCrumb = (
 export const createChildrenBreadCrumb = (
   parent: RouteRecordRaw & AllMenu,
 ): Array<RouteRecordRaw> => {
-  return parent.children?.map((child) => {
+  return parent.children?.map((child: RouteRecordRaw & { title: string }) => {
     console.log(parent.meta?.breadCrumb);
     const breadCrumb = [
       ...(parent.meta?.breadCrumb || []),
@@ -78,7 +79,9 @@ export default function useBreadCrumbs(allMenu: Ref<Array<AllMenu>>) {
     route: RouteRecordRaw | RouteLocationNormalizedLoadedGeneric,
   ) => {
     const routeMenu: (AllMenu & { meta?: RouteMeta }) | undefined =
-      breadCrumbFilter.value.find((menu) => menu.name == route.name);
+      breadCrumbFilter.value.find(
+        (menu: { name: RouteRecordNameGeneric }) => menu.name == route.name,
+      );
 
     if (!routeMenu) return [];
     return routeMenu.meta?.breadCrumb;
