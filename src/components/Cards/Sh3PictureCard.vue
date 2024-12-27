@@ -5,7 +5,7 @@
     :class="
       twMerge(
         'picture-card--container shrink-0 w-40 h-[105px] pt-2 gap-2 flex flex-col items-center justify-between overflow-hidden rounded-xl border border-primary-400 hover:opacity-80',
-        pictureCardStyle.card
+        pictureCardStyle.card,
       )
     "
   >
@@ -19,7 +19,7 @@
       :class="
         twMerge(
           'picture-card--label-container px-4 py-2 w-full bg-primary-400 rounded-b-xl text-white text-xs whitespace-nowrap truncate',
-          pictureCardStyle.label
+          pictureCardStyle.label,
         )
       "
     >

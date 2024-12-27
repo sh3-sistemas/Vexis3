@@ -3,7 +3,7 @@
     :class="
       twMerge(
         'notice flex flex-row p-3 rounded-md min-h-[70px] items-center gap-4 bg-pink-50 hover:bg-pink-200/40',
-        cardStyle
+        cardStyle,
       )
     "
   >
@@ -11,7 +11,7 @@
       :class="
         twMerge(
           'notice-icon rounded-full flex items-center justify-center bg-pink-200 p-3',
-          circleStyle
+          circleStyle,
         )
       "
     >
@@ -50,6 +50,6 @@ const props = withDefaults(defineProps<Sh3NoticeCardProps>(), {
 });
 
 const { cardStyle, circleStyle, iconVariation, iconColor } = useVariation(
-  props.noticeCard.variation
+  props.noticeCard.variation,
 );
 </script>

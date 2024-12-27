@@ -1,2 +1,2 @@
 import { useVariation } from "./useVariation";
-export { useVariation }
+export { useVariation };

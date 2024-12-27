@@ -51,7 +51,7 @@ const emits = defineEmits(["checked"]);
         :class="
           twMerge(
             ' flex h-[18px] w-[18px] appearance-none items-center justify-center rounded-[4px] bg-white outline-none border border-gray-400',
-            styles.root
+            styles.root,
           )
         "
       />

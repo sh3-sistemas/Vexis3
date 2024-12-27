@@ -5,7 +5,7 @@
       twMerge(
         'text-xs underline underline-offset-2 text-gray-700 hover:text-gray-500',
         addStyle,
-        config.style
+        config.style,
       )
     "
   >
