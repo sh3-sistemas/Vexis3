@@ -6,6 +6,7 @@ export * from "./Dialogs";
 export * from "./Drawers";
 export * from "./Dropdowns";
 export * from "./Forms";
+export * from "./PrimeForm";
 export * from "./Inputs";
 export * from "./Layouts";
 export * from "./Links";
