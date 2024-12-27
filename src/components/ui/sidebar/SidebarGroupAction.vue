@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { PrimitiveProps } from "radix-vue";
 import type { HTMLAttributes } from "vue";
-import { cn } from "@/utils";
+import { cn } from "@/utils/cn";
 import { Primitive } from "radix-vue";
 
 const props = defineProps<
