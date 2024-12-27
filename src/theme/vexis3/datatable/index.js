@@ -197,7 +197,7 @@ export default {
             context?.size === "large" && !state["d_editing"],
         },
         {
-          "py-3 px-4":
+          "py-2.5 px-4":
             context?.size !== "large" &&
             context?.size !== "small" &&
             !state["d_editing"],

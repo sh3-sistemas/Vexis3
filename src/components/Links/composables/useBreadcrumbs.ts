@@ -1,4 +1,4 @@
-import type { AllMenu } from "@/utils";
+import type { AllMenu } from "@/utils/router";
 import { computed, ref, type Ref } from "vue";
 import type {
   RouteLocationNormalizedLoadedGeneric,
@@ -36,8 +36,7 @@ export const createParentBreadCrumb = (
 export const createChildrenBreadCrumb = (
   parent: RouteRecordRaw & AllMenu,
 ): Array<RouteRecordRaw> => {
-  return parent.children?.map((child: RouteRecordRaw & { title: string }) => {
-    console.log(parent.meta?.breadCrumb);
+  return parent.children?.map((child: RouteRecordRaw) => {
     const breadCrumb = [
       ...(parent.meta?.breadCrumb || []),
       { label: (child as RouteRecordRaw & { title: string }).title },
