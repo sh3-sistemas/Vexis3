@@ -37,7 +37,6 @@ export const createChildrenBreadCrumb = (
   parent: RouteRecordRaw & AllMenu,
 ): Array<RouteRecordRaw> => {
   return parent.children?.map((child: RouteRecordRaw & { title: string }) => {
-    console.log(parent.meta?.breadCrumb);
     const breadCrumb = [
       ...(parent.meta?.breadCrumb || []),
       { label: (child as RouteRecordRaw & { title: string }).title },
