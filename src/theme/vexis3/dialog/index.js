@@ -110,7 +110,10 @@ export default {
       { "p-5": !props.position == "full" },
 
       // Background and Effects
-      { "has-[.mask-active]:bg-transparent bg-surface-500/70 backdrop-blur-sm": props.modal },
+      {
+        "has-[.mask-active]:bg-transparent bg-surface-500/70 backdrop-blur-sm":
+          props.modal,
+      },
     ],
   }),
   transition: ({ props }) => {

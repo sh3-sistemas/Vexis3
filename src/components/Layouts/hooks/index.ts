@@ -1,3 +1,3 @@
 import useTabGroup from "./useTabGroup";
 
-export { useTabGroup }
+export { useTabGroup };

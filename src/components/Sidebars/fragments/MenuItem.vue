@@ -117,12 +117,12 @@ const menuConfigData: MenuConfigData = {
 };
 
 const isCurrentRouteActive = splitedKey.value.includes(
-  route.name?.toString() ?? ""
+  route.name?.toString() ?? "",
 );
 
 const isCurrentRouteParentActive = (category: Category) => {
   return splitedKey.value.includes(
-    menuConfigData[category].parent?.toString() ?? ""
+    menuConfigData[category].parent?.toString() ?? "",
   );
 };
 
@@ -142,7 +142,7 @@ const sidebarItemMenuActive = computed(() => {
     } catch {
       console.error(
         "Não foi possível determinar uma rota pai. Verifique se os níveis (meta.level) foram declarados corretamente na rota " +
-          route.path
+          route.path,
       );
     }
   }
