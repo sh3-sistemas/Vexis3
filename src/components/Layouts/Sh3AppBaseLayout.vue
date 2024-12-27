@@ -11,7 +11,7 @@
         <div
           class="system--wrapper w-dvw overflow-auto h-auto md:!h-[calc(100dvh-73px)] flex flex-row gap-2 bg-surface-100"
         >
-          <Sh3ToggleSidebar
+          <!-- <Sh3ToggleSidebar
             ref="sidebar"
             v-bind="side"
             @on-close="emits('sideOnClose')"
@@ -20,7 +20,33 @@
             <template v-for="slot in sidebarSlots" #[slot]>
               <slot :name="'side-' + slot" :sidebar="sidebar" />
             </template>
-          </Sh3ToggleSidebar>
+          </Sh3ToggleSidebar> -->
+          <SidebarProvider>
+            <Sidebar>
+              <SidebarHeader> header? </SidebarHeader>
+              <SidebarContent>
+                <SidebarGroup>
+                  <SidebarGroupLabel> Application </SidebarGroupLabel>
+                  <SidebarGroupContent>
+                    <SidebarMenu>
+                      <SidebarMenuItem v-for="item in items" :key="item.title">
+                        <SidebarMenuButton as-child>
+                          <a :href="item.url">
+                            <component :is="item.icon" />
+                            <span>{{ item.title }}</span>
+                          </a>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                    </SidebarMenu>
+                  </SidebarGroupContent>
+                </SidebarGroup>
+                <SidebarGroup></SidebarGroup>
+              </SidebarContent>
+            </Sidebar>
+            <main>
+              <SidebarTrigger />
+            </main>
+          </SidebarProvider>
           <div
             class="system--content-wrapper grow bg-inherit p-4 pl-0 flex flex-col gap-4 overflow-auto"
           >
@@ -55,17 +81,29 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+// import { ref } from "vue";
 import Sh3UserNavbar from "../Navigation/Sh3UserNavbar.vue";
 import type { Sh3UserNavBarSlots } from "../Navigation/types";
-import Sh3ToggleSidebar from "../Sidebars/Sh3ToggleSidebar.vue";
-import type { Sh3ToggleSidebarSlots } from "../Sidebars/types";
+// import Sh3ToggleSidebar from "../Sidebars/Sh3ToggleSidebar.vue";
+// import type { Sh3ToggleSidebarSlots } from "../Sidebars/types";
 import AppBaseToolbar, {
   type AppBaseToolbarSlots,
 } from "./fragments/AppBaseToolbar.vue";
 import AppBaseHeader from "./fragments/AppBaseHeader.vue";
 import Sh3RouterLinkTabs from "../Tabs/Sh3RouterLinkTabs.vue";
 import type { AppBaseLayoutProps } from "./types";
+import SidebarProvider from "../ui/sidebar/SidebarProvider.vue";
+import SidebarTrigger from "../ui/sidebar/SidebarTrigger.vue";
+import SidebarHeader from "../ui/sidebar/SidebarHeader.vue";
+import SidebarContent from "../ui/sidebar/SidebarContent.vue";
+import SidebarGroup from "../ui/sidebar/SidebarGroup.vue";
+import SidebarGroupLabel from "../ui/sidebar/SidebarGroupLabel.vue";
+import SidebarGroupContent from "../ui/sidebar/SidebarGroupContent.vue";
+import SidebarMenu from "../ui/sidebar/SidebarMenu.vue";
+import SidebarMenuItem from "../ui/sidebar/SidebarMenuItem.vue";
+import SidebarMenuButton from "../ui/sidebar/SidebarMenuButton.vue";
+
+import { Calendar, Home, Inbox, Search, Settings } from "lucide-vue-next";
 
 const navbarSlots: Array<keyof Sh3UserNavBarSlots> = [
   "logo",
@@ -73,11 +111,20 @@ const navbarSlots: Array<keyof Sh3UserNavBarSlots> = [
   "navlinks",
 ];
 
-const sidebar = ref(null);
+/* const sidebar = ref(null);
 const sidebarSlots: Array<keyof Sh3ToggleSidebarSlots> = [
   "header-extra-content",
   "body-content",
   "footer-content",
+]; */
+
+// Menu items.
+const items = [
+  { title: "Home", url: "#", icon: Home },
+  { title: "Inbox", url: "#", icon: Inbox },
+  { title: "Calendar", url: "#", icon: Calendar },
+  { title: "Search", url: "#", icon: Search },
+  { title: "Settings", url: "#", icon: Settings },
 ];
 
 const toolbarSlots: Array<keyof AppBaseToolbarSlots> = ["left"];
