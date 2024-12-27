@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { SidebarProps } from ".";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
-import { cn } from "@/utils";
+import { cn } from "@/utils/cn";
 import { SIDEBAR_WIDTH_MOBILE, useSidebar } from "./utils";
 
 defineOptions({
@@ -76,7 +76,7 @@ const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
     <div
       :class="
         cn(
-          'duration-200 fixed inset-y-0 z-10 hidden h-svh w-[--sidebar-width] transition-[left,right,width] ease-linear md:flex',
+          'duration-200 fixed inset-y-0 z-10 hidden top-[--header-height] w-[--sidebar-width] transition-[left,right,width] ease-linear md:flex',
           side === 'left'
             ? 'left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]'
             : 'right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]',
