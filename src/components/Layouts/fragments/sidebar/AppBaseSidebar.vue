@@ -1,11 +1,19 @@
 <script setup lang="ts">
 import SidebarProvider from "@/components/ui/sidebar/SidebarProvider.vue";
 import SidebarTrigger from "@/components/ui/sidebar/SidebarTrigger.vue";
+import type { TabMenuItem } from "@/components/Sidebars/fragments/types";
 import AppSidebar from "./AppSidebar.vue";
-import { ref, computed } from "vue";
+import { ref, computed, provide } from "vue";
 
 const sidebarState = ref(true);
 const defaultOpen = computed(() => sidebarState.value);
+
+export type AppSidebarProps = {
+  items: Array<TabMenuItem>;
+};
+
+const { items } = defineProps<AppSidebarProps>();
+provide("items", items);
 </script>
 
 <template>

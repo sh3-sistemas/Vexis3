@@ -4,7 +4,7 @@
       <slot :name="'nav-' + slot" />
     </template>
   </Sh3UserNavbar>
-  <AppBaseSidebar>
+  <AppBaseSidebar :items="side.items">
     <AppBaseSystemWrapper>
       <AppBaseToolbar v-if="!toolbar.hidden" v-bind="toolbar">
         <template v-for="slot in toolbarSlots" #[slot]>
@@ -21,7 +21,7 @@
             @change-route="(name) => emits('tabChangeRoute', name)"
           />
           <div
-            class="system-content-general--main grow overflow-auto rounded-xl px-6 pt-6 pb-4 z-10 bg-white rounded-t-none h-full"
+            class="system-content-general--main grow overflow-auto rounded-xl px-6 pt-6 pb-4 z-10 bg-white h-full"
           >
             <slot></slot>
           </div>
@@ -65,6 +65,11 @@ const toolbarSlots: Array<keyof AppBaseToolbarSlots> = ["left"];
 const emits = defineEmits(["sideOnClose", "sideOnOpen", "tabChangeRoute"]);
 
 withDefaults(defineProps<AppBaseLayoutProps>(), {
+  side: () => {
+    return {
+      items: [],
+    };
+  },
   toolbar: () => {
     return {
       hidden: false,
