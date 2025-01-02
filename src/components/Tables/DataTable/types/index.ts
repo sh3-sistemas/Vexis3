@@ -18,12 +18,15 @@ type ItemColum = {
   visible: boolean;
   editable: boolean;
   cellFormater: object;
+  cellFormaterEdit: { component: object; props: object; name?: string };
+  //TODO: Realizar tipagem correta desses valores em breve
 };
 
 export type Sh3DataTableEditableProps = DataTableProps & {
   updateRow: (row: object) => void;
   columns: Array<ItemColum>;
   emptyString: string;
+  disabled: boolean;
   rowExpansion?: boolean;
 };
 

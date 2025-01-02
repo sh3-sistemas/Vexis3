@@ -82,7 +82,7 @@ const emits = defineEmits<{
 }>();
 
 const syncForm = (data: any) =>
-  form$.value ? form$.value.update({ ...data }) : null;
+  form$.value ? form$.value.load({ ...data }, true) : null;
 const clearForm = () => (form$.value ? form$.value.reset() : null);
 const deletion = () => {
   const template = DialogUtils.deletionDialogBase({
