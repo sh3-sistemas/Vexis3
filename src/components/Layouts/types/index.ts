@@ -9,9 +9,10 @@
  */
 import type { DefineComponent } from "vue";
 import type { Sh3UserNavBarProps } from "@/components/Navigation";
-import type { Sh3ToggleSidebarProps, Sh3RouterLinkTabsProps } from "@/types";
+import type { Sh3RouterLinkTabsProps } from "@/types";
 import type { AppBaseHeaderProps } from "../fragments/AppBaseHeader.vue";
 import type { AppBaseToolbarProps } from "../fragments/AppBaseToolbar.vue";
+import type { AppSidebarProps } from "../fragments/sidebar/AppBaseSidebar.vue";
 /**
  * **SH3 - Sh3LayoutMock**
  *
@@ -54,7 +55,7 @@ import type { AppBaseToolbarProps } from "../fragments/AppBaseToolbar.vue";
 
 export type AppBaseLayoutProps = {
   navbar: Sh3UserNavBarProps;
-  side: Sh3ToggleSidebarProps;
+  side: AppSidebarProps;
   toolbar: AppBaseToolbarProps & { hidden: boolean };
   header: AppBaseHeaderProps;
   tabs: Sh3RouterLinkTabsProps;

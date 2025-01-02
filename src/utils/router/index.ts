@@ -32,8 +32,9 @@ const buildMenuItem = (
   const { meta, name, children } = item;
 
   const parentKey = !parent ? "" : parent.toString() + "_";
+  console.log(parentKey);
   const menuItem: TabMenuItem = {
-    key: `${parentKey}${name as string}`,
+    key: `${name as string}`,
     label: "",
     items: [],
     ...meta,
