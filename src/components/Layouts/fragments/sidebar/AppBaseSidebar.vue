@@ -4,9 +4,10 @@ import SidebarTrigger from "@/components/ui/sidebar/SidebarTrigger.vue";
 import type { TabMenuItem } from "@/components/Sidebars/fragments/types";
 import AppSidebar from "./AppSidebar.vue";
 import { ref, computed, provide } from "vue";
+import { getCookie } from "./content/utils";
 
-const sidebarState = ref(true);
-const defaultOpen = computed(() => sidebarState.value);
+const sidebarState = ref(getCookie("sidebar:state"));
+const defaultOpen = computed(() => sidebarState.value === "true");
 
 export type AppSidebarProps = {
   items: Array<TabMenuItem>;
@@ -18,12 +19,20 @@ provide("items", items);
 
 <template>
   <SidebarProvider :default-open="defaultOpen">
-    <AppSidebar />
+    <AppSidebar>
+      <template #header>
+        <slot name="side-header"></slot>
+      </template>
+
+      <template #footer>
+        <slot name="side-footer"></slot>
+      </template>
+    </AppSidebar>
     <main
       class="relative flex min-h-svh flex-1 flex-col bg-background md:peer-data-[variant=inset]:m-2 md:peer-data-[state=collapsed]:peer-data-[variant=inset]:ml-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow h-full peer-data-[variant=inset]:min-h-[calc(100svh-theme(spacing.4)-var(--header-height))]"
     >
       <SidebarTrigger />
-      <slot></slot>
+      <slot name="content"></slot>
     </main>
   </SidebarProvider>
 </template>

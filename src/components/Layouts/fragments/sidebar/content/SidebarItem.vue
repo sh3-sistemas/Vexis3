@@ -5,6 +5,6 @@ defineProps<{ item: TabMenuItem }>();
 </script>
 
 <template>
-  <component :is="item.icon" v-if="item.icon" class="w-8 h-auto" />
+  <component :is="item.icon" v-if="item.icon" class="w-10 h-auto" />
   <span>{{ item.label }}</span>
 </template>
