@@ -8,10 +8,14 @@ import SidebarFooter from "@/components/ui/sidebar/SidebarFooter.vue";
 
 <template>
   <Sidebar side="left" collapsible="icon">
-    <SidebarHeader>header</SidebarHeader>
+    <SidebarHeader>
+      <slot name="header"></slot>
+    </SidebarHeader>
     <SidebarContent>
       <SidebarRoutesMenu />
     </SidebarContent>
-    <SidebarFooter>footer</SidebarFooter>
+    <SidebarFooter>
+      <slot name="footer"></slot>
+    </SidebarFooter>
   </Sidebar>
 </template>

@@ -28,6 +28,7 @@ export default {
       apollo: {
         clients: Record<string, any>;
       };
+      moduleUrl: string;
     },
   ) => {
     app.use(Vueform, vueformConfig);
@@ -44,6 +45,7 @@ export default {
     app.use(Toast, toastOptions);
 
     const { clients } = options.apollo;
+    app.provide("moduleUrl", options.moduleUrl);
     app.provide("clients", clients);
     app.provide(ApolloClient, {
       ...clients,

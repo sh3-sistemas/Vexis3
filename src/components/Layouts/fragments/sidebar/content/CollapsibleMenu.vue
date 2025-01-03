@@ -11,16 +11,28 @@ import SidebarMenuSubItem from "@/components/ui/sidebar/SidebarMenuSubItem.vue";
 import SidebarMenuItem from "@/components/ui/sidebar/SidebarMenuItem.vue";
 import SidebarItem from "./SidebarItem.vue";
 
-import SidebarDropdownActions from "./SidebarDropdownActions.vue";
+import SidebarDropdownActions from "./actions/SidebarDropdownActions.vue";
 
 import { ChevronDown } from "lucide-vue-next";
 import { useRoute, useRouter } from "vue-router";
 
 import { isActive } from "./utils";
+import { ref } from "vue";
+import type {
+  DropdownActionsInstance,
+  DropdownActionsRefs,
+} from "./actions/types";
 
 const { item } = defineProps<{ item: TabMenuItem }>();
+
 const route = useRoute();
 const router = useRouter();
+
+const menuDropdown = ref<DropdownActionsRefs>({});
+const openDropdownRef = (key: string) => {
+  const contextmenu = menuDropdown.value ? menuDropdown.value[key] : null;
+  if (contextmenu) (contextmenu as DropdownActionsInstance).openDropdown();
+};
 </script>
 
 <template>
@@ -45,10 +57,14 @@ const router = useRouter();
                 :tooltip="child.label"
                 :is-active="isActive(route, child)"
                 @click="router.push({ name: child.key })"
+                @contextmenu.prevent="openDropdownRef(child.key)"
               >
                 <SidebarItem :item="child" />
+                <SidebarDropdownActions
+                  :ref="(el) => (menuDropdown[child.key] = el)"
+                  :item="child"
+                />
               </SidebarMenuSubButton>
-              <SidebarDropdownActions :item="child" />
             </template>
             <CollapsibleMenu v-else :item="child" />
           </SidebarMenuSubItem>

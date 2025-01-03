@@ -23,6 +23,8 @@ export type SidebarItemMenuActive = string | SidebarRoot;
 export type TabMenuItem = {
   key: string;
   label: string;
+  parent?: string;
+  path?: string;
   icon?: string | object;
   items: TabMenuItem[];
   command?: () => void;

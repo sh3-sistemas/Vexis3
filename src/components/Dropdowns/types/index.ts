@@ -7,7 +7,18 @@
  * @module dropdowns
  *
  */
-import type { DefineComponent } from "vue";
+import type { DefineComponent, VNode } from "vue";
+
+export interface Sh3HeaderSwitcher {
+  /**
+   * Default header slot.
+   */
+  "header"(): VNode[];
+  /**
+   * Default footer slot.
+   */
+  "footer"(): VNode[];
+}
 
 declare module "vue" {
   export interface GlobalComponents {
