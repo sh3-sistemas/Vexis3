@@ -167,6 +167,7 @@ const props = withDefaults(defineProps<Sh3DataTableEditableProps>(), {
   dataKey: "id",
   disabled: false,
   rowExpansion: false,
+  disabled: false,
 });
 
 const selected = defineModel<Array<object>>("selection", {
