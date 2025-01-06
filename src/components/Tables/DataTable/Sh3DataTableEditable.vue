@@ -165,7 +165,6 @@ defineOptions({
 const props = withDefaults(defineProps<Sh3DataTableEditableProps>(), {
   emptyString: "Nenhum Registro encontrado",
   dataKey: "id",
-  disabled: false,
   rowExpansion: false,
   disabled: false,
 });
