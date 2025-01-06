@@ -19,11 +19,18 @@
     paginator-template="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
     current-page-report-template="{first} a {last} de {totalRecords}"
     v-bind="$attrs"
-    @update:selection="selectRow"
     @page="emits('page', $event)"
   >
     <!-- Paginator section -->
-    <template #paginatorstart> </template>
+    <template #paginatorstart>
+      <Sh3Button
+        text
+        icon="pi pi-trash"
+        :severity="selected.length < 1 ? '' : 'danger'"
+        :disabled="selected.length < 1"
+        @click="emits('deleteSelection')"
+      />
+    </template>
     <template #paginatorend>
       <Sh3Button
         type="button"
@@ -36,14 +43,23 @@
       <SearchNotFound />
     </template>
     <Column v-if="rowExpansion" expander style="width: 5rem" />
-    <Column v-if="selectionMode" :selection-mode="selectionMode" class="w-10" />
+    <Column
+      v-if="selectionMode"
+      :selection-mode="selectionMode"
+      class="w-10"
+      :pt-options="{ mergeProps: true }"
+      :pt="{
+        pcHeaderCheckbox: checkboxClass,
+        pcRowCheckbox: checkboxClass,
+      }"
+    />
     <Column
       v-for="col of columns.filter((x) => x.visible != false)"
       :key="col.field"
       :field="col.field"
       :header="col.header"
       :sortable="col.sortable"
-      :pt="{ sortBadge: 'hidden' }"
+      :pt="{ pcSortBadge: { root: 'hidden' } }"
     >
       <template #body="{ data: row, field }">
         <Checkbox
@@ -58,12 +74,30 @@
         <div v-else>{{ getValueByPath(row, field) }}</div>
       </template>
       <template v-if="col.editable != false" #editor="{ data: row, field }">
+        <Checkbox
+          v-if="col.filterType.toLowerCase() == 'boolean'"
+          v-model="row[field]"
+          :binary="true"
+        />
+        <div v-else-if="col.cellFormaterEdit">
+          <component
+            :is="col.cellFormaterEdit.component"
+            v-bind="{ ...col.cellFormaterEdit.props, row, field }"
+            @selected="
+              (value: any) =>
+                updateRow(
+                  col.cellFormaterEdit.name
+                    ? { ...row, [col.cellFormaterEdit.name]: value }
+                    : { ...row, [field]: value },
+                )
+            "
+          />
+        </div>
         <InputText
-          v-if="col.filterType.toLowerCase() != 'boolean'"
+          v-else
           v-model="row[field]"
           :type="col.filterType.toLowerCase()"
         />
-        <Checkbox v-else v-model="row[field]" :binary="true" />
       </template>
     </Column>
     <Column class="w-20">
@@ -74,7 +108,7 @@
           icon="pi pi-pencil"
           icon-class="text-sm"
           text
-          :disabled="editingRows.length > 0"
+          :disabled="editingRows.length > 0 || disabled"
           @click="newEdit(row)"
         />
       </template>
@@ -113,7 +147,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, useSlots } from "vue";
+import { ref, computed, useSlots } from "vue";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import InputText from "primevue/inputtext";
@@ -131,6 +165,7 @@ defineOptions({
 const props = withDefaults(defineProps<Sh3DataTableEditableProps>(), {
   emptyString: "Nenhum Registro encontrado",
   dataKey: "id",
+  disabled: false,
   rowExpansion: false,
 });
 
@@ -147,7 +182,7 @@ const items = defineModel<Array<object>>("items", {
   default: [],
 });
 
-const emits = defineEmits(["refresh", "page"]);
+const emits = defineEmits(["refresh", "page", "deleteSelection"]);
 
 const slots = useSlots();
 // Assert type here to prevent errors in template
@@ -167,14 +202,8 @@ const cancelEdit = (row: Record<string, any>, index: number) => {
   items.value.splice(index, 1);
 };
 
-const selectRow = () => {
-  if (editingRows.value.length) {
-    selected.value = [];
-  }
-};
-
-const startNewRow = () => {
-  const newRow = { [props.dataKey as any]: null };
+const startNewRow = (startValue?: object) => {
+  const newRow = { ...startValue, [props.dataKey as any]: null };
   props.columns.forEach(({ field, default: defaultValue }) => {
     if (defaultValue !== undefined) {
       newRow[field] = defaultValue;
@@ -187,4 +216,13 @@ const startNewRow = () => {
 };
 
 defineExpose({ startNewRow });
+const checkboxClass = computed(() => ({
+  root:
+    props.disabled || editingRows.value.length
+      ? "rounded flex w-5 form-bg-disabled pointer-events-none"
+      : "rounded flex w-5 bg-white",
+  input:
+    "w-5 h-5 rounded bg-transparent !ring-0 border border-surface-300 cursor-pointer",
+  box: "hidden",
+}));
 </script>

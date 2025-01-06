@@ -25,6 +25,7 @@ type RouterTab = {
 
 export interface Sh3RouterLinkTabsProps {
   tabGroup: Array<RouterTab>;
+  disabled: boolean;
 }
 
 /**
