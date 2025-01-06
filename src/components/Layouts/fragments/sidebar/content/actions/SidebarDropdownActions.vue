@@ -57,7 +57,6 @@ const moreInfo = {
   label: "Mais informações",
   icon: Info,
   action: (item: TabMenuItem) => {
-    console.log(item);
     alert(`More information about ${item.label}`);
   },
 };
