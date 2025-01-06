@@ -5,8 +5,10 @@ export const isActive = (
   route: RouteLocationNormalizedLoadedGeneric,
   current: TabMenuItem,
 ) => {
+  const matched = route.matched.map((x) => x.name);
   return (
     current.key.includes(route?.name?.toString() ?? "") ||
+    matched.includes(current.key) ||
     current.key == route.name
   );
 };

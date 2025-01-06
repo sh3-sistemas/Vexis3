@@ -9,8 +9,10 @@ const { item } = defineProps<{
 
 <template>
   <div
-    className="flex aspect-square size-8 items-center justify-center rounded-lg border border-surface-100 text-sidebar-primary-foreground"
-    :class="{ 'bg-primary-500': !item.img && !item.icon }"
+    :class="[
+      'flex aspect-square size-8 items-center justify-center rounded-lg border border-surface-100 text-sidebar-primary-foreground',
+      !item.img && !item.icon ? 'bg-primary-500' : '',
+    ]"
   >
     <component :is="item.icon" v-if="item.icon" class="size-6 shrink-0" />
     <img
