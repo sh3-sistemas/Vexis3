@@ -13,7 +13,7 @@ const item = inject<TabMenuItem>("item") as TabMenuItem;
 
 <template>
   <DropdownMenuItem :key="action.label" @click="action.action(item)">
-    <component :is="action.icon" />
+    <component :is="action.icon" class="size-6 shrink-0" />
     <DropdownMenuLabel>
       {{ action.label }}
     </DropdownMenuLabel>
