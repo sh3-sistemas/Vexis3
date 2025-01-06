@@ -30,9 +30,9 @@ import { Icon } from "@iconify/vue";
 defineProps({
   title: {
     type: String,
-    default: ""
-  }
-})
+    default: "",
+  },
+});
 </script>
 
 <style lang="scss">

@@ -29,11 +29,12 @@ const buildMenuItem = (
   item: RouteRecordRaw,
   parent: RouteRecordNameGeneric | undefined,
 ) => {
-  const { meta, name, children } = item;
-
-  const parentKey = !parent ? "" : parent.toString() + "_";
+  const { meta, name, children, path } = item;
+  const parentKey = !parent ? "" : parent.toString();
   const menuItem: TabMenuItem = {
-    key: `${parentKey}${name as string}`,
+    key: `${name as string}`,
+    path,
+    parent: parentKey,
     label: "",
     items: [],
     ...meta,

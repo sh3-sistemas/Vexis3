@@ -2,7 +2,7 @@
   <nav
     :class="
       twMerge(
-        'user-navbar--root bg-white fixed w-full z-20 top-0 left-0 border-b border-gray-200',
+        'user-navbar--root bg-white flex h-[--header-height] shrink-0 items-center gap-2 border-b border-gray-200',
         styling.root,
       )
     "

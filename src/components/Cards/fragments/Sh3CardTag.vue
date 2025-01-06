@@ -3,7 +3,7 @@
     :class="
       twMerge(
         'dp-tag inline-flex flex-nowrap h-fit py-1 px-3.5 rounded-full items-center justify-center gap-2.5',
-        tagColor
+        tagColor,
       )
     "
   >

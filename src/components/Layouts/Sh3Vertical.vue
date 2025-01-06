@@ -6,7 +6,7 @@
       :class="
         twMerge(
           'side-container md:col-span-full lg:col-span-3 h-fit lg:h-full hidden md:inline-flex lg:flex lg:flex-col py-6 lg:py-24 bg-gray-700',
-          layoutConfig.addStyle.side
+          layoutConfig.addStyle.side,
         )
       "
     >
@@ -19,7 +19,7 @@
         :class="
           twMerge(
             'links-container grow lg:grow-0 flex justify-end items-center px-12',
-            layoutConfig.addStyle.sideMenu
+            layoutConfig.addStyle.sideMenu,
           )
         "
       >
@@ -30,7 +30,7 @@
             :class="
               twMerge(
                 'text-right text-white hover:opacity-70',
-                layoutConfig.addStyle.sideLink
+                layoutConfig.addStyle.sideLink,
               )
             "
           >
@@ -46,7 +46,7 @@
         :class="
           twMerge(
             'login-container w-[85%] lg:w-[48%] h-auto md:h-[60%] lg:h-[70%] flex flex-col justify-center items-center py-8 lg:py-0 gap-y-6 rounded-[20px] border border-gray-200',
-            layoutConfig.addStyle.login
+            layoutConfig.addStyle.login,
           )
         "
       >

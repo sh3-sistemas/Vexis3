@@ -2,12 +2,15 @@
 import tailwindTheme from "./src/theme";
 
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   darkMode: ["selector", ':root[class="app-dark"]'],
+  safelist: ["dark"],
+
   content: [
     "./public/index.html",
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
+    "./components/**/*.{ts,tsx,vue}",
     "./node_modules/flowbite/**/*.js",
     "./vueform.config.js",
     "./node_modules/@vueform/vueform/themes/tailwind/**/*.vue",
@@ -20,5 +23,6 @@ export default {
     require("tailwindcss-primeui"),
     require("flowbite/plugin"),
     require("@vueform/vueform/tailwind"),
+    require("tailwindcss-animate"),
   ],
 };
