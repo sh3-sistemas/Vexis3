@@ -77,3 +77,26 @@
     }
 }
 */
+
+
+@layer utilities {
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 20px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: var(--p-primary-50);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--p-primary-100);
+    border-radius: 100vh;
+    border: 3px solid var(--p-surface-50);
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--p-primary-200);
+  }
+}

@@ -15,7 +15,9 @@
             <slot :name="'toolbar-' + slot" />
           </template>
         </AppBaseToolbar>
-        <div class="system-content--general grow flex flex-col gap-4">
+        <div
+          class="system-content--general grow flex flex-col gap-4 overflow-auto"
+        >
           <AppBaseHeader v-if="header" v-bind="header" />
           <div
             class="system-content-general--body grow flex flex-col overflow-auto"
