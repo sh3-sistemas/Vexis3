@@ -1,7 +1,6 @@
 export default {
   /* Cores SH3 para uso geral na aplicação */
   selenium: {
-    /* Blue Bayoux */
     50: "#f2f7f9",
     100: "#dee9ef",
     200: "#c1d6e0",
@@ -15,7 +14,6 @@ export default {
     950: "#1b2631",
   },
   copper: {
-    /* Tradewind */
     50: "#f2fbfa",
     100: "#d2f5f1",
     200: "#a5eae2",
@@ -29,7 +27,6 @@ export default {
     950: "#09292a",
   },
   mercury: {
-    /* Heather */
     50: "#f6f7f8",
     100: "#eaebef",
     200: "#dadde3",
@@ -43,7 +40,6 @@ export default {
     950: "#31323a",
   },
   indium: {
-    /* Mercury */
     50: "#f7f7f7",
     100: "#e6e7e8",
     200: "#dddee0",
@@ -55,18 +51,5 @@ export default {
     800: "#63666a",
     900: "#525356",
     950: "#343537",
-  },
-  grass: {
-    50: "#f5faf3",
-    100: "#e7f5e3",
-    200: "#cfebc7",
-    300: "#a9d99c",
-    400: "#7ac068",
-    500: "#55a042",
-    600: "#438633",
-    700: "#376a2b",
-    800: "#2f5526",
-    900: "#274621",
-    950: "#11260d",
   },
 };

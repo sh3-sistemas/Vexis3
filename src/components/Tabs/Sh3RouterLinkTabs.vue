@@ -47,7 +47,7 @@ const tabListPT = {
   root: { class: "-mb-[10px]" },
   activeBar: { class: "hidden" },
   tabList: {
-    class: "max-h-11 border-0 gap-x-1 mb-[-5px] leading-none",
+    class: "max-h-11 border-0 gap-x-1 leading-none",
     root: "leading-none",
   },
   nextButton: { class: buttonClass },

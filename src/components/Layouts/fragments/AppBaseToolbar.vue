@@ -1,6 +1,6 @@
 <template>
   <div
-    class="system-content--toolbar w-full h-20 py-4 px-6 inline-flex justify-between items-center gap-6 rounded-xl bg-white"
+    class="system-content--toolbar w-full h-20 max-h-20 min-h-20 py-4 px-6 inline-flex justify-between items-center gap-6 rounded-xl bg-white"
   >
     <slot name="left"></slot>
     <div class="system-content-toolbar--content grow">

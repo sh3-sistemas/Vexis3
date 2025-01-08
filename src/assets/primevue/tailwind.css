@@ -81,22 +81,22 @@
 
 @layer utilities {
   ::-webkit-scrollbar {
-    width: 12px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
   }
   
   ::-webkit-scrollbar-track {
     border-radius: 100vh;
-    background: var(--p-primary-50);
+    /* background: var(--p-primary-50); */
   }
   
   ::-webkit-scrollbar-thumb {
-    background: var(--p-primary-100);
+    background: var(--p-surface-100);
     border-radius: 100vh;
-    border: 3px solid var(--p-surface-50);
+    border: 2px solid var(--p-surface-0);
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--p-primary-200);
+    background: var(--p-surface-300);
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="system-content-general--header w-full h-16 inline-flex justify-between"
+    class="system-content-general--header w-full h-16 min-h-16 max-h-16 inline-flex justify-between"
   >
     <component :is="content" />
   </div>
