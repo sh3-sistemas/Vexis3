@@ -38,6 +38,31 @@ export interface Sh3RouterLinkTabsEmits {
   changeRoute(): string;
 }
 
+/**
+ * **SH3 - Sh3Tabs**
+ *
+ * _Sh3Tabs is a Vue component._
+ * --- ---
+ * [Vue Based Component](./Sh3Tabs.vue)
+ * @group Component
+ *
+ */
+type component = {
+  component: object;
+  props: object;
+};
+
+type Tab = {
+  title: string;
+  titleComponent?: component;
+  content?: component;
+};
+
+export interface Sh3TabsProps {
+  tabs: Array<Tab>;
+  disabled: boolean;
+}
+
 declare module "vue" {
   export interface GlobalComponents {
     Sh3RouterLinkTabs: DefineComponent<
@@ -45,5 +70,6 @@ declare module "vue" {
       any,
       Sh3RouterLinkTabsEmits
     >;
+    Sh3Tabs: DefineComponent<Sh3TabsProps, any, any>;
   }
 }
