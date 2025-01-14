@@ -29,7 +29,7 @@
             <div
               class="system-content-general--main grow overflow-auto rounded-xl px-6 pt-6 pb-4 z-10 bg-white h-full"
             >
-              <slot></slot>
+              <slot />
             </div>
           </div>
         </div>
