@@ -53,7 +53,7 @@ export default function useFetch<T>() {
         logErrorMessages(error);
       }
 
-      state.data = Array.isArray(state.data) ? ([] as T[]) : ({} as T);
+      state.data = {} as T;
     });
 
     return { loading, error, refetch };
