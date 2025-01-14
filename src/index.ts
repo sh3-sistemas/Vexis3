@@ -11,6 +11,7 @@ import vexis3 from "@/theme/vexis3";
 import Tooltip from "primevue/tooltip";
 import ConfirmationService from "primevue/confirmationservice";
 import ToastService from "primevue/toastservice";
+import Ripple from "primevue/ripple";
 
 /** Toastification Config. */
 import Toast from "vue-toastification";
@@ -35,9 +36,10 @@ export default {
     app.use(PrimeVue, {
       pt: vexis3,
       theme: "none",
-      ripple: true,
+      ripple: false,
     });
 
+    app.directive("ripple", Ripple);
     app.directive("tooltip", Tooltip);
     app.use(ConfirmationService);
     app.use(ToastService);
