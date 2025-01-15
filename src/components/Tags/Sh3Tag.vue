@@ -1,13 +1,6 @@
 <template>
   <Tag :pt-options="{ mergeProps: true }" v-bind="$attrs">
-    <!-- demonstrate Vue 3 dynamic slot/template pass through -->
-    <template
-      v-for="(slot, index) of slotNames"
-      :key="index"
-      #[slot]="slotProps"
-    >
-      <slot :name="slot" v-bind="{ ...(slotProps as object) }" />
-    </template>
+    <slot></slot>
   </Tag>
 </template>
 
