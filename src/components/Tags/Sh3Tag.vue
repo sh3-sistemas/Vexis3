@@ -1,5 +1,7 @@
 <template>
-  <Tag :ptOptions="{ mergeProps: true }" v-bind="$attrs" />
+  <Tag :pt-options="{ mergeProps: true }" v-bind="$attrs">
+    <slot></slot>
+  </Tag>
 </template>
 
 <script lang="ts" setup>
