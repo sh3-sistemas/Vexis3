@@ -78,6 +78,8 @@
       </template>
     </Column>
 
+    <slot name="extra-columns"></slot>
+
     <template
       v-for="(slot, index) of slotNames"
       :key="index"
