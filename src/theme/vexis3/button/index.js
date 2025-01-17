@@ -125,12 +125,12 @@ export default {
           !props.text &&
           !props.outlined &&
           !props.plain,
-        "bg-jade-500 dark:bg-jade-400":
+        "bg-jade-600 dark:bg-jade-400":
           props.severity === "success" &&
           !props.text &&
           !props.outlined &&
           !props.plain,
-        "border border-jade-500 dark:border-jade-400":
+        "border border-jade-600 dark:border-jade-400":
           props.severity === "success" &&
           !props.text &&
           !props.outlined &&
@@ -138,12 +138,12 @@ export default {
       },
       // Success Text Button
       {
-        "text-jade-500 dark:text-jade-400":
+        "text-jade-600 dark:text-jade-400":
           props.text && props.severity === "success" && !props.plain,
       },
       // Success Outlined Button
       {
-        "text-jade-500 border border-jade-500 hover:bg-jade-300/10":
+        "text-jade-600 border border-jade-600 hover:bg-jade-300/10":
           props.outlined && props.severity === "success" && !props.plain,
       },
 
@@ -183,12 +183,12 @@ export default {
           !props.text &&
           !props.outlined &&
           !props.plain,
-        "bg-amber-600 dark:bg-amber-400":
+        "bg-sulfur-700 dark:bg-sulfur-400":
           props.severity === "warn" &&
           !props.text &&
           !props.outlined &&
           !props.plain,
-        "border border-amber-600 dark:border-amber-400":
+        "border border-sulfur-700 dark:border-sulfur-400":
           props.severity === "warn" &&
           !props.text &&
           !props.outlined &&
@@ -196,12 +196,12 @@ export default {
       },
       // Warning Text Button
       {
-        "text-amber-600 dark:text-amber-400":
+        "text-sulfur-700 dark:text-sulfur-400":
           props.text && props.severity === "warn" && !props.plain,
       },
       // Warning Outlined Button
       {
-        "text-amber-600 border border-amber-600 hover:bg-amber-300/20":
+        "text-sulfur-700 border border-sulfur-700 hover:bg-sulfur-300/20":
           props.outlined && props.severity === "warn" && !props.plain,
       },
 
@@ -349,14 +349,14 @@ export default {
 
       // Success
       {
-        "hover:bg-jade-600 dark:hover:bg-jade-300 hover:border-jade-600 dark:hover:border-jade-300":
+        "hover:bg-jade-500 dark:hover:bg-jade-300 hover:border-jade-500 dark:hover:border-jade-300":
           props.severity === "success" &&
           !props.text &&
           !props.outlined &&
           !props.plain,
       },
       {
-        "focus:ring-jade-500 dark:focus:ring-jade-400":
+        "focus:ring-jade-600 dark:focus:ring-jade-400":
           props.severity === "success",
       },
       // Text & Outlined Button
@@ -389,19 +389,19 @@ export default {
 
       // Warning
       {
-        "hover:bg-amber-600 dark:hover:bg-amber-300 hover:border-amber-600 dark:hover:border-amber-300":
+        "hover:bg-sulfur-600 dark:hover:bg-sulfur-300 hover:border-sulfur-600 dark:hover:border-sulfur-300":
           props.severity === "warn" &&
           !props.text &&
           !props.outlined &&
           !props.plain,
       },
       {
-        "focus:ring-amber-600 dark:focus:ring-amber-400":
+        "focus:ring-sulfur-600 dark:focus:ring-sulfur-400":
           props.severity === "warn",
       },
       // Text & Outlined Button
       {
-        "hover:bg-amber-300/20":
+        "hover:bg-sulfur-300/20":
           (props.text || props.outlined) &&
           props.severity === "warn" &&
           !props.plain,
