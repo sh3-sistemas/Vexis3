@@ -15,4 +15,5 @@ export * from "./Sidebars";
 export * from "./Tables";
 export * from "./Tabs";
 export * from "./Tags";
+export * from "./Timeline";
 export * from "./Typography";
