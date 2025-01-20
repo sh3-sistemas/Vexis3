@@ -42,6 +42,9 @@ const {
   extras = [],
 } = defineProps<Sh3HeaderSwitcherProps>();
 
+const emit = defineEmits<{
+  change: [value: HeaderSwitcherOption];
+}>();
 const selected = ref<HeaderSwitcherOption>(initialValue ?? options[0]);
 const showDropdown = computed(() => {
   return options.length > 1;
@@ -69,7 +72,10 @@ const showDropdown = computed(() => {
             v-for="option in options"
             :key="option.value"
             class="gap-2 p-2"
-            @click="selected = option"
+            @click="
+              selected = option;
+              emit('change', option);
+            "
           >
             <IconOrImageDisplayer :item="option" />
             {{ option.label }}
@@ -79,7 +85,10 @@ const showDropdown = computed(() => {
             v-for="extra in extras"
             :key="extra.value"
             class="gap-2 p-2"
-            @click="selected = extra"
+            @click="
+              selected = extra;
+              emit('change', extra);
+            "
           >
             <IconOrImageDisplayer :item="extra" />
             {{ extra.label }}
