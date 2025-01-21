@@ -54,7 +54,7 @@ const tabListPT = {
   prevButton: { class: buttonClass },
 };
 const tabPT = {
-  root: { class: "w-48 pt-3 rounded-t-xl border-0" },
+  root: { class: "w-[calc(50%-3px)] md:w-48 pt-3 rounded-t-xl border-0" },
 };
 
 const router = useRouter();
