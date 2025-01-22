@@ -21,11 +21,11 @@ export interface Sh3HeaderSwitcher {
 }
 
 /**
- * **SH3 - Sh3Competencia**
+ * **SH3 - Sh3DropdownSidebar**
  *
- * _Sh3Competencia is a Vue component._
+ * _Sh3DropdownSidebar is a Vue component._
  * --- ---
- * [Vue Based Component](./Sh3Competencia.vue)
+ * [Vue Based Component](./Sh3DropdownSidebar.vue)
  * @group Component
  *
  */
@@ -35,21 +35,38 @@ export type Competencia = {
   estado: string;
 };
 
-export interface Sh3CompetenciaProps {
+export interface Sh3DropdownSidebarProps {
+  title?: string;
   competencias: Competencia[];
   value?: Competencia;
+  yearSlide?: boolean;
 }
 
 /**
- * Defines valid emits in Sh3Competencia component.
+ * Defines valid slots in Sh3DropdownSidebar component.
  */
-export interface Sh3CompetenciaEmits {
+export interface Sh3DropdownSidebarSlots {
+  /**
+   * Default outerContent slot.
+   */
+  "outerContent"(): VNode[];
+  /**
+   * Default content slot.
+   */
+  "content"(): VNode[];
+  /**
+   * Default item slot.
+   */
+  "item"(): VNode[];
+}
+
+/**
+ * Defines valid emits in Sh3DropdownSidebar component.
+ */
+export interface Sh3DropdownSidebarEmits {
   /**
    * Callback to invoke when the value changes.
    */
-  gereciar(): void;
-  selecionar(): Competencia;
-  newCompetencia(): void;
   changeYear(): number;
 }
 declare module "vue" {
@@ -57,10 +74,10 @@ declare module "vue" {
     Sh3DropdownMenu: DefineComponent<any, any, any>;
     Sh3SelectDropdown: DefineComponent<any, any, any>;
     Sh3UserDropdown: DefineComponent<any, any, any>;
-    Sh3Competencia: DefineComponent<
-      Sh3CompetenciaProps,
-      any,
-      Sh3CompetenciaEmits
+    Sh3DropdownSidebar: DefineComponent<
+      Sh3DropdownSidebarProps,
+      Sh3DropdownSidebarSlots,
+      Sh3DropdownSidebarEmits
     >;
   }
 }
