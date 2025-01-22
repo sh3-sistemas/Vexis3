@@ -10,23 +10,21 @@ import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
-  DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 
-import YearSlide from "./fragments/YearSlide.vue";
-
 import type { Sh3DropdownSidebarProps } from "./types";
-
-const emits = defineEmits(["changeYear"]);
+import { ref } from "vue";
 
 const { isMobile, open } = useSidebar();
+const toggleState = ref(false);
 
 defineProps<Sh3DropdownSidebarProps>();
+defineExpose({ toggleState });
 </script>
 
 <template>
   <SidebarMenu>
-    <h4 v-if="open && title">{{ title }}:</h4>
+    <span v-if="open && title" class="font-bold text-base">{{ title }}</span>
     <SidebarMenuItem
       :class="
         open
@@ -37,14 +35,10 @@ defineProps<Sh3DropdownSidebarProps>();
       <div v-if="open && $slots.outerContent" class="col-span-5">
         <slot name="outerContent" />
       </div>
-      <DropdownMenu>
+      <DropdownMenu v-model:open="toggleState">
         <DropdownMenuTrigger as-child>
           <SidebarMenuButton
-            size="lg"
-            :class="
-              'data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground pi pi-sync ' +
-              (open ? 'justify-end' : 'justify-center')
-            "
+            class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground pi pi-sync justify-center"
           />
         </DropdownMenuTrigger>
         <DropdownMenuContent
@@ -53,20 +47,7 @@ defineProps<Sh3DropdownSidebarProps>();
           :side="isMobile ? 'bottom' : 'right'"
           :side-offset="28"
         >
-          <p v-if="title" class="text-xs">{{ title }}</p>
-          <YearSlide
-            v-if="yearSlide"
-            :range="20"
-            @change-year="(value: number) => emits('changeYear', value)"
-          />
-
           <slot name="content" />
-
-          <div v-if="$slots.item" class="flex justify-center">
-            <DropdownMenuItem class="p-0">
-              <slot name="item" />
-            </DropdownMenuItem>
-          </div>
         </DropdownMenuContent>
       </DropdownMenu>
     </SidebarMenuItem>

@@ -37,9 +37,7 @@ export type Competencia = {
 
 export interface Sh3DropdownSidebarProps {
   title?: string;
-  competencias: Competencia[];
   value?: Competencia;
-  yearSlide?: boolean;
 }
 
 /**

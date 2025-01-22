@@ -12,16 +12,21 @@ export type Sh3YearSliderProps = {
 const { range = 20, startYear = Number(new Date().getFullYear()) } =
   defineProps<Sh3YearSliderProps>();
 
-const yearsList = computed(() => {
+const calculateYears = (start: number, end: number): Array<number> => {
   const year = startYear - Math.round(range / 2);
-  const yearsBefore = [];
-  const yearsAfter = [];
-  for (let i = 0; i < Math.round(range / 2); i += 1) {
-    yearsBefore.push(year + i);
+  const years = [];
+
+  for (let i = start; i <= end; i += 1) {
+    years.push(year + i);
   }
-  for (let i = Math.round(range / 2); i <= range; i += 1) {
-    yearsAfter.push(year + i);
-  }
+
+  return years;
+};
+
+const yearsList = computed(() => {
+  const yearsBefore = calculateYears(0, Math.round(range / 2));
+  const yearsAfter = calculateYears(Math.round(range / 2), range);
+
   return [...yearsAfter, ...yearsBefore];
 });
 </script>
