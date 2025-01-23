@@ -53,7 +53,7 @@ export default {
       },
 
       // Text Button
-      { "bg-transparent border-transparent": props.text && !props.plain },
+      { "bg-transparent border-transparent focus:!ring-0": props.text && !props.plain },
 
       // Outlined Button
       { "bg-transparent border": props.outlined && !props.plain },
