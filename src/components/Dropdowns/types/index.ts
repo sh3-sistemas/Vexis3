@@ -45,6 +45,15 @@ export interface Sh3DropdownSidebarProps {
  */
 export interface Sh3DropdownSidebarSlots {
   /**
+   * Default trigger slot.
+   */
+  "trigger"(): VNode[];
+  /**
+  /**
+   * Default closedTrigger slot.
+   */
+  "closedTrigger"(): VNode[];
+  /**
    * Default outerContent slot.
    */
   "outerContent"(): VNode[];
@@ -52,10 +61,6 @@ export interface Sh3DropdownSidebarSlots {
    * Default content slot.
    */
   "content"(): VNode[];
-  /**
-   * Default item slot.
-   */
-  "item"(): VNode[];
 }
 
 /**
