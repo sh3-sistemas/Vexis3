@@ -1,20 +1,21 @@
-import type { DataTableItemColumn } from "@/components/Tables/DataTable/types";
 import type { CrudOperations } from "@/services";
 import type { DocumentNode } from "graphql";
+import type { FilterQuery, HandlerType, WhereFilter } from "./filter";
+import type { DataTableItemColumn } from "@/components/Tables/DataTable/types";
 
-/**
- * Define uma consulta de filtro com coluna e valor.
- */
-export type FilterQuery = {
+export type Filters = {
   /**
-   * Nome da coluna a ser filtrada.
+   * Lista de condições de consulta para o filtro.
    */
-  coluna: string;
+  query?: FilterQuery[];
+  /*
+   * Lighthouse Where Conditions
+   */
+  where?: WhereFilter;
 
-  /**
-   * Valor a ser usado no filtro.
-   */
-  valor: string;
+  /* Aceite p/ qualquer tipo de filtro uma vez
+   * que nem todos estão padronizados p/ Lighthouse */
+  [any: string]: any;
 };
 
 /**
@@ -24,13 +25,13 @@ export type ModuleFilters = {
   /**
    * Filtro "localizar", contendo uma lista de consultas de filtro.
    */
-  localizar: {
-    /**
-     * Lista de condições de consulta para o filtro.
-     */
-    query: FilterQuery[];
-  };
+  localizar: Filters;
 };
+
+/**
+ * Define a estrutura de uma coluna na tabela de metadados.
+ */
+export type MetaColumn = DataTableItemColumn & { filterType: HandlerType };
 
 /**
  * Defines the metadata structure for a module.
@@ -39,7 +40,7 @@ export type ModuleMeta = {
   /**
    * The list of columns for the module.
    */
-  columns: DataTableItemColumn[];
+  columns: MetaColumn[];
 };
 
 /**

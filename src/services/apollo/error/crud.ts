@@ -1,18 +1,15 @@
 import { customToast as toast } from "@/services/toast/customToast";
 import type { ErrorResponse } from "@apollo/client/link/error";
+import type { GraphQLFormattedError } from "graphql";
 
-const validationComparable = (message: string) => {
-  return message == "validation";
-};
+const validationComparable = (error: GraphQLFormattedError) =>
+  error.extensions?.validation;
 
 const defineErrorMessages = (error: ErrorResponse) => {
   const { graphQLErrors } = error;
-  const crudError = graphQLErrors?.some(({ message }) =>
-    validationComparable(message),
-  );
-  const errorMessages = graphQLErrors?.filter(({ message }) =>
-    validationComparable(message),
-  );
+
+  const crudError = graphQLErrors?.some(validationComparable);
+  const errorMessages = graphQLErrors?.filter(validationComparable);
 
   return { crudError, errorMessages };
 };

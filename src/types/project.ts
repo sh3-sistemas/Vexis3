@@ -119,3 +119,45 @@ export type ProjectConfiguration = {
    */
   styles: GeneralStyles;
 };
+
+export type PaginatorInfo = {
+  /**
+   * Total number of items.
+   */
+  count: number;
+
+  /**
+   * Current page number.
+   */
+  currentPage: number;
+
+  /**
+   * Index of the first item on the current page.
+   */
+  firstItem: number;
+
+  /**
+   * Indicates if there are more pages available.
+   */
+  hasMorePages: boolean;
+
+  /**
+   * Index of the last item on the current page.
+   */
+  lastItem: number;
+
+  /**
+   * Total number of pages.
+   */
+  lastPage: number;
+
+  /**
+   * Number of items per page.
+   */
+  perPage: number;
+
+  /**
+   * Total number of items across all pages.
+   */
+  total: number;
+};
