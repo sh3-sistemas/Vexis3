@@ -153,7 +153,7 @@ export interface Sh3ListContentCardProps {
  */
 
 export interface Sh3ListCardProps {
-  cardStyle: string;
+  cardStyle?: string;
 }
 
 /**

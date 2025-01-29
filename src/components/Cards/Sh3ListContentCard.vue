@@ -1,11 +1,9 @@
 <template>
-  <div :class="twMerge('flex mx-2 rounded-[10px]', cardStyle)">
-    <div>
-      <div v-if="title">{{ title }}</div>
-      <div class="justify-self-start font-bold">
-        <slot></slot>
-      </div>
-    </div>
+  <div :class="twMerge('flex flex-col gap-y-2 mx-2', cardStyle)">
+    <span v-if="title">{{ title }}</span>
+    <span class="justify-self-start font-bold">
+      <slot></slot>
+    </span>
   </div>
 </template>
 

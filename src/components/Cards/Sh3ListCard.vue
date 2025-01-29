@@ -2,7 +2,7 @@
   <div
     :class="
       twMerge(
-        'flex p-2 rounded-[10px] border divide-x justify-evenly items-center',
+        'flex p-2 rounded-[10px] border justify-evenly items-center',
         cardStyle,
       )
     "
