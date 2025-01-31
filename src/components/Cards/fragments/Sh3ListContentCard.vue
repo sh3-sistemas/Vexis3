@@ -9,7 +9,7 @@
 
 <script lang="ts" setup>
 import { twMerge } from "tailwind-merge";
-import type { Sh3ListContentCardProps } from "./types";
+import type { Sh3ListContentCardProps } from "../types";
 
 withDefaults(defineProps<Sh3ListContentCardProps>(), {
   cardStyle: "bg-white",

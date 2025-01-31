@@ -137,6 +137,20 @@ export interface Sh3LobbySectionCardProps {
  *
  */
 
+export interface Sh3ListCardProps {
+  cardStyle?: string;
+}
+
+/**
+ * **SH3 - Sh3ListCardProps**
+ *
+ * _ListCardProps is an extension to standard card element with additional features._
+ * --- ---
+ * [Primevue Based Component](https://www.primevue.org)
+ * @group Component
+ *
+ */
+
 export interface Sh3ListContentCardProps {
   cardStyle?: string;
   title: string;
@@ -152,14 +166,14 @@ export interface Sh3ListContentCardProps {
  *
  */
 
-export interface Sh3ListCardProps {
-  cardStyle?: string;
+export interface Sh3CardDividerProps {
+  divider: boolean;
 }
 
 /**
- * **SH3 - Sh3ListCardProps**
+ * **SH3 - Sh3CardDividerProps**
  *
- * _ListCardProps is an extension to standard card element with additional features._
+ * _CardDividerProps is an extension to standard card element with additional features._
  * --- ---
  * [Primevue Based Component](https://www.primevue.org)
  * @group Component
@@ -201,6 +215,11 @@ declare module "vue" {
     Sh3ListCard: DefineComponent<Sh3ListCardProps, Sh3CardSlots, Sh3CardEmits>;
     Sh3ListContentCard: DefineComponent<
       Sh3ListContentCardProps,
+      Sh3CardSlots,
+      Sh3CardEmits
+    >;
+    Sh3CardDivider: DefineComponent<
+      Sh3CardDividerProps,
       Sh3CardSlots,
       Sh3CardEmits
     >;
