@@ -27,6 +27,7 @@
               @change-route="(name) => emits('tabChangeRoute', name)"
             />
             <div
+              id="system-content-general--main"
               class="system-content-general--main grow overflow-auto rounded-xl px-2 md:px-6 pt-6 pb-4 z-10 bg-white h-full"
             >
               <slot />
