@@ -13,7 +13,6 @@ const {
 
 const mainContainer = ref<HTMLElement>({} as HTMLElement);
 const scrollContainer = ref<HTMLElement>({} as HTMLElement);
-/* const scrollContainer = useTemplateRef<HTMLElement>(scrollContainerId); */
 
 const hasScroll = ref(false);
 
@@ -26,7 +25,6 @@ const observable = new ResizeObserver((entries) => {
 onMounted(() => {
   mainContainer.value = document.getElementById(mainContainerId)!;
   scrollContainer.value = document.getElementById(scrollContainerId)!;
-  console.log(scrollContainer.value);
   if (!scrollContainer.value) return;
   observable.observe(scrollContainer.value!);
 });
