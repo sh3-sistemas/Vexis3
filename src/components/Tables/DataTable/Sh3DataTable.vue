@@ -16,6 +16,7 @@
     <template #paginatorend>
       <Button
         type="button"
+        severity="contrast"
         icon="pi pi-refresh"
         text
         @click="emits('refresh')"
