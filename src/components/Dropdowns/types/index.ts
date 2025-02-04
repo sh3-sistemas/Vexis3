@@ -62,16 +62,6 @@ export interface Sh3DropdownSidebarSlots {
    */
   "content"(): VNode[];
 }
-
-/**
- * Defines valid emits in Sh3DropdownSidebar component.
- */
-export interface Sh3DropdownSidebarEmits {
-  /**
-   * Callback to invoke when the value changes.
-   */
-  changeYear(): number;
-}
 declare module "vue" {
   export interface GlobalComponents {
     Sh3DropdownMenu: DefineComponent<any, any, any>;
@@ -80,7 +70,8 @@ declare module "vue" {
     Sh3DropdownSidebar: DefineComponent<
       Sh3DropdownSidebarProps,
       Sh3DropdownSidebarSlots,
-      Sh3DropdownSidebarEmits
+      any
     >;
+    Sh3Dropdown: DefineComponent<any, any, any>;
   }
 }
