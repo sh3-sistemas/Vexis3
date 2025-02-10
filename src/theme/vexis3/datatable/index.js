@@ -404,7 +404,7 @@ export default {
       // Color
       { "!bg-highlight": context.selected },
       {
-        "bg-surface-0 text-surface-600 dark:text-white/80 dark:bg-surface-900":
+        "bg-surface-0 text-surface-700 dark:text-white/80 dark:bg-surface-900":
           !context.selected,
       },
       { "font-bold bg-surface-0 dark:bg-surface-900 z-20": props.frozenRow },
