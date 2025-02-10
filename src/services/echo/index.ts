@@ -9,6 +9,8 @@ import Pusher from "pusher-js";
  * - `VITE_REVERB_HOST`: Host do servidor WebSocket Reverb.
  * - `VITE_REVERB_PORT`: Porta do servidor WebSocket Reverb.
  * - `VITE_REVERB_SCHEME`: Esquema de conexão (http ou https) para determinar se TLS deve ser forçado.
+ *
+ * Para entender como utilizar corretamente a instância do Laravel Echo https://laravel.com/docs/11.x/broadcasting#receiving-broadcasts
  */
 export const createEchoInstance = () => {
   window.Pusher = Pusher;
