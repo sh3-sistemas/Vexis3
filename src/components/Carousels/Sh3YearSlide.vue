@@ -7,10 +7,16 @@ const emits = defineEmits(["changeYear"]);
 export type Sh3YearSliderProps = {
   range: number;
   startYear?: number;
+  options?: number[];
+  page?: number;
 };
 
-const { range = 20, startYear = Number(new Date().getFullYear()) } =
-  defineProps<Sh3YearSliderProps>();
+const {
+  range = 20,
+  startYear = Number(new Date().getFullYear()),
+  options,
+  page = 0,
+} = defineProps<Sh3YearSliderProps>();
 
 const calculateYears = (start: number, end: number): Array<number> => {
   const year = startYear - Math.round(range / 2);
@@ -24,7 +30,8 @@ const calculateYears = (start: number, end: number): Array<number> => {
 };
 
 const yearsList = computed(() => {
-  const yearsBefore = calculateYears(0, Math.round(range / 2));
+  if (options) return options;
+  const yearsBefore = calculateYears(0, Math.round(range / 2) - 1);
   const yearsAfter = calculateYears(Math.round(range / 2), range);
 
   return [...yearsAfter, ...yearsBefore];
@@ -37,6 +44,7 @@ const yearsList = computed(() => {
     circular
     :show-indicators="false"
     :pt-options="{ mergeProps: true }"
+    :page="page"
     :pt="{
       itemList: 'h-full',
       item: 'justify-center items-center',
