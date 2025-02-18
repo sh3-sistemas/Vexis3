@@ -13,10 +13,15 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import type { Sh3DropdownSidebarProps } from "./types";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
 const { isMobile, open } = useSidebar();
 const toggleState = ref(false);
+const menuItemClass = computed(() =>
+  open.value
+    ? "border rounded-md grid grid-cols-6 p-2 items-center"
+    : "border rounded-md",
+);
 
 defineProps<Sh3DropdownSidebarProps>();
 defineExpose({ toggleState });
@@ -25,13 +30,7 @@ defineExpose({ toggleState });
 <template>
   <SidebarMenu>
     <span v-if="open && title" class="font-bold text-base">{{ title }}</span>
-    <SidebarMenuItem
-      :class="
-        open
-          ? 'border rounded-md grid grid-cols-6 p-2 items-center'
-          : 'border rounded-md'
-      "
-    >
+    <SidebarMenuItem :class="menuItemClass">
       <div v-if="open && $slots.outerContent" class="col-span-5">
         <slot name="outerContent" />
       </div>

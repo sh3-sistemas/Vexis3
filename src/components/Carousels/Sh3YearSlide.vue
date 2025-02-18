@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import Carousel from "primevue/carousel";
+import { calculateYears } from "./fragments/utils";
 
 const emits = defineEmits(["changeYear"]);
 
@@ -18,21 +19,12 @@ const {
   page = 0,
 } = defineProps<Sh3YearSliderProps>();
 
-const calculateYears = (start: number, end: number): Array<number> => {
-  const year = startYear - Math.round(range / 2);
-  const years = [];
-
-  for (let i = start; i <= end; i += 1) {
-    years.push(year + i);
-  }
-
-  return years;
-};
-
 const yearsList = computed(() => {
   if (options) return options;
-  const yearsBefore = calculateYears(0, Math.round(range / 2) - 1);
-  const yearsAfter = calculateYears(Math.round(range / 2), range);
+
+  const rangeHalf = Math.round(range / 2);
+  const yearsBefore = calculateYears(startYear - rangeHalf, rangeHalf - 1);
+  const yearsAfter = calculateYears(startYear, rangeHalf);
 
   return [...yearsAfter, ...yearsBefore];
 });
