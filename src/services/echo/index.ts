@@ -1,6 +1,12 @@
 import Echo from "laravel-echo";
 import Pusher from "pusher-js";
 
+type EchoInstance = {
+  appKey: string | undefined;
+  host: string | undefined;
+  port: number | undefined;
+  scheme?: string | undefined;
+};
 /**
  * Cria uma instância do Echo utilizando as variáveis de ambiente fornecidas.
  *
@@ -12,16 +18,18 @@ import Pusher from "pusher-js";
  *
  * Para entender como utilizar corretamente a instância do Laravel Echo https://laravel.com/docs/11.x/broadcasting#receiving-broadcasts
  */
-export const createEchoInstance = () => {
+export const createEchoInstance = (instance: EchoInstance) => {
+  const { appKey, host, port, scheme } = instance;
+
   window.Pusher = Pusher;
 
   window.Echo = new Echo({
     broadcaster: "reverb",
-    key: import.meta.env.VITE_REVERB_APP_KEY,
-    wsHost: import.meta.env.VITE_REVERB_HOST,
-    wsPort: import.meta.env.VITE_REVERB_PORT,
-    wssPort: import.meta.env.VITE_REVERB_PORT,
-    forceTLS: (import.meta.env.VITE_REVERB_SCHEME ?? "https") === "https",
+    key: appKey,
+    wsHost: host,
+    wsPort: port,
+    wssPort: port,
+    forceTLS: (scheme ?? "https") === "https",
     enabledTransports: ["ws", "wss"],
   });
 };
