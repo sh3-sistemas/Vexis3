@@ -13,6 +13,7 @@ export * from "./Inputs";
 export * from "./Layouts";
 export * from "./Links";
 export * from "./Modals";
+export * from "./Menus";
 export * from "./Navigation";
 export * from "./Panels";
 export * from "./Scroller";
