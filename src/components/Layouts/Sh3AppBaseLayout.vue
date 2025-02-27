@@ -16,7 +16,7 @@
           </template>
         </AppBaseToolbar>
         <div
-          class="system-content--general grow flex flex-col gap-4 overflow-auto"
+          class="system-content--general grow flex flex-col gap-4 md:overflow-auto"
         >
           <AppBaseHeader v-if="header" v-bind="header" />
           <div
@@ -27,9 +27,10 @@
               @change-route="(name) => emits('tabChangeRoute', name)"
             />
             <div
-              class="system-content-general--main grow overflow-auto rounded-xl px-6 pt-6 pb-4 z-10 bg-white h-full"
+              id="system-content-general--main"
+              class="system-content-general--main grow overflow-auto rounded-xl px-2 md:px-6 pt-6 pb-4 z-10 bg-white h-full"
             >
-              <slot></slot>
+              <slot />
             </div>
           </div>
         </div>

@@ -15,7 +15,7 @@ const { toggleSidebar, open } = useSidebar();
   <Sh3IconButton
     :class="
       cn(
-        '!w-7 !h-7 shrink-0 mt-16 -ml-6 !absolute z-20 !bg-surface-300 !hover:bg-surface-400 !active:bg-primary-300 !shadow !ring-0 !ring-transparent',
+        '!w-7 !h-7 shrink-0 mt-16 -ml-2.5 !absolute z-20 !bg-surface-300 !hover:bg-surface-400 !active:bg-primary-300 !shadow !ring-0 !ring-transparent',
         props.class,
       )
     "

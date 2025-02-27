@@ -57,7 +57,7 @@ export type AppBaseLayoutProps = {
   navbar: Sh3UserNavBarProps;
   side: AppSidebarProps;
   toolbar: AppBaseToolbarProps & { hidden: boolean };
-  header: AppBaseHeaderProps;
+  header?: AppBaseHeaderProps;
   tabs: Sh3RouterLinkTabsProps;
 };
 
