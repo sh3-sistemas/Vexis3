@@ -54,6 +54,23 @@ export const deletionBaseActions: DialogBase = {
 };
 
 /**
+ * Configurações base para o diálogo de informação.
+ * Exibe um aviso contendo informações sobra a ação a ser realizada.
+ *
+ * @type {DialogBase}
+ */
+export const informationBaseActions: DialogBase = {
+  header: "Comfirma a abertura do novo registro?",
+  message: "Essa ação não poderá ser desfeita.",
+  iconColor: "text-selenium-500",
+  icon: PrimeIcons.INFO_CIRCLE,
+  rejectClass: "p-button-outlined p-button-sm",
+  acceptClass: "info",
+  rejectLabel: "Cancelar",
+  acceptLabel: "Excluir",
+};
+
+/**
  * Cria uma configuração de diálogo combinando as opções fornecidas com as opções base.
  *
  * @param {ConfirmationOptions} options - Opções específicas do diálogo, como ações de aceitação e rejeição.
@@ -106,3 +123,13 @@ export const confirmationDialogBase = (
 export const returnDialogBase = (
   options: ConfirmationOptions,
 ): ConfirmationOptions => dialogBase(options, returnBaseActions);
+
+/**
+ * Cria um diálogo de informação, combinando as opções fornecidas com as opções base de confirmação.
+ *
+ * @param {ConfirmationOptions} options - Opções específicas para o diálogo de retorno, como ações de aceitação e rejeição.
+ * @returns {ConfirmationOptions} - Um objeto contendo todas as opções combinadas para o diálogo de retorno.
+ */
+export const informationDialogBase = (
+  options: ConfirmationOptions,
+): ConfirmationOptions => dialogBase(options, informationBaseActions);
