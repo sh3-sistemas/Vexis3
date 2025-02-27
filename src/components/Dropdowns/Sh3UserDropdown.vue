@@ -1,17 +1,17 @@
 <template>
   <button
-    type="button"
-    @click="isDropdownOpen = !isDropdownOpen"
     :id="id + '-button'"
+    type="button"
     :data-dropdown-toggle="id + '-dropdown'"
     data-dropdown-placement="bottom"
     aria-expanded="false"
     :class="
       twMerge(
         'user-dropdown--button flex items-center py-1.5 px-2.5 gap-3 md:me-0 rounded-lg hover:bg-black/10 focus:bg-black/5 text-sm',
-        styling.button
+        styling.button,
       )
     "
+    @click="isDropdownOpen = !isDropdownOpen"
   >
     <span class="sr-only">Open user menu</span>
     <Sh3AvatarFallbackInitials
@@ -30,33 +30,33 @@
     />
   </button>
   <div
+    :id="id + '-dropdown'"
     :class="
       twMerge(
         'user-dropdown--menu min-w-[190px] z-50 hidden my-4 list-none divide-y bg-white divide-gray-100 rounded-md shadow dark:bg-gray-700 dark:divide-gray-600',
-        styling.dropdown
+        styling.dropdown,
       )
     "
-    :id="id + '-dropdown'"
   >
     <ul
       :class="
         twMerge(
           'user-dropdown-menu--links p-2 text-sm text-gray-800 divide-y divide-surface-100',
-          styling.links.root
+          styling.links.root,
         )
       "
       :aria-labelledby="id + '-button'"
     >
       <RouterLink
-        :to="dropdownLink.link"
         v-for="(dropdownLink, index) in dropdownLinks"
-        v-bind:key="index"
+        :key="index"
+        :to="dropdownLink.link"
       >
         <li
           :class="
             twMerge(
               'user-dropdown-menu--link flex flex-row items-center py-1.5 px-2 gap-2 rounded-xs text-sm hover:bg-black/10 border-b border-surface-100',
-              styling.links.route
+              styling.links.route,
             )
           "
         >

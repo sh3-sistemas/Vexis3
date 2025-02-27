@@ -1,12 +1,12 @@
 <template>
-  <Sh3Accordion :items="items" v-slot="{ item }">
+  <Sh3Accordion v-slot="{ item }" :items="items">
     <div class="links-wrapper w-full flex flex-col py-1 gap-1">
       <span
-        class="links w-full py-2 px-4 inline-flex justify-start gap-3 items-center rounded-sm hover:bg-surface-100 active:bg-copper-100/60 pointer-events-auto cursor-pointer"
         v-for="(link, i) in item.links"
-        v-bind:key="i"
+        :key="i"
+        class="links w-full py-2 px-4 inline-flex justify-start gap-3 items-center rounded-sm hover:bg-surface-100 active:bg-copper-100/60 pointer-events-auto cursor-pointer"
       >
-        <Sh3CardTag :tagVariation="link.tag" />
+        <Sh3CardTag :tag-variation="link.tag" />
         <div class="AccordionContentText text-sm text-surface-900">
           {{ link.path }}
         </div>

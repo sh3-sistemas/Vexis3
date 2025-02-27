@@ -3,31 +3,31 @@
     <label :for="name" :class="[labelStyle, labelInputSize]">{{ label }}</label>
     <input
       v-if="inputType == 'input'"
+      :id="name"
       :validate-on-input="false"
       :name="name"
-      :id="name"
       :type="type"
       :value="inputValue"
       :placeholder="placeholder"
       :class="[inputStyle, inputSize]"
+      :disabled="disabled"
       @input="handleChange"
       @blur="handleBlur"
-      :disabled="disabled"
     />
 
     <textarea
       v-else
+      :id="name"
       rows="10"
       :validate-on-input="false"
       :name="name"
-      :id="name"
       :type="type"
       :value="inputValue"
       :placeholder="placeholder"
       :class="[inputStyle, inputSize]"
+      :disabled="disabled"
       @input="handleChange"
       @blur="handleBlur"
-      :disabled="disabled"
     >
     </textarea>
 

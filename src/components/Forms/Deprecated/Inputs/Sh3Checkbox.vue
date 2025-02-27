@@ -12,9 +12,11 @@ type CheckboxStyle = {
 const props = defineProps({
   label: {
     type: String,
+    default: "",
   },
   value: {
     type: String,
+    default: "",
   },
   initialValue: {
     type: Boolean,
@@ -43,17 +45,17 @@ const emits = defineEmits(["checked"]);
     >
       <Checkbox
         v-model="checkbox"
-        inputId="ingredient1"
+        input-id="ingredient1"
         :name="label"
-        :defaultValue="initialValue"
+        :default-value="initialValue"
         binary
-        @update:modelValue="(checked: boolean) => emits('checked', checked)"
         :class="
           twMerge(
             ' flex h-[18px] w-[18px] appearance-none items-center justify-center rounded-[4px] bg-white outline-none border border-gray-400',
             styles.root,
           )
         "
+        @update:model-value="(checked: boolean) => emits('checked', checked)"
       />
       <span :class="twMerge('select-none text-sm', styles.label)">{{
         label

@@ -2,13 +2,13 @@
   <div class="card flex justify-center">
     <Select
       v-model="selectedOption"
-      @show="isSelectOpen = true"
-      @hide="isSelectOpen = false"
-      optionLabel="name"
-      :ptOptions="{ mergeProps: true }"
+      option-label="name"
+      :pt-options="{ mergeProps: true }"
       :options="options"
       class="w-[calc(100vw-70px)] md:!w-[450px]"
       v-bind="$attrs"
+      @show="isSelectOpen = true"
+      @hide="isSelectOpen = false"
     >
       <template #dropdownicon>
         <Icon
@@ -38,7 +38,7 @@
       </template>
 
       <template #option="{ option }">
-        <div @click="showValue = true" class="option-group">
+        <div class="option-group" @click="showValue = true">
           {{ option.name }} <span v-if="option.code">({{ option.code }})</span>
         </div>
       </template>

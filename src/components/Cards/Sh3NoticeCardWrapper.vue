@@ -4,12 +4,12 @@
   >
     <Sh3NoticeCard
       v-for="(noticeCard, index) in noticeCards"
-      v-bind:key="index"
-      :noticeCard="noticeCard"
+      :key="index"
+      :notice-card="noticeCard"
     />
     <div
-      class="empty-cards w-full h-full flex flex-col items-center justify-center rounded-lg border border-surface-100"
       v-show="noticeCards.length == 0"
+      class="empty-cards w-full h-full flex flex-col items-center justify-center rounded-lg border border-surface-100"
     >
       <img
         src="../../assets/images/illustration/Warning-rafiki.svg"

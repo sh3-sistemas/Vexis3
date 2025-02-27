@@ -26,7 +26,7 @@
         <ul class="flex flex-col h-auto list-none gap-1.5">
           <li
             v-for="(sidelink, index) in sideLinks"
-            v-bind:key="index"
+            :key="index"
             :class="
               twMerge(
                 'text-right text-white hover:opacity-70',
@@ -56,7 +56,7 @@
           <slot name="icon"></slot>
           <SecondTitle
             :title="layoutConfig.title"
-            :addStyle="layoutConfig.addStyle.loginTitle"
+            :add-style="layoutConfig.addStyle.loginTitle"
           />
         </div>
         <div class="input-container w-full px-6">
@@ -68,9 +68,9 @@
       >
         <Sh3MiniLink
           v-for="(minilink, index) in miniLinks"
-          v-bind:key="index"
+          :key="index"
           :config="minilink"
-          :addStyle="layoutConfig.addStyle.miniLinksStyle"
+          :add-style="layoutConfig.addStyle.miniLinksStyle"
         />
       </div>
     </div>

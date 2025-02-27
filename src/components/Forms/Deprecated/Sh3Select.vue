@@ -170,10 +170,11 @@ onMounted(() => {
   <div class="relative">
     <label :for="name" :class="[labelStyle, labelInputSize]">{{ label }}</label>
     <select
-      :name="name"
       :id="name"
+      :name="name"
       :placeholder="placeholder"
       :disabled="disabled"
+      :class="[inputStyle, inputSize]"
       @input="
         (e: Event) => {
           handleChange(e);
@@ -181,7 +182,6 @@ onMounted(() => {
         }
       "
       @blur="handleBlur"
-      :class="[inputStyle, inputSize]"
     >
       <option
         :value="inputValue"

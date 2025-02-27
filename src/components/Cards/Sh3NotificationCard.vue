@@ -1,7 +1,7 @@
 <template>
   <div
     v-for="({ text, label, tag }, index) in notifications"
-    v-bind:key="index"
+    :key="index"
     class="notification w-full flex flex-row justify-between items-center border-b border-surface-200 py-2 px-2"
   >
     <div class="notification-text flex flex-col gap-0.5 justify-center">
@@ -12,7 +12,7 @@
         {{ label.time }} | {{ label.autarchy }}
       </span>
     </div>
-    <Sh3CardTag :tagVariation="tag" />
+    <Sh3CardTag :tag-variation="tag" />
   </div>
 </template>
 
