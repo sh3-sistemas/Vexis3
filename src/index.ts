@@ -10,6 +10,7 @@ import PrimeVue from "primevue/config";
 import vexis3 from "@/theme/vexis3";
 import Tooltip from "primevue/tooltip";
 import ConfirmationService from "primevue/confirmationservice";
+import DialogService from "primevue/dialogservice";
 import ToastService from "primevue/toastservice";
 import Ripple from "primevue/ripple";
 
@@ -42,6 +43,7 @@ export default {
     app.directive("ripple", Ripple);
     app.directive("tooltip", Tooltip);
     app.use(ConfirmationService);
+    app.use(DialogService);
     app.use(ToastService);
 
     app.use(Toast, toastOptions);
