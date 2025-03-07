@@ -9,8 +9,8 @@ export default {
       "border-none",
 
       // Color
-      "bg-surface-0 dark:bg-surface-900",
-      "text-surface-700 dark:text-white/80",
+      "bg-mercury-0 dark:bg-mercury-900",
+      "text-mercury-700 dark:text-white/80",
       "[&_[data-pc-name=pcfilter]]:w-full",
     ],
   },
@@ -47,11 +47,11 @@ export default {
       // Colors
       context.selected
         ? "bg-highlight text-highlight-contrast "
-        : "bg-transparent text-surface-600 dark:text-white/70",
+        : "bg-transparent text-mercury-600 dark:text-white/70",
 
       // States
       {
-        "hover:bg-surface-50 dark:hover:bg-[rgba(255,255,255,0.03)]":
+        "hover:bg-mercury-50 dark:hover:bg-[rgba(255,255,255,0.03)]":
           (props.selectionMode == "single" ||
             props.selectionMode == "multiple") &&
           !context.selected,
@@ -80,13 +80,13 @@ export default {
       // Colors
       "bg-transparent",
       {
-        "text-surface-600 dark:text-white/70": !context.selected,
+        "text-mercury-600 dark:text-white/70": !context.selected,
         "text-highlight-contrast": context.selected,
         invisible: context.leaf,
       },
 
       // States
-      "hover:bg-surface-200/20 dark:hover:bg-surface-500/20",
+      "hover:bg-mercury-200/20 dark:hover:bg-mercury-500/20",
       "focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-400",
 
       // Transition
@@ -103,7 +103,7 @@ export default {
 
       // Color
       {
-        "text-surface-600 dark:text-white/70": !context.selected,
+        "text-mercury-600 dark:text-white/70": !context.selected,
         "text-highlight-contrast": context.selected,
       },
     ],
@@ -111,7 +111,7 @@ export default {
   nodeLabel: ({ context }) => ({
     class: [
       {
-        "text-surface-600 dark:text-white/70": !context.selected,
+        "text-mercury-600 dark:text-white/70": !context.selected,
         "text-highlight-contrast": context.selected,
       },
     ],
@@ -121,7 +121,7 @@ export default {
   },
   loadingIcon: {
     class: [
-      "text-surface-500 dark:text-surface-0/70",
+      "text-mercury-500 dark:text-mercury-0/70",
       "absolute top-[50%] right-[50%] -mt-2 -mr-2 animate-spin",
     ],
   },

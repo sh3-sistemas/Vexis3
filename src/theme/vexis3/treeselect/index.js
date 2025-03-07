@@ -9,9 +9,9 @@ export default {
       "rounded-md",
 
       // Color and Background
-      { "bg-surface-0 dark:bg-surface-950": !props.disabled },
+      { "bg-mercury-0 dark:bg-mercury-950": !props.disabled },
       "border",
-      { "border-surface-300 dark:border-surface-700": !props.invalid },
+      { "border-mercury-300 dark:border-mercury-700": !props.invalid },
 
       // Invalid State
       "invalid:focus:ring-red-200",
@@ -24,7 +24,7 @@ export default {
 
       // States
       {
-        "hover:border-surface-400 dark:hover:border-surface-600":
+        "hover:border-mercury-400 dark:hover:border-mercury-600":
           !props.invalid,
       },
       {
@@ -36,7 +36,7 @@ export default {
       "cursor-pointer",
       "select-none",
       {
-        "bg-surface-200 dark:bg-surface-700 select-none pointer-events-none cursor-default":
+        "bg-mercury-200 dark:bg-mercury-700 select-none pointer-events-none cursor-default":
           props.disabled,
       },
     ],
@@ -52,7 +52,7 @@ export default {
       "py-2 px-3",
 
       // Color
-      "text-surface-800 dark:text-white/80",
+      "text-mercury-800 dark:text-white/80",
       {
         "placeholder:text-transparent dark:placeholder:text-transparent":
           parent.instance?.$name == "FloatLabel",
@@ -83,7 +83,7 @@ export default {
 
       // Color and Background
       "bg-transparent",
-      "text-surface-500",
+      "text-mercury-500",
 
       // Size
       "w-12",
@@ -95,11 +95,11 @@ export default {
   panel: {
     class: [
       // Colors
-      "bg-surface-0 dark:bg-surface-900",
-      "text-surface-700 dark:text-white/80",
+      "bg-mercury-0 dark:bg-mercury-900",
+      "text-mercury-700 dark:text-white/80",
 
       // Shape
-      "border border-surface-300 dark:border-surface-700",
+      "border border-mercury-300 dark:border-mercury-700",
       "rounded-md",
       "shadow-md",
     ],

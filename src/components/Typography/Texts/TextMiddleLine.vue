@@ -1,7 +1,7 @@
 <template>
-  <fieldset :class="twMerge('border-t border-surface-300', styling.fieldset)">
+  <fieldset :class="twMerge('border-t border-mercury-300', styling.fieldset)">
     <legend
-      :class="twMerge('mx-auto px-2 text-xs text-surface-300', styling.legend)"
+      :class="twMerge('mx-auto px-2 text-xs text-mercury-300', styling.legend)"
     >
       {{ label }}
     </legend>

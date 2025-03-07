@@ -96,7 +96,7 @@ export default {
 
       // Color & Background
       {
-        "bg-surface-200 hover:bg-surface-300 dark:bg-surface-700 dark:hover:bg-surface-600":
+        "bg-mercury-200 hover:bg-mercury-300 dark:bg-mercury-700 dark:hover:bg-mercury-600":
           !context.highlighted,
         "bg-primary hover:bg-primary-emphasis": context.highlighted,
       },

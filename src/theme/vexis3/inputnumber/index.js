@@ -14,7 +14,7 @@ export default {
           parent.instance.$name === "InputGroup" && !props.showButtons,
       },
       {
-        "border-0 border-y border-l last:border-r border-surface-300 dark:border-surface-700":
+        "border-0 border-y border-l last:border-r border-mercury-300 dark:border-mercury-700":
           parent.instance.$name === "InputGroup" && !props.showButtons,
       },
       {
@@ -66,11 +66,11 @@ export default {
         },
 
         // Colors
-        "text-surface-800 dark:text-white/80",
-        "placeholder:text-surface-400 dark:placeholder:text-surface-500",
-        { "bg-surface-0 dark:bg-surface-950": !context.disabled },
+        "text-mercury-800 dark:text-white/80",
+        "placeholder:text-mercury-400 dark:placeholder:text-mercury-500",
+        { "bg-mercury-0 dark:bg-mercury-950": !context.disabled },
         "border",
-        { "border-surface-300 dark:border-surface-700": !parent.props.invalid },
+        { "border-mercury-300 dark:border-mercury-700": !parent.props.invalid },
 
         // Invalid State
         "invalid:focus:ring-red-200",
@@ -81,7 +81,7 @@ export default {
         { "hover:border-primary": !parent.props.invalid },
         "focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-400 focus:z-10",
         {
-          "bg-surface-200 dark:bg-surface-700 select-none pointer-events-none cursor-default":
+          "bg-mercury-200 dark:bg-mercury-700 select-none pointer-events-none cursor-default":
             context.disabled,
         },
 
@@ -140,13 +140,13 @@ export default {
       { "order-1": props.showButtons && props.buttonLayout === "vertical" },
 
       //Color
-      "text-surface-800 dark:text-surface-0",
+      "text-mercury-800 dark:text-mercury-0",
       "bg-transparent",
       {
-        "dark:bg-surface-900":
+        "dark:bg-mercury-900":
           props.showButtons && props.buttonLayout !== "stacked",
       },
-      "border border-surface-300 dark:border-surface-700",
+      "border border-mercury-300 dark:border-mercury-700",
       { "border-0": props.showButtons && props.buttonLayout === "stacked" },
       {
         "border-l-0":
@@ -180,7 +180,7 @@ export default {
       },
 
       //States
-      "hover:bg-surface-100 dark:hover:bg-[rgba(255,255,255,0.03)]",
+      "hover:bg-mercury-100 dark:hover:bg-[rgba(255,255,255,0.03)]",
 
       //Misc
       "cursor-pointer overflow-hidden select-none",
@@ -209,13 +209,13 @@ export default {
       { "order-3": props.showButtons && props.buttonLayout === "vertical" },
 
       //Color
-      "text-surface-800 dark:text-surface-0",
+      "text-mercury-800 dark:text-mercury-0",
       "bg-transparent",
       {
-        "dark:bg-surface-900":
+        "dark:bg-mercury-900":
           props.showButtons && props.buttonLayout !== "stacked",
       },
-      "border border-surface-300 dark:border-surface-700",
+      "border border-mercury-300 dark:border-mercury-700",
       { "border-0": props.showButtons && props.buttonLayout === "stacked" },
       {
         "border-r-0":
@@ -252,7 +252,7 @@ export default {
       },
 
       //States
-      "hover:bg-surface-100 dark:hover:bg-[rgba(255,255,255,0.03)]",
+      "hover:bg-mercury-100 dark:hover:bg-[rgba(255,255,255,0.03)]",
 
       //Misc
       "cursor-pointer overflow-hidden select-none",

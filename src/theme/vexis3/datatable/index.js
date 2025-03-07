@@ -27,7 +27,7 @@ export default {
       "w-full h-full",
 
       // Color
-      "bg-surface-100/40 dark:bg-surface-900/40",
+      "bg-mercury-100/40 dark:bg-mercury-900/40",
 
       // Transition
       "transition duration-200",
@@ -58,9 +58,9 @@ export default {
       "py-3.5 px-3",
 
       // Color
-      "bg-surface-0 dark:bg-surface-900",
-      "border-surface-200 dark:border-surface-700",
-      "text-surface-700 dark:text-white/80",
+      "bg-mercury-0 dark:bg-mercury-900",
+      "border-mercury-200 dark:border-mercury-700",
+      "text-mercury-700 dark:text-white/80",
     ],
   }),
   table: {
@@ -69,24 +69,24 @@ export default {
   thead: ({ context }) => ({
     class: [
       {
-        "bg-surface-0 dark:bg-surface-900 top-0 z-40 sticky":
+        "bg-mercury-0 dark:bg-mercury-900 top-0 z-40 sticky":
           context.scrollable,
       },
     ],
   }),
   tbody: ({ instance, context }) => ({
     class: [
-      "border-t border-surface-300 dark:border-surface-600",
+      "border-t border-mercury-300 dark:border-mercury-600",
       {
         "sticky z-20 font-semibold": instance.frozenRow && context.scrollable,
       },
-      "bg-surface-0 dark:bg-surface-900",
+      "bg-mercury-0 dark:bg-mercury-900",
     ],
   }),
   tfoot: ({ context }) => ({
     class: [
       {
-        "bg-surface-0 bottom-0 z-0": context.scrollable,
+        "bg-mercury-0 bottom-0 z-0": context.scrollable,
       },
     ],
   }),
@@ -101,9 +101,9 @@ export default {
       "p-4",
 
       // Color
-      "bg-surface-0 dark:bg-surface-900",
-      "border-surface-200 dark:border-surface-700",
-      "text-surface-700 dark:text-white/80",
+      "bg-mercury-0 dark:bg-mercury-900",
+      "border-mercury-200 dark:border-mercury-700",
+      "text-mercury-700 dark:text-white/80",
     ],
   },
   column: {
@@ -134,12 +134,12 @@ export default {
         // Color
         (props.sortable === "" || props.sortable) && context.sorted
           ? "bg-highlight"
-          : "bg-surface-100 text-surface-700 dark:text-white/80 dark:bg-surface-800",
-        "border-surface-200 dark:border-surface-700 ",
+          : "bg-mercury-100 text-mercury-700 dark:text-white/80 dark:bg-mercury-800",
+        "border-mercury-200 dark:border-mercury-700 ",
 
         // States
         {
-          "hover:bg-surface-200 dark:hover:bg-surface-800/50":
+          "hover:bg-mercury-200 dark:hover:bg-mercury-800/50":
             (props.sortable === "" || props.sortable) && !context?.sorted,
         },
         "focus-visible:outline-none focus-visible:outline-offset-0 focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400",
@@ -160,7 +160,7 @@ export default {
     },
     sort: ({ context }) => ({
       class: [
-        context.sorted ? "text-primary-500" : "text-surface-700",
+        context.sorted ? "text-primary-500" : "text-mercury-700",
         context.sorted ? "dark:text-primary-400" : "dark:text-white/80",
       ],
     }),
@@ -183,7 +183,7 @@ export default {
         "border-0 border-b border-solid",
         { "first:border-l border-r border-b": context?.showGridlines },
         {
-          "bg-surface-0 dark:bg-surface-900":
+          "bg-mercury-0 dark:bg-mercury-900":
             parent.instance.frozenRow || props.frozen || props.frozen === "",
         },
 
@@ -205,7 +205,7 @@ export default {
         { "py-[0.6rem] px-2": state["d_editing"] },
 
         // Color
-        "border-surface-200 dark:border-surface-700",
+        "border-mercury-200 dark:border-mercury-700",
 
         {
           "overflow-hidden whitespace-nowrap border-y bg-clip-padding":
@@ -233,15 +233,15 @@ export default {
             : "p-4",
 
         // Color
-        "border-surface-200 dark:border-surface-700",
-        "text-surface-700 dark:text-white/80",
-        "bg-surface-0 dark:bg-surface-900",
+        "border-mercury-200 dark:border-mercury-700",
+        "text-mercury-700 dark:text-white/80",
+        "bg-mercury-0 dark:bg-mercury-900",
       ],
     }),
     sortIcon: ({ context }) => ({
       class: [
         "ml-2",
-        context.sorted ? "text-inherit" : "text-surface-700 dark:text-white/70",
+        context.sorted ? "text-inherit" : "text-mercury-700 dark:text-white/70",
       ],
     }),
     columnFilter: {
@@ -263,9 +263,9 @@ export default {
         "min-w-[12.5rem]",
 
         // Color
-        "bg-surface-0 dark:bg-surface-900",
-        "text-surface-800 dark:text-white/80",
-        "dark:border-surface-700",
+        "bg-mercury-0 dark:bg-mercury-900",
+        "text-mercury-800 dark:text-white/80",
+        "dark:border-mercury-700",
       ],
     },
     filterConstraintList: {
@@ -289,20 +289,20 @@ export default {
         "py-3 px-5",
 
         // Color
-        { "text-surface-700 dark:text-white/80": !context?.highlighted },
+        { "text-mercury-700 dark:text-white/80": !context?.highlighted },
         {
-          "bg-surface-0 dark:bg-surface-900 text-surface-700 dark:text-white/80":
+          "bg-mercury-0 dark:bg-mercury-900 text-mercury-700 dark:text-white/80":
             !context?.highlighted,
         },
         { "bg-highlight": context?.highlighted },
 
         //States
         {
-          "hover:bg-surface-100 dark:hover:bg-[rgba(255,255,255,0.03)]":
+          "hover:bg-mercury-100 dark:hover:bg-[rgba(255,255,255,0.03)]":
             !context?.highlighted,
         },
         {
-          "hover:text-surface-700 hover:bg-surface-100 dark:hover:text-white dark:hover:bg-[rgba(255,255,255,0.03)]":
+          "hover:text-mercury-700 hover:bg-mercury-100 dark:hover:text-white dark:hover:bg-[rgba(255,255,255,0.03)]":
             !context?.highlighted,
         },
         "focus-visible:outline-none focus-visible:outline-offset-0 focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400",
@@ -323,8 +323,8 @@ export default {
         "rounded-t-md",
 
         // Color
-        "text-surface-700 dark:text-white/80",
-        "bg-surface-0 dark:bg-surface-700",
+        "text-mercury-700 dark:text-white/80",
+        "bg-mercury-0 dark:bg-mercury-700",
         "[&>[data-pc-name=pcfilteroperatordropdown]]:w-full",
       ],
     },
@@ -357,7 +357,7 @@ export default {
         "border-0 rounded-full",
 
         // Color
-        "text-surface-500 dark:text-white/70",
+        "text-mercury-500 dark:text-white/70",
         "bg-transparent",
         "focus-visible:outline-none focus-visible:outline-offset-0",
         "focus-visible:ring-1 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400",
@@ -404,17 +404,17 @@ export default {
       // Color
       { "!bg-highlight": context.selected },
       {
-        "bg-surface-0 text-surface-700 dark:text-white/80 dark:bg-surface-900":
+        "bg-mercury-0 text-mercury-700 dark:text-white/80 dark:bg-mercury-900":
           !context.selected,
       },
-      { "font-bold bg-surface-0 dark:bg-surface-900 z-20": props.frozenRow },
+      { "font-bold bg-mercury-0 dark:bg-mercury-900 z-20": props.frozenRow },
       {
-        "odd:bg-surface-0 odd:text-surface-600 dark:odd:bg-surface-900 even:bg-surface-50 even:text-surface-600 dark:even:bg-surface-800/50":
+        "odd:bg-mercury-0 odd:text-mercury-600 dark:odd:bg-mercury-900 even:bg-mercury-50 even:text-mercury-600 dark:even:bg-mercury-800/50":
           context.stripedRows,
       },
       // State
       {
-        "hover:bg-surface-300/20 dark:hover:bg-surface-800/50":
+        "hover:bg-mercury-300/20 dark:hover:bg-mercury-800/50":
           (props.selectionMode && !context.selected) ||
           parent.instance.rowHover,
       },
@@ -431,20 +431,20 @@ export default {
   }),
   rowExpansion: {
     class:
-      "bg-surface-0 dark:bg-surface-900 text-surface-600 dark:text-white/80",
+      "bg-mercury-0 dark:bg-mercury-900 text-mercury-600 dark:text-white/80",
   },
   rowGroupHeader: {
     class: [
       "sticky z-20",
-      "bg-surface-0 text-surface-600 dark:text-white/70",
-      "dark:bg-surface-900",
+      "bg-mercury-0 text-mercury-600 dark:text-white/70",
+      "dark:bg-mercury-900",
     ],
   },
   rowGroupFooter: {
     class: [
       "sticky z-20",
-      "bg-surface-0 text-surface-600 dark:text-white/70",
-      "dark:bg-surface-900",
+      "bg-mercury-0 text-mercury-600 dark:text-white/70",
+      "dark:bg-mercury-900",
     ],
   },
   rowToggleButton: {
@@ -465,7 +465,7 @@ export default {
       "border-0 rounded-full",
 
       // Color
-      "text-surface-500 dark:text-white/70",
+      "text-mercury-500 dark:text-white/70",
       "bg-transparent",
       "focus-visible:outline-none focus-visible:outline-offset-0",
       "focus-visible:ring-1 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400",

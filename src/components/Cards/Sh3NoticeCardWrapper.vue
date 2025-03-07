@@ -9,7 +9,7 @@
     />
     <div
       v-show="noticeCards.length == 0"
-      class="empty-cards w-full h-full flex flex-col items-center justify-center rounded-lg border border-surface-100"
+      class="empty-cards w-full h-full flex flex-col items-center justify-center rounded-lg border border-mercury-100"
     >
       <img
         src="../../assets/images/illustration/Warning-rafiki.svg"

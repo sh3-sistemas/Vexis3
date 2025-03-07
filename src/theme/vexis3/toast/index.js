@@ -22,12 +22,12 @@ export default {
         "bg-blue-50/90 dark:bg-blue-500/20": props.message.severity == "info",
         "bg-green-50/90 dark:bg-green-500/20":
           props.message.severity == "success",
-        "bg-surface-50 dark:bg-surface-800":
+        "bg-mercury-50 dark:bg-mercury-800":
           props.message.severity == "secondary",
         "bg-orange-50/90 dark:bg-orange-500/20":
           props.message.severity == "warn",
         "bg-red-50/90 dark:bg-red-500/20": props.message.severity == "error",
-        "bg-surface-950 dark:bg-surface-0":
+        "bg-mercury-950 dark:bg-mercury-0":
           props.message.severity == "contrast",
       },
       {
@@ -35,25 +35,25 @@ export default {
           props.message.severity == "info",
         "border-green-200 dark:border-green-500/20":
           props.message.severity == "success",
-        "border-surface-300 dark:border-surface-500/20":
+        "border-mercury-300 dark:border-mercury-500/20":
           props.message.severity == "secondary",
         "border-orange-200 dark:border-orange-500/20":
           props.message.severity == "warn",
         "border-red-200 dark:border-red-500/20":
           props.message.severity == "error",
-        "border-surface-950 dark:border-surface-0":
+        "border-mercury-950 dark:border-mercury-0":
           props.message.severity == "contrast",
       },
       {
         "text-blue-700 dark:text-blue-300": props.message.severity == "info",
         "text-green-700 dark:text-green-300":
           props.message.severity == "success",
-        "text-surface-700 dark:text-surface-300":
+        "text-mercury-700 dark:text-mercury-300":
           props.message.severity == "secondary",
         "text-orange-700 dark:text-orange-300":
           props.message.severity == "warn",
         "text-red-700 dark:text-red-300": props.message.severity == "error",
-        "text-surface-0 dark:text-surface-950":
+        "text-mercury-0 dark:text-mercury-950":
           props.message.severity == "contrast",
       },
     ],
@@ -93,8 +93,8 @@ export default {
       "block",
       "text-sm",
       props.message.severity === "contrast"
-        ? "text-surface-0 dark:text-surface-950"
-        : "text-surface-700 dark:text-surface-0",
+        ? "text-mercury-0 dark:text-mercury-950"
+        : "text-mercury-700 dark:text-mercury-0",
       { "mt-2": props.message.summary },
     ],
   }),
@@ -119,20 +119,20 @@ export default {
       "transition duration-200 ease-in-out",
 
       // States
-      "hover:bg-surface-0/30 dark:hover:bg-[rgba(255,255,255,0.03)]",
+      "hover:bg-mercury-0/30 dark:hover:bg-[rgba(255,255,255,0.03)]",
       "focus:outline-none focus:outline-offset-0 focus:ring-1",
       {
         "focus:ring-blue-500 dark:focus:ring-blue-400":
           props.severity == "info",
         "focus:ring-green-500 dark:focus:ring-green-400":
           props.severity == "success",
-        "focus:ring-surface-500 dark:focus:ring-surface-400":
+        "focus:ring-mercury-500 dark:focus:ring-mercury-400":
           props.severity == "secondary",
         "focus:ring-orange-500 dark:focus:ring-orange-400":
           props.severity == "warn",
         "focus:ring-red-500 dark:focus:ring-red-4000":
           props.severity == "error",
-        "focus:ring-surface-0 dark:focus:ring-surface-950":
+        "focus:ring-mercury-0 dark:focus:ring-mercury-950":
           props.severity == "contrast",
       },
 

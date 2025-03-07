@@ -30,9 +30,9 @@ defineOptions({
 
 const panelMenuPT = {
   panel: { class: "!mb-1 !p-0 border-0" },
-  headerContent: { class: "hover:bg-transparent !text-surface-900" },
+  headerContent: { class: "hover:bg-transparent !text-mercury-900" },
   content: { class: "!pl-0" },
   submenu: { class: "!pl-0" },
-  itemContent: { class: "!text-surface-900" },
+  itemContent: { class: "!text-mercury-900" },
 };
 </script>

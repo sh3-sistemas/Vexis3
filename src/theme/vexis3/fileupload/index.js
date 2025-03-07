@@ -17,9 +17,9 @@ export default {
       "flex-wrap",
 
       // Colors
-      "bg-surface-0",
-      "dark:bg-surface-900",
-      "text-surface-700",
+      "bg-mercury-0",
+      "dark:bg-mercury-900",
+      "text-mercury-700",
       "dark:text-white/80",
 
       // Spacing
@@ -29,8 +29,8 @@ export default {
       // Borders
       "border",
       "border-solid",
-      "border-surface-200",
-      "dark:border-surface-700",
+      "border-mercury-200",
+      "dark:border-mercury-700",
       "border-b-0",
 
       // Shape
@@ -44,9 +44,9 @@ export default {
       "relative",
 
       // Colors
-      "bg-surface-0",
-      "dark:bg-surface-900",
-      "text-surface-700",
+      "bg-mercury-0",
+      "dark:bg-mercury-900",
+      "text-mercury-700",
       "dark:text-white/80",
 
       // Spacing
@@ -54,8 +54,8 @@ export default {
 
       // Borders
       "border border-t-0",
-      "border-surface-200",
-      "dark:border-surface-700",
+      "border-mercury-200",
+      "dark:border-mercury-700",
 
       // Shape
       "rounded-b-lg",
@@ -82,8 +82,8 @@ export default {
 
       // Borders
       "border",
-      "border-surface-200",
-      "dark:border-surface-700",
+      "border-mercury-200",
+      "dark:border-mercury-700",
       "gap-2",
 
       // Shape

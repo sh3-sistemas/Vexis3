@@ -67,7 +67,7 @@ export default {
       "w-[1.125rem] h-[1.125rem]",
 
       // Appearance
-      "rounded-full border-2 border-surface-200 bg-surface-0 dark:border-surface-700 dark:bg-surface-950",
+      "rounded-full border-2 border-mercury-200 bg-mercury-0 dark:border-mercury-700 dark:bg-mercury-950",
 
       // Before
       "before:rounded-full before:w-[0.375rem] before:h-[0.375rem] before:bg-primary",
@@ -77,7 +77,7 @@ export default {
   },
   eventConnector: ({ props }) => ({
     class: [
-      "grow bg-surface-300 dark:bg-surface-700",
+      "grow bg-mercury-300 dark:bg-mercury-700",
       {
         "w-[2px]": props.layout === "vertical",
         "w-full h-[2px]": props.layout === "horizontal",

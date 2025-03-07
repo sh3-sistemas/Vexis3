@@ -14,11 +14,11 @@ export default {
       { "[&>input]:!rounded-r-none": props.dropdown },
 
       // Color
-      "text-surface-900 dark:text-surface-0",
+      "text-mercury-900 dark:text-mercury-0",
 
       //States
       {
-        "bg-surface-200 dark:bg-surface-700 select-none pointer-events-none cursor-default":
+        "bg-mercury-200 dark:bg-mercury-700 select-none pointer-events-none cursor-default":
           props.disabled,
       },
     ],
@@ -43,11 +43,11 @@ export default {
       "appearance-none rounded-md",
 
       // Color
-      "text-surface-700 dark:text-white/80",
-      "placeholder:text-surface-400 dark:placeholder:text-surface-500",
-      { "bg-surface-0 dark:bg-surface-950": !props.disabled },
+      "text-mercury-700 dark:text-white/80",
+      "placeholder:text-mercury-400 dark:placeholder:text-mercury-500",
+      { "bg-mercury-0 dark:bg-mercury-950": !props.disabled },
       "border",
-      { "border-surface-300 dark:border-surface-700": !props.invalid },
+      { "border-mercury-300 dark:border-mercury-700": !props.invalid },
 
       // Invalid State
       "invalid:focus:ring-red-200",
@@ -56,7 +56,7 @@ export default {
 
       // States
       {
-        "hover:border-surface-400 dark:hover:border-surface-700":
+        "hover:border-mercury-400 dark:hover:border-mercury-700":
           !props.invalid,
       },
       {
@@ -108,18 +108,18 @@ export default {
   },
   loader: {
     class: [
-      "text-surface-500 dark:text-surface-0/70",
+      "text-mercury-500 dark:text-mercury-0/70",
       "absolute top-[50%] right-[0.5rem] -mt-2 animate-spin",
     ],
   },
   overlay: {
     class: [
       // Colors
-      "bg-surface-0 dark:bg-surface-900",
-      "text-surface-700 dark:text-white/80",
+      "bg-mercury-0 dark:bg-mercury-900",
+      "text-mercury-700 dark:text-white/80",
 
       // Shape
-      "border border-surface-300 dark:border-surface-700",
+      "border border-mercury-300 dark:border-mercury-700",
       "rounded-md",
       "shadow-md",
 
@@ -146,23 +146,23 @@ export default {
 
       // Colors
       {
-        "text-surface-700 dark:text-white/80":
+        "text-mercury-700 dark:text-white/80":
           !context.focused && !context.selected,
-        "bg-surface-200 dark:bg-surface-600/60":
+        "bg-mercury-200 dark:bg-mercury-600/60":
           context.focused && !context.selected,
-        "text-surface-700 dark:text-white/80":
+        "text-mercury-700 dark:text-white/80":
           context.focused && !context.selected,
         "bg-highlight": context.selected,
       },
 
       //States
       {
-        "hover:bg-surface-100 dark:hover:bg-[rgba(255,255,255,0.03)]":
+        "hover:bg-mercury-100 dark:hover:bg-[rgba(255,255,255,0.03)]":
           !context.focused && !context.selected,
       },
       { "hover:bg-highlight-emphasis": context.selected },
       {
-        "hover:text-surface-700 hover:bg-surface-100 dark:hover:text-white dark:hover:bg-[rgba(255,255,255,0.03)]":
+        "hover:text-mercury-700 hover:bg-mercury-100 dark:hover:text-white dark:hover:bg-[rgba(255,255,255,0.03)]":
           context.focused && !context.selected,
       },
 
@@ -181,7 +181,7 @@ export default {
       "m-0 py-2 px-3",
 
       // Colors
-      "text-surface-400 dark:text-surface-500",
+      "text-mercury-400 dark:text-mercury-500",
 
       // Misc
       "cursor-auto",
@@ -196,7 +196,7 @@ export default {
       "py-2 px-3",
 
       // Color
-      "text-surface-800 dark:text-white/80",
+      "text-mercury-800 dark:text-white/80",
       "bg-transparent",
     ],
   },

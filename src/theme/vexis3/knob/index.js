@@ -14,7 +14,7 @@ export default {
       "stroke-current",
 
       // Color
-      "stroke-surface-200 dark:stroke-surface-700",
+      "stroke-mercury-200 dark:stroke-mercury-700",
 
       // Fill
       "fill-none",
@@ -41,7 +41,7 @@ export default {
       "text-center text-xl",
 
       // Color
-      "fill-surface-600 dark:fill-surface-200",
+      "fill-mercury-600 dark:fill-mercury-200",
     ],
   },
 };

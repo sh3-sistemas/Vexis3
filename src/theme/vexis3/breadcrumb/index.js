@@ -8,7 +8,7 @@ export default {
       "p-4",
 
       // Color
-      "bg-surface-0 dark:bg-surface-900",
+      "bg-mercury-0 dark:bg-mercury-900",
 
       // Misc
       "overflow-x-auto",
@@ -32,7 +32,7 @@ export default {
       "rounded-md",
 
       // Color
-      "text-surface-600 dark:text-white/70",
+      "text-mercury-600 dark:text-white/70",
 
       // States
       "focus-visible:outline-none focus-visible:outline-offset-0",
@@ -46,7 +46,7 @@ export default {
     ],
   },
   itemIcon: {
-    class: "text-surface-600 dark:text-white/70",
+    class: "text-mercury-600 dark:text-white/70",
   },
   separator: {
     class: [
@@ -57,7 +57,7 @@ export default {
       "mx-2",
 
       // Color
-      "text-surface-600 dark:text-white/70",
+      "text-mercury-600 dark:text-white/70",
     ],
   },
 };

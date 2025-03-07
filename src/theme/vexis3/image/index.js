@@ -14,7 +14,7 @@ export default {
       "inset-0 opacity-0 transition-opacity duration-300",
 
       // Color
-      "bg-transparent text-surface-100",
+      "bg-transparent text-mercury-100",
 
       // States
       "hover:opacity-100 hover:cursor-pointer hover:bg-black/50 hover:bg-opacity-50",
@@ -67,7 +67,7 @@ export default {
       "text-white bg-transparent",
 
       // States
-      "hover:text-white hover:bg-surface-0/10",
+      "hover:text-white hover:bg-mercury-0/10",
       "focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-400",
 
       // Transition
@@ -97,7 +97,7 @@ export default {
       "text-white bg-transparent",
 
       // States
-      "hover:text-white hover:bg-surface-0/10",
+      "hover:text-white hover:bg-mercury-0/10",
       "focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-400",
 
       // Transition
@@ -127,7 +127,7 @@ export default {
       "text-white bg-transparent",
 
       // States
-      "hover:text-white hover:bg-surface-0/10",
+      "hover:text-white hover:bg-mercury-0/10",
       "focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-400",
 
       // Transition
@@ -157,7 +157,7 @@ export default {
       "text-white bg-transparent",
 
       // States
-      "hover:text-white hover:bg-surface-0/10",
+      "hover:text-white hover:bg-mercury-0/10",
       "focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-400",
 
       // Transition
@@ -187,7 +187,7 @@ export default {
       "text-white bg-transparent",
 
       // States
-      "hover:text-white hover:bg-surface-0/10",
+      "hover:text-white hover:bg-mercury-0/10",
       "focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-400",
 
       // Transition

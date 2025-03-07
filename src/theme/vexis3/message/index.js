@@ -9,32 +9,32 @@ export default {
       {
         "bg-primary-100/70 dark:bg-primary-500/20": props.severity == "info",
         "bg-jade-100/70 dark:bg-jade-500/20": props.severity == "success",
-        "bg-surface-100/70 dark:bg-surface-500/20":
+        "bg-mercury-100/70 dark:bg-mercury-500/20":
           props.severity == "secondary",
         "bg-sulfur-100/70 dark:bg-sulfur-500/20": props.severity == "warn",
         "bg-ruby-100/70 dark:bg-ruby-500/20": props.severity == "error",
-        "bg-surface-950 dark:bg-surface-0": props.severity == "contrast",
+        "bg-mercury-950 dark:bg-mercury-0": props.severity == "contrast",
       },
       {
         "outline-primary-200 dark:outline-primary-500/20":
           props.severity == "info",
         "outline-jade-200 dark:outline-jade-500/20":
           props.severity == "success",
-        "outline-surface-200 dark:outline-surface-500/20":
+        "outline-mercury-200 dark:outline-mercury-500/20":
           props.severity == "secondary",
         "outline-sulfur-200 dark:outline-sulfur-500/20":
           props.severity == "warn",
         "outline-ruby-200 dark:outline-ruby-500/20": props.severity == "error",
-        "outline-surface-950 dark:outline-surface-0":
+        "outline-mercury-950 dark:outline-mercury-0":
           props.severity == "contrast",
       },
       {
         "text-primary-700 dark:text-primary-300": props.severity == "info",
         "text-jade-700 dark:text-jade-300": props.severity == "success",
-        "text-surface-700 dark:text-surface-300": props.severity == "secondary",
+        "text-mercury-700 dark:text-mercury-300": props.severity == "secondary",
         "text-sulfur-700 dark:text-sulfur-300": props.severity == "warn",
         "text-ruby-700 dark:text-ruby-300": props.severity == "error",
-        "text-surface-0 dark:text-surface-950": props.severity == "contrast",
+        "text-mercury-0 dark:text-mercury-950": props.severity == "contrast",
       },
     ],
   }),
@@ -81,20 +81,20 @@ export default {
       "transition duration-200 ease-in-out",
 
       // States
-      "hover:bg-surface-0/30 dark:hover:bg-[rgba(255,255,255,0.03)]",
+      "hover:bg-mercury-0/30 dark:hover:bg-[rgba(255,255,255,0.03)]",
       "focus:outline-none focus:outline-offset-0 focus:ring-1",
       {
         "focus:ring-primary-500 dark:focus:ring-primary-400":
           props.severity == "info",
         "focus:ring-jade-500 dark:focus:ring-jade-400":
           props.severity == "success",
-        "focus:ring-surface-500 dark:focus:ring-surface-400":
+        "focus:ring-mercury-500 dark:focus:ring-mercury-400":
           props.severity == "secondary",
         "focus:ring-sulfur-500 dark:focus:ring-sulfur-400":
           props.severity == "warn",
         "focus:ring-ruby-500 dark:focus:ring-ruby-4000":
           props.severity == "error",
-        "focus:ring-surface-0 dark:focus:ring-surface-950":
+        "focus:ring-mercury-0 dark:focus:ring-mercury-950":
           props.severity == "contrast",
       },
 

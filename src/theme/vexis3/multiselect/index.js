@@ -12,9 +12,9 @@ export default {
       "rounded-md",
 
       // Color and Background
-      { "bg-surface-0 dark:bg-surface-950": !props.disabled },
+      { "bg-mercury-0 dark:bg-mercury-950": !props.disabled },
       "border",
-      { "border-surface-300 dark:border-surface-600": !props.invalid },
+      { "border-mercury-300 dark:border-mercury-600": !props.invalid },
 
       // Invalid State
       "invalid:focus:ring-red-200",
@@ -27,7 +27,7 @@ export default {
 
       // States
       {
-        "hover:border-surface-400 dark:hover:border-surface-700":
+        "hover:border-mercury-400 dark:hover:border-mercury-700":
           !props.invalid,
       },
       {
@@ -39,7 +39,7 @@ export default {
       "cursor-pointer",
       "select-none",
       {
-        "bg-surface-200 dark:bg-surface-700 select-none pointer-events-none cursor-default":
+        "bg-mercury-200 dark:bg-mercury-700 select-none pointer-events-none cursor-default":
           props.disabled,
       },
     ],
@@ -59,8 +59,8 @@ export default {
 
       // Color
       {
-        "text-surface-800 dark:text-white/80": props.modelValue?.length,
-        "text-surface-400 dark:text-surface-500": !props.modelValue?.length,
+        "text-mercury-800 dark:text-white/80": props.modelValue?.length,
+        "text-mercury-400 dark:text-mercury-500": !props.modelValue?.length,
       },
       {
         "placeholder:text-transparent dark:placeholder:text-transparent":
@@ -92,7 +92,7 @@ export default {
 
       // Color and Background
       "bg-transparent",
-      "text-surface-500",
+      "text-mercury-500",
 
       // Size
       "w-12",
@@ -104,11 +104,11 @@ export default {
   overlay: {
     class: [
       // Colors
-      "bg-surface-0 dark:bg-surface-900",
-      "text-surface-700 dark:text-white/80",
+      "bg-mercury-0 dark:bg-mercury-900",
+      "text-mercury-700 dark:text-white/80",
 
       // Shape
-      "border border-surface-300 dark:border-surface-700",
+      "border border-mercury-300 dark:border-mercury-700",
       "rounded-md",
       "shadow-md",
       "mt-[2px]",
@@ -129,9 +129,9 @@ export default {
       "rounded-tr-md",
 
       // Color
-      "text-surface-700 dark:text-white/80",
-      "bg-surface-0 dark:bg-surface-900",
-      "border-surface-300 dark:border-surface-700",
+      "text-mercury-700 dark:text-white/80",
+      "bg-mercury-0 dark:bg-mercury-900",
+      "border-mercury-300 dark:border-mercury-700",
 
       "[&_[data-pc-name=pcfiltercontainer]]:!flex-auto",
       "[&_[data-pc-name=pcfilter]]:w-full",
@@ -166,23 +166,23 @@ export default {
 
       // Colors
       {
-        "text-surface-700 dark:text-white/80":
+        "text-mercury-700 dark:text-white/80":
           !context.focused && !context.selected,
-        "bg-surface-200 dark:bg-surface-600/60":
+        "bg-mercury-200 dark:bg-mercury-600/60":
           context.focused && !context.selected,
-        "text-surface-700 dark:text-white/80":
+        "text-mercury-700 dark:text-white/80":
           context.focused && !context.selected,
         "bg-highlight": context.selected,
       },
 
       //States
       {
-        "hover:bg-surface-100 dark:hover:bg-[rgba(255,255,255,0.03)]":
+        "hover:bg-mercury-100 dark:hover:bg-[rgba(255,255,255,0.03)]":
           !context.focused && !context.selected,
       },
       { "hover:bg-highlight-emphasis": context.selected },
       {
-        "hover:text-surface-700 hover:bg-surface-100 dark:hover:text-white dark:hover:bg-[rgba(255,255,255,0.03)]":
+        "hover:text-mercury-700 hover:bg-mercury-100 dark:hover:text-white dark:hover:bg-[rgba(255,255,255,0.03)]":
           context.focused && !context.selected,
       },
 
@@ -201,7 +201,7 @@ export default {
       "m-0 py-2 px-3",
 
       // Colors
-      "text-surface-400 dark:text-surface-500",
+      "text-mercury-400 dark:text-mercury-500",
 
       // Misc
       "cursor-auto",
@@ -216,12 +216,12 @@ export default {
       "py-2 px-3",
 
       // Color
-      "text-surface-800 dark:text-white/80",
+      "text-mercury-800 dark:text-white/80",
       "bg-transparent",
     ],
   },
   loadingIcon: {
-    class: "text-surface-400 dark:text-surface-500 animate-spin",
+    class: "text-mercury-400 dark:text-mercury-500 animate-spin",
   },
   transition: {
     enterFromClass: "opacity-0 scale-y-[0.8]",

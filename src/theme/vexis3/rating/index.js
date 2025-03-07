@@ -38,7 +38,7 @@ export default {
       "w-4 h-4",
 
       // Color
-      "text-surface-700 dark:text-surface-0/80",
+      "text-mercury-700 dark:text-mercury-0/80",
 
       // State
       { "hover:text-primary-500 dark:hover:text-primary-400": !props.readonly },

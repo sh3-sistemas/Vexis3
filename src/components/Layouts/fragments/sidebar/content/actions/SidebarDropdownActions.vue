@@ -76,7 +76,7 @@ defineExpose({ openDropdown });
         :class="{ 'opacity-0': !isDropdownOpen }"
         @click.stop="isDropdownOpen = true"
       >
-        <MoreHorizontal class="text-surface-500" />
+        <MoreHorizontal class="text-mercury-500" />
       </SidebarMenuAction>
     </DropdownMenuTrigger>
     <DropdownMenuContent side="right" align="start">

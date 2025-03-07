@@ -1,12 +1,12 @@
 export default {
   root: "has-[[data-pc-name=stepitem]]:flex has-[[data-pc-name=stepitem]]:flex-col",
   separator:
-    "flex-1 w-full h-[2px] bg-surface-200 dark:bg-surface-700 transition-shadow duration-200",
+    "flex-1 w-full h-[2px] bg-mercury-200 dark:bg-mercury-700 transition-shadow duration-200",
   transition: {
     class: [
       "flex flex-1",
-      "bg-surface-0 dark:bg-surface-900",
-      "text-surface-900 dark:text-surface-0",
+      "bg-mercury-0 dark:bg-mercury-900",
+      "text-mercury-900 dark:text-mercury-0",
     ],
     enterFromClass: "max-h-0",
     enterActiveClass:

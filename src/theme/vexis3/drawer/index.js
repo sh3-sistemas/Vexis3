@@ -22,9 +22,9 @@ export default {
       "shadow-lg",
 
       // Colors
-      "bg-surface-0 dark:bg-surface-900",
-      "text-surface-700 dark:text-white/80",
-      "dark:border-surface-700",
+      "bg-mercury-0 dark:bg-mercury-900",
+      "text-mercury-700 dark:text-white/80",
+      "dark:border-mercury-700",
 
       // Transitions
       "transition-transform",
@@ -44,8 +44,8 @@ export default {
       "p-[1.125rem]",
 
       // Colors
-      "bg-surface-0 dark:bg-surface-900",
-      "text-surface-700 dark:text-surface-0/80",
+      "bg-mercury-0 dark:bg-mercury-900",
+      "text-mercury-700 dark:text-mercury-0/80",
     ],
   },
   title: {
@@ -71,15 +71,15 @@ export default {
       "rounded-full",
 
       // Colors
-      "text-surface-500",
+      "text-mercury-500",
       "bg-transparent",
 
       // Transitions
       "transition duration-200 ease-in-out",
 
       // States
-      "hover:text-surface-700 dark:hover:text-white/80",
-      "hover:bg-surface-100 dark:hover:bg-[rgba(255,255,255,0.03)]",
+      "hover:text-mercury-700 dark:hover:text-white/80",
+      "hover:bg-mercury-100 dark:hover:bg-[rgba(255,255,255,0.03)]",
       "focus:outline-none focus:outline-offset-0 focus:ring-1",
       "focus:ring-primary-500 dark:focus:ring-primary-400",
 

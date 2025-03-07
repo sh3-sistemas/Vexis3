@@ -22,7 +22,7 @@
         <div class="placeholder w-full inline-flex gap-2 items-center">
           <div class="placeholder--icon">
             <slot name="placeholderIcon">
-              <Icon icon="ph:cat-light" class="w-5 h-auto text-surface-800"
+              <Icon icon="ph:cat-light" class="w-5 h-auto text-mercury-800"
             /></slot>
           </div>
           <span

@@ -4,10 +4,10 @@
       <span
         v-for="(link, i) in item.links"
         :key="i"
-        class="links w-full py-2 px-4 inline-flex justify-start gap-3 items-center rounded-sm hover:bg-surface-100 active:bg-copper-100/60 pointer-events-auto cursor-pointer"
+        class="links w-full py-2 px-4 inline-flex justify-start gap-3 items-center rounded-sm hover:bg-mercury-100 active:bg-copper-100/60 pointer-events-auto cursor-pointer"
       >
         <Sh3CardTag :tag-variation="link.tag" />
-        <div class="AccordionContentText text-sm text-surface-900">
+        <div class="AccordionContentText text-sm text-mercury-900">
           {{ link.path }}
         </div>
       </span>

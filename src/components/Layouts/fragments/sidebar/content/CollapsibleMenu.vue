@@ -45,7 +45,7 @@ const openDropdownRef = (key: string) => {
         >
           <SidebarItem :item="item" />
           <ChevronDown
-            class="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180 text-surface-500"
+            class="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180 text-mercury-500"
           />
         </SidebarMenuButton>
       </CollapsibleTrigger>

@@ -11,7 +11,7 @@
       class="AccordionItem"
     >
       <AccordionHeader
-        class="flex !font-normal !text-surface-900 bg-surface-50"
+        class="flex !font-normal !text-mercury-900 bg-mercury-50"
       >
         {{ item.title }}
       </AccordionHeader>

@@ -35,13 +35,13 @@ export default {
       "text-primary-contrast",
       {
         "bg-primary": props.severity == null || props.severity === "primary",
-        "bg-surface-500 dark:bg-surface-400": props.severity === "secondary",
+        "bg-mercury-500 dark:bg-mercury-400": props.severity === "secondary",
         "bg-jade-500 dark:bg-jade-400": props.severity === "success",
         "bg-selenium-500 dark:bg-selenium-400": props.severity === "info",
         "bg-sulfur-500 dark:bg-sulfur-400": props.severity === "warn",
         "bg-purple-500 dark:bg-purple-400": props.severity === "help",
         "bg-ruby-500 dark:bg-ruby-400": props.severity === "danger",
-        "text-surface-0 dark:text-surface-900 bg-surface-900 dark:bg-surface-0":
+        "text-mercury-0 dark:text-mercury-900 bg-mercury-900 dark:bg-mercury-0":
           props.severity === "contrast",
       },
     ],

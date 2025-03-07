@@ -8,7 +8,7 @@
           :profile="avatar.profile"
           :avatar-style="avatar.style"
           size="xlarge"
-          class="!text-4xl w-[92px] h-[92px] outline outline-surface-0 outline-8"
+          class="!text-4xl w-[92px] h-[92px] outline outline-mercury-0 outline-8"
         />
       </div>
       <div

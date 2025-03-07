@@ -11,8 +11,8 @@ export default {
       "rounded-[16px]",
 
       // Colors
-      "text-surface-700 dark:text-white",
-      "bg-surface-100 dark:bg-surface-700",
+      "text-mercury-700 dark:text-white",
+      "bg-mercury-100 dark:bg-mercury-700",
     ],
   },
   label: {

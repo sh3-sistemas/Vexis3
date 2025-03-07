@@ -25,10 +25,10 @@ export default {
       "justify-center",
 
       //Colors
-      "border-solid border-2 border-surface-200 dark:border-surface-700",
+      "border-solid border-2 border-mercury-200 dark:border-mercury-700",
 
       // Colors (Conditional)
-      context.active ? "text-primary" : "text-surface-900 dark:text-surface-0", // Adjust colors as needed
+      context.active ? "text-primary" : "text-mercury-900 dark:text-mercury-0", // Adjust colors as needed
 
       // Size and Shape
       "min-w-[2rem]",
@@ -58,7 +58,7 @@ export default {
       // Text
       context.active
         ? "text-primary"
-        : "text-surface-700 dark:text-surface-0/80",
+        : "text-mercury-700 dark:text-mercury-0/80",
       "font-medium",
 
       // Transitions

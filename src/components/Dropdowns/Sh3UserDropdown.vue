@@ -41,7 +41,7 @@
     <ul
       :class="
         twMerge(
-          'user-dropdown-menu--links p-2 text-sm text-gray-800 divide-y divide-surface-100',
+          'user-dropdown-menu--links p-2 text-sm text-gray-800 divide-y divide-mercury-100',
           styling.links.root,
         )
       "
@@ -55,7 +55,7 @@
         <li
           :class="
             twMerge(
-              'user-dropdown-menu--link flex flex-row items-center py-1.5 px-2 gap-2 rounded-xs text-sm hover:bg-black/10 border-b border-surface-100',
+              'user-dropdown-menu--link flex flex-row items-center py-1.5 px-2 gap-2 rounded-xs text-sm hover:bg-black/10 border-b border-mercury-100',
               styling.links.route,
             )
           "

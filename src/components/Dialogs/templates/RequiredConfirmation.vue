@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col align-items-center p-5 surface-overlay border-round text-center"
+    class="flex flex-col align-items-center p-5 mercury-overlay border-round text-center"
   >
     <div class="close-button-wrapper flex items-center justify-end">
       <Button

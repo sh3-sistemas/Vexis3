@@ -16,9 +16,9 @@ export default {
       "shadow-md rounded-md",
 
       // Colors
-      "bg-surface-0 dark:bg-surface-900",
-      "text-surface-700 dark:text-white/80",
-      "border-surface-200 dark:border-surface-700",
+      "bg-mercury-0 dark:bg-mercury-900",
+      "text-mercury-700 dark:text-white/80",
+      "border-mercury-200 dark:border-mercury-700",
     ],
   },
   meter: {
@@ -36,7 +36,7 @@ export default {
       "mb-3",
 
       // Colors
-      "bg-surface-100 dark:bg-surface-700",
+      "bg-mercury-100 dark:bg-mercury-700",
     ],
   },
   meterLabel: ({ instance }) => ({
@@ -60,13 +60,13 @@ export default {
   maskIcon: {
     class: [
       "absolute top-1/2 right-3 -mt-2 z-10",
-      "text-surface-600 dark:text-white/70",
+      "text-mercury-600 dark:text-white/70",
     ],
   },
   unmaskIcon: {
     class: [
       "absolute top-1/2 right-3 -mt-2 z-10",
-      "text-surface-600 dark:text-white/70",
+      "text-mercury-600 dark:text-white/70",
     ],
   },
   transition: {

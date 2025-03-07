@@ -27,17 +27,17 @@ export default {
       // Shape
       "border",
       "rounded-md",
-      "border-surface-200 dark:border-surface-700",
+      "border-mercury-200 dark:border-mercury-700",
       // Color
       {
-        "text-surface-600 dark:text-white/80": !context?.selected,
-        "bg-surface-0 dark:bg-surface-900": !context?.selected,
+        "text-mercury-600 dark:text-white/80": !context?.selected,
+        "bg-mercury-0 dark:bg-mercury-900": !context?.selected,
         "bg-highlight": context?.selected,
       },
 
       // States
       {
-        "hover:bg-surface-100 dark:hover:bg-surface-800":
+        "hover:bg-mercury-100 dark:hover:bg-mercury-800":
           context?.selectable && !context?.selected,
         "hover:bg-highlight-emphasis": context?.selectable && context?.selected,
       },
@@ -63,7 +63,7 @@ export default {
       "w-px h-[20px]",
 
       // Color
-      "bg-surface-200 dark:bg-surface-700",
+      "bg-mercury-200 dark:bg-mercury-700",
     ],
   },
   connectorLeft: ({ context }) => ({
@@ -79,7 +79,7 @@ export default {
       { "border-t": context.lineTop },
 
       // Color
-      "border-surface-200 dark:border-surface-700",
+      "border-mercury-200 dark:border-mercury-700",
     ],
   }),
   connectorRight: ({ context }) => ({
@@ -95,7 +95,7 @@ export default {
 
       // Color
       {
-        "border-t border-surface-200 dark:border-surface-700": context.lineTop,
+        "border-t border-mercury-200 dark:border-mercury-700": context.lineTop,
       },
     ],
   }),
@@ -116,7 +116,7 @@ export default {
 
       // Shape
       "rounded-full",
-      "border border-surface-200 dark:border-surface-700",
+      "border border-mercury-200 dark:border-mercury-700",
 
       // Color
       "bg-inherit text-inherit",

@@ -9,27 +9,27 @@
   --vf-success: #548a26;
   --vf-success-lighter: #c8e5a9;
 
-  --vf-gray-50: var(--p-surface-50);
-  --vf-gray-100: var(--p-surface-100);
-  --vf-gray-200: var(--p-surface-200);
-  --vf-gray-300: var(--p-surface-300);
-  --vf-gray-400: var(--p-surface-400);
-  --vf-gray-500: var(--p-surface-500);
-  --vf-gray-600: var(--p-surface-600);
-  --vf-gray-700: var(--p-surface-700);
-  --vf-gray-800: var(--p-surface-800);
-  --vf-gray-900: var(--p-surface-900);
+  --vf-gray-50: var(--p-mercury-50);
+  --vf-gray-100: var(--p-mercury-100);
+  --vf-gray-200: var(--p-mercury-200);
+  --vf-gray-300: var(--p-mercury-300);
+  --vf-gray-400: var(--p-mercury-400);
+  --vf-gray-500: var(--p-mercury-500);
+  --vf-gray-600: var(--p-mercury-600);
+  --vf-gray-700: var(--p-mercury-700);
+  --vf-gray-800: var(--p-mercury-800);
+  --vf-gray-900: var(--p-mercury-900);
 
-  --vf-dark-50: var(--p-surface-50);
-  --vf-dark-100: var(--p-surface-100);
-  --vf-dark-200: var(--p-surface-200);
-  --vf-dark-300: var(--p-surface-300);
-  --vf-dark-400: var(--p-surface-400);
-  --vf-dark-500: var(--p-surface-500);
-  --vf-dark-600: var(--p-surface-600);
-  --vf-dark-700: var(--p-surface-700);
-  --vf-dark-800: var(--p-surface-800);
-  --vf-dark-900: var(--p-surface-900);
+  --vf-dark-50: var(--p-mercury-50);
+  --vf-dark-100: var(--p-mercury-100);
+  --vf-dark-200: var(--p-mercury-200);
+  --vf-dark-300: var(--p-mercury-300);
+  --vf-dark-400: var(--p-mercury-400);
+  --vf-dark-500: var(--p-mercury-500);
+  --vf-dark-600: var(--p-mercury-600);
+  --vf-dark-700: var(--p-mercury-700);
+  --vf-dark-800: var(--p-mercury-800);
+  --vf-dark-900: var(--p-mercury-900);
 
   --vf-ring-color: var(--p-primary-color);
   --vf-ring-width: 2px;

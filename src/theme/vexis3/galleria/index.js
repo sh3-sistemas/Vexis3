@@ -111,7 +111,7 @@ export default {
       "bg-transparent text-white w-8 h-8 rounded-full transition duration-200 ease-in-out",
 
       // Hover Effects
-      "hover:bg-surface-0/10 hover:text-white",
+      "hover:bg-mercury-0/10 hover:text-white",
 
       // Focus Effects
       "focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-400",
@@ -171,7 +171,7 @@ export default {
       "bg-transparent text-white w-8 h-8 rounded-full transition duration-200 ease-in-out",
 
       // Hover Effects
-      "hover:bg-surface-0/10 hover:text-white",
+      "hover:bg-mercury-0/10 hover:text-white",
 
       // Focus Effects
       "focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-400",
@@ -237,7 +237,7 @@ export default {
 
       // Conditional Appearance: Not Highlighted
       {
-        "bg-surface-200 hover:bg-surface-300 dark:bg-surface-700 dark:hover:bg-surface-600":
+        "bg-mercury-200 hover:bg-mercury-300 dark:bg-mercury-700 dark:hover:bg-mercury-600":
           !context.highlighted,
       },
 
@@ -267,7 +267,7 @@ export default {
       "text-white bg-transparent w-12 h-12 rounded-full transition duration-200 ease-in-out",
 
       // Hover Effect
-      "hover:text-white hover:bg-surface-0/10",
+      "hover:text-white hover:bg-mercury-0/10",
 
       // Focus Effects
       "focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-400",
@@ -300,7 +300,7 @@ export default {
       },
 
       // Hover Effect
-      "hover:bg-surface-0/10 hover:text-white",
+      "hover:bg-mercury-0/10 hover:text-white",
 
       // Focus Effects
       "focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-400",
@@ -330,7 +330,7 @@ export default {
       },
 
       // Hover Effect
-      "hover:bg-surface-0/10 hover:text-white",
+      "hover:bg-mercury-0/10 hover:text-white",
 
       // Focus Effects
       "focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-400",

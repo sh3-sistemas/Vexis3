@@ -2,7 +2,7 @@
   <div class="autocomplete-search-wrapper inline-flex items-center">
     <Icon
       icon="ion:search-outline"
-      class="w-4.5 h-auto relative -right-[30px] text-surface-500 py-1 z-20"
+      class="w-4.5 h-auto relative -right-[30px] text-mercury-500 py-1 z-20"
     />
     <AutoComplete
       v-model="value"

@@ -21,7 +21,7 @@ export default {
         "bg-highlight": props.severity === null || props.severity === "primary",
         "text-jade-700 dark:text-jade-300 bg-jade-100 dark:bg-jade-500/20":
           props.severity === "success",
-        "text-surface-700 dark:text-surface-300 bg-surface-100 dark:bg-surface-500/20":
+        "text-mercury-700 dark:text-mercury-300 bg-mercury-100 dark:bg-mercury-500/20":
           props.severity === "secondary",
         "text-primary-700 dark:text-primary-300 bg-primary-100 dark:bg-primary-500/20":
           props.severity === "info",
@@ -29,7 +29,7 @@ export default {
           props.severity === "warn",
         "text-ruby-700 dark:text-ruby-300 bg-ruby-100 dark:bg-ruby-500/20":
           props.severity === "danger",
-        "text-surface-0 dark:text-surface-900 bg-surface-900 dark:bg-surface-0":
+        "text-mercury-0 dark:text-mercury-900 bg-mercury-900 dark:bg-mercury-0":
           props.severity === "contrast",
       },
     ],

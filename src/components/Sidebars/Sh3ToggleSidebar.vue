@@ -57,7 +57,7 @@
     </div>
   </div>
   <Sh3IconButton
-    class="!w-7 !h-7 shrink-0 mt-16 -ml-6 relative !bg-surface-300 !hover:bg-surface-400 !active:bg-primary-300 !shadow !ring-0 !ring-transparent"
+    class="!w-7 !h-7 shrink-0 mt-16 -ml-6 relative !bg-mercury-300 !hover:bg-mercury-400 !active:bg-primary-300 !shadow !ring-0 !ring-transparent"
     severity="secondary"
     :icon="{
       name: isOpen ? 'majesticons:chevron-left' : 'majesticons:chevron-right',

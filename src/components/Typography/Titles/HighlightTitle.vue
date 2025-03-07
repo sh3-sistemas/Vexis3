@@ -2,7 +2,7 @@
   <div
     :class="
       twMerge(
-        'title-container inline-flex text-lg text-surface-950',
+        'title-container inline-flex text-lg text-mercury-950',
         highlightStyle.main,
       )
     "

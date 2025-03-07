@@ -33,8 +33,8 @@ export default {
       "rounded-none",
 
       // Colors
-      "bg-surface-0 dark:bg-surface-900",
-      "text-surface-700 dark:text-surface-0/80",
+      "bg-mercury-0 dark:bg-mercury-900",
+      "text-mercury-700 dark:text-mercury-0/80",
       "shadow-sm",
     ],
   },
@@ -53,8 +53,8 @@ export default {
       "rounded-none",
 
       // Colors
-      "text-surface-700 dark:text-surface-0/80",
-      "bg-surface-0 dark:bg-surface-900",
+      "text-mercury-700 dark:text-mercury-0/80",
+      "bg-mercury-0 dark:bg-mercury-900",
       "shadow-sm",
     ],
   },
@@ -68,9 +68,9 @@ export default {
       "p-0 m-0",
 
       // Colors
-      "bg-surface-0 dark:bg-surface-900",
-      "border-b border-surface-200 dark:border-surface-700",
-      "text-surface-900 dark:text-surface-0/80",
+      "bg-mercury-0 dark:bg-mercury-900",
+      "border-b border-mercury-200 dark:border-mercury-700",
+      "text-mercury-900 dark:text-mercury-0/80",
     ],
   },
   tabpanel: {
@@ -107,14 +107,14 @@ export default {
 
         // Colors and Conditions
         {
-          "border-surface-200 dark:border-surface-700":
+          "border-mercury-200 dark:border-mercury-700":
             parent.state.d_activeIndex !== context.index,
-          "bg-surface-0 dark:bg-surface-900":
+          "bg-mercury-0 dark:bg-mercury-900":
             parent.state.d_activeIndex !== context.index,
-          "text-surface-700 dark:text-surface-0/80":
+          "text-mercury-700 dark:text-mercury-0/80":
             parent.state.d_activeIndex !== context.index,
 
-          "bg-surface-0 dark:bg-surface-900":
+          "bg-mercury-0 dark:bg-mercury-900":
             parent.state.d_activeIndex === context.index,
           "border-primary": parent.state.d_activeIndex === context.index,
           "text-primary": parent.state.d_activeIndex === context.index,
@@ -123,9 +123,9 @@ export default {
         // States
         "focus:outline-none focus:outline-offset-0 focus-visible:ring-1 ring-inset focus-visible:ring-primary-400 dark:focus-visible:ring-primary-300",
         {
-          "hover:bg-surface-0 dark:hover:bg-surface-800/80":
+          "hover:bg-mercury-0 dark:hover:bg-mercury-800/80":
             parent.state.d_activeIndex !== context.index,
-          "hover:text-surface-900 dark:hover:text-surface-0":
+          "hover:text-mercury-900 dark:hover:text-mercury-0":
             parent.state.d_activeIndex !== context.index,
         },
 
@@ -156,8 +156,8 @@ export default {
       "border-br-md border-bl-md",
 
       // Colors
-      "bg-surface-0 dark:bg-surface-900",
-      "text-surface-900 dark:text-surface-0/80",
+      "bg-mercury-0 dark:bg-mercury-900",
+      "text-mercury-900 dark:text-mercury-0/80",
     ],
   },
 };

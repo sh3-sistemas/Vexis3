@@ -45,10 +45,10 @@ export default {
           props.plain && !props.outlined && !props.text,
       },
       // Plain Text Button
-      { "text-surface-500": props.plain && props.text },
+      { "text-mercury-500": props.plain && props.text },
       // Plain Outlined Button
       {
-        "text-surface-500 border border-gray-500":
+        "text-mercury-500 border border-gray-500":
           props.plain && props.outlined,
       },
 
@@ -91,17 +91,17 @@ export default {
 
       // Secondary Button
       {
-        "text-surface-900 dark:text-white":
+        "text-mercury-900 dark:text-white":
           props.severity === "secondary" &&
           !props.text &&
           !props.outlined &&
           !props.plain,
-        "bg-surface-100 dark:bg-surface-700":
+        "bg-mercury-100 dark:bg-mercury-700":
           props.severity === "secondary" &&
           !props.text &&
           !props.outlined &&
           !props.plain,
-        "border border-surface-100 dark:border-surface-700":
+        "border border-mercury-100 dark:border-mercury-700":
           props.severity === "secondary" &&
           !props.text &&
           !props.outlined &&
@@ -109,12 +109,12 @@ export default {
       },
       // Secondary Text Button
       {
-        "text-surface-500 dark:text-surface-300":
+        "text-mercury-500 dark:text-mercury-300":
           props.text && props.severity === "secondary" && !props.plain,
       },
       // Secondary Outlined Button
       {
-        "text-surface-500 dark:text-surface-300 border border-surface-500 hover:bg-surface-300/10":
+        "text-mercury-500 dark:text-mercury-300 border border-mercury-500 hover:bg-mercury-300/10":
           props.outlined && props.severity === "secondary" && !props.plain,
       },
 
@@ -149,7 +149,7 @@ export default {
 
       // Info Button
       {
-        "text-white dark:text-surface-900":
+        "text-white dark:text-mercury-900":
           props.severity === "info" &&
           !props.text &&
           !props.outlined &&
@@ -178,7 +178,7 @@ export default {
 
       // Warning Button
       {
-        "text-white dark:text-surface-900":
+        "text-white dark:text-mercury-900":
           props.severity === "warn" &&
           !props.text &&
           !props.outlined &&
@@ -207,7 +207,7 @@ export default {
 
       // Help Button
       {
-        "text-white dark:text-surface-900":
+        "text-white dark:text-mercury-900":
           props.severity === "help" &&
           !props.text &&
           !props.outlined &&
@@ -236,7 +236,7 @@ export default {
 
       // Danger Button
       {
-        "text-white dark:text-surface-900":
+        "text-white dark:text-mercury-900":
           props.severity === "danger" &&
           !props.text &&
           !props.outlined &&
@@ -265,17 +265,17 @@ export default {
 
       // Contrast Button
       {
-        "text-white dark:text-surface-900":
+        "text-white dark:text-mercury-900":
           props.severity === "contrast" &&
           !props.text &&
           !props.outlined &&
           !props.plain,
-        "bg-surface-900 dark:bg-surface-0":
+        "bg-mercury-900 dark:bg-mercury-0":
           props.severity === "contrast" &&
           !props.text &&
           !props.outlined &&
           !props.plain,
-        "border border-surface-900 dark:border-surface-0":
+        "border border-mercury-900 dark:border-mercury-0":
           props.severity === "contrast" &&
           !props.text &&
           !props.outlined &&
@@ -283,12 +283,12 @@ export default {
       },
       // Contrast Text Button
       {
-        "text-surface-900 dark:text-surface-0":
+        "text-mercury-900 dark:text-mercury-0":
           props.text && props.severity === "contrast" && !props.plain,
       },
       // Contrast Outlined Button
       {
-        "text-surface-900 dark:text-surface-0 border border-surface-900 dark:border-surface-0":
+        "text-mercury-900 dark:text-mercury-0 border border-mercury-900 dark:border-mercury-0":
           props.outlined && props.severity === "contrast" && !props.plain,
       },
 
@@ -305,7 +305,7 @@ export default {
       },
       // Text & Outlined Button
       {
-        "hover:bg-surface-300/10":
+        "hover:bg-mercury-300/10":
           props.plain && (props.text || props.outlined),
       },
 
@@ -329,19 +329,19 @@ export default {
 
       // Secondary
       {
-        "hover:bg-surface-200 dark:hover:bg-surface-600 hover:border-surface-200 dark:hover:border-surface-600":
+        "hover:bg-mercury-200 dark:hover:bg-mercury-600 hover:border-mercury-200 dark:hover:border-mercury-600":
           props.severity === "secondary" &&
           !props.text &&
           !props.outlined &&
           !props.plain,
       },
       {
-        "focus:ring-surface-500 dark:focus:ring-surface-400":
+        "focus:ring-mercury-500 dark:focus:ring-mercury-400":
           props.severity === "secondary",
       },
       // Text & Outlined Button
       {
-        "hover:bg-surface-300/10":
+        "hover:bg-mercury-300/10":
           (props.text || props.outlined) &&
           props.severity === "secondary" &&
           !props.plain,
@@ -449,19 +449,19 @@ export default {
 
       // Contrast
       {
-        "hover:bg-surface-800 dark:hover:bg-surface-100 hover:border-surface-800 dark:hover:border-surface-100":
+        "hover:bg-mercury-800 dark:hover:bg-mercury-100 hover:border-mercury-800 dark:hover:border-mercury-100":
           props.severity === "contrast" &&
           !props.text &&
           !props.outlined &&
           !props.plain,
       },
       {
-        "focus:ring-surface-500 dark:focus:ring-surface-400":
+        "focus:ring-mercury-500 dark:focus:ring-mercury-400":
           props.severity === "contrast",
       },
       // Text & Outlined Button
       {
-        "hover:bg-surface-900/10 dark:hover:bg-[rgba(255,255,255,0.03)]":
+        "hover:bg-mercury-900/10 dark:hover:bg-[rgba(255,255,255,0.03)]":
           (props.text || props.outlined) &&
           props.severity === "contrast" &&
           !props.plain,

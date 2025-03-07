@@ -11,10 +11,10 @@ export default {
       "rounded-md",
 
       // Colors
-      "text-surface-700 dark:text-white/80",
+      "text-mercury-700 dark:text-white/80",
 
       // States
-      "hover:bg-surface-100 hover:text-surface-700 dark:hover:bg-surface-800 dark:hover:text-white/80",
+      "hover:bg-mercury-100 hover:text-mercury-700 dark:hover:bg-mercury-800 dark:hover:text-white/80",
 
       // Transitions
       "transition",

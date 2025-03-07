@@ -20,11 +20,11 @@ export default {
         "leading-none",
 
         // Colors
-        "text-surface-600 dark:text-surface-200",
-        "placeholder:text-surface-400 dark:placeholder:text-surface-500",
-        { "bg-surface-0 dark:bg-surface-950": !props.disabled },
+        "text-mercury-600 dark:text-mercury-200",
+        "placeholder:text-mercury-400 dark:placeholder:text-mercury-500",
+        { "bg-mercury-0 dark:bg-mercury-950": !props.disabled },
         "border",
-        { "border-surface-300 dark:border-surface-600": !props.invalid },
+        { "border-mercury-300 dark:border-mercury-600": !props.invalid },
 
         // Invalid State
         "invalid:focus:ring-red-200",
@@ -52,11 +52,11 @@ export default {
 
         // States
         {
-          "hover:border-surface-400 dark:hover:border-surface-600":
+          "hover:border-mercury-400 dark:hover:border-mercury-600":
             !props.disabled && !props.invalid,
           "focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-400 focus:z-10":
             !props.disabled,
-          "bg-surface-200 dark:bg-surface-700 select-none pointer-events-none cursor-default":
+          "bg-mercury-200 dark:bg-mercury-700 select-none pointer-events-none cursor-default":
             props.disabled,
         },
 
@@ -71,7 +71,7 @@ export default {
   dropdownIcon: {
     class: [
       "absolute top-1/2 -mt-2",
-      "text-surface-600 dark:text-surface-200",
+      "text-mercury-600 dark:text-mercury-200",
       "right-3",
     ],
   },
@@ -91,7 +91,7 @@ export default {
       "leading-[normal]",
 
       // Colors
-      "border border-l-0 border-surface-300 dark:border-surface-600",
+      "border border-l-0 border-mercury-300 dark:border-mercury-600",
 
       // States
       "focus:outline-none focus:outline-offset-0 focus:ring-1",
@@ -121,8 +121,8 @@ export default {
       },
 
       // Colors
-      "bg-surface-0 dark:bg-surface-900",
-      "border-surface-200 dark:border-surface-700",
+      "bg-mercury-0 dark:bg-mercury-900",
+      "border-mercury-200 dark:border-mercury-700",
 
       //misc
       { "overflow-x-auto": props.inline },
@@ -145,9 +145,9 @@ export default {
       "rounded-t-md",
 
       // Colors
-      "text-surface-700 dark:text-white/80",
-      "bg-surface-0 dark:bg-surface-900",
-      "border-surface-200 dark:border-surface-700",
+      "text-mercury-700 dark:text-white/80",
+      "bg-mercury-0 dark:bg-mercury-900",
+      "border-mercury-200 dark:border-mercury-700",
     ],
   },
   title: {
@@ -167,7 +167,7 @@ export default {
       "rounded-md",
 
       // Colors
-      "text-surface-700 dark:text-white/80",
+      "text-mercury-700 dark:text-white/80",
 
       // Transitions
       "transition duration-200",
@@ -194,7 +194,7 @@ export default {
       "rounded-md",
 
       // Colors
-      "text-surface-700 dark:text-white/80",
+      "text-mercury-700 dark:text-white/80",
 
       // Transitions
       "transition duration-200",
@@ -233,17 +233,17 @@ export default {
   weekHeader: {
     class: [
       "leading-5",
-      "text-surface-600 dark:text-white/70",
+      "text-mercury-600 dark:text-white/70",
       "opacity-60 cursor-default",
     ],
   },
   weekNumber: {
-    class: ["text-surface-600 dark:text-white/70", "opacity-60 cursor-default"],
+    class: ["text-mercury-600 dark:text-white/70", "opacity-60 cursor-default"],
   },
   weekday: {
     class: [
       // Colors
-      "text-surface-500 dark:text-white/60",
+      "text-mercury-500 dark:text-white/60",
       "p-1",
     ],
   },
@@ -284,9 +284,9 @@ export default {
 
       // Colors
       {
-        "bg-surface-100 dark:bg-surface-800 text-surface-600 dark:text-white/70":
+        "bg-mercury-100 dark:bg-mercury-800 text-mercury-600 dark:text-white/70":
           context.date.today && !context.selected && !context.disabled,
-        "bg-transparent text-surface-600 dark:text-white/70":
+        "bg-transparent text-mercury-600 dark:text-white/70":
           !context.selected && !context.disabled && !context.date.today,
         "bg-highlight": context.selected && !context.disabled,
       },
@@ -294,7 +294,7 @@ export default {
       // States
       "focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-400 focus:z-10",
       {
-        "hover:bg-surface-50 dark:hover:bg-surface-500/10":
+        "hover:bg-mercury-50 dark:hover:bg-mercury-500/10":
           !context.selected && !context.disabled,
       },
       {
@@ -323,7 +323,7 @@ export default {
 
       // Colors
       {
-        "text-surface-600 dark:text-white/70 bg-transparent":
+        "text-mercury-600 dark:text-white/70 bg-transparent":
           !context.selected && !context.disabled,
         "bg-highlight": context.selected && !context.disabled,
       },
@@ -331,7 +331,7 @@ export default {
       // States
       "focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-400 focus:z-10",
       {
-        "hover:bg-surface-100 dark:hover:bg-[rgba(255,255,255,0.03)]":
+        "hover:bg-mercury-100 dark:hover:bg-[rgba(255,255,255,0.03)]":
           !context.selected && !context.disabled,
       },
 
@@ -359,7 +359,7 @@ export default {
 
       // Colors
       {
-        "text-surface-600 dark:text-white/70 bg-transparent":
+        "text-mercury-600 dark:text-white/70 bg-transparent":
           !context.selected && !context.disabled,
         "bg-highlight": context.selected && !context.disabled,
       },
@@ -367,7 +367,7 @@ export default {
       // States
       "focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-400 focus:z-10",
       {
-        "hover:bg-surface-100 dark:hover:bg-[rgba(255,255,255,0.03)]":
+        "hover:bg-mercury-100 dark:hover:bg-[rgba(255,255,255,0.03)]":
           !context.selected && !context.disabled,
       },
 
@@ -383,7 +383,7 @@ export default {
 
       // Borders
       "border-t-1",
-      "border-solid border-surface-200",
+      "border-solid border-mercury-200",
 
       // Spacing
       "pt-2 mt-2",
@@ -451,7 +451,7 @@ export default {
     ],
   },
   calendarContainer: "flex",
-  calendar: "flex-auto border-l first:border-l-0 border-surface-200",
+  calendar: "flex-auto border-l first:border-l-0 border-mercury-200",
   buttonbar: {
     class: [
       // Flexbox
@@ -461,7 +461,7 @@ export default {
       "pt-2",
 
       // Shape
-      "border-t border-surface-200 dark:border-surface-700",
+      "border-t border-mercury-200 dark:border-mercury-700",
     ],
   },
   transition: {

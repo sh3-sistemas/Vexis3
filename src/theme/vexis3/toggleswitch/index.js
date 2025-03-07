@@ -28,16 +28,16 @@ export default {
       "before:h-4 before:w-4",
       "before:rounded-full",
       "before:duration-200",
-      "before:bg-surface-0 before:dark:bg-surface-500",
+      "before:bg-mercury-0 before:dark:bg-mercury-500",
 
       // Colors
       "border",
       {
-        "bg-surface-300 dark:bg-surface-800": !(
+        "bg-mercury-300 dark:bg-mercury-800": !(
           props.modelValue == props.trueValue
         ),
         "bg-primary": props.modelValue == props.trueValue,
-        "before:dark:bg-surface-950": props.modelValue == props.trueValue,
+        "before:dark:bg-mercury-950": props.modelValue == props.trueValue,
         "border-transparent": !props.invalid,
       },
 
@@ -46,7 +46,7 @@ export default {
 
       // States
       {
-        "peer-hover:bg-surface-400 dark:peer-hover:bg-surface-700":
+        "peer-hover:bg-mercury-400 dark:peer-hover:bg-mercury-700":
           !(props.modelValue == props.trueValue) &&
           !props.disabled &&
           !props.invalid,

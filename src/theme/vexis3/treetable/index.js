@@ -21,7 +21,7 @@ export default {
       "w-full h-full",
 
       // Color
-      "bg-surface-100/40 dark:bg-surface-800/40",
+      "bg-mercury-100/40 dark:bg-mercury-800/40",
 
       // Transition
       "transition duration-200",
@@ -52,9 +52,9 @@ export default {
       "p-4",
 
       // Color
-      "bg-surface-0 dark:bg-surface-900",
-      "border-surface-200 dark:border-surface-700",
-      "text-surface-700 dark:text-white/80",
+      "bg-mercury-0 dark:bg-mercury-900",
+      "border-mercury-200 dark:border-mercury-700",
+      "text-mercury-700 dark:text-white/80",
     ],
   }),
   footer: {
@@ -68,9 +68,9 @@ export default {
       "p-4",
 
       // Color
-      "bg-surface-0 dark:bg-surface-900",
-      "border-surface-200 dark:border-surface-700",
-      "text-surface-700 dark:text-white/80",
+      "bg-mercury-0 dark:bg-mercury-900",
+      "border-mercury-200 dark:border-mercury-700",
+      "text-mercury-700 dark:text-white/80",
     ],
   },
   table: {
@@ -117,15 +117,15 @@ export default {
       { "flex flex-nowrap w-full": context.scrollable },
 
       // Color
-      "text-surface-700 dark:text-white/80",
+      "text-mercury-700 dark:text-white/80",
       { "bg-highlight": context.selected },
       {
-        "bg-surface-0 text-surface-600 dark:bg-surface-900": !context.selected,
+        "bg-mercury-0 text-mercury-600 dark:bg-mercury-900": !context.selected,
       },
 
       // Hover & Flexbox
       {
-        "hover:bg-surface-100 dark:bg-surface-800/50":
+        "hover:bg-mercury-100 dark:bg-mercury-800/50":
           context.selectable && !context.selected,
       },
       "focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-primary-500 ring-inset dark:focus:ring-primary-400",
@@ -174,12 +174,12 @@ export default {
       // Color
       (props.sortable === "" || props.sortable) && context.sorted
         ? "bg-highlight"
-        : "bg-surface-0 text-surface-700 dark:text-white/80 dark:bg-surface-900",
-      "border-surface-200 dark:border-surface-700",
+        : "bg-mercury-0 text-mercury-700 dark:text-white/80 dark:bg-mercury-900",
+      "border-mercury-200 dark:border-mercury-700",
 
       // States
       {
-        "hover:bg-surface-100 dark:hover:bg-surface-80/50":
+        "hover:bg-mercury-100 dark:hover:bg-mercury-80/50":
           (props.sortable === "" || props.sortable) && !context?.sorted,
       },
       "focus-visible:outline-none focus-visible:outline-offset-0 focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400",
@@ -232,12 +232,12 @@ export default {
         // Color
         (props.sortable === "" || props.sortable) && context.sorted
           ? "bg-highlight"
-          : "bg-surface-0 text-surface-700 dark:text-white/80 dark:bg-surface-900",
-        "border-surface-200 dark:border-surface-700",
+          : "bg-mercury-0 text-mercury-700 dark:text-white/80 dark:bg-mercury-900",
+        "border-mercury-200 dark:border-mercury-700",
 
         // States
         {
-          "hover:bg-surface-100 dark:hover:bg-surface-80/50":
+          "hover:bg-mercury-100 dark:hover:bg-mercury-80/50":
             (props.sortable === "" || props.sortable) && !context?.sorted,
         },
         "focus-visible:outline-none focus-visible:outline-offset-0 focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400",
@@ -277,7 +277,7 @@ export default {
 
         // Shape
         "border-0 border-b border-solid",
-        "border-surface-200 dark:border-surface-700",
+        "border-mercury-200 dark:border-mercury-700",
         {
           "border-x-0 border-l-0": !context.showGridlines,
         },
@@ -320,12 +320,12 @@ export default {
         "border-0 rounded-full",
 
         // Color
-        "text-surface-700 dark:text-white/70",
+        "text-mercury-700 dark:text-white/70",
         "border-transparent",
 
         // States
         "focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-400",
-        "hover:text-surface-700 hover:bg-surface-50 dark:hover:bg-surface-800/50",
+        "hover:text-mercury-700 hover:bg-mercury-50 dark:hover:bg-mercury-800/50",
 
         // Transition
         "transition duration-200",
@@ -338,7 +338,7 @@ export default {
     sortIcon: ({ context }) => ({
       class: [
         "ml-2 inline-block",
-        context.sorted ? "text-inherit" : "fill-surface-700 dark:fill-white/70",
+        context.sorted ? "text-inherit" : "fill-mercury-700 dark:fill-white/70",
       ],
     }),
     columnResizer: {

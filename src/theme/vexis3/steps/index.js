@@ -16,8 +16,8 @@ export default {
 
       // Before
       "before:border-t-2",
-      "before:border-surface-200",
-      "before:dark:border-surface-700",
+      "before:border-mercury-200",
+      "before:dark:border-mercury-700",
       "before:w-full",
       "[&:first-child]:before:w-[calc(50%+1rem)]",
       "[&:last-child]:before:w-1/2",
@@ -40,7 +40,7 @@ export default {
       "rounded-md",
 
       // Colors
-      "bg-surface-0",
+      "bg-mercury-0",
       "dark:bg-transparent",
 
       // States
@@ -72,16 +72,16 @@ export default {
       "font-medium",
 
       // Colors
-      "bg-surface-0 dark:bg-surface-800",
-      "border-surface-100 dark:border-surface-700",
+      "bg-mercury-0 dark:bg-mercury-800",
+      "border-mercury-100 dark:border-mercury-700",
       {
-        "text-surface-400 dark:text-white/60": !context.active,
+        "text-mercury-400 dark:text-white/60": !context.active,
         "text-primary": context.active,
       },
 
       // States
       {
-        "hover:border-surface-300 dark:hover:border-surface-500":
+        "hover:border-mercury-300 dark:hover:border-mercury-500":
           !context.active && !props.readonly,
       },
 
@@ -103,7 +103,7 @@ export default {
 
       // Colors
       {
-        "text-surface-700 dark:text-white/70": !context.active,
+        "text-mercury-700 dark:text-white/70": !context.active,
         "text-primary": context.active,
       },
 

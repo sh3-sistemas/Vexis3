@@ -12,9 +12,9 @@ export default {
       "p-0 m-0",
 
       // Colors
-      "bg-surface-0 dark:bg-surface-900",
-      "border-b-2 border-surface-200 dark:border-surface-700",
-      "text-surface-900 dark:text-surface-0/80",
+      "bg-mercury-0 dark:bg-mercury-900",
+      "border-b-2 border-mercury-200 dark:border-mercury-700",
+      "text-mercury-900 dark:text-mercury-0/80",
     ],
   },
   menuitem: {
@@ -40,14 +40,14 @@ export default {
 
       // Colors and Conditions
       {
-        "border-surface-200 dark:border-surface-700":
+        "border-mercury-200 dark:border-mercury-700":
           state.d_activeIndex !== context.index,
-        "bg-surface-0 dark:bg-surface-900":
+        "bg-mercury-0 dark:bg-mercury-900":
           state.d_activeIndex !== context.index,
-        "text-surface-700 dark:text-surface-0/80":
+        "text-mercury-700 dark:text-mercury-0/80":
           state.d_activeIndex !== context.index,
 
-        "bg-surface-0 dark:bg-surface-900":
+        "bg-mercury-0 dark:bg-mercury-900":
           state.d_activeIndex === context.index,
         "border-primary": state.d_activeIndex === context.index,
         "text-primary": state.d_activeIndex === context.index,
@@ -56,7 +56,7 @@ export default {
       // States
       "focus:outline-none focus:outline-offset-0 focus-visible:ring-1 ring-inset focus-visible:ring-primary-400 dark:focus-visible:ring-primary-300",
       {
-        "hover:text-surface-900 dark:hover:text-surface-0":
+        "hover:text-mercury-900 dark:hover:text-mercury-0":
           state.d_activeIndex !== context.index,
       },
 

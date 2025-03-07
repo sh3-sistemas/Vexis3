@@ -14,7 +14,7 @@ export default {
       "rounded-md",
 
       // Colors
-      "bg-surface-200 dark:bg-surface-800",
+      "bg-mercury-200 dark:bg-mercury-800",
 
       // States
       {
@@ -60,10 +60,10 @@ export default {
       // Shape
       "rounded-full",
 
-      "before:block before:w-[16px] before:h-[16px] before:rounded-full before:bg-surface-0 dark:before:bg-surface-950 before:shadow-md",
+      "before:block before:w-[16px] before:h-[16px] before:rounded-full before:bg-mercury-0 dark:before:bg-mercury-950 before:shadow-md",
 
       // Colors
-      "bg-surface-200 dark:bg-surface-800",
+      "bg-mercury-200 dark:bg-mercury-800",
 
       // States
       "focus-visible:outline-none focus-visible:outline-offset-0 focus-visible:ring-1",
@@ -92,10 +92,10 @@ export default {
       // Shape
       "rounded-full",
 
-      "before:block before:w-[16px] before:h-[16px] before:rounded-full before:bg-surface-0 dark:before:bg-surface-950 before:shadow-md",
+      "before:block before:w-[16px] before:h-[16px] before:rounded-full before:bg-mercury-0 dark:before:bg-mercury-950 before:shadow-md",
 
       // Colors
-      "bg-surface-200 dark:bg-surface-800",
+      "bg-mercury-200 dark:bg-mercury-800",
 
       // States
       "focus-visible:outline-none focus-visible:outline-offset-0 focus-visible:ring-1",
@@ -124,10 +124,10 @@ export default {
       // Shape
       "rounded-full",
 
-      "before:block before:w-[16px] before:h-[16px] before:rounded-full before:bg-surface-0 dark:before:bg-surface-950 before:shadow-md",
+      "before:block before:w-[16px] before:h-[16px] before:rounded-full before:bg-mercury-0 dark:before:bg-mercury-950 before:shadow-md",
 
       // Colors
-      "bg-surface-200 dark:bg-surface-800",
+      "bg-mercury-200 dark:bg-mercury-800",
 
       // States
       "focus-visible:outline-none focus-visible:outline-offset-0 focus-visible:ring-1",

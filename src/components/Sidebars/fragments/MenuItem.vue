@@ -15,7 +15,7 @@
       'mt-2',
       'justify-center',
       'cursor-pointer',
-      'hover:bg-surface-50',
+      'hover:bg-mercury-50',
       'p-1.5',
       'rounded-[5px]',
       sidebarIsOpen ? 'justify-between w-full' : 'w-fit',
@@ -112,7 +112,7 @@ const menuConfigData: MenuConfigData = {
   },
   submenu: {
     parent: route.matched[route.matched.length - 3]?.name,
-    activeStyle: "bg-surface-50",
+    activeStyle: "bg-mercury-50",
   },
 };
 

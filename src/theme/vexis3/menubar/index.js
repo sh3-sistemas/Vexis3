@@ -14,8 +14,8 @@ export default {
       "rounded-md",
 
       // Color
-      "bg-surface-0 dark:bg-surface-900",
-      "border border-surface-200 dark:border-surface-700",
+      "bg-mercury-0 dark:bg-mercury-900",
+      "border border-mercury-200 dark:border-mercury-700",
     ],
   },
   rootList: ({ props }) => ({
@@ -45,7 +45,7 @@ export default {
       "border-0",
 
       // Color
-      "bg-surface-0 dark:bg-surface-900 sm:bg-transparent",
+      "bg-mercury-0 dark:bg-mercury-900 sm:bg-transparent",
 
       // Misc
       "outline-none",
@@ -61,9 +61,9 @@ export default {
 
       // Colors
       {
-        "text-surface-500 dark:text-white/70":
+        "text-mercury-500 dark:text-white/70":
           !context.focused && !context.active,
-        "text-surface-500 dark:text-white/70 bg-surface-200 dark:bg-surface-600/90":
+        "text-mercury-500 dark:text-white/70 bg-mercury-200 dark:bg-mercury-600/90":
           context.focused && !context.active,
         "bg-highlight text-highlight-contrast":
           (context.focused && context.active) ||
@@ -73,7 +73,7 @@ export default {
 
       // States
       {
-        "hover:bg-surface-100 dark:hover:bg-[rgba(255,255,255,0.03)]":
+        "hover:bg-mercury-100 dark:hover:bg-[rgba(255,255,255,0.03)]":
           !context.active,
         "hover:bg-highlight-emphasis": context.active,
       },
@@ -137,7 +137,7 @@ export default {
 
       // Shape
       "shadow-none sm:shadow-md",
-      "border border-surface-200 dark:border-surface-700",
+      "border border-mercury-200 dark:border-mercury-700",
 
       // Position
       "static sm:absolute",
@@ -145,11 +145,11 @@ export default {
       { "sm:absolute sm:left-full sm:top-0": props.level > 1 },
 
       // Color
-      "bg-surface-0 dark:bg-surface-900",
+      "bg-mercury-0 dark:bg-mercury-900",
     ],
   }),
   separator: {
-    class: "border-t border-surface-200 dark:border-surface-600",
+    class: "border-t border-mercury-200 dark:border-mercury-600",
   },
   button: {
     class: [
@@ -164,11 +164,11 @@ export default {
       // Shape
       "rounded-full",
       // Color
-      "text-surface-500 dark:text-white/80",
+      "text-mercury-500 dark:text-white/80",
 
       // States
-      "hover:text-surface-600 dark:hover:text-white/60",
-      "hover:bg-surface-100 dark:hover:bg-[rgba(255,255,255,0.03)]",
+      "hover:text-mercury-600 dark:hover:text-white/60",
+      "hover:bg-mercury-100 dark:hover:bg-[rgba(255,255,255,0.03)]",
       "focus:outline-none focus:outline-offset-0",
       "focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-400",
 

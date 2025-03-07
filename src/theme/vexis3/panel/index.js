@@ -5,8 +5,8 @@ export default {
       "rounded-md",
 
       //Colors
-      "border border-surface-200 dark:border-surface-700",
-      "bg-surface-0 dark:bg-surface-900",
+      "border border-mercury-200 dark:border-mercury-700",
+      "bg-mercury-0 dark:bg-mercury-900",
     ],
   },
   header: ({ props }) => ({
@@ -15,7 +15,7 @@ export default {
       "flex items-center justify-between",
 
       // Colors
-      "text-surface-700 dark:text-surface-0/80",
+      "text-mercury-700 dark:text-mercury-0/80",
       "bg-transparent",
 
       //Shape
@@ -48,11 +48,11 @@ export default {
         // Background and border
         "bg-transparent border-transparent",
         // Text color
-        "text-surface-500 dark:text-surface-300",
+        "text-mercury-500 dark:text-mercury-300",
         // Focus states
-        "focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-surface-500 dark:focus:ring-surface-400",
+        "focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-mercury-500 dark:focus:ring-mercury-400",
         // Hover effect
-        "hover:bg-surface-300/10",
+        "hover:bg-mercury-300/10",
         // Transition effects
         "transition duration-200 ease-in-out",
         // Cursor and overflow
@@ -70,7 +70,7 @@ export default {
       "border-0 border-t-0 last:rounded-br-md last:rounded-bl-md",
 
       //Color
-      "text-surface-700 dark:text-surface-0/80",
+      "text-mercury-700 dark:text-mercury-0/80",
     ],
   },
   footer: {
@@ -82,7 +82,7 @@ export default {
       "border-0 border-t-0 rounded-br-lg rounded-bl-lg",
 
       //Color
-      "text-surface-700 dark:text-surface-0/80",
+      "text-mercury-700 dark:text-mercury-0/80",
     ],
   },
   transition: {

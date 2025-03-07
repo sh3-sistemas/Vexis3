@@ -13,9 +13,9 @@ export default {
       "rounded-md",
 
       // Color and Background
-      { "bg-surface-0 dark:bg-surface-950": !props.disabled },
+      { "bg-mercury-0 dark:bg-mercury-950": !props.disabled },
       "border",
-      { "border-surface-300 dark:border-surface-600": !props.invalid },
+      { "border-mercury-300 dark:border-mercury-600": !props.invalid },
 
       // Invalid State
       "invalid:focus:ring-red-200",
@@ -28,7 +28,7 @@ export default {
 
       // States
       {
-        "hover:border-surface-400 dark:hover:border-surface-600":
+        "hover:border-mercury-400 dark:hover:border-mercury-600":
           !props.invalid,
       },
       {
@@ -40,7 +40,7 @@ export default {
       "cursor-pointer",
       "select-none",
       {
-        "bg-surface-200 dark:bg-surface-700 select-none pointer-events-none cursor-default":
+        "bg-mercury-200 dark:bg-mercury-700 select-none pointer-events-none cursor-default":
           props.disabled,
       },
     ],
@@ -58,8 +58,8 @@ export default {
       "bg-transparent",
       "border-0",
       {
-        "text-surface-800 dark:text-white/80": props.modelValue != undefined,
-        "text-surface-400 dark:text-surface-500": props.modelValue == undefined,
+        "text-mercury-800 dark:text-white/80": props.modelValue != undefined,
+        "text-mercury-400 dark:text-mercury-500": props.modelValue == undefined,
       },
       {
         "placeholder:text-transparent dark:placeholder:text-transparent":
@@ -107,7 +107,7 @@ export default {
 
       // Color and Background
       "bg-transparent",
-      "text-surface-500",
+      "text-mercury-500",
 
       // Size
       "w-12",
@@ -119,11 +119,11 @@ export default {
   overlay: {
     class: [
       // Colors
-      "bg-surface-0 dark:bg-surface-900",
-      "text-surface-700 dark:text-white/80",
+      "bg-mercury-0 dark:bg-mercury-900",
+      "text-mercury-700 dark:text-white/80",
 
       // Shape
-      "border border-surface-300 dark:border-surface-700",
+      "border border-mercury-300 dark:border-mercury-700",
       "rounded-md",
       "shadow-md",
     ],
@@ -141,9 +141,9 @@ export default {
 
       // Colors
       {
-        "text-surface-500 dark:text-white/70":
+        "text-mercury-500 dark:text-white/70":
           !context.focused && !context.active,
-        "text-surface-500 dark:text-white/70 bg-surface-200 dark:bg-surface-600/90":
+        "text-mercury-500 dark:text-white/70 bg-mercury-200 dark:bg-mercury-600/90":
           context.focused && !context.active,
         "bg-highlight text-highlight-contrast":
           (context.focused && context.active) ||
@@ -157,7 +157,7 @@ export default {
 
       // States
       {
-        "hover:bg-surface-100 dark:hover:bg-[rgba(255,255,255,0.03)]":
+        "hover:bg-mercury-100 dark:hover:bg-[rgba(255,255,255,0.03)]":
           !context.active,
         "hover:bg-highlight-emphasis": context.active,
       },
@@ -204,14 +204,14 @@ export default {
       // Shape
       "shadow-none sm:shadow-md",
       "rounded-md",
-      "border border-surface-200 dark:border-surface-700",
+      "border border-mercury-200 dark:border-mercury-700",
 
       // Position
       "static sm:absolute",
       "z-10",
 
       // Color
-      "bg-surface-0 dark:bg-surface-900",
+      "bg-mercury-0 dark:bg-mercury-900",
     ],
   },
   transition: {

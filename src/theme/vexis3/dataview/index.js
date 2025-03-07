@@ -8,8 +8,8 @@ export default {
       "border-0",
 
       // Color
-      "text-surface-700 dark:text-white/80",
-      "bg-surface-0 dark:bg-surface-900",
+      "text-mercury-700 dark:text-white/80",
+      "bg-mercury-0 dark:bg-mercury-900",
     ],
   },
   header: {
@@ -20,9 +20,9 @@ export default {
       "py-3 px-4",
 
       // Color
-      "text-surface-800 dark:text-white/80",
-      "bg-surface-00 dark:bg-surface-900",
-      "border-b border-surface-200 dark:border-surface-700",
+      "text-mercury-800 dark:text-white/80",
+      "bg-mercury-00 dark:bg-mercury-900",
+      "border-b border-mercury-200 dark:border-mercury-700",
     ],
   },
 };

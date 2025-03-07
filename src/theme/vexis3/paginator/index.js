@@ -11,8 +11,8 @@ export default {
       "border-0 rounded-md",
 
       // Color
-      "bg-surface-0 dark:bg-surface-900",
-      "text-surface-500 dark:text-white/60",
+      "bg-mercury-0 dark:bg-mercury-900",
+      "text-mercury-500 dark:text-white/60",
     ],
   },
   first: ({ context }) => ({
@@ -30,11 +30,11 @@ export default {
       "leading-none",
 
       // Color
-      "text-surface-500 dark:text-white/60",
+      "text-mercury-500 dark:text-white/60",
 
       // State
       {
-        "hover:bg-surface-50 dark:hover:bg-[rgba(255,255,255,0.03)]":
+        "hover:bg-mercury-50 dark:hover:bg-[rgba(255,255,255,0.03)]":
           !context.disabled,
         "focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-400":
           !context.disabled,
@@ -63,11 +63,11 @@ export default {
       "leading-none",
 
       // Color
-      "text-surface-500 dark:text-white/60",
+      "text-mercury-500 dark:text-white/60",
 
       // State
       {
-        "hover:bg-surface-50 dark:hover:bg-[rgba(255,255,255,0.03)]":
+        "hover:bg-mercury-50 dark:hover:bg-[rgba(255,255,255,0.03)]":
           !context.disabled,
         "focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-400":
           !context.disabled,
@@ -96,11 +96,11 @@ export default {
       "leading-none",
 
       // Color
-      "text-surface-500 dark:text-white/60",
+      "text-mercury-500 dark:text-white/60",
 
       // State
       {
-        "hover:bg-surface-50 dark:hover:bg-[rgba(255,255,255,0.03)]":
+        "hover:bg-mercury-50 dark:hover:bg-[rgba(255,255,255,0.03)]":
           !context.disabled,
         "focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-400":
           !context.disabled,
@@ -129,11 +129,11 @@ export default {
       "leading-none",
 
       // Color
-      "text-surface-500 dark:text-white/60",
+      "text-mercury-500 dark:text-white/60",
 
       // State
       {
-        "hover:bg-surface-50 dark:hover:bg-[rgba(255,255,255,0.03)]":
+        "hover:bg-mercury-50 dark:hover:bg-[rgba(255,255,255,0.03)]":
           !context.disabled,
         "focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-400":
           !context.disabled,
@@ -165,12 +165,12 @@ export default {
       {
         "bg-highlight text-highlight-contrast border-highlight text-highlight-contrast hover:bg-highlight-emphasis ":
           context.active,
-        "text-surface-500 dark:text-white/60": !context.active,
+        "text-mercury-500 dark:text-white/60": !context.active,
       },
 
       // State
       {
-        "hover:bg-surface-50 dark:hover:bg-[rgba(255,255,255,0.03)]":
+        "hover:bg-mercury-50 dark:hover:bg-[rgba(255,255,255,0.03)]":
           !context.disabled && !context.active,
         "focus:outline-none focus:outline-offset-0 focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-400":
           !context.disabled,

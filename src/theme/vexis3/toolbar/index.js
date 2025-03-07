@@ -12,8 +12,8 @@ export default {
       "rounded-md",
 
       // Color
-      "bg-surface-0 dark:bg-surface-900",
-      "border border-surface-200 dark:border-surface-700",
+      "bg-mercury-0 dark:bg-mercury-900",
+      "border border-mercury-200 dark:border-mercury-700",
     ],
   },
   start: {

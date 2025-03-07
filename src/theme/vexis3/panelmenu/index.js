@@ -1,7 +1,7 @@
 export default {
   panel: {
     class:
-      "p-1 overflow-hidden mb-3 border border-surface-200 dark:border-surface-700 rounded-md",
+      "p-1 overflow-hidden mb-3 border border-mercury-200 dark:border-mercury-700 rounded-md",
   },
   header: {
     class: ["rounded-[4px]", "outline-none"],
@@ -12,13 +12,13 @@ export default {
       "rounded-[4px]",
 
       // Color
-      "bg-surface-0 dark:bg-surface-900",
-      "text-surface-600 dark:text-surface-0/80",
-      { "text-surface-900": context.active },
+      "bg-mercury-0 dark:bg-mercury-900",
+      "text-mercury-600 dark:text-mercury-0/80",
+      { "text-mercury-900": context.active },
 
       // States
-      "hover:bg-surface-100 dark:hover:bg-[rgba(255,255,255,0.03)]",
-      "hover:text-surface-900",
+      "hover:bg-mercury-100 dark:hover:bg-[rgba(255,255,255,0.03)]",
+      "hover:text-mercury-900",
 
       // Transition
       "transition duration-200 ease-in-out",
@@ -58,8 +58,8 @@ export default {
       "pl-4",
 
       // Color
-      "text-surface-700 dark:text-white/80",
-      "bg-surface-0 dark:bg-surface-900",
+      "text-mercury-700 dark:text-white/80",
+      "bg-mercury-0 dark:bg-mercury-900",
     ],
   },
   rootList: {
@@ -74,7 +74,7 @@ export default {
       "border-none rounded-[4px]",
 
       // Color
-      "text-surface-700 dark:text-white/80",
+      "text-mercury-700 dark:text-white/80",
 
       // Transition
       "transition-shadow duration-200",
@@ -97,12 +97,12 @@ export default {
       "rounded-[4px]",
 
       // Color
-      "text-surface-700 dark:text-white/80",
+      "text-mercury-700 dark:text-white/80",
 
       // States
-      "hover:bg-surface-100 dark:hover:bg-[rgba(255,255,255,0.03)] hover:text-surface-700 dark:hover:text-white/80",
+      "hover:bg-mercury-100 dark:hover:bg-[rgba(255,255,255,0.03)] hover:text-mercury-700 dark:hover:text-white/80",
       {
-        "bg-surface-200 text-surface-700 dark:text-white/80 dark:bg-surface-0/10":
+        "bg-mercury-200 text-mercury-700 dark:text-white/80 dark:bg-mercury-0/10":
           context.focused,
       },
 

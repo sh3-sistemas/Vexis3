@@ -11,9 +11,9 @@ export default {
       "m-0",
 
       // Color
-      "bg-surface-0 dark:bg-surface-900",
+      "bg-mercury-0 dark:bg-mercury-900",
       "[&:last-child]:border-b",
-      "border-surface-200 dark:border-surface-700",
+      "border-mercury-200 dark:border-mercury-700",
 
       // Transitions
       "transform",
@@ -45,9 +45,9 @@ export default {
       "rounded-tr-lg",
 
       // Colors
-      "text-surface-700 dark:text-surface-0/80",
+      "text-mercury-700 dark:text-mercury-0/80",
       // "border border-b-0",
-      // "border-surface-200 dark:border-surface-700",
+      // "border-mercury-200 dark:border-mercury-700",
     ],
   },
   title: {
@@ -71,9 +71,9 @@ export default {
       },
 
       // Colors
-      "text-surface-700 dark:text-surface-0/80",
+      "text-mercury-700 dark:text-mercury-0/80",
       // "border border-t-0 border-b-0",
-      // "border-surface-200 dark:border-surface-700",
+      // "border-mercury-200 dark:border-mercury-700",
 
       // Misc
       "overflow-y-auto",
@@ -96,10 +96,10 @@ export default {
       "rounded-b-lg",
 
       // Colors
-      "bg-surface-0 dark:bg-surface-900",
-      "text-surface-700 dark:text-surface-0/80",
+      "bg-mercury-0 dark:bg-mercury-900",
+      "text-mercury-700 dark:text-mercury-0/80",
       "border border-t-0 border-b-0",
-      "border-surface-200 dark:border-surface-700",
+      "border-mercury-200 dark:border-mercury-700",
     ],
   },
   mask: ({ props }) => ({
@@ -111,7 +111,7 @@ export default {
 
       // Background and Effects
       {
-        "has-[.mask-active]:bg-transparent bg-surface-500/70 backdrop-blur-sm":
+        "has-[.mask-active]:bg-transparent bg-mercury-500/70 backdrop-blur-sm":
           props.modal,
       },
     ],

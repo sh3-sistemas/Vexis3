@@ -8,9 +8,9 @@ export default {
       "rounded-md",
 
       // Color
-      "border border-surface-200 dark:border-surface-700",
-      "bg-surface-0 dark:bg-surface-900",
-      "text-surface-700 dark:text-surface-0/80",
+      "border border-mercury-200 dark:border-mercury-700",
+      "bg-mercury-0 dark:bg-mercury-900",
+      "text-mercury-700 dark:text-mercury-0/80",
     ],
   },
   legend: ({ props }) => ({
@@ -26,14 +26,14 @@ export default {
       "rounded-md",
 
       // Color
-      "text-surface-700 dark:text-surface-0/80",
-      "bg-surface-0 dark:bg-surface-900",
+      "text-mercury-700 dark:text-mercury-0/80",
+      "bg-mercury-0 dark:bg-mercury-900",
 
       // Transition
       "transition-none",
 
       // States
-      { "hover:bg-surface-100 dark:hover:bg-surface-800": props.toggleable },
+      { "hover:bg-mercury-100 dark:hover:bg-mercury-800": props.toggleable },
     ],
   }),
   toggleButton: ({ props }) => ({
@@ -50,13 +50,13 @@ export default {
 
       // Color
       {
-        "text-surface-700 dark:text-surface-200 hover:text-surface-900":
+        "text-mercury-700 dark:text-mercury-200 hover:text-mercury-900":
           props.toggleable,
       },
 
       // States
       {
-        "hover:text-surface-900 dark:hover:text-surface-100": props.toggleable,
+        "hover:text-mercury-900 dark:hover:text-mercury-100": props.toggleable,
       },
       {
         "focus:outline-none focus:outline-offset-0 focus-visible:ring-1 focus-visible:ring-primary-400 dark:focus-visible:ring-primary-300":

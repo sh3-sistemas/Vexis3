@@ -13,7 +13,7 @@ export default {
       },
 
       // Colors
-      "bg-surface-200 dark:bg-surface-700",
+      "bg-mercury-200 dark:bg-mercury-700",
     ],
   }),
 };
