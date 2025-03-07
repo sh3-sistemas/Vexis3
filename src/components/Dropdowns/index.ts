@@ -4,6 +4,7 @@ import Sh3DropdownMenu from "./Sh3DropdownMenu.vue";
 import Sh3HeaderSwitcher from "./Sh3HeaderSwitcher.vue";
 import Sh3DropdownSidebar from "./Sh3DropdownSidebar.vue";
 import Sh3Dropdown from "./Sh3Dropdown.vue";
+import Sh3MultiDropdown from "./Sh3MultiDropdown.vue";
 
 export {
   Sh3SelectDropdown,
@@ -12,5 +13,6 @@ export {
   Sh3HeaderSwitcher,
   Sh3DropdownSidebar,
   Sh3Dropdown,
+  Sh3MultiDropdown,
 };
 export * from "./types";

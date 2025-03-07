@@ -1,5 +1,5 @@
 export default {
-  root: ({ props }) => ({
+  root: ({ props, state }) => ({
     class: [
       "relative",
 
@@ -20,6 +20,10 @@ export default {
       {
         "bg-surface-200 dark:bg-surface-700 select-none pointer-events-none cursor-default":
           props.disabled,
+      },
+      {
+        "outline-none outline-offset-0 ring-1 rounded-md ring-primary-500 dark:ring-primary-400 z-10":
+          state.focused,
       },
     ],
   }),
@@ -81,7 +85,7 @@ export default {
     class:
       "border-none outline-none bg-transparent m-0 p-0 shadow-none rounded-none w-full",
   },
-  dropdown: {
+  dropdown: ({ props, state }) => ({
     class: [
       "relative",
 
@@ -96,16 +100,23 @@ export default {
       "w-10",
 
       // Colors
-      "text-primary-contrast",
-      "bg-primary",
-      "border border-primary",
+      "text-surface-500",
+      "bg-transparent",
+      "border border-l-0 border-primary",
+      { "bg-surface-0 dark:bg-surface-950": !props.disabled },
+      { "border-surface-300 dark:border-surface-700": !props.invalid },
 
+      // Invalid State
+      "invalid:focus:ring-red-200",
+      "invalid:hover:border-red-500",
+      { "border-red-500 dark:border-red-400": props.invalid },
       // States
-      "focus:outline-none focus:outline-offset-0 focus:ring-1 ",
-      "hover:bg-primary-emphasis hover:border-primary-emphasis",
-      "focus:ring-primary-500 dark:focus:ring-primary-400",
+      {
+        "hover:border-surface-400 dark:hover:border-surface-600":
+          !props.invalid,
+      },
     ],
-  },
+  }),
   loader: {
     class: [
       "text-surface-500 dark:text-surface-0/70",

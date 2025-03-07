@@ -1,15 +1,19 @@
 <template>
   <div class="autocomplete-search-wrapper inline-flex items-center">
-    <Icon
-      icon="ion:search-outline"
-      class="w-4.5 h-auto relative -right-[30px] text-surface-500 py-1 z-20"
-    />
+    <span class="relative w-0 content-center">
+      <Icon
+        icon="ion:search-outline"
+        class="w-4.5 h-auto relative -right-[15px] text-surface-500 py-1 z-20"
+      />
+    </span>
     <AutoComplete
       v-model="value"
       class="inputSearch !border-none"
       :suggestions="filtered"
       placeholder="Pesquisar"
       v-bind="$attrs"
+      :pt-options="{ mergeProps: true }"
+      :pt="ptAutoComplete"
       @complete="search"
     >
       <template #empty> Nenhum resultado encontrado </template>
@@ -78,6 +82,16 @@ const search = (event: any) => {
   }
 
   filtered.value = newFiltered;
+};
+
+const ptAutoComplete = {
+  pcInputText: ({ props }: any) => ({
+    root: [
+      "focus:border-surface-300 focus:dark:border-surface-700",
+      { "border-r-0 !ring-0": props.dropdown },
+      { "!border-red-500 dark:!border-red-400": props.invalid },
+    ],
+  }),
 };
 </script>
 
