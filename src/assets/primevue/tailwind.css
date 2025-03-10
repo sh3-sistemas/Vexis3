@@ -1,5 +1,19 @@
 /* Primary and mercury Palettes */
 :root {
+  /* Surface Color: Mercury */
+  --p-surface-0: #ffffff;
+  --p-surface-50: #f6f7f8;
+  --p-surface-100: #e9ebee;
+  --p-surface-200: #cfd3da;
+  --p-surface-300: #b7bdc9;
+  --p-surface-400: #a2a9b8;
+  --p-surface-500: #868ea0;
+  --p-surface-600: #5e6373;
+  --p-surface-700: #40434d;
+  --p-surface-800: #2e2f37;
+  --p-surface-900: #222327;
+  --p-surface-950: #101010;
+
   --p-content-border-radius: 6px;
 }
 
