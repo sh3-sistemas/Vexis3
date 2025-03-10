@@ -6,8 +6,8 @@
     paginator
     striped-rows
     table-style="min-width: 50rem"
-    :rows-per-page-options="[5, 10, 20, 50]"
-    paginator-template="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
+    :rows-per-page-options="[10, 15, 25, 50]"
+    paginator-template="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink RowsPerPageDropdown"
     current-page-report-template="{first} a {last} de {totalRecords}"
     v-bind="$attrs"
   >

@@ -19,7 +19,7 @@ export default function usePagination<T>(config: Fetch<T>) {
   const getData = async () =>
     await fetch({
       query: query.value,
-      variables: { limit, page, ...filterQuery.value },
+      variables: { first: limit, page, ...filterQuery.value },
       options: options.value,
     });
 
@@ -27,12 +27,12 @@ export default function usePagination<T>(config: Fetch<T>) {
   onMounted(async () => getData());
 
   const getPage = async (pageEvent: DataTablePageEvent) => {
-    const { page, filters } = pageEvent;
+    const { page, filters, rows } = pageEvent;
     await refetch.value({
       ...filter,
       ...filters,
       page,
-      limit,
+      first: rows,
     });
   };
 
