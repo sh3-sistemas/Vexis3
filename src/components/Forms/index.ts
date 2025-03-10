@@ -9,6 +9,8 @@ import InputGroup from "primevue/inputgroup";
 import InputNumber from "primevue/inputnumber";
 import InputText from "primevue/inputtext";
 
+import { RadioButton } from "primevue";
+
 export * from "./types";
 
 export {
@@ -16,6 +18,7 @@ export {
   InputGroup,
   InputNumber,
   InputText,
+  RadioButton,
   Sh3Select,
   Sh3Checkbox,
   Sh3GenericForm,
