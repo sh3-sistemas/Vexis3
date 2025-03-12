@@ -4,6 +4,7 @@ export default {
       // Display and Position
       "inline-flex",
       "relative",
+
       // Shape
       { "rounded-md": parent.instance.$name !== "InputGroup" },
       {
@@ -73,9 +74,13 @@ export default {
       },
       "placeholder:text-surface-400 dark:placeholder:text-surface-500",
 
-      // Sizing and Spacing
+      // Size and Spacing
       "w-[1%]",
-      "py-2 px-3",
+      {
+        "text-lg px-[0.875rem] py-[0.625rem]": props.size == "large",
+        "text-sm px-[0.625rem] py-[0.375rem]": props.size == "small",
+        "py-2 px-3": props.size == null,
+      },
       { "pr-7": props.showClear },
 
       //Shape

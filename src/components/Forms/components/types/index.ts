@@ -8,6 +8,9 @@ import type {
   InputNumberProps,
   InputTextEmits,
   InputTextProps,
+  SelectProps,
+  SelectSlots,
+  SelectEmits,
 } from "primevue";
 import type { DefineComponent } from "vue";
 
@@ -28,5 +31,6 @@ declare module "vue" {
   export interface GlobalComponents {
     Sh3InputNumber: DefineComponent<InputNumberProps, {}, InputNumberEmits>;
     Sh3InputText: DefineComponent<InputTextProps, {}, InputTextEmits>;
+    Sh3Select: DefineComponent<SelectProps, SelectSlots, SelectEmits>;
   }
 }
