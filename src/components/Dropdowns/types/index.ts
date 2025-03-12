@@ -73,5 +73,6 @@ declare module "vue" {
       any
     >;
     Sh3Dropdown: DefineComponent<any, any, any>;
+    Sh3MultiDropdown: DefineComponent<any, any, any>;
   }
 }
