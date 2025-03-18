@@ -2,6 +2,7 @@ import type { DataTablePageEvent } from "primevue/datatable";
 import { onMounted, toRefs, watchEffect } from "vue";
 import type { Fetch } from "../types";
 import { useFetch } from "@/services";
+import { filtersToLighthouse } from "../Filters/utils";
 
 /**
  *
@@ -30,7 +31,11 @@ export default function usePagination<T>(config: Fetch<T>) {
     const { page, filters, rows } = pageEvent;
     await refetch.value({
       ...filter,
-      ...filters,
+      where: {
+        AND: filter.where
+          ? [{ ...filter.where }, ...filtersToLighthouse(filters)]
+          : filtersToLighthouse(filters),
+      },
       page,
       first: rows,
     });

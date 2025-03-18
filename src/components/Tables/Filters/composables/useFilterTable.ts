@@ -32,7 +32,7 @@ export default function useFilterTable(
    * @returns The filter model template.
    */
   const getFilterModelTemplate = (col: DataTableItemColumn) => {
-    return { value: null, matchMode: col.filter?.matchMode };
+    return { value: null, matchMode: col.filter?.matchMode ?? "startsWith" };
   };
 
   /**
@@ -79,7 +79,7 @@ export default function useFilterTable(
       filterDisplay === "menu" ? mountMenuFilter : mountRowFilter;
 
     columns.forEach((col) => {
-      if (col.filter) {
+      if (!col.filter?.disabled) {
         const filterModel = getFilterModelTemplate(col);
         mountFilter(col, filterModel, dynamicFilter);
       }

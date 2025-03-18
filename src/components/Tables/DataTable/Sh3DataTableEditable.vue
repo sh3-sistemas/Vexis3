@@ -1,24 +1,20 @@
 <template>
   <DataTable
+    v-bind="{ ...$attrs, ...props }"
     v-model:selection="selected"
     v-model:editing-rows="editingRows"
     v-model:expanded-rows="expandedRows"
+    v-model:filters="filters"
+    filter-display="row"
     edit-mode="row"
-    :data-key="dataKey"
     :value="items"
     :selection-mode="undefined"
     paginator
     striped-rows
     show-headers
-    :loading="loading"
-    :removable-sort="removableSort"
-    :rows="rows"
-    :pt="pt"
-    :pt-options="ptOptions"
     :rows-per-page-options="[10, 15, 25, 50]"
     paginator-template="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink RowsPerPageDropdown"
     current-page-report-template="{first} a {last} de {totalRecords}"
-    v-bind="$attrs"
     @page="emits('page', $event)"
   >
     <!-- Paginator section -->
@@ -52,6 +48,7 @@
         pcHeaderCheckbox: checkboxClass,
         pcRowCheckbox: checkboxClass,
       }"
+      filter-header-style="background-color: white"
     />
     <Column
       v-for="col of columns.filter((x) => x.visible != false)"
@@ -59,7 +56,9 @@
       :field="col.field"
       :header="col.header"
       :sortable="col.sortable"
+      filter-header-style="background-color: white"
       :pt="{ pcSortBadge: { root: 'hidden' } }"
+      v-bind="{ ...col.props }"
     >
       <template #body="{ data: row, field }">
         <Checkbox
@@ -88,7 +87,7 @@
                 updateRow(
                   col.cellFormaterEdit.name
                     ? { ...row, [col.cellFormaterEdit.name]: value }
-                    : { ...row, [field]: value },
+                    : { ...row, [field]: value }
                 )
             "
           />
@@ -99,8 +98,25 @@
           :type="col.filterType.toLowerCase()"
         />
       </template>
+
+      <template
+        v-if="!col.filter?.disabled"
+        #filter="{ filterModel, filterCallback }"
+      >
+        <component
+          :is="filterComponents[col.filter?.type ?? 'TextFilter']"
+          v-model="filterModel.value"
+          :filter-callback="filterCallback"
+          :col="col"
+          v-bind="{ ...col.filter?.props }"
+        />
+      </template>
     </Column>
-    <Column class="w-20">
+    <Column
+      class="w-20"
+      :exportable="false"
+      filter-header-style="background-color: white"
+    >
       <template #body="{ data: row }">
         <Sh3Button
           icon-pos="right"
@@ -147,16 +163,19 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, useSlots } from "vue";
+import { ref, computed, useSlots, useAttrs } from "vue";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import InputText from "primevue/inputtext";
 import Checkbox from "primevue/checkbox";
-import type { Sh3DataTableEditableProps } from "./types";
+import { type Sh3DataTableEditableProps, filterComponents } from "./types";
+import { useFilterTable } from "../Filters/composables";
 import SearchNotFound from "./fragments/SearchNotFound.vue";
 
 import { saveTooltip, cancelTooltip } from "./fragments/tooltip";
 import { getValueByPath } from "./utils";
+
+const attrs = useAttrs();
 
 defineOptions({
   inheritAttrs: false,
@@ -225,4 +244,6 @@ const checkboxClass = computed(() => ({
     "w-5 h-5 rounded bg-transparent !ring-0 border border-surface-300 cursor-pointer",
   box: "hidden",
 }));
+
+const { filters } = useFilterTable(attrs.filterDisplay, props.columns);
 </script>

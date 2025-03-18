@@ -7,7 +7,14 @@ import type { ColumnProps, TagProps } from "primevue";
 import type { DataTableProps } from "primevue/datatable";
 import { FilterMatchMode, FilterOperator } from "@primevue/core/api";
 import { markRaw } from "vue";
-import { SelectFilterTag, TextFilter, DateFilter } from "../../Filters";
+import {
+  SelectFilterTag,
+  TextFilter,
+  DateFilter,
+  BooleanFilter,
+  NumberFilter,
+  MaskFilter,
+} from "../../Filters";
 
 type ItemColum = {
   field: any;
@@ -34,6 +41,9 @@ export const filterComponents = {
   SelectFilterTag: markRaw(SelectFilterTag),
   TextFilter: markRaw(TextFilter),
   DateFilter: markRaw(DateFilter),
+  BooleanFilter: markRaw(BooleanFilter),
+  NumberFilter: markRaw(NumberFilter),
+  MaskFilter: markRaw(MaskFilter),
 };
 
 export type Action = {
@@ -54,6 +64,8 @@ export type DataTableItemColumn = {
     matchMode: keyof typeof FilterMatchMode;
     type: keyof typeof filterComponents;
     options: any[];
+    disabled: boolean;
+    props?: object;
   };
 };
 
