@@ -4,7 +4,7 @@
     type="text"
     class="p-column-filter max-w-[135px]"
     placeholder="Pesquisar"
-    @input="filterCallback()"
+    @value-change="update"
   />
 </template>
 
@@ -14,13 +14,14 @@ import InputText from "primevue/inputtext";
 import type { FilterProps } from "./types";
 import type { Nullable } from "@/types/helper";
 
-withDefaults(defineProps<FilterProps>(), {
-  col: () => ({
-    field: "",
-    header: "",
-  }),
-  filterCallback: () => {},
-});
+import { debounce } from "@/services/fetch/debounce.js";
+
+const { filterCallback } = defineProps<FilterProps>();
+
+const update = debounce((str: undefined | string) => {
+  filterModel.value = str;
+  filterCallback();
+}, 300);
 
 const filterModel = defineModel<Nullable<string>>();
 </script>

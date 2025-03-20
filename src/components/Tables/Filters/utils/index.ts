@@ -21,59 +21,83 @@ export const matchModeToOperator = {
   gt: "GT",
   gte: "GTE",
   between: "BETWEEN",
+  dateIs: "EQ",
+  dateIsNot: "NEQ",
+  dateBefore: "EQ",
+  dateAfter: "EQ",
 };
 
 const matchModeValue = {
-  startsWith: (str: string) => str.concat("%"),
-  contains: (str: string) => "%".concat(str, "%"),
-  notContains: (str: string) => "%".concat(str, "%"),
-  endsWith: (str: string) => "%".concat(str),
-  equals: (str: string) => str,
-  notEquals: (str: string) => str,
+  startsWith: (value: any) => String(value).concat("%"),
+  contains: (value: any) => "%".concat(String(value), "%"),
+  notContains: (value: any) => "%".concat(String(value), "%"),
+  endsWith: (value: any) => "%".concat(String(value)),
+  equals: (value: any) => value,
+  notEquals: (value: any) => value,
+  in: (array: any[]) => array,
+  lt: (value: any) => value,
+  lte: (value: any) => value,
+  gt: (value: any) => value,
+  gte: (value: any) => value,
+  between: (array: any[]) => array,
+  dateIs: (value: any) => value,
+  dateIsNot: (value: any) => value,
+  dateBefore: (value: any) => value,
+  dateAfter: (value: any) => value,
 };
-export const getMatchModeValue = (filter: DataTableFilterMetaData) => {
-  const filteredValue = matchModeValue[filter.matchMode];
-  return filteredValue ? filteredValue(filter.value) : filter.value;
+export const getMatchModeValue = (
+  filter: DataTableFilterMetaData,
+): string | string[] => {
+  const key = <keyof typeof matchModeValue>(filter.matchMode ?? "startsWith");
+  return matchModeValue[key](filter.value);
 };
 
 const convertFilters = (
   name: string,
-  filter: DataTableFilterMetaData | DataTableOperatorFilterMetaData
-) => <WhereFilter | WhereFilter[] | []>(name.includes(".")
-    ? {
-        HAS: {
-          relation: name.split(".")[0],
-          condition: {
-            AND: convertFilters(name.substring(name.indexOf(".") + 1), filter),
+  filter: string | DataTableFilterMetaData | DataTableOperatorFilterMetaData,
+): WhereFilter | null => {
+  if (name.includes(".")) {
+    const condition = {
+      AND: convertFilters(name.substring(name.indexOf(".") + 1), filter),
+    };
+    return condition.AND
+      ? <WhereFilter>{
+          HAS: {
+            relation: name.split(".")[0],
+            condition,
           },
-        },
-      }
-    : [
-        ...(filter.operator
-          ? [
-              {
-                [filter.operator.toUpperCase()]: [
-                  ...filter.constraints.flatMap((x: DataTableFilterMetaData) =>
-                    convertFilters(name, x)
-                  ),
-                ],
-              },
-            ]
-          : []),
-        ...(filter.value != null
-          ? [
-              {
-                column: name,
-                operator: matchModeToOperator[filter.matchMode] ?? "EQ",
-                value: getMatchModeValue(filter),
-              },
-            ]
-          : []),
-      ]);
+        }
+      : null;
+  } else {
+    const filterOperator = <DataTableOperatorFilterMetaData>filter;
+    if (filterOperator.operator) {
+      const operator = filterOperator.operator.toUpperCase();
+      const operatorFilter = {
+        [operator]: [
+          ...filterOperator.constraints.flatMap((x: DataTableFilterMetaData) =>
+            convertFilters(name, x),
+          ),
+        ],
+      };
+      return operatorFilter[operator].length ? operatorFilter : null;
+    } else {
+      const filterValue = <DataTableFilterMetaData>filter;
+      const key = (filterValue.matchMode ??
+        "equals") as keyof typeof matchModeToOperator;
+      return filterValue.value != null
+        ? <WhereFilter>{
+            column: name,
+            operator: matchModeToOperator[key],
+            value: getMatchModeValue(filterValue),
+          }
+        : null;
+    }
+  }
+};
 
-export const filtersToLighthouse = (filters: DataTableFilterMeta) =>
-  <WhereFilter[]>(
-    Object.keys(filters).flatMap((x) =>
-      convertFilters(getFilterName(x), filters[x])
-    )
+export const filtersToLighthouse = (
+  filters: DataTableFilterMeta,
+): WhereFilter[] =>
+  Object.keys(filters).flatMap(
+    (x) => convertFilters(getFilterName(x), filters[x]) ?? [],
   );

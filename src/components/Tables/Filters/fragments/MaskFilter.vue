@@ -1,10 +1,10 @@
 <template>
   <InputMask
     v-model="filterModel"
-    type="text"
     class="p-column-filter max-w-[135px]"
     placeholder="Pesquisar"
-    @input="filterCallback()"
+    mask=""
+    @value-change="update"
   />
 </template>
 
@@ -12,15 +12,15 @@
 import InputMask from "primevue/inputmask";
 
 import type { FilterProps } from "./types";
-import type { Nullable } from "@/types/helper";
 
-withDefaults(defineProps<FilterProps>(), {
-  col: () => ({
-    field: "",
-    header: "",
-  }),
-  filterCallback: () => {},
-});
+import { debounce } from "@/services/fetch/debounce.js";
 
-const filterModel = defineModel<Nullable<string>>();
+const { filterCallback } = defineProps<FilterProps>();
+
+const update = debounce((str: string) => {
+  filterModel.value = str;
+  filterCallback();
+}, 300);
+
+const filterModel = defineModel<string>();
 </script>

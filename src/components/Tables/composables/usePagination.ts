@@ -3,6 +3,7 @@ import { onMounted, toRefs, watchEffect } from "vue";
 import type { Fetch } from "../types";
 import { useFetch } from "@/services";
 import { filtersToLighthouse } from "../Filters/utils";
+import type { Filters } from "@/types";
 
 /**
  *
@@ -15,7 +16,7 @@ export default function usePagination<T>(config: Fetch<T>) {
   const { query, options, filterQuery } = toRefs(config);
   const limit = options.value.limit ?? 10;
   const page = options.value.page ?? 1;
-  const filter = filterQuery?.value ?? {};
+  const filter: Filters = filterQuery?.value ?? {};
 
   const getData = async () =>
     await fetch({

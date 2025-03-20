@@ -31,12 +31,12 @@ export enum SQLOperator {
 }
 
 export type WhereFilter = {
-  column: string;
-  operator: keyof typeof SQLOperator;
-  value: string | number | boolean | any;
+  column?: string;
+  operator?: keyof typeof SQLOperator;
+  value?: string | number | boolean | any;
   AND?: WhereFilter[];
   OR?: WhereFilter[];
-  // HAS?: WhereFilter; //TODO: Completar o tipo has
+  HAS?: { relation: string; condition?: WhereFilter };
 };
 
 export type FilterHandlers = {

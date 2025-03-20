@@ -15,18 +15,14 @@ import type { InputNumberInputEvent } from "primevue";
 import type { FilterProps } from "./types";
 import type { Nullable } from "@/types/helper";
 
-const { filterCallback } = withDefaults(defineProps<FilterProps>(), {
-  col: () => ({
-    field: "",
-    header: "",
-  }),
-  filterCallback: () => {},
-});
+import { debounce } from "@/services/fetch/debounce.js";
 
-const update = (e: InputNumberInputEvent) => {
+const { filterCallback } = defineProps<FilterProps>();
+
+const update = debounce((e: InputNumberInputEvent) => {
   filterModel.value = Number(e.value);
   filterCallback();
-};
+}, 300);
 
 const filterModel = defineModel<Nullable<number>>();
 </script>

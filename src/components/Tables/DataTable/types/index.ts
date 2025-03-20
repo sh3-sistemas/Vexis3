@@ -26,6 +26,8 @@ type ItemColum = {
   editable: boolean;
   cellFormater: object;
   cellFormaterEdit: { component: object; props: object; name?: string };
+  props?: ColumnProps;
+  filter?: DataTableFilter;
   //TODO: Realizar tipagem correta desses valores em breve
 };
 
@@ -54,19 +56,21 @@ export type Action = {
   disabled: (item: any) => boolean | false;
 };
 
+type DataTableFilter = {
+  operator: keyof typeof FilterOperator;
+  matchMode: keyof typeof FilterMatchMode;
+  type: keyof typeof filterComponents;
+  options: any[];
+  disabled: boolean;
+  props?: object;
+};
+
 export type DataTableItemColumn = {
   field: string;
   header: string;
   type?: "tag" | "download" | "actions";
   props?: ColumnProps & { tag?: (item: any) => TagProps };
-  filter?: {
-    operator: keyof typeof FilterOperator;
-    matchMode: keyof typeof FilterMatchMode;
-    type: keyof typeof filterComponents;
-    options: any[];
-    disabled: boolean;
-    props?: object;
-  };
+  filter?: DataTableFilter;
 };
 
 export type SelectionMode = "single" | "multiple" | undefined | null;
