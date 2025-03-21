@@ -8,12 +8,14 @@ import type { DataTableProps } from "primevue/datatable";
 import { FilterMatchMode, FilterOperator } from "@primevue/core/api";
 import { markRaw } from "vue";
 import {
+  SelectFilter,
   SelectFilterTag,
   TextFilter,
   DateFilter,
   BooleanFilter,
   NumberFilter,
   MaskFilter,
+  MultiSelectFilter,
 } from "../../Filters";
 
 type ItemColum = {
@@ -40,12 +42,14 @@ export type Sh3DataTableEditableProps = DataTableProps & {
 };
 
 export const filterComponents = {
+  SelectFilter: markRaw(SelectFilter),
   SelectFilterTag: markRaw(SelectFilterTag),
   TextFilter: markRaw(TextFilter),
   DateFilter: markRaw(DateFilter),
   BooleanFilter: markRaw(BooleanFilter),
   NumberFilter: markRaw(NumberFilter),
   MaskFilter: markRaw(MaskFilter),
+  MultiSelectFilter: markRaw(MultiSelectFilter),
 };
 
 export type Action = {
