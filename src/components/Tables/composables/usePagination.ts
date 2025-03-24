@@ -16,7 +16,6 @@ export default function usePagination<T>(config: Fetch<T>) {
   const { query, options, filterQuery } = toRefs(config);
   const limit = options.value.limit ?? 10;
   const page = options.value.page ?? 1;
-  const filter: Filters = filterQuery?.value ?? {};
 
   const getData = async () =>
     await fetch({
@@ -30,6 +29,8 @@ export default function usePagination<T>(config: Fetch<T>) {
 
   const getPage = async (pageEvent: DataTablePageEvent) => {
     const { page, filters, rows } = pageEvent;
+    const filter: Filters = filterQuery?.value ?? {};
+
     await refetch.value({
       ...filter,
       where: {
