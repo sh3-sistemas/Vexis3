@@ -112,7 +112,7 @@ import {
   type Sh3DataTableProps,
   filterComponents,
 } from "./types";
-import { ref, useSlots } from "vue";
+import { ref, useSlots, toRef } from "vue";
 
 defineOptions({
   inheritAttrs: true,
@@ -135,5 +135,8 @@ const props = withDefaults(defineProps<Sh3DataTableProps>(), {
 
 const emits = defineEmits(["refresh"]);
 
-const { filters } = useFilterTable(attrs.filterDisplay, props.columns);
+const { filters } = useFilterTable(
+  attrs.filterDisplay,
+  toRef(props, "columns"),
+);
 </script>

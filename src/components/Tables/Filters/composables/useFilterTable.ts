@@ -1,4 +1,4 @@
-import { ref, onBeforeMount } from "vue";
+import { ref, watch, type Ref } from "vue";
 import type { DataTableItemColumn } from "../../DataTable/types";
 
 /**
@@ -9,7 +9,7 @@ import type { DataTableItemColumn } from "../../DataTable/types";
  */
 export default function useFilterTable(
   filterDisplay: string | unknown,
-  columns: Array<DataTableItemColumn>,
+  columns: Ref<Array<DataTableItemColumn>>,
 ) {
   // state encapsulated and managed by the composable
   const filters = ref();
@@ -73,12 +73,12 @@ export default function useFilterTable(
    */
   const mountFilters = async () => {
     const dynamicFilter: { [key: string]: any } = {};
-    if (!columns) return dynamicFilter;
+    if (!columns.value) return dynamicFilter;
 
     const mountFilter =
       filterDisplay === "menu" ? mountMenuFilter : mountRowFilter;
 
-    columns.forEach((col) => {
+    columns.value.forEach((col) => {
       if (!col.filter?.disabled) {
         const filterModel = getFilterModelTemplate(col);
         mountFilter(col, filterModel, dynamicFilter);
@@ -88,9 +88,13 @@ export default function useFilterTable(
     filters.value = dynamicFilter;
   };
 
-  onBeforeMount(() => {
-    mountFilters();
-  });
+  watch(
+    columns,
+    () => {
+      mountFilters();
+    },
+    { immediate: true },
+  );
   // expose managed state as return value
   return { filters };
 }

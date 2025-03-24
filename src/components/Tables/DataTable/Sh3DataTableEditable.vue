@@ -163,7 +163,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, useSlots, useAttrs } from "vue";
+import { ref, computed, useSlots, useAttrs, toRef } from "vue";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import InputText from "primevue/inputtext";
@@ -245,5 +245,8 @@ const checkboxClass = computed(() => ({
   box: "hidden",
 }));
 
-const { filters } = useFilterTable(attrs.filterDisplay, props.columns);
+const { filters } = useFilterTable(
+  attrs.filterDisplay,
+  toRef(props, "columns"),
+);
 </script>
