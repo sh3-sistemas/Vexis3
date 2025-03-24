@@ -2,6 +2,7 @@
   <DataTable
     v-model:filters="filters"
     v-model:expanded-rows="expandedRows"
+    filter-display="row"
     :value="items"
     paginator
     striped-rows
@@ -52,12 +53,16 @@
         />
       </template>
 
-      <template v-if="col.filter" #filter="{ filterModel, filterCallback }">
+      <template
+        v-if="!col.filter?.disabled"
+        #filter="{ filterModel, filterCallback }"
+      >
         <component
-          :is="filterComponents[col.filter.type]"
+          :is="filterComponents[col.filter?.type ?? 'TextFilter']"
           v-model="filterModel.value"
           :filter-callback="filterCallback"
           :col="col"
+          v-bind="{ ...col.filter?.props }"
         />
       </template>
     </Column>
@@ -107,7 +112,7 @@ import {
   type Sh3DataTableProps,
   filterComponents,
 } from "./types";
-import { ref, useSlots } from "vue";
+import { ref, useSlots, toRef } from "vue";
 
 defineOptions({
   inheritAttrs: true,
@@ -130,5 +135,8 @@ const props = withDefaults(defineProps<Sh3DataTableProps>(), {
 
 const emits = defineEmits(["refresh"]);
 
-const { filters } = useFilterTable(attrs.filterDisplay, props.columns);
+const { filters } = useFilterTable(
+  attrs.filterDisplay,
+  toRef(props, "columns"),
+);
 </script>

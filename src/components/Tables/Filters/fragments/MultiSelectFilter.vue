@@ -1,0 +1,25 @@
+<template>
+  <Sh3MultiDropdown
+    v-model="filterModel"
+    :options="[...(col.filter ? col.filter.options : [])]"
+    placeholder="Selecione"
+    class="p-column-filter"
+    :max-selected-labels="1"
+    @value-change="filterCallback()"
+  />
+</template>
+
+<script lang="ts" setup>
+import type { FilterProps } from "./types";
+import Sh3MultiDropdown from "@/components/Dropdowns/Sh3MultiDropdown.vue";
+
+withDefaults(defineProps<FilterProps>(), {
+  col: () => ({
+    field: "",
+    header: "",
+  }),
+  filterCallback: () => {},
+});
+
+const filterModel = defineModel<any>();
+</script>
