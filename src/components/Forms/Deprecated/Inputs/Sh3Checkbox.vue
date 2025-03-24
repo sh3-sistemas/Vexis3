@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { type PropType, ref } from "vue";
-import { Checkbox } from "primevue";
+import Checkbox from "primevue/checkbox";
 import { twMerge } from "tailwind-merge";
 
 type CheckboxStyle = {

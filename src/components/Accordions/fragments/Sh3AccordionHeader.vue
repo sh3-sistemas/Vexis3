@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useSlots } from "vue";
-import { AccordionHeader } from "primevue";
+import AccordionHeader from "primevue/accordionheader";
 
 defineOptions({
   inheritAttrs: false,
