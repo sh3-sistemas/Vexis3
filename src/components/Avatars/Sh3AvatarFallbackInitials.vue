@@ -4,7 +4,7 @@
 
 <script lang="ts" setup>
 import { computed, type PropType, toRef } from "vue";
-import { Avatar } from "primevue";
+import Avatar from "primevue/avatar";
 import type { Sh3AvatarProps } from "./types";
 
 defineOptions({
