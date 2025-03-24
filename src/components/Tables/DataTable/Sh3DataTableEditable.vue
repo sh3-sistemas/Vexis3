@@ -87,7 +87,7 @@
       <template v-if="col.editable != false" #editor="{ data: row, field }">
         <Checkbox
           v-if="col.filterType.toLowerCase() == 'boolean'"
-          v-model="row[field]"
+          v-model="row[field as keyof typeof row]"
           :binary="true"
         />
         <div v-else-if="col.cellFormaterEdit">

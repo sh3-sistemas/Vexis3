@@ -38,7 +38,8 @@
   "dependencies": {
     "@apollo/client": "^3.11.10",
     "@primevue/forms": "^4.3.4",
-    "@primevue/themes": "^4.2.3",
+    "@primevue/themes": "^4.3.2",
+    "@tailwindcss/vite": "^4.0.15",
     "@vueform/vueform": "^1.11.0",
     "@vueuse/core": "^12.2.0",
     "class-variance-authority": "^0.7.1",

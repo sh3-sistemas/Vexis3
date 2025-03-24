@@ -37,3 +37,8 @@ export interface EchoWindow {
   Pusher: typeof Pusher;
   Echo: Echo<any>;
 }
+
+export interface BaseColorPallet {
+  primary: Record<string | number, string>;
+  [any: string]: Record<string | number, string>;
+}
