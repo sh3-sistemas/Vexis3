@@ -44,7 +44,7 @@ defineExpose({ toggleState });
           </div>
           <SidebarMenuButton
             v-else
-            class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground pi pi-chevron-right justify-center"
+            class="data-[state=open]:bg-white-accent data-[state=open]:text-sidebar-accent-foreground pi pi-chevron-right justify-center"
           />
         </DropdownMenuTrigger>
         <DropdownMenuContent

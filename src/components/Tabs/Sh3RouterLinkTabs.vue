@@ -42,19 +42,27 @@ defineOptions({
 const model = defineModel<string | number>("value", { default: 0 });
 const emits = defineEmits(["changeRoute"]);
 
-const buttonClass = "max-h-11 bg-transparent rounded-xl shadow-md";
+const buttonClass = "max-h-11 rounded-xl shadow-md";
 const tabListPT = {
   root: { class: "-mb-[10px]" },
   activeBar: { class: "hidden" },
   tabList: {
-    class: "max-h-11 border-0 gap-x-1 leading-none",
+    class: "max-h-11 border-0 gap-x-1 leading-none bg-transparent",
     root: "leading-none",
   },
   nextButton: { class: buttonClass },
   prevButton: { class: buttonClass },
 };
 const tabPT = {
-  root: { class: "w-[calc(50%-3px)] md:w-48 pt-3 rounded-t-xl border-0" },
+  root: ({ context }: { context: any }) => ({
+    class: [
+      "w-[calc(50%-3px)] md:w-48 pt-3 rounded-t-xl border-0 font-normal",
+      {
+        "bg-white": context.active,
+        "bg-mercury-100": !context.active,
+      },
+    ],
+  }),
 };
 
 const router = useRouter();
