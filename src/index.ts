@@ -50,6 +50,15 @@ export default {
               hoverColor: "{primary.600}",
               activeColor: "{primary.700}",
             },
+            highlight: {
+              background: "{primary.50}",
+              focusBackground: "{primary.100}",
+              color: "{primary.700}",
+              focusColor: "{primary.800}",
+            },
+            common: {
+              maskColor: "{primary.700}",
+            },
           },
         },
         sky: {
@@ -104,7 +113,7 @@ export default {
           900: "#863210",
           950: "#451508",
         },
-        surface: {
+        slate: {
           50: "#f6f7f8",
           100: "#E9EBEE",
           200: "#CFD3DA",
