@@ -1,9 +1,3 @@
-/* Use @import */
-/* @import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "./primevue/tailwind.css";
-@import "tailwindcss/utilities"; */
-
 @import "../theme/vueform/vueformVariables.css";
 
 @layer primevue;
@@ -14,15 +8,10 @@
   }
 }
 
-/* @layer tailwind-utilities {
-  @tailwind components;
-  @tailwind utilities;
-} */
+.p-datatable-mask {
+  position: absolute;
+}
 
-*,
-::before,
-::after {
-  border-width: 0;
-  border-style: solid;
-  border-color: theme("borderColor.DEFAULT", currentColor);
+:root {
+  --p-datatable-header-cell-background: #CFD3DA
 }
