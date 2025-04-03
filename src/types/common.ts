@@ -1,6 +1,10 @@
 import type { ObjectElement } from "@vueform/vueform";
 import type Echo from "laravel-echo";
-import type { ColumnProps, DataTablePageEvent } from "primevue";
+import type {
+  ColumnProps,
+  DataTablePageEvent,
+  DataViewPageEvent,
+} from "primevue";
 import type Pusher from "pusher-js";
 import type { FunctionalComponent, SVGAttributes } from "vue";
 
@@ -22,6 +26,7 @@ export type CustomIcon =
   | FunctionalComponent<SVGAttributes, {}, any, {}>
   | string;
 
+export type DataViewPaginationEvent = DataViewPageEvent;
 export type DataTablePaginationEvent = DataTablePageEvent;
 export type DataTableColumnProps = ColumnProps;
 export type VueFormObjectElement = ObjectElement;

@@ -1,4 +1,4 @@
-import type { DataTablePageEvent } from "primevue/datatable";
+import type { DataTablePageEvent, DataViewPageEvent } from "primevue";
 import { onMounted, toRefs, watchEffect } from "vue";
 import type { Fetch } from "../types";
 import { useFetch } from "@/services";
@@ -36,5 +36,14 @@ export default function usePagination<T>(config: Fetch<T>) {
     });
   };
 
-  return { getPage, fetch, data, loading, refetch };
+  const getPageDataView = async (pageEvent: DataViewPageEvent) => {
+    const { page, rows } = pageEvent;
+    await refetch.value({
+      ...filter,
+      page,
+      first: rows,
+    });
+  };
+
+  return { getPage, getPageDataView, fetch, data, loading, refetch };
 }
