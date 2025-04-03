@@ -42,3 +42,13 @@ export interface BaseColorPallet {
   primary: Record<string | number, string>;
   [any: string]: Record<string | number, string>;
 }
+
+export interface VexisOptions {
+  apollo: {
+    clients: Record<string, any>;
+  };
+  moduleUrl: string;
+  theme: {
+    colors?: BaseColorPallet;
+  };
+}
