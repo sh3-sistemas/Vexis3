@@ -7,20 +7,22 @@ import * as components from "./components";
 
 /** PrimeVue Config. */
 import PrimeVue from "primevue/config";
-import vexis3 from "@/theme/vexis3";
 import Tooltip from "primevue/tooltip";
 import ConfirmationService from "primevue/confirmationservice";
 import DialogService from "primevue/dialogservice";
 import ToastService from "primevue/toastservice";
 import Ripple from "primevue/ripple";
+import vexis3 from "@/theme/vexis3";
 
 /** Toastification Config. */
 import Toast from "vue-toastification";
 import { toastOptions } from "./services/toast/notification/types";
 
+/** Vueform Config. */
 import Vueform from "@vueform/vueform";
 import vueformConfig from "../vueform.config";
 
+/** Apollo Config. */
 import { ApolloClient } from "@apollo/client";
 
 export default {
