@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import tailwindTheme from "./src/theme";
-import PrimeUI from "tailwindcss-primeui";
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -21,7 +20,6 @@ module.exports = {
     ...tailwindTheme,
   },
   plugins: [
-    PrimeUI,
     require("flowbite/plugin"),
     require("@vueform/vueform/tailwind"),
     require("tailwindcss-animate"),
