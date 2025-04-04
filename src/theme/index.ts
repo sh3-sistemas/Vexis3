@@ -1,5 +1,5 @@
-import { pallet, actions, modules } from "./pallets";
-import shadcn from "./pallets/shadcn";
+import { sh3, actions, modules } from "./colors";
+import shadcn from "./colors/shadcn";
 
 export default {
   fontFamily: {
@@ -59,7 +59,7 @@ export default {
       "span-24": "span 24 / span 24",
     },
     colors: {
-      ...pallet,
+      ...sh3,
       ...actions,
       ...modules,
       ...shadcn,
