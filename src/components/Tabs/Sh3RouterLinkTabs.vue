@@ -58,8 +58,8 @@ const tabPT = {
     class: [
       "w-[calc(50%-3px)] md:w-48 pt-3 rounded-t-xl border-0 font-normal",
       {
-        "bg-white": context.active,
-        "bg-mercury-100": !context.active,
+        "bg-white !text-primary-700": context.active,
+        "bg-multiply": !context.active,
       },
     ],
   }),
@@ -77,3 +77,11 @@ watch(
   { immediate: true },
 );
 </script>
+<style>
+.bg-multiply {
+  background-color: var(--vexis-bg-multiply);
+}
+.bg-multiply:hover {
+  background-color: var(--vexis-bg-multiply-hover);
+}
+</style>
