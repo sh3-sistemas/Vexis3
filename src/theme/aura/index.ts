@@ -46,6 +46,7 @@ export const defineTheme = (options: VexisOptions) =>
             contrastColor: "#ffffff",
             hoverColor: "{primary.600}",
             activeColor: "{primary.700}",
+            ...(options.theme?.colorScheme?.light?.primary ?? {}),
           },
           highlight: {
             background: "{primary.50}",
