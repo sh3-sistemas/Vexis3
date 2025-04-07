@@ -1,4 +1,4 @@
-import type { ObjectElement } from "@vueform/vueform";
+import { type ObjectElement } from "@vueform/vueform";
 import type Echo from "laravel-echo";
 import type {
   ColumnProps,
@@ -43,12 +43,27 @@ export interface BaseColorPallet {
   [any: string]: Record<string | number, string>;
 }
 
+type VexisOptionsPrimaryColorScheme = {
+  color?: string;
+  contrastColor?: string;
+  hoverColor?: string;
+  activeColor?: string;
+};
+
 export interface VexisOptions {
   apollo: {
     clients: Record<string, any>;
   };
   moduleUrl: string;
   theme: {
+    colorScheme?: {
+      light?: {
+        primary: VexisOptionsPrimaryColorScheme;
+      };
+      dark?: {
+        primary: VexisOptionsPrimaryColorScheme;
+      };
+    };
     colors?: BaseColorPallet;
   };
 }
