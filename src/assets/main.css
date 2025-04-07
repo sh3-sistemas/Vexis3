@@ -1,118 +1,113 @@
-/* Use @import */
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "./primevue/tailwind.css";
-@import "tailwindcss/utilities";
-
 @import "../theme/vueform/vueformVariables.css";
 
-*,
-::before,
-::after {
-  border-width: 0;
-  border-style: solid;
-  border-color: theme("borderColor.DEFAULT", currentColor);
-}
+@layer primevue;
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --header-height: 73px;
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --ring: 212.7 26.8% 83.9%;
-
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-    overflow: hidden;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
+@layer my-app-base {
   html {
     font-size: 16px;
+  }
+
+  .p-datatable-mask {
+    position: absolute !important;
+  }
+
+  :root {
+    --p-datatable-header-cell-background: #e9ebee;
+
+    /** Vexis custom variables */
+    --vexis-bg-multiply: rgba(0, 0, 0, 0.06);
+    --vexis-bg-multiply-hover: rgba(0, 0, 0, 0.1);
+
+    /** Default colors variables */
+    /* Jade */
+    --jade-50: #f4faeb;
+    --jade-100: #e6f4d3;
+    --jade-200: #c8e5a9;
+    --jade-300: #a8d77a;
+    --jade-400: #85c14f;
+    --jade-500: #67a632;
+    --jade-600: #548a26;
+    --jade-700: #446f23;
+    --jade-800: #36561e;
+    --jade-900: #283f19;
+    --jade-950: #15250b;
+
+    /* Ruby */
+    --ruby-50: #fdeaea;
+    --ruby-100: #f6cdcd;
+    --ruby-200: #eaaaaa;
+    --ruby-300: #da7a79;
+    --ruby-400: #c75751;
+    --ruby-500: #a1272b;
+    --ruby-600: #851919;
+    --ruby-700: #611114;
+    --ruby-800: #45080b;
+    --ruby-900: #2f0204;
+    --ruby-950: #1a0102;
+
+    /* Sulfur */
+    --sulfur-50: #fff4de;
+    --sulfur-100: #fee5b5;
+    --sulfur-200: #fed78f;
+    --sulfur-300: #ffc363;
+    --sulfur-400: #fcb33d;
+    --sulfur-500: #fb9f25;
+    --sulfur-600: #f48911;
+    --sulfur-700: #d06807;
+    --sulfur-800: #b34d09;
+    --sulfur-900: #863210;
+    --sulfur-950: #451508;
+
+    /* Selenium */
+    --selenium-50: #f2f7f9;
+    --selenium-100: #dee9ef;
+    --selenium-200: #c1d6e0;
+    --selenium-300: #96b8ca;
+    --selenium-400: #6492ac;
+    --selenium-500: #436d87;
+    --selenium-600: #3f627b;
+    --selenium-700: #385166;
+    --selenium-800: #344656;
+    --selenium-900: #2f3d4a;
+    --selenium-950: #1b2631;
+
+    /* Copper */
+    --copper-50: #f2fbfa;
+    --copper-100: #d2f5f1;
+    --copper-200: #a5eae2;
+    --copper-300: #70d8d0;
+    --copper-400: #3cb0aa;
+    --copper-500: #29a39f;
+    --copper-600: #1e8381;
+    --copper-700: #1c6969;
+    --copper-800: #1b5454;
+    --copper-900: #1b4646;
+    --copper-950: #09292a;
+
+    /* Mercury */
+    --mercury-50: #f6f7f8;
+    --mercury-100: #e9ebee;
+    --mercury-200: #cfd3da;
+    --mercury-300: #b7bdc9;
+    --mercury-400: #a2a9b8;
+    --mercury-500: #868ea0;
+    --mercury-600: #5e6373;
+    --mercury-700: #40434d;
+    --mercury-800: #2e2f37;
+    --mercury-900: #222327;
+    --mercury-950: #101010;
+
+    /* Indium */
+    --indium-50: #f7f7f7;
+    --indium-100: #e6e7e8;
+    --indium-200: #dddee0;
+    --indium-300: #c6c8ca;
+    --indium-400: #aaadb0;
+    --indium-500: #94999d;
+    --indium-600: #84878c;
+    --indium-700: #767a7f;
+    --indium-800: #63666a;
+    --indium-900: #525356;
+    --indium-950: #343537;
   }
 }

@@ -1,3 +1,3 @@
-import { Timeline } from "primevue";
+import Sh3Timeline from "./Sh3Timeline.vue";
 
-export { Timeline };
+export { Sh3Timeline };

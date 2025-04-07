@@ -6,6 +6,7 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import vueDevTools from "vite-plugin-vue-devtools";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
+import tailwindcss from "@tailwindcss/vite";
 
 const mappings = {
   "vue-toastification": "vue-toastification/dist",
@@ -21,7 +22,7 @@ const mappings = {
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [vue(), vueDevTools(), cssInjectedByJsPlugin()],
+  plugins: [vue(), vueDevTools(), cssInjectedByJsPlugin(), tailwindcss()],
   css: {
     preprocessorOptions: {
       scss: {

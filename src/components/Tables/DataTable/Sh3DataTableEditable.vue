@@ -64,19 +64,19 @@
       <template #body="{ data: row, field }">
         <Checkbox
           v-if="col.filterType.toLowerCase() == 'boolean'"
-          v-model="row[field]"
+          v-model="row[field as keyof typeof row]"
           disabled
           :binary="true"
         />
         <div v-else-if="col.cellFormater">
           <component :is="col.cellFormater" v-bind="{ row, field }"></component>
         </div>
-        <div v-else>{{ getValueByPath(row, field) }}</div>
+        <div v-else>{{ getValueByPath(row, field as string) }}</div>
       </template>
       <template v-if="col.editable != false" #editor="{ data: row, field }">
         <Checkbox
           v-if="col.filterType.toLowerCase() == 'boolean'"
-          v-model="row[field]"
+          v-model="row[field as keyof typeof row]"
           :binary="true"
         />
         <div v-else-if="col.cellFormaterEdit">

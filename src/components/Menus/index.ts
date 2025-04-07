@@ -1,3 +1,4 @@
-import { TieredMenu } from "primevue";
+import Sh3TieredMenu from "./Sh3TieredMenu.vue";
 
-export { TieredMenu };
+export { Sh3TieredMenu };
+export * from "./types";
