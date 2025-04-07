@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { TieredMenu } from "primevue";
-import { useSlots } from "vue";
+import TieredMenu from "primevue/tieredmenu";
+import { useSlots, useTemplateRef } from "vue";
+import type { TieredMenuInstanceType } from "./types";
 
 const slots = useSlots();
 // Assert type here to prevent errors in template
@@ -9,9 +10,23 @@ const slotNames = Object.keys(slots) as unknown;
 defineOptions({
   inheritAttrs: false,
 });
+
+const tieredMenuRef = useTemplateRef<TieredMenuInstanceType | null>(
+  "tieredMenu",
+);
+
+const toggle = (event: Event) => {
+  tieredMenuRef?.value?.toggle(event);
+};
+
+defineExpose({ toggle });
 </script>
 <template>
-  <TieredMenu :pt-options="{ mergeProps: true }" v-bind="$attrs">
+  <TieredMenu
+    ref="tieredMenu"
+    :pt-options="{ mergeProps: true }"
+    v-bind="$attrs"
+  >
     <slot></slot>
     <template
       v-for="(slot, index) of slotNames"
