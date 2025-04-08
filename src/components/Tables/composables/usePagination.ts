@@ -26,8 +26,10 @@ export default function usePagination<T>(config: Fetch<T>) {
   watchEffect(async () => getData());
   onMounted(async () => getData());
 
-  const getPage = async (pageEvent: DataTablePageEvent) => {
-    const { page, filters, rows } = pageEvent;
+  const getPage = async (pageEvent: DataTablePageEvent | DataViewPageEvent) => {
+    const { page, rows } = pageEvent;
+    /*Type guard para resolver conflito de tipos entre DataTablePageEvent e DataViewPageEvent*/
+    const filters = "filters" in pageEvent ? pageEvent.filters : {};
     await refetch.value({
       ...filter,
       ...filters,
@@ -36,14 +38,5 @@ export default function usePagination<T>(config: Fetch<T>) {
     });
   };
 
-  const getPageDataView = async (pageEvent: DataViewPageEvent) => {
-    const { page, rows } = pageEvent;
-    await refetch.value({
-      ...filter,
-      page,
-      first: rows,
-    });
-  };
-
-  return { getPage, getPageDataView, fetch, data, loading, refetch };
+  return { getPage, fetch, data, loading, refetch };
 }
