@@ -87,7 +87,7 @@
                 updateRow(
                   col.cellFormaterEdit.name
                     ? { ...row, [col.cellFormaterEdit.name]: value }
-                    : { ...row, [field]: value }
+                    : { ...row, [field]: value },
                 )
             "
           />

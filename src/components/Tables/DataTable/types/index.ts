@@ -17,6 +17,7 @@ import {
   MaskFilter,
   MultiSelectFilter,
 } from "../../Filters";
+import type { FilterComponentProps } from "../../Filters/fragments/types";
 
 type ItemColum = {
   field: any;
@@ -64,9 +65,8 @@ type DataTableFilter = {
   operator: keyof typeof FilterOperator;
   matchMode: keyof typeof FilterMatchMode;
   type: keyof typeof filterComponents;
-  options: any[];
   disabled: boolean;
-  props?: object;
+  props?: FilterComponentProps;
 };
 
 export type DataTableItemColumn = {

@@ -1,7 +1,6 @@
 <template>
   <Sh3MultiDropdown
     v-model="filterModel"
-    :options="[...(col.filter ? col.filter.options : [])]"
     placeholder="Selecione"
     class="p-column-filter"
     :max-selected-labels="1"

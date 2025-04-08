@@ -28,26 +28,26 @@ export const matchModeToOperator = {
 };
 
 const matchModeValue = {
-  startsWith: (value: any) => String(value).concat("%"),
-  contains: (value: any) => "%".concat(String(value), "%"),
-  notContains: (value: any) => "%".concat(String(value), "%"),
-  endsWith: (value: any) => "%".concat(String(value)),
-  equals: (value: any) => value,
-  notEquals: (value: any) => value,
-  in: (array: any[]) => array,
-  lt: (value: any) => value,
-  lte: (value: any) => value,
-  gt: (value: any) => value,
-  gte: (value: any) => value,
-  between: (array: any[]) => array,
-  dateIs: (value: any) => value,
-  dateIsNot: (value: any) => value,
-  dateBefore: (value: any) => value,
-  dateAfter: (value: any) => value,
+  startsWith: (value: string) => value.concat("%"),
+  contains: (value: string) => "%".concat(value, "%"),
+  notContains: (value: string) => "%".concat(value, "%"),
+  endsWith: (value: string) => "%".concat(value),
+  equals: (value: string | number | boolean) => value,
+  notEquals: (value: string | number | boolean) => value,
+  in: (array: string[] | number[]) => array,
+  lt: (value: string | number) => value,
+  lte: (value: string | number) => value,
+  gt: (value: string | number) => value,
+  gte: (value: string | number) => value,
+  between: (array: number[]) => array,
+  dateIs: (value: Date) => value,
+  dateIsNot: (value: Date) => value,
+  dateBefore: (value: Date) => value,
+  dateAfter: (value: Date) => value,
 };
 export const getMatchModeValue = (
   filter: DataTableFilterMetaData,
-): string | string[] => {
+): string | string[] | number | number[] | boolean | Date => {
   const key = <keyof typeof matchModeValue>(filter.matchMode ?? "startsWith");
   return matchModeValue[key](filter.value);
 };

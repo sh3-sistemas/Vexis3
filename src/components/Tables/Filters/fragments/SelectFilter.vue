@@ -1,7 +1,6 @@
 <template>
   <Sh3Dropdown
     v-model="filterModel"
-    :options="[...(col.filter ? col.filter.options : [])]"
     placeholder="Selecione um"
     class="p-column-filter"
     @value-change="filterCallback()"
