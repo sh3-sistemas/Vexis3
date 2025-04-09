@@ -52,46 +52,64 @@ export const getMatchModeValue = (
   return matchModeValue[key](filter.value);
 };
 
+const filterObject = (
+  name: string,
+  filter: string | DataTableFilterMetaData | DataTableOperatorFilterMetaData,
+): WhereFilter | null => {
+  const condition = {
+    AND: convertFilters(name.substring(name.indexOf(".") + 1), filter),
+  };
+  return condition.AND
+    ? <WhereFilter>{
+        HAS: {
+          relation: name.split(".")[0],
+          condition,
+        },
+      }
+    : null;
+};
+
+const filterMenu = (
+  name: string,
+  filter: DataTableOperatorFilterMetaData,
+): WhereFilter | null => {
+  const operator = filter.operator.toUpperCase();
+  const operatorFilter = {
+    [operator]: [
+      ...filter.constraints.flatMap((x: DataTableFilterMetaData) =>
+        convertFilters(name, x),
+      ),
+    ],
+  };
+  return operatorFilter[operator].length ? operatorFilter : null;
+};
+
+const filterRow = (
+  name: string,
+  filter: DataTableFilterMetaData,
+): WhereFilter | null => {
+  const key = (filter.matchMode ??
+    "equals") as keyof typeof matchModeToOperator;
+  return filter.value != null
+    ? <WhereFilter>{
+        column: name,
+        operator: matchModeToOperator[key],
+        value: getMatchModeValue(filter),
+      }
+    : null;
+};
+
 const convertFilters = (
   name: string,
   filter: string | DataTableFilterMetaData | DataTableOperatorFilterMetaData,
 ): WhereFilter | null => {
   if (name.includes(".")) {
-    const condition = {
-      AND: convertFilters(name.substring(name.indexOf(".") + 1), filter),
-    };
-    return condition.AND
-      ? <WhereFilter>{
-          HAS: {
-            relation: name.split(".")[0],
-            condition,
-          },
-        }
-      : null;
+    return filterObject(name, filter);
   } else {
     const filterOperator = <DataTableOperatorFilterMetaData>filter;
-    if (filterOperator.operator) {
-      const operator = filterOperator.operator.toUpperCase();
-      const operatorFilter = {
-        [operator]: [
-          ...filterOperator.constraints.flatMap((x: DataTableFilterMetaData) =>
-            convertFilters(name, x),
-          ),
-        ],
-      };
-      return operatorFilter[operator].length ? operatorFilter : null;
-    } else {
-      const filterValue = <DataTableFilterMetaData>filter;
-      const key = (filterValue.matchMode ??
-        "equals") as keyof typeof matchModeToOperator;
-      return filterValue.value != null
-        ? <WhereFilter>{
-            column: name,
-            operator: matchModeToOperator[key],
-            value: getMatchModeValue(filterValue),
-          }
-        : null;
-    }
+    return filterOperator.operator
+      ? filterMenu(name, filterOperator)
+      : filterRow(name, <DataTableFilterMetaData>filter);
   }
 };
 
