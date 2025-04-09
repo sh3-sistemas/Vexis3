@@ -2,17 +2,23 @@
 import { Form } from "@primevue/forms";
 import { useSlots } from "vue";
 
-const slots = useSlots();
-
 defineOptions({
   inheritAttrs: false,
 });
+
+const slots = useSlots();
 </script>
 
 <template>
-  <Form v-bind="$attrs" :pt-options="{ mergeProps: true }">
-    <template v-for="(_, slot) in slots" #[slot]="scope">
-      <slot :name="slot" v-bind="scope || {}"></slot>
+  <Form v-slot="formScope" v-bind="$attrs">
+    <!-- Slot default -->
+    <slot v-bind="formScope" />
+
+    <!-- Slots nomeados -->
+    <template v-for="(_, slotName) in slots" :key="slotName">
+      <template v-if="slotName !== 'default'">
+        <slot :name="slotName" v-bind="formScope" />
+      </template>
     </template>
   </Form>
 </template>
