@@ -10,7 +10,7 @@ const { item } = defineProps<{
 <template>
   <div
     :class="[
-      'flex aspect-square size-8 items-center justify-center rounded-lg border border-surface-100 text-sidebar-primary-foreground',
+      'flex aspect-square size-8 items-center justify-center rounded-lg text-sidebar-primary-foreground',
       !item.img && !item.icon ? 'bg-primary-500' : '',
     ]"
   >

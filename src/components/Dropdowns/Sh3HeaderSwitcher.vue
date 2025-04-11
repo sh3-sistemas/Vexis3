@@ -27,6 +27,7 @@ export type HeaderSwitcherOption = {
 
 export type Sh3HeaderSwitcherProps = {
   title: string;
+  subtitle: string;
   options: Array<HeaderSwitcherOption>;
   extras: Array<HeaderSwitcherOption>;
   initialValue?: HeaderSwitcherOption;
@@ -59,6 +60,7 @@ const showDropdown = computed(() => {
             :chevron="showDropdown"
             :selected="selected"
             :title="title"
+            :subtitle="subtitle"
           />
         </DropdownMenuTrigger>
         <DropdownMenuContent
