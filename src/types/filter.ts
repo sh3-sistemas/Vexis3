@@ -30,13 +30,20 @@ export enum SQLOperator {
   NOT_BEETWEN = "NOT_BEETWEN",
 }
 
+export type HasWhereFilter = {
+  relation: string;
+  condition?: WhereFilter;
+  amount?: number;
+  operator?: keyof typeof SQLOperator;
+};
+
 export type WhereFilter = {
-  column: string;
-  operator: keyof typeof SQLOperator;
-  value: string | number | boolean | any;
+  column?: string;
+  operator?: keyof typeof SQLOperator;
+  value?: string | number | boolean | any;
   AND?: WhereFilter[];
   OR?: WhereFilter[];
-  // HAS?: WhereFilter; //TODO: Completar o tipo has
+  HAS?: HasWhereFilter;
 };
 
 export type FilterHandlers = {

@@ -2,6 +2,8 @@ import type { DataTablePageEvent, DataViewPageEvent } from "primevue";
 import { onMounted, toRefs, watchEffect } from "vue";
 import type { Fetch } from "../types";
 import { useFetch } from "@/services";
+import { filtersToLighthouse } from "../Filters/utils";
+import type { Filters } from "@/types";
 
 /**
  *
@@ -14,7 +16,6 @@ export default function usePagination<T>(config: Fetch<T>) {
   const { query, options, filterQuery } = toRefs(config);
   const limit = options.value.limit ?? 10;
   const page = options.value.page ?? 1;
-  const filter = filterQuery?.value ?? {};
 
   const getData = async () =>
     await fetch({
@@ -28,11 +29,17 @@ export default function usePagination<T>(config: Fetch<T>) {
 
   const getPage = async (pageEvent: DataTablePageEvent | DataViewPageEvent) => {
     const { page, rows } = pageEvent;
+    const filter: Filters = filterQuery?.value ?? {};
+
     /*Type guard para resolver conflito de tipos entre DataTablePageEvent e DataViewPageEvent*/
     const filters = "filters" in pageEvent ? pageEvent.filters : {};
     await refetch.value({
       ...filter,
-      ...filters,
+      where: {
+        AND: filter.where
+          ? [{ ...filter.where }, ...filtersToLighthouse(filters)]
+          : filtersToLighthouse(filters),
+      },
       page,
       first: rows,
     });

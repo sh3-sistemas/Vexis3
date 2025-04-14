@@ -1,5 +1,5 @@
-<script lang="ts" setup>
-import Tag from "primevue/tag";
+<script setup lang="ts">
+import Timeline from "primevue/timeline";
 import { useSlots } from "vue";
 
 const slots = useSlots();
@@ -11,7 +11,7 @@ defineOptions({
 });
 </script>
 <template>
-  <Tag :pt-options="{ mergeProps: true }" v-bind="$attrs">
+  <Timeline :pt-options="{ mergeProps: true }" v-bind="$attrs">
     <slot></slot>
     <template
       v-for="(slot, index) of slotNames"
@@ -20,5 +20,5 @@ defineOptions({
     >
       <slot :name="slot" v-bind="{ ...(slotProps as object) }" />
     </template>
-  </Tag>
+  </Timeline>
 </template>
