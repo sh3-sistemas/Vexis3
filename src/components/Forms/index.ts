@@ -10,6 +10,7 @@ import InputNumber from "primevue/inputnumber";
 import InputText from "primevue/inputtext";
 
 export * from "./types";
+export * from "./masks";
 
 export {
   DynamicForm,
