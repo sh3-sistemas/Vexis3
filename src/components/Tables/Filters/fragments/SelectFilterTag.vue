@@ -1,7 +1,6 @@
 <template>
   <Dropdown
     v-model="filterModel"
-    :options="[...(col.filter ? col.filter.options : [])]"
     placeholder="Selecione um"
     class="p-column-filter"
     option-label="name"

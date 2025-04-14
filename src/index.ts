@@ -22,6 +22,8 @@ import vueformConfig from "../vueform.config";
 
 import { ApolloClient } from "@apollo/client";
 
+import { pt_BR } from "./utils/locale";
+
 export default {
   install: (
     app: App,
@@ -37,6 +39,7 @@ export default {
       pt: vexis3,
       theme: "none",
       ripple: false,
+      locale: pt_BR,
     });
 
     app.directive("ripple", Ripple);
