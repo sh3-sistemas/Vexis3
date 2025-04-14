@@ -1,4 +1,4 @@
-import type { DataTablePageEvent } from "primevue/datatable";
+import type { DataTablePageEvent, DataViewPageEvent } from "primevue";
 import { onMounted, toRefs, watchEffect } from "vue";
 import type { Fetch } from "../types";
 import { useFetch } from "@/services";
@@ -27,10 +27,12 @@ export default function usePagination<T>(config: Fetch<T>) {
   watchEffect(async () => getData());
   onMounted(async () => getData());
 
-  const getPage = async (pageEvent: DataTablePageEvent) => {
-    const { page, filters, rows } = pageEvent;
+  const getPage = async (pageEvent: DataTablePageEvent | DataViewPageEvent) => {
+    const { page, rows } = pageEvent;
     const filter: Filters = filterQuery?.value ?? {};
 
+    /*Type guard para resolver conflito de tipos entre DataTablePageEvent e DataViewPageEvent*/
+    const filters = "filters" in pageEvent ? pageEvent.filters : {};
     await refetch.value({
       ...filter,
       where: {
