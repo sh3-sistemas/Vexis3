@@ -20,7 +20,6 @@ module.exports = {
     ...tailwindTheme,
   },
   plugins: [
-    require("tailwindcss-primeui"),
     require("flowbite/plugin"),
     require("@vueform/vueform/tailwind"),
     require("tailwindcss-animate"),
