@@ -44,9 +44,9 @@ export default {
         },
       },
       warn: {
-        background: "color-mix(in srgb,{sulfur.50}, transparent 5%)",
+        background: "{sulfur.50}",
         borderColor: "{sulfur.200}",
-        color: "{sulfur.600}",
+        color: "{sulfur.700}",
         shadow:
           "0px 4px 8px 0px color-mix(in srgb, {sulfur.500}, transparent 96%)",
         closeButton: {
