@@ -10,6 +10,7 @@ import FloatLabel from "primevue/floatlabel";
 import InputGroup from "primevue/inputgroup";
 import InputNumber from "primevue/inputnumber";
 import InputText from "primevue/inputtext";
+import DatePicker from "primevue/datepicker";
 
 import Password from "primevue/password";
 
@@ -25,6 +26,7 @@ export {
   InputText,
   RadioButton,
   Password,
+  DatePicker,
   Sh3Checkbox,
   Sh3GenericForm,
   Sh3Input,

@@ -32,6 +32,9 @@ export interface Sh3GenericFormProps {
   submitForm: () => void;
   deleteRegister: () => void;
   options?: FormOptions;
+  loading?: boolean;
+  resolver?: any;
+  initialValues?: any;
 }
 declare module "vue" {
   export interface GlobalComponents {

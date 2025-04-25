@@ -6,12 +6,13 @@ import type { App, Plugin } from "vue";
 import * as components from "./components";
 
 /** PrimeVue Config. */
-import PrimeVue from "primevue/config";
+import PrimeVue, { defaultOptions } from "primevue/config";
 import ConfirmationService from "primevue/confirmationservice";
 import DialogService from "primevue/dialogservice";
 import Ripple from "primevue/ripple";
 import ToastService from "primevue/toastservice";
 import Tooltip from "primevue/tooltip";
+import ptBR from "./theme/aura/locale";
 
 /** Toastification Config. */
 import Toast from "vue-toastification";
@@ -41,6 +42,10 @@ export default {
             order: "my-app-base, primevue, my-app-utilities",
           },
         },
+      },
+      locale: {
+        ...defaultOptions,
+        ...ptBR,
       },
     });
 
