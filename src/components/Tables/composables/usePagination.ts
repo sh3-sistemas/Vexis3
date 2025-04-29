@@ -1,5 +1,5 @@
 import type { DataTablePageEvent } from "primevue/datatable";
-import { onMounted, toRefs, watchEffect } from "vue";
+import { toRefs, watchEffect } from "vue";
 import type { Fetch } from "../types";
 import { useFetch } from "@/services";
 
@@ -10,8 +10,8 @@ import { useFetch } from "@/services";
  * @param refetch
  */
 export default function usePagination<T>(config: Fetch<T>) {
-  const { fetch, data, refetch, loading } = useFetch<T>();
-  const { query, options, filterQuery } = toRefs(config);
+  const { query, options, filterQuery, onDone } = toRefs(config);
+  const { fetch, data, refetch, loading } = useFetch<T>(onDone?.value);
   const limit = options.value.limit ?? 10;
   const page = options.value.page ?? 1;
   const filter = filterQuery?.value ?? {};
@@ -24,7 +24,6 @@ export default function usePagination<T>(config: Fetch<T>) {
     });
 
   watchEffect(async () => getData());
-  onMounted(async () => getData());
 
   const getPage = async (pageEvent: DataTablePageEvent) => {
     const { page, filters, rows } = pageEvent;
