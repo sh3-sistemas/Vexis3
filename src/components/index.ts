@@ -16,6 +16,7 @@ export * from "./Modals";
 export * from "./Menus";
 export * from "./Navigation";
 export * from "./Panels";
+export * from "./Popovers";
 export * from "./Primeform";
 export * from "./Scroller";
 export * from "./Sidebars";
