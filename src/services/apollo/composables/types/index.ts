@@ -25,7 +25,7 @@ export type CrudEventKey = keyof typeof CRUD_EVENTS;
 export type CrudOperations = {
   create: DocumentNode;
   delete: DocumentNode;
-  update: DocumentNode;
+  update?: DocumentNode;
 };
 
 export type ToastResponse = {
