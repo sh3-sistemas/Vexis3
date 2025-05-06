@@ -44,6 +44,7 @@
       :header="col.header"
       filter-header-style="background-color: white"
       reorderable-column
+      show-clear-button
       v-bind="{ ...col.props }"
     >
       <template v-if="col.type == 'tag'" #body="slotProps">

@@ -58,6 +58,7 @@
       :sortable="col.sortable"
       filter-header-style="background-color: white"
       :pt="{ pcSortBadge: { root: 'hidden' } }"
+      show-clear-button
       v-bind="{ ...col.props }"
     >
       <template #body="{ data: row, field }">
