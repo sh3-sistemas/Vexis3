@@ -10,6 +10,8 @@ import {
 } from "./types";
 import type { ApolloError } from "@apollo/client/core";
 import type { ClientDict } from "../types";
+import { Kind, type DocumentNode } from "graphql";
+const defaultcrud = <DocumentNode>{ kind: Kind.DOCUMENT, definitions: [] };
 
 /**
  *
@@ -28,21 +30,27 @@ export default function useCrud<T>(
     onDone: onDoneCreate,
     onError: onErrorCreate,
   } = provideApolloClients(clients)(() =>
-    useMutation(crud.value?.create, { clientId: clientId.value }),
+    useMutation(crud.value?.create ?? defaultcrud, {
+      clientId: clientId.value,
+    }),
   );
   const {
     mutate: mutateUpdate,
     onDone: onDoneUpdate,
     onError: onErrorUpdate,
   } = provideApolloClients(clients)(() =>
-    useMutation(crud.value?.update, { clientId: clientId.value }),
+    useMutation(crud.value?.update ?? defaultcrud, {
+      clientId: clientId.value,
+    }),
   );
   const {
     mutate: mutateDeletion,
     onDone: onDoneDeletion,
     onError: onErrorDeletion,
   } = provideApolloClients(clients)(() =>
-    useMutation(crud.value?.delete, { clientId: clientId.value }),
+    useMutation(crud.value?.delete ?? defaultcrud, {
+      clientId: clientId.value,
+    }),
   );
 
   const onDone = (event: CrudEventKey, response: object) => {
