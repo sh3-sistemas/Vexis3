@@ -26,12 +26,17 @@
     <template #empty>
       <SearchNotFound />
     </template>
-    <Column v-if="rowExpansion" expander style="width: 5rem" />
+    <Column
+      v-if="rowExpansion"
+      expander
+      style="width: 5rem"
+      :filter-header-class="filterHeaderClass"
+    />
     <Column
       v-if="selectionMode"
       :selection-mode="selectionMode"
       header-style="width: 3rem"
-      filter-header-style="background-color: white"
+      :filter-header-class="filterHeaderClass"
       :pt="{
         rowRadioButton: 'bg-red-500 text-red-600',
       }"
@@ -42,7 +47,12 @@
       :key="col.field"
       :field="col.field"
       :header="col.header"
-      filter-header-style="background-color: white"
+      :filter-header-class="filterHeaderClass"
+      :pt="{
+        filterElementContainer: 'flex-auto',
+        filterMenuIcon: '!min-w-4',
+        filterClearIcon: '!min-w-4',
+      }"
       reorderable-column
       show-clear-button
       v-bind="{ ...col.props }"
@@ -68,7 +78,13 @@
       </template>
     </Column>
 
-    <Column v-if="actions.length > 0" frozen header="Ações" :exportable="false">
+    <Column
+      v-if="actions.length > 0"
+      frozen
+      header="Ações"
+      :exportable="false"
+      :filter-header-class="filterHeaderClass"
+    >
       <template #body="slotProps">
         <div class="actions-wrapper">
           <button
@@ -135,6 +151,9 @@ const props = withDefaults(defineProps<Sh3DataTableProps>(), {
 });
 
 const emits = defineEmits(["refresh"]);
+
+const filterHeaderClass =
+  "bg-white !border-b !border-solid !border-surface-100";
 
 const { filters } = useFilterTable(
   attrs.filterDisplay,

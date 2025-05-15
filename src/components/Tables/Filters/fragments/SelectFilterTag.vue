@@ -2,7 +2,7 @@
   <Dropdown
     v-model="filterModel"
     placeholder="Selecione um"
-    class="p-column-filter"
+    class="p-column-filter w-full"
     option-label="name"
     option-value="value"
     :show-clear="true"
