@@ -38,17 +38,23 @@
     <template #empty>
       <SearchNotFound />
     </template>
-    <Column v-if="rowExpansion" expander style="width: 5rem" />
+    <Column
+      v-if="rowExpansion"
+      expander
+      style="width: 5rem"
+      :filter-header-class="filterHeaderClass"
+    />
     <Column
       v-if="selectionMode"
       :selection-mode="selectionMode"
       class="w-10"
       :pt-options="{ mergeProps: true }"
       :pt="{
+        headerCell: '!p-2',
         pcHeaderCheckbox: checkboxClass,
         pcRowCheckbox: checkboxClass,
       }"
-      filter-header-style="background-color: white"
+      :filter-header-class="filterHeaderClass"
     />
     <Column
       v-for="col of columns.filter((x) => x.visible != false)"
@@ -56,8 +62,13 @@
       :field="col.field"
       :header="col.header"
       :sortable="col.sortable"
-      filter-header-style="background-color: white"
-      :pt="{ pcSortBadge: { root: 'hidden' } }"
+      :filter-header-class="filterHeaderClass"
+      :pt="{
+        pcSortBadge: { root: 'hidden' },
+        filterElementContainer: 'flex-auto',
+        filterMenuIcon: '!min-w-4',
+        filterClearIcon: '!min-w-4',
+      }"
       show-clear-button
       v-bind="{ ...col.props }"
     >
@@ -116,7 +127,7 @@
     <Column
       class="w-20"
       :exportable="false"
-      filter-header-style="background-color: white"
+      :filter-header-class="filterHeaderClass"
     >
       <template #body="{ data: row }">
         <Sh3Button
@@ -236,6 +247,7 @@ const startNewRow = (startValue?: object) => {
 };
 
 defineExpose({ startNewRow });
+
 const checkboxClass = computed(() => ({
   root:
     props.disabled || editingRows.value.length
@@ -245,6 +257,8 @@ const checkboxClass = computed(() => ({
     "w-5 h-5 rounded bg-transparent !ring-0 border border-surface-300 cursor-pointer",
   box: "hidden",
 }));
+const filterHeaderClass =
+  "bg-white !border-b !border-solid !border-surface-100";
 
 const { filters } = useFilterTable(
   attrs.filterDisplay,
