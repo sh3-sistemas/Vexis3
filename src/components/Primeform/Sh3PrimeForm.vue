@@ -1,16 +1,20 @@
 <script setup lang="ts">
 import { Form } from "@primevue/forms";
-import { useSlots } from "vue";
+import { useSlots, useTemplateRef, type ComponentPublicInstance } from "vue";
+
+const form = useTemplateRef<ComponentPublicInstance>("primeForm");
 
 defineOptions({
   inheritAttrs: false,
 });
 
 const slots = useSlots();
+
+defineExpose({ form });
 </script>
 
 <template>
-  <Form v-slot="formScope" v-bind="$attrs">
+  <Form ref="primeForm" v-slot="formScope" v-bind="$attrs">
     <!-- Slot default -->
     <slot v-bind="formScope" />
 
