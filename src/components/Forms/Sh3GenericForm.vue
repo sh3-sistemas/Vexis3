@@ -5,6 +5,10 @@
     :display-errors="false"
     :endpoint="false"
     :disabled="!options.crud.save"
+    :add-classes="{
+      ObjectElement: { container: 'bg-gray-50 p-3' },
+      ...(!options.crud.edit ? disableAll : {}),
+    }"
     v-bind="$attrs"
     @submit="submitForm"
   >
@@ -23,9 +27,20 @@
         :columns="1"
         outlined
         full
+        :disabled="options.crud.disabled"
         @click="deletion"
       />
       <slot name="actions"></slot>
+      <Sh3FormButton
+        v-if="!options.crud.edit"
+        name="edit"
+        :container-class="options.crud.cancel ? 'col-start-10' : 'col-start-11'"
+        button-label="Editar"
+        :columns="1"
+        full
+        :disabled="options.crud.disabled"
+        @click="emits('edit', form$)"
+      />
       <Sh3FormButton
         v-if="options.crud.cancel"
         name="cancel"
@@ -51,7 +66,7 @@
 
 <script setup lang="ts">
 import type { Vueform } from "@vueform/vueform";
-import { onMounted } from "vue";
+import { onMounted, provide, toRef } from "vue";
 import { ref, withDefaults } from "vue";
 import { useConfirm, DialogUtils } from "../Dialogs";
 import type { Sh3GenericFormProps } from "./types";
@@ -68,6 +83,8 @@ const props = withDefaults(defineProps<Sh3GenericFormProps>(), {
       crud: {
         cancel: true,
         delete: false,
+        disabled: false,
+        edit: false,
         save: false,
       },
     };
@@ -79,6 +96,7 @@ const form$ = ref<Vueform>();
 const emits = defineEmits<{
   setup: [form$: typeof form$];
   cancel: [form$: typeof form$ | any];
+  edit: [form$: typeof form$ | any];
 }>();
 
 const syncForm = (data: any) =>
@@ -93,6 +111,27 @@ const deletion = () => {
   });
   confirm.require(template);
 };
+
+const disableAll = {
+  TextElement: {
+    container: "pointer-events-none ",
+    inputContainer: "form-bg-disabled",
+  },
+  TextareaElement: {
+    container: "pointer-events-none",
+    inputContainer: "form-bg-disabled",
+  },
+  RadiogroupElement: { wrapper: "opacity-50 pointer-events-none " },
+  RadioElement: {
+    wrapper: "pointer-events-none ",
+    input: "opacity-50 form-bg-disabled",
+  },
+};
+
+provide(
+  "formDisabled",
+  toRef(() => !props.options.crud.edit || props.options.crud.disabled),
+);
 
 onMounted(() => emits("setup", form$));
 defineExpose({ clearForm, deletion, syncForm });
