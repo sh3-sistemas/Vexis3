@@ -10,7 +10,13 @@ import InputGroup from "primevue/inputgroup";
 import InputNumber from "primevue/inputnumber";
 import InputText from "primevue/inputtext";
 
+import Password from "primevue/password";
+
 import { RadioButton } from "primevue";
+
+import Sh3PrimeForm from "../Primeform/Sh3PrimeForm.vue";
+import Sh3FormField from "../Primeform/fragments/Sh3FormField.vue";
+
 
 export * from "./types";
 export * from "./masks";
@@ -19,6 +25,7 @@ export {
   DynamicForm,
   InputGroup,
   InputNumber,
+  Password,
   InputText,
   RadioButton,
   Sh3Checkbox,
@@ -27,4 +34,6 @@ export {
   Sh3InputWithButton,
   Sh3Select,
   Sh3SelectDeprecated,
+  Sh3PrimeForm,
+  Sh3FormField
 };
