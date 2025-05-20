@@ -9,6 +9,7 @@ import Sh3Select from "./components/Sh3Select.vue";
 import InputGroup from "primevue/inputgroup";
 import InputNumber from "primevue/inputnumber";
 import InputText from "primevue/inputtext";
+import FloatLabel from "primevue/floatlabel";
 
 import Password from "primevue/password";
 
@@ -27,6 +28,7 @@ export {
   InputNumber,
   Password,
   InputText,
+  FloatLabel,
   RadioButton,
   Sh3Checkbox,
   Sh3GenericForm,
