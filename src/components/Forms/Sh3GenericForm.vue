@@ -20,9 +20,16 @@
     >
       <Sh3FormButton
         v-if="options.crud.delete"
+        v-tooltip.bottom="{
+          value: options.crud.disabled ? '' : 'Excluir registro',
+          showDelay: 50,
+          hideDelay: 50,
+        }"
         name="delete"
         severity="danger"
-        container-class="col-start-1"
+        :container-class="
+          'col-start-1' + (options.crud.disabled ? ' cursor-not-allowed' : '')
+        "
         button-label="Excluir"
         :columns="1"
         outlined
@@ -33,6 +40,11 @@
       <slot name="actions"></slot>
       <Sh3FormButton
         v-if="!options.crud.edit"
+        v-tooltip.bottom="{
+          value: 'Habilitar edição',
+          showDelay: 50,
+          hideDelay: 50,
+        }"
         name="edit"
         :container-class="options.crud.cancel ? 'col-start-10' : 'col-start-11'"
         button-label="Editar"
@@ -43,6 +55,11 @@
       />
       <Sh3FormButton
         v-if="options.crud.cancel"
+        v-tooltip.bottom="{
+          value: options.crud.edit ? 'Cancelar edição' : 'Retornar',
+          showDelay: 50,
+          hideDelay: 50,
+        }"
         name="cancel"
         container-class="col-start-11"
         button-label="Cancelar"
@@ -52,9 +69,16 @@
         @click="emits('cancel', form$)"
       />
       <Sh3FormButton
+        v-tooltip.bottom="{
+          value: options.crud.save ? 'Salvar registro' : '',
+          showDelay: 50,
+          hideDelay: 50,
+        }"
         name="submit"
         severity="success"
-        container-class="col-start-12"
+        :container-class="
+          'col-start-12' + (options.crud.edit ? '' : ' cursor-not-allowed')
+        "
         button-label="Salvar"
         :columns="1"
         full
@@ -114,7 +138,7 @@ const deletion = () => {
 
 const disableAll = {
   TextElement: {
-    container: "pointer-events-none ",
+    container: "pointer-events-none",
     inputContainer: "form-bg-disabled",
   },
   TextareaElement: {
