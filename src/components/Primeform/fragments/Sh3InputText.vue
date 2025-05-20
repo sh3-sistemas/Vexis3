@@ -1,6 +1,5 @@
 <template>
     <InputText :pt-options="{ mergeProps: true }" v-bind="$attrs">
-      <slot></slot>
     </InputText>
   </template>
   

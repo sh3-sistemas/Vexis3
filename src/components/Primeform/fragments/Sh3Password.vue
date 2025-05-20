@@ -1,6 +1,5 @@
 <template>
     <Password :pt-options="{ mergeProps: true }" v-bind="$attrs">
-      <slot></slot>
     </Password>
   </template>
   
