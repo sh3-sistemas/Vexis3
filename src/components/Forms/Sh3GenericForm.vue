@@ -123,7 +123,11 @@ const disableAll = {
   },
   RadiogroupElement: { wrapper: "opacity-50 pointer-events-none " },
   RadioElement: {
-    wrapper: "pointer-events-none ",
+    wrapper: "pointer-events-none",
+    input: "opacity-50 form-bg-disabled",
+  },
+  CheckboxElement: {
+    container: "pointer-events-none",
     input: "opacity-50 form-bg-disabled",
   },
 };
