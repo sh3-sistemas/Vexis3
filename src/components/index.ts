@@ -24,3 +24,4 @@ export * from "./Tags";
 export * from "./Timeline";
 export * from "./Typography";
 export * from "./Panels";
+export * from "./Primeform";

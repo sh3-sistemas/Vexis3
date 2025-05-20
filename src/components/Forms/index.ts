@@ -5,11 +5,6 @@ import Sh3SelectDeprecated from "./Deprecated/Sh3Select.vue";
 import Sh3GenericForm from "./Sh3GenericForm.vue";
 import Sh3InputWithButton from "./components/Sh3InputWithButton.vue";
 import Sh3Select from "./components/Sh3Select.vue";
-
-import InputGroup from "primevue/inputgroup";
-import InputNumber from "primevue/inputnumber";
-import InputText from "primevue/inputtext";
-
 import { RadioButton } from "primevue";
 
 export * from "./types";
@@ -17,9 +12,6 @@ export * from "./masks";
 
 export {
   DynamicForm,
-  InputGroup,
-  InputNumber,
-  InputText,
   RadioButton,
   Sh3Checkbox,
   Sh3GenericForm,
