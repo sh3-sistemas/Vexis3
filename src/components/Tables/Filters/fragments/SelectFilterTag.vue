@@ -10,8 +10,8 @@
   >
     <template #option="slotProps">
       <Tag
-        :value="slotProps.option.name"
         v-bind="slotProps.option"
+        :value="slotProps.option.name"
         :pt-options="{ mergeProps: true }"
       />
     </template>

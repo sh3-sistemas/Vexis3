@@ -88,6 +88,8 @@ const filterRow = (
   name: string,
   filter: DataTableFilterMetaData,
 ): WhereFilter | null => {
+  if (filter.value && typeof filter.value == "object")
+    return customFilter(name, filter);
   const key = (filter.matchMode ??
     "equals") as keyof typeof matchModeToOperator;
   return filter.value != null
@@ -97,6 +99,17 @@ const filterRow = (
         value: getMatchModeValue(filter),
       }
     : null;
+};
+
+const customFilter = (
+  name: string,
+  filter: DataTableFilterMetaData,
+): WhereFilter | null => {
+  return <WhereFilter>{
+    column: name,
+    operator: filter.value.operator,
+    value: filter.value.value,
+  };
 };
 
 const convertFilters = (
