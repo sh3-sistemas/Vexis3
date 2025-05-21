@@ -2,8 +2,9 @@
   <InputText
     v-model="filterModel"
     type="text"
-    class="p-column-filter max-w-[135px]"
+    class="p-column-filter"
     placeholder="Pesquisar"
+    fluid
     @value-change="update"
   />
 </template>

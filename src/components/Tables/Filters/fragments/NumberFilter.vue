@@ -2,8 +2,9 @@
   <InputNumber
     v-model="filterModel"
     :pt-options="{ mergeProps: true }"
-    :pt="{ pcInputText: 'p-column-filter max-w-[135px]' }"
+    :pt="{ pcInputText: { root: 'p-column-filter w-full' } }"
     placeholder="Pesquisar"
+    fluid
     @input="update"
   />
 </template>

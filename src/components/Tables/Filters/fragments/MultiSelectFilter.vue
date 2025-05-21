@@ -2,7 +2,7 @@
   <Sh3MultiDropdown
     v-model="filterModel"
     placeholder="Selecione"
-    class="p-column-filter"
+    class="p-column-filter w-full"
     :max-selected-labels="1"
     @value-change="filterCallback()"
   />

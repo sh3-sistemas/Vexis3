@@ -1,9 +1,10 @@
 <template>
   <InputMask
     v-model="filterModel"
-    class="p-column-filter max-w-[135px]"
+    class="p-column-filter"
     placeholder="Pesquisar"
     mask=""
+    fluid
     @value-change="update"
   />
 </template>
