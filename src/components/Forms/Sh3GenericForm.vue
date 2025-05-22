@@ -6,7 +6,7 @@
     :endpoint="false"
     :disabled="!options.crud.save"
     :add-classes="{
-      ObjectElement: { container: 'bg-gray-50 p-3' },
+      ObjectElement: { container: 'bg-mercury-50 p-3' },
       ...(!options.crud.edit ? disableAll : {}),
     }"
     v-bind="$attrs"
