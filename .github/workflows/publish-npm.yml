@@ -39,6 +39,18 @@ jobs:
         with:
           node-version: 22
           registry-url: https://registry.npmjs.org/
-      - run: npm publish
+      - name: Publish to npm with dynamic tag      
+        run: |          
+          VERSION=${GITHUB_REF#refs/tags/}          
+          NPM_TAG="latest"          
+          if [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+-(.+)$ ]]; then            
+            PRERELEASE="${BASH_REMATCH[1]}" 
+            NPM_TAG=$(echo "$PRERELEASE" | cut -d'.' -f1)                      
+          fi
+
+          echo "GitHub Release Tag: $VERSION"
+          echo "npm publish tag: $NPM_TAG" 
+
+          npm publish --tag $NPM_TAG
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
