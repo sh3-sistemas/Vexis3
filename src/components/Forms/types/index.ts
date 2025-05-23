@@ -22,6 +22,8 @@ export type CrudOptions = {
   delete: boolean;
   save: boolean;
   cancel: boolean;
+  disabled?: boolean;
+  edit?: boolean;
 };
 
 export type FormOptions = {
