@@ -20,6 +20,7 @@ export * from "./Popovers";
 export * from "./Primeform";
 export * from "./Scroller";
 export * from "./Sidebars";
+export * from "./Skeleton";
 export * from "./Tables";
 export * from "./Tabs";
 export * from "./Tags";
