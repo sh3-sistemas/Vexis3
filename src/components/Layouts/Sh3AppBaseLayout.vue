@@ -23,6 +23,7 @@
             class="system-content-general--body grow flex flex-col overflow-auto"
           >
             <Sh3RouterLinkTabs
+              v-if="tabs.tabGroup.length > 1"
               v-bind="tabs"
               @change-route="(name) => emits('tabChangeRoute', name)"
             />
