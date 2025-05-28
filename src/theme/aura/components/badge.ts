@@ -10,23 +10,23 @@ export default {
         color: "{surface.600}",
       },
       success: {
-        background: "{green.500}",
+        background: "{jade.600}",
         color: "{surface.0}",
       },
       info: {
-        background: "{sky.500}",
+        background: "{selenium.600}",
         color: "{surface.0}",
       },
       warn: {
-        background: "{orange.500}",
+        background: "{sulfur.600}",
         color: "{surface.0}",
       },
       danger: {
-        background: "{red.500}",
+        background: "{ruby.600}",
         color: "{surface.0}",
       },
       contrast: {
-        background: "{surface.950}",
+        background: "{mercury.950}",
         color: "{surface.0}",
       },
     },
