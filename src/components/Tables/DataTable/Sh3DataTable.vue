@@ -10,6 +10,7 @@
     :rows-per-page-options="[10, 15, 25, 50]"
     paginator-template="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink RowsPerPageDropdown"
     current-page-report-template="{first} a {last} de {totalRecords}"
+    :selection-mode="selectionMode ?? undefined"
     v-bind="$attrs"
   >
     <!-- Paginator section -->
@@ -37,9 +38,7 @@
       :selection-mode="selectionMode"
       header-style="width: 3rem"
       :filter-header-class="filterHeaderClass"
-      :pt="{
-        rowRadioButton: 'bg-red-500 text-red-600',
-      }"
+      :pt="columnPassThrough"
     >
     </Column>
     <Column
@@ -130,6 +129,7 @@ import {
   filterComponents,
 } from "./types";
 import { ref, useSlots, toRef } from "vue";
+import { type RadioButtonPassThroughMethodOptions } from "primevue";
 
 defineOptions({
   inheritAttrs: true,
@@ -159,4 +159,15 @@ const { filters } = useFilterTable(
   attrs.filterDisplay,
   toRef(props, "columns"),
 );
+
+const columnPassThrough = {
+  pcRowRadiobutton: (ptOptions: RadioButtonPassThroughMethodOptions) => ({
+    box: {
+      style: { "background-color": "#fff" },
+    },
+    icon: {
+      class: ptOptions.context.checked ? "rounded-full w-3 h-3 bg-primary" : "",
+    },
+  }),
+};
 </script>
