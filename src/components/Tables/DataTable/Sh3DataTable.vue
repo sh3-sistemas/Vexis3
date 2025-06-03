@@ -10,6 +10,8 @@
     :rows-per-page-options="[10, 15, 25, 50]"
     paginator-template="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink RowsPerPageDropdown"
     current-page-report-template="{first} a {last} de {totalRecords}"
+    :pt-options="{ mergeProps: true }"
+    :pt="tableStyle"
     v-bind="$attrs"
   >
     <!-- Paginator section -->
@@ -130,6 +132,7 @@ import {
   filterComponents,
 } from "./types";
 import { ref, useSlots, toRef } from "vue";
+import { tableStyle } from "./utils";
 
 defineOptions({
   inheritAttrs: true,
