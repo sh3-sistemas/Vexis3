@@ -35,6 +35,7 @@ type ItemColum = {
 };
 
 export type Sh3DataTableEditableProps = DataTableProps & {
+  dataKey: string;
   updateRow: (row: object) => void;
   columns: Array<ItemColum>;
   emptyString: string;
