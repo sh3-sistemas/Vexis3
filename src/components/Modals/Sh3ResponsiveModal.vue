@@ -5,6 +5,9 @@
     :breakpoints="{ '1199px': '75vw', '575px': 'w-full' }"
     v-bind="$attrs"
   >
+    <template #header>
+      <slot name="header"></slot>
+    </template>
     <slot></slot>
   </Dialog>
 </template>
