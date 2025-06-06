@@ -4,12 +4,13 @@ import type { HeaderSwitcherOption } from "../Sh3HeaderSwitcher.vue";
 import { ChevronsUpDown } from "lucide-vue-next";
 import IconOrImageDisplayer from "./IconOrImageDisplayer.vue";
 
-const { selected, chevron = true } = defineProps<{
+const { chevron = true } = defineProps<{
   chevron: boolean;
-  selected: HeaderSwitcherOption;
   title: string;
   subtitle: string;
 }>();
+
+const selected = defineModel<HeaderSwitcherOption>();
 </script>
 
 <template>

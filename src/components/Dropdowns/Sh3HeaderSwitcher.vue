@@ -13,7 +13,7 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import type { CustomIcon } from "@/types";
 import SelectedHeaderSwitcher from "./fragments/SelectedHeaderSwitcher.vue";
 import IconOrImageDisplayer from "./fragments/IconOrImageDisplayer.vue";
@@ -38,7 +38,7 @@ const { isMobile } = useSidebar();
 
 const {
   options = [],
-  initialValue = { label: "", value: "" },
+  initialValue,
   separator = false,
   extras = [],
 } = defineProps<Sh3HeaderSwitcherProps>();
@@ -50,6 +50,15 @@ const selected = ref<HeaderSwitcherOption>(initialValue ?? options[0]);
 const showDropdown = computed(() => {
   return options.length > 1;
 });
+
+watch(
+  () => initialValue,
+  (newValue) => {
+    if (newValue) {
+      selected.value = newValue;
+    }
+  },
+);
 </script>
 <template>
   <SidebarMenu>
@@ -57,8 +66,8 @@ const showDropdown = computed(() => {
       <DropdownMenu>
         <DropdownMenuTrigger as-child>
           <SelectedHeaderSwitcher
+            v-model="selected"
             :chevron="showDropdown"
-            :selected="selected"
             :title="title"
             :subtitle="subtitle"
           />
