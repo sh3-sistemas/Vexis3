@@ -16,7 +16,7 @@ const selected = defineModel<HeaderSwitcherOption>();
 <template>
   <SidebarMenuButton
     size="lg"
-    class="data-[state=open]:bg-white-accent data-[state=open]:text-sidebar-accent-foreground hover:bg-mercury-50 border border-mercury-200"
+    class="data-[state=open]:bg-white-accent data-[state=open]:text-sidebar-accent-foreground"
   >
     <IconOrImageDisplayer :item="selected" />
     <div class="grid flex-1 text-left text-sm leading-tight">

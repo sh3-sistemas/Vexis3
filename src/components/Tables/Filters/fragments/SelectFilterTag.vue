@@ -1,9 +1,8 @@
 <template>
   <Dropdown
     v-model="filterModel"
-    :options="[...(col.filter ? col.filter.options : [])]"
     placeholder="Selecione um"
-    class="p-column-filter"
+    class="p-column-filter w-full"
     option-label="name"
     option-value="value"
     :show-clear="true"
@@ -11,8 +10,8 @@
   >
     <template #option="slotProps">
       <Tag
-        :value="slotProps.option.name"
         v-bind="slotProps.option"
+        :value="slotProps.option.name"
         :pt-options="{ mergeProps: true }"
       />
     </template>

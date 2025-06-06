@@ -15,6 +15,7 @@ defineOptions({
       severity="error"
       size="small"
       variant="simple"
+      :pt="{ root: 'bg-transparent outline-transparent', text: 'text-sm' }"
       >{{ $field.error?.message }}</Message
     >
   </FormField>

@@ -17,6 +17,7 @@ import Password from "primevue/password";
 import { RadioButton } from "primevue";
 
 export * from "./types";
+export * from "./masks";
 
 export {
   DynamicForm,

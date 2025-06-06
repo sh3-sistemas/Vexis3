@@ -2,6 +2,7 @@
   <DataTable
     v-model:filters="filters"
     v-model:expanded-rows="expandedRows"
+    filter-display="row"
     :value="items"
     paginator
     striped-rows
@@ -27,12 +28,17 @@
     <template #empty>
       <SearchNotFound />
     </template>
-    <Column v-if="rowExpansion" expander style="width: 5rem" />
+    <Column
+      v-if="rowExpansion"
+      expander
+      style="width: 5rem"
+      :filter-header-class="filterHeaderClass"
+    />
     <Column
       v-if="selectionMode"
       :selection-mode="selectionMode"
       header-style="width: 3rem"
-      filter-header-style="background-color: white"
+      :filter-header-class="filterHeaderClass"
       :pt="{
         rowRadioButton: 'bg-red-500 text-red-600',
       }"
@@ -43,8 +49,14 @@
       :key="col.field"
       :field="col.field"
       :header="col.header"
-      filter-header-style="background-color: white"
+      :filter-header-class="filterHeaderClass"
+      :pt="{
+        filterElementContainer: 'flex-auto',
+        filterMenuIcon: '!min-w-4',
+        filterClearIcon: '!min-w-4',
+      }"
       reorderable-column
+      show-clear-button
       v-bind="{ ...col.props }"
     >
       <template v-if="col.type == 'tag'" #body="slotProps">
@@ -54,17 +66,27 @@
         />
       </template>
 
-      <template v-if="col.filter" #filter="{ filterModel, filterCallback }">
+      <template
+        v-if="!col.filter?.disabled"
+        #filter="{ filterModel, filterCallback }"
+      >
         <component
-          :is="filterComponents[col.filter.type]"
+          :is="filterComponents[col.filter?.type ?? 'TextFilter']"
           v-model="filterModel.value"
           :filter-callback="filterCallback"
           :col="col"
+          v-bind="{ ...col.filter?.props }"
         />
       </template>
     </Column>
 
-    <Column v-if="actions.length > 0" frozen header="Ações" :exportable="false">
+    <Column
+      v-if="actions.length > 0"
+      frozen
+      header="Ações"
+      :exportable="false"
+      :filter-header-class="filterHeaderClass"
+    >
       <template #body="slotProps">
         <div class="actions-wrapper">
           <button
@@ -109,7 +131,7 @@ import {
   type Sh3DataTableProps,
   filterComponents,
 } from "./types";
-import { ref, useSlots } from "vue";
+import { ref, useSlots, toRef } from "vue";
 import { tableStyle } from "./utils";
 
 defineOptions({
@@ -133,5 +155,11 @@ const props = withDefaults(defineProps<Sh3DataTableProps>(), {
 
 const emits = defineEmits(["refresh"]);
 
-const { filters } = useFilterTable(attrs.filterDisplay, props.columns);
+const filterHeaderClass =
+  "bg-white !border-b !border-solid !border-surface-100";
+
+const { filters } = useFilterTable(
+  attrs.filterDisplay,
+  toRef(props, "columns"),
+);
 </script>

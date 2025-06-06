@@ -7,7 +7,17 @@ import type { ColumnProps, TagProps } from "primevue";
 import type { DataTableProps } from "primevue/datatable";
 import { FilterMatchMode, FilterOperator } from "@primevue/core/api";
 import { markRaw } from "vue";
-import { SelectFilterTag, TextFilter, DateFilter } from "../../Filters";
+import {
+  SelectFilter,
+  SelectFilterTag,
+  TextFilter,
+  DateFilter,
+  BooleanFilter,
+  NumberFilter,
+  MaskFilter,
+  MultiSelectFilter,
+} from "../../Filters";
+import type { FilterComponentProps } from "../../Filters/fragments/types";
 
 type ItemColum = {
   field: any;
@@ -19,6 +29,8 @@ type ItemColum = {
   editable: boolean;
   cellFormater: object;
   cellFormaterEdit: { component: object; props: object; name?: string };
+  props?: ColumnProps;
+  filter?: DataTableFilter;
   //TODO: Realizar tipagem correta desses valores em breve
 };
 
@@ -31,9 +43,14 @@ export type Sh3DataTableEditableProps = DataTableProps & {
 };
 
 export const filterComponents = {
+  SelectFilter: markRaw(SelectFilter),
   SelectFilterTag: markRaw(SelectFilterTag),
   TextFilter: markRaw(TextFilter),
   DateFilter: markRaw(DateFilter),
+  BooleanFilter: markRaw(BooleanFilter),
+  NumberFilter: markRaw(NumberFilter),
+  MaskFilter: markRaw(MaskFilter),
+  MultiSelectFilter: markRaw(MultiSelectFilter),
 };
 
 export type Action = {
@@ -44,17 +61,20 @@ export type Action = {
   disabled: (item: any) => boolean | false;
 };
 
+type DataTableFilter = {
+  operator: keyof typeof FilterOperator;
+  matchMode: keyof typeof FilterMatchMode;
+  type: keyof typeof filterComponents;
+  disabled: boolean;
+  props?: FilterComponentProps;
+};
+
 export type DataTableItemColumn = {
   field: string;
   header: string;
   type?: "tag" | "download" | "actions";
   props?: ColumnProps & { tag?: (item: any) => TagProps };
-  filter?: {
-    operator: keyof typeof FilterOperator;
-    matchMode: keyof typeof FilterMatchMode;
-    type: keyof typeof filterComponents;
-    options: any[];
-  };
+  filter?: DataTableFilter;
 };
 
 export type SelectionMode = "single" | "multiple" | undefined | null;
