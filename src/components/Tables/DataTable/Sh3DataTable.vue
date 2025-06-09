@@ -2,7 +2,6 @@
   <DataTable
     v-model:filters="filters"
     v-model:expanded-rows="expandedRows"
-    filter-display="row"
     :value="items"
     paginator
     striped-rows
@@ -67,7 +66,7 @@
       </template>
 
       <template
-        v-if="!col.filter?.disabled"
+        v-if="col.filter && !col.filter.disabled"
         #filter="{ filterModel, filterCallback }"
       >
         <component
