@@ -38,7 +38,6 @@
       :selection-mode="selectionMode"
       header-style="width: 3rem"
       :filter-header-class="filterHeaderClass"
-      :pt="columnPassThrough"
     >
     </Column>
     <Column
@@ -129,7 +128,6 @@ import {
   filterComponents,
 } from "./types";
 import { ref, useSlots, toRef } from "vue";
-import { type RadioButtonPassThroughMethodOptions } from "primevue";
 
 defineOptions({
   inheritAttrs: true,
@@ -159,15 +157,4 @@ const { filters } = useFilterTable(
   attrs.filterDisplay,
   toRef(props, "columns"),
 );
-
-const columnPassThrough = {
-  pcRowRadiobutton: (ptOptions: RadioButtonPassThroughMethodOptions) => ({
-    box: {
-      style: { "background-color": "#fff" },
-    },
-    icon: {
-      class: ptOptions.context.checked ? "rounded-full w-3 h-3 bg-primary" : "",
-    },
-  }),
-};
 </script>
