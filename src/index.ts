@@ -7,50 +7,49 @@ import * as components from "./components";
 
 /** PrimeVue Config. */
 import PrimeVue from "primevue/config";
-import Tooltip from "primevue/tooltip";
 import ConfirmationService from "primevue/confirmationservice";
 import DialogService from "primevue/dialogservice";
-import ToastService from "primevue/toastservice";
 import Ripple from "primevue/ripple";
-import vexis3 from "@/theme/vexis3";
+import ToastService from "primevue/toastservice";
+import Tooltip from "primevue/tooltip";
 
 /** Toastification Config. */
 import Toast from "vue-toastification";
 import { toastOptions } from "./services/toast/notification/types";
 
-/** Vueform Config. */
+/** VueForm Config. */
 import Vueform from "@vueform/vueform";
 import vueformConfig from "../vueform.config";
 
 /** Apollo Config. */
 import { ApolloClient } from "@apollo/client";
 
-import { pt_BR } from "./utils/locale";
+import type { VexisOptions } from "./types";
+import { defineTheme } from "./theme/aura";
 
 export default {
-  install: (
-    app: App,
-    options: {
-      apollo: {
-        clients: Record<string, any>;
-      };
-      moduleUrl: string;
-    },
-  ) => {
+  install: (app: App, options: VexisOptions) => {
     app.use(Vueform, vueformConfig);
     app.use(PrimeVue, {
-      pt: vexis3,
-      theme: "none",
-      ripple: false,
-      locale: pt_BR,
+      theme: {
+        preset: defineTheme(options),
+        options: {
+          prefix: "p",
+          darkModeSelector: false,
+          cssLayer: {
+            name: "primevue",
+            order: "my-app-base, primevue, my-app-utilities",
+          },
+        },
+      },
     });
 
     app.directive("ripple", Ripple);
     app.directive("tooltip", Tooltip);
+
     app.use(ConfirmationService);
     app.use(DialogService);
     app.use(ToastService);
-
     app.use(Toast, toastOptions);
 
     const { clients } = options.apollo;

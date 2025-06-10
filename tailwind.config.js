@@ -3,6 +3,7 @@ import tailwindTheme from "./src/theme";
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  prefix: "vx-",
   darkMode: ["selector", ':root[class="app-dark"]'],
   safelist: ["dark"],
 
@@ -13,14 +14,12 @@ module.exports = {
     "./components/**/*.{ts,tsx,vue}",
     "./node_modules/flowbite/**/*.js",
     "./vueform.config.js",
-    "./node_modules/@vueform/vueform/themes/tailwind/**/*.vue",
-    "./node_modules/@vueform/vueform/themes/tailwind/**/*.js",
+    "./node_modules/@vueform/vueform/themes/tailwind/**/*.{js,vue}",
   ],
   theme: {
     ...tailwindTheme,
   },
   plugins: [
-    require("tailwindcss-primeui"),
     require("flowbite/plugin"),
     require("@vueform/vueform/tailwind"),
     require("tailwindcss-animate"),
