@@ -40,7 +40,7 @@ const buildMenuItem = (
     ...meta,
   };
   const childrenAsMenu = children
-    ? children.filter((child) => !child.meta?.isTab)
+    ? children.filter((child) => child.meta?.showMenu)
     : null;
   // Se o item possui subitens (children), chama recursivamente a função para montar os submenus
   if (childrenAsMenu && childrenAsMenu.length > 0) {
@@ -69,6 +69,7 @@ export type AllMenu = {
   title: string;
   icon: CustomIcon;
   isTab: boolean;
+  showMenu: boolean;
   children: Array<AllMenu>;
 };
 
@@ -80,6 +81,7 @@ export function buildSimplifiedMenuList(list: RouteRecordRaw[]) {
       title: element.meta?.label ?? "",
       icon: element.meta?.icon ?? "",
       isTab: element.meta?.isTab ?? false,
+      showMenu: element.meta?.showMenu ?? false,
       children:
         element.children && element.children.length
           ? buildSimplifiedMenuList(element.children)
