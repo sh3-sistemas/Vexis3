@@ -93,7 +93,7 @@
         <div v-else-if="col.cellFormaterEdit">
           <component
             :is="col.cellFormaterEdit.component"
-            v-bind="{ ...col.cellFormaterEdit.props, row, field }"
+            v-bind="getCellFormaterEditProps(col.cellFormaterEdit, row, field)"
             @selected="
               (value: any) =>
                 updateRow(
@@ -264,4 +264,16 @@ const { filters } = useFilterTable(
   attrs.filterDisplay,
   toRef(props, "columns"),
 );
+
+const getCellFormaterEditProps = (
+  cellFormaterEdit: any,
+  row: object,
+  field: string,
+) => {
+  const baseProps = { ...cellFormaterEdit.props, row, field };
+  if (typeof cellFormaterEdit.propsFunction === "function") {
+    return { ...baseProps, ...cellFormaterEdit.propsFunction(row) };
+  }
+  return baseProps;
+};
 </script>
