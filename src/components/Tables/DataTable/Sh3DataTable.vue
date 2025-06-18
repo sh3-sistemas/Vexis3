@@ -59,10 +59,10 @@
       show-clear-button
       v-bind="{ ...col.props }"
     >
-      <template v-if="col.type == 'tag'" #body="slotProps">
-        <Tag
-          :value="slotProps.data[col.field]"
-          v-bind="col.props?.tag ? col.props.tag(slotProps.data) : {}"
+      <template v-if="col.type" #body="slotProps">
+        <TableInputComponent
+          v-model="slotProps.data[col.field]"
+          :column="col"
         />
       </template>
 
@@ -119,7 +119,6 @@
 import DataTable from "primevue/datatable";
 import Button from "primevue/button";
 import Column from "primevue/column";
-import Tag from "primevue/tag";
 import { Icon } from "@iconify/vue";
 import { useAttrs } from "vue";
 import { twMerge } from "tailwind-merge";
@@ -133,6 +132,7 @@ import {
 } from "./types";
 import { ref, useSlots, toRef } from "vue";
 import { tableStyle } from "./utils";
+import TableInputComponent from "./fragments/TableInputComponent.vue";
 
 defineOptions({
   inheritAttrs: true,
