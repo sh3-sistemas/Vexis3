@@ -12,10 +12,21 @@ export const formatBoolean = (value: any) =>
 export const formatBooleanToString = (value: any) =>
   formatBoolean(value) ? "Sim" : "Não";
 
-export const inputComponents = {
-  boolean: markRaw(TableInputBoolean),
-  date: markRaw(TableInputDate),
-  number: markRaw(TableInputNumber),
-  mask: markRaw(TableInputMask),
-  tag: markRaw(TableInputTag),
+export const inputComponents = <
+  { [key: string]: { component: object; preset?: string } }
+>{
+  boolean: { component: markRaw(TableInputBoolean) },
+  date: { component: markRaw(TableInputDate) },
+  month: { component: markRaw(TableInputDate), preset: "month" },
+  year: { component: markRaw(TableInputDate), preset: "year" },
+  number: { component: markRaw(TableInputNumber) },
+  currency: { component: markRaw(TableInputNumber), preset: "currency" },
+  percentage: { component: markRaw(TableInputNumber), preset: "percentage" },
+  mask: { component: markRaw(TableInputMask) },
+  cpf: { component: markRaw(TableInputMask), preset: "cpf" },
+  cnpj: { component: markRaw(TableInputMask), preset: "cnpj" },
+  cep: { component: markRaw(TableInputMask), preset: "cep" },
+  tel: { component: markRaw(TableInputMask), preset: "tel" },
+  cel: { component: markRaw(TableInputMask), preset: "cel" },
+  tag: { component: markRaw(TableInputTag) },
 };

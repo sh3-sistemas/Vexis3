@@ -3,7 +3,7 @@
  * [Primevue Based](https://v3.primevue.org/datatable)
  * @module dataTables
  */
-import type { ColumnProps, TagProps } from "primevue";
+import type { ColumnProps } from "primevue";
 import type { DataTableProps } from "primevue/datatable";
 import { FilterMatchMode, FilterOperator } from "@primevue/core/api";
 import { markRaw } from "vue";
@@ -75,7 +75,9 @@ export type DataTableItemColumn = {
   field: string;
   header: string;
   type?: keyof typeof inputComponents;
-  props?: ColumnProps & { input?: TagProps | ((item: any) => TagProps) };
+  props?: ColumnProps & {
+    input?: object | ((item: any, edit: boolean) => object);
+  };
   filter?: DataTableFilter;
 };
 

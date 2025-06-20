@@ -1,11 +1,12 @@
 <template>
   <component
-    :is="inputComponents[column.type!]"
+    :is="inputComponents[column.type!].component"
     v-model="data"
     :edit="edit"
+    :preset="inputComponents[column.type!].preset"
     v-bind="
       typeof column.props?.input == 'function'
-        ? column.props.input(data)
+        ? column.props.input(data, edit)
         : column.props?.input
     "
   />
