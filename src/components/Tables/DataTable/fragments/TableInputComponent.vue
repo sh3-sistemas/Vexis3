@@ -1,9 +1,9 @@
 <template>
   <component
-    :is="inputComponents[column.type!].component"
+    :is="inputComponents[String(column.type!).toLowerCase()].component"
     v-model="data"
     :edit="edit"
-    :preset="inputComponents[column.type!].preset"
+    :preset="inputComponents[String(column.type!).toLowerCase()].preset"
     v-bind="
       typeof column.props?.input == 'function'
         ? column.props.input(data, edit)
