@@ -15,8 +15,9 @@
     <slot name="form" :form="form$"></slot>
     <GroupElement
       name="actionButtons"
-      :columns="{ container: 12, label: 3, wrapper: 12 }"
+      :columns="12"
       style="padding-top: 15px"
+      override-class="bg-transparent"
     >
       <Sh3FormButton
         v-if="options.crud.delete"
@@ -31,7 +32,7 @@
           'col-start-1' + (options.crud.disabled ? ' cursor-not-allowed' : '')
         "
         button-label="Excluir"
-        :columns="1"
+        :columns="{ default: 3, lg: 2, '2xl': 1 }"
         outlined
         full
         :disabled="options.crud.disabled"
@@ -46,9 +47,13 @@
           hideDelay: 50,
         }"
         name="edit"
-        :container-class="options.crud.cancel ? 'col-start-10' : 'col-start-11'"
+        :container-class="
+          options.crud.cancel
+            ? 'lg:col-start-7 2xl:col-start-10'
+            : 'lg:col-start-9 2xl:col-start-11'
+        "
         button-label="Editar"
-        :columns="1"
+        :columns="{ default: 3, lg: 2, '2xl': 1 }"
         full
         :disabled="options.crud.disabled"
         @click="emits('edit', form$)"
@@ -61,9 +66,9 @@
           hideDelay: 50,
         }"
         name="cancel"
-        container-class="col-start-11"
+        container-class="2xl:col-start-11"
         button-label="Cancelar"
-        :columns="1"
+        :columns="{ default: 3, lg: 2, '2xl': 1 }"
         outlined
         full
         @click="emits('cancel', form$)"
@@ -77,10 +82,10 @@
         name="submit"
         severity="success"
         :container-class="
-          'col-start-12' + (options.crud.edit ? '' : ' cursor-not-allowed')
+          '2xl:col-start-12' + (options.crud.edit ? '' : ' cursor-not-allowed')
         "
         button-label="Salvar"
-        :columns="1"
+        :columns="{ default: 3, lg: 2, '2xl': 1 }"
         full
         submits
       />
