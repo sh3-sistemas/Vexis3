@@ -5,12 +5,8 @@
     <template #element>
       <Sh3Button
         :tabindex="isDisabled || isLoading ? -1 : undefined"
-        :class="[
-          'min-w-24 shrink-0',
-          classes.button,
-          full ? 'w-full' : '',
-          buttonClass,
-        ]"
+        :class="['shrink-0', classes.button, full ? 'w-full' : '', buttonClass]"
+        :pt="{ root: 'shrink-0', label: 'whitespace-nowrap' }"
         :loading="isLoading"
         :label="buttonLabel"
         :severity="severity ? severity : null"
