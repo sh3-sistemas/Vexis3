@@ -34,14 +34,27 @@ import type { AppSidebarProps } from "../fragments/sidebar/AppBaseSidebar.vue";
  */
 
 /**
- * **SH3 - Sh3Vertical**
+ * **SH3 - Sh3NotFound**
  *
- * _Sh3Vertical is a Vue component._
+ * _Sh3NotFound is a Vue component._
  * --- ---
- * [Vue Based Component](./Sh3Vertical.vue)
+ * [Vue Based Component](./Sh3NotFound.vue)
  * @group Component
  *
  */
+export type NotFoundVariations = "default" | "search" | "completed" | "error";
+export type NotFoundConfig = {
+  message: string;
+  complement: string;
+  image: string;
+};
+export type NotFoundProps = {
+  variation?: NotFoundVariations;
+  message?: string;
+  complement?: string;
+  showComplement?: boolean;
+  styling?: NotFoundConfig;
+};
 
 /**
  * **SH3 - Sh3Vertical**
@@ -65,6 +78,7 @@ declare module "vue" {
   export interface GlobalComponents {
     Sh3Vertical: DefineComponent<any, any, any>;
     Sh3LayoutMock: DefineComponent<any, any, any>;
+    Sh3NotFound: DefineComponent<any, any, any>;
     Sh3PageNotFound: DefineComponent<any, any, any>;
     Sh3AppBaseLayout: DefineComponent<AppBaseLayoutProps, any, any>;
   }

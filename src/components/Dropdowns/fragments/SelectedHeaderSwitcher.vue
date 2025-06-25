@@ -4,11 +4,13 @@ import type { HeaderSwitcherOption } from "../Sh3HeaderSwitcher.vue";
 import { ChevronsUpDown } from "lucide-vue-next";
 import IconOrImageDisplayer from "./IconOrImageDisplayer.vue";
 
-const { selected, chevron = true } = defineProps<{
+const { chevron = true } = defineProps<{
   chevron: boolean;
-  selected: HeaderSwitcherOption;
   title: string;
+  subtitle: string;
 }>();
+
+const selected = defineModel<HeaderSwitcherOption>();
 </script>
 
 <template>
@@ -21,7 +23,7 @@ const { selected, chevron = true } = defineProps<{
       <span class="truncate font-semibold">
         {{ title }}
       </span>
-      <span class="truncate text-xs">{{ selected.label }}</span>
+      <span class="truncate text-xs">{{ subtitle }}</span>
     </div>
     <ChevronsUpDown v-show="chevron" class="ml-auto" />
   </SidebarMenuButton>
