@@ -5,7 +5,6 @@
     v-model:editing-rows="editingRows"
     v-model:expanded-rows="expandedRows"
     v-model:filters="filters"
-    filter-display="row"
     edit-mode="row"
     :value="items"
     :selection-mode="undefined"
@@ -112,7 +111,7 @@
       </template>
 
       <template
-        v-if="!col.filter?.disabled"
+        v-if="col.filter && !col.filter.disabled"
         #filter="{ filterModel, filterCallback }"
       >
         <component
