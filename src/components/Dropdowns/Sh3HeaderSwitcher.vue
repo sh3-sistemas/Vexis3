@@ -62,7 +62,7 @@ watch(
 </script>
 <template>
   <SidebarMenu>
-    <SidebarMenuItem>
+    <SidebarMenuItem :class="options.length > 1 ? 'hover:bg-mercury-50' : ''">
       <DropdownMenu>
         <DropdownMenuTrigger as-child>
           <SelectedHeaderSwitcher
