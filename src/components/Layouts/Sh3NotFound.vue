@@ -1,19 +1,42 @@
-<template>
-  <div
-    class="no-search-found h-full flex flex-col items-center justify-center gap-0.5"
-  >
-    <img
-      src="@/assets/images/illustration/Search-engines-bro.svg"
-      alt="Não encontrado"
-      class="w-80 h-auto"
-    />
-    <span class="no-found--h1 text-lg text-slate-500">{{ subtitle }}</span>
-  </div>
-</template>
-
 <script setup lang="ts">
-defineProps<{ subtitle: string }>();
+import type { NotFoundProps } from "./types";
+import { variationsConfig } from "./config";
+
+const {
+  variation = "default",
+  showComplement,
+  message,
+  complement,
+  styling,
+} = defineProps<NotFoundProps>();
+
 defineOptions({
   inheritAttrs: false,
 });
 </script>
+<template>
+  <div
+    class="not-found--container h-full flex flex-col items-center justify-center gap-0.5"
+  >
+    <img
+      :src="variationsConfig[variation].image"
+      alt="Conteúdo não encontrado"
+      :class="['w-56 h-auto', styling?.image]"
+    />
+    <span
+      :class="['not-found--message text-lg text-mercury-600', styling?.message]"
+    >
+      {{ message ?? variationsConfig[variation].message }}
+    </span>
+    <span
+      v-if="showComplement"
+      :class="[
+        'not-found--complement text-center px-8 mb-6 text-mercury-500',
+        styling?.complement,
+      ]"
+    >
+      {{ complement ?? variationsConfig[variation].complement }}
+    </span>
+    <slot></slot>
+  </div>
+</template>

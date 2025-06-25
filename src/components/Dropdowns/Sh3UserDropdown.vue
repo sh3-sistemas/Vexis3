@@ -15,7 +15,7 @@
   >
     <span class="sr-only">Open user menu</span>
     <Sh3AvatarFallbackInitials
-      style="width: 25px; height: 25px"
+      style="width: 30px; height: 30px"
       :profile="profile"
       :avatar-style="styling.avatar"
     />

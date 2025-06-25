@@ -1,29 +1,29 @@
 <template>
   <div
-    class="layout-container h-screen grid grid-cols-12 grid-flow-col auto-rows-auto gap-0.5"
+    class="layout--wrapper h-dvh flex flex-col xl:grid xl:grid-cols-12 xl:grid-flow-col gap-0.5"
   >
     <div
       :class="
         twMerge(
-          'side-container md:col-span-full lg:col-span-3 h-fit lg:h-full hidden md:inline-flex lg:flex lg:flex-col py-6 lg:py-24 bg-gray-700',
+          'side--container h-fit xl:h-full hidden md:flex xl:flex-col items-center bg-mercury-700 md:col-span-full xl:col-span-3 py-8 xl:py-24 pl-8 xl:pl-0',
           layoutConfig.addStyle.side,
         )
       "
     >
       <div
-        class="img-container h-fit lg:grow block lg:flex items-start justify-center"
+        class="img-container h-fit xl:grow block xl:flex items-start justify-center"
       >
         <slot name="logo"></slot>
       </div>
       <div
         :class="
           twMerge(
-            'links-container grow lg:grow-0 flex justify-end items-center px-12',
+            'links--container grow xl:grow-0 flex justify-end items-center px-12',
             layoutConfig.addStyle.sideMenu,
           )
         "
       >
-        <ul class="flex flex-col h-auto list-none gap-1.5">
+        <ul class="links--list flex flex-col h-auto list-none gap-1.5">
           <li
             v-for="(sidelink, index) in sideLinks"
             :key="index"
@@ -40,18 +40,18 @@
       </div>
     </div>
     <div
-      class="main-container col-span-full lg:col-span-9 h-full md:h-fit lg:h-full flex flex-col gap-1 items-center justify-center"
+      class="main--container col-span-full xl:col-span-9 h-[inherit] flex flex-col gap-2 items-center justify-center"
     >
       <div
         :class="
           twMerge(
-            'login-container w-[85%] lg:w-[48%] h-auto md:h-[60%] lg:h-[70%] flex flex-col justify-center items-center py-8 lg:py-0 gap-y-6 rounded-[20px] border border-gray-200',
+            'login--container w-[85%] md:w-[670px] h-[90%] md:h-[680px] flex flex-col justify-center items-center gap-y-6 rounded-[20px] border border-mercury-300',
             layoutConfig.addStyle.login,
           )
         "
       >
         <div
-          class="icon-container flex flex-col gap-4 justify-center items-center"
+          class="icon--container flex flex-col gap-4 justify-center items-center"
         >
           <slot name="icon"></slot>
           <SecondTitle
@@ -64,7 +64,7 @@
         </div>
       </div>
       <div
-        class="line-links flex flex-row w-[85%] lg:w-[48%] h-auto justify-center lg:justify-end gap-3 lg:pr-6"
+        class="line-links--container flex flex-row w-[85%] md:w-[670px] h-auto justify-center lg:justify-end gap-3 lg:pr-6"
       >
         <Sh3MiniLink
           v-for="(minilink, index) in miniLinks"

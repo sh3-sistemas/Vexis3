@@ -5,6 +5,7 @@ import type { TabMenuItem } from "@/components/Sidebars/fragments/types";
 import AppSidebar from "./AppSidebar.vue";
 import { ref, computed, provide } from "vue";
 import { getCookie } from "./content/utils";
+import Sh3CompanyHeader from "@/components/Dropdowns/Sh3CompanyHeader.vue";
 
 const sidebarState = ref(getCookie("sidebar:state"));
 const defaultOpen = computed(() => sidebarState.value === "true");
@@ -21,6 +22,9 @@ provide("items", items);
   <SidebarProvider :default-open="defaultOpen">
     <AppSidebar>
       <template #header>
+        <slot name="side-company">
+          <Sh3CompanyHeader />
+        </slot>
         <slot name="side-header"></slot>
       </template>
 
