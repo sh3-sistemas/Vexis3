@@ -1,6 +1,6 @@
 {
   "name": "vexis3",
-  "version": "1.1.0-alpha.dp.788",
+  "version": "1.2.1",
   "private": false,
   "type": "module",
   "files": [
@@ -37,8 +37,8 @@
   },
   "dependencies": {
     "@apollo/client": "^3.11.10",
+    "@primeuix/themes": "^1.1.2",
     "@primevue/forms": "^4.3.3",
-    "@primevue/themes": "^4.3.2",
     "@tailwindcss/vite": "^4.0.15",
     "@vueform/vueform": "^1.11.0",
     "@vueuse/core": "^12.2.0",
@@ -49,7 +49,7 @@
     "graphql-tag": "^2.12.6",
     "lucide-vue-next": "^0.469.0",
     "primeicons": "^7.0.0",
-    "primevue": "^4.3.3",
+    "primevue": "^4.3.4",
     "radix-vue": "^1.9.11",
     "vee-validate": "^4.14.7",
     "vue": "^3.5.12",

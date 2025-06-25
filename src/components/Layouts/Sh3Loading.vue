@@ -1,7 +1,14 @@
 <template>
-  <div class="text-center content-center rounded-xl bg-selenium-50">
-    <i :class="twMerge('pi pi-spin pi-spinner', iconStyle)" />
-    <p :class="twMerge(textStyle)">
+  <div
+    :class="
+      twMerge(
+        'text-center content-center rounded-xl bg-primary-50',
+        styling?.container,
+      )
+    "
+  >
+    <i :class="twMerge('pi pi-spin pi-spinner', styling?.icon)" />
+    <p :class="twMerge(styling?.text)">
       {{ subText }}
     </p>
   </div>
@@ -10,9 +17,12 @@
 <script lang="ts" setup>
 import { twMerge } from "tailwind-merge";
 export type Sh3LoadingProps = {
-  iconStyle?: string;
+  styling?: {
+    container?: string;
+    icon?: string;
+    text?: string;
+  };
   subText?: string;
-  textStyle?: string;
 };
 defineProps<Sh3LoadingProps>();
 </script>
