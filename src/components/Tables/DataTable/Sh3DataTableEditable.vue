@@ -48,11 +48,7 @@
       :selection-mode="selectionMode"
       class="w-10"
       :pt-options="{ mergeProps: true }"
-      :pt="{
-        headerCell: '!p-2',
-        pcHeaderCheckbox: checkboxClass,
-        pcRowCheckbox: checkboxClass,
-      }"
+      :pt="{ headerCell: '!p-2' }"
       :filter-header-class="filterHeaderClass"
     />
     <Column
@@ -174,7 +170,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, useSlots, useAttrs, toRef } from "vue";
+import { ref, useSlots, useAttrs, toRef } from "vue";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import InputText from "primevue/inputtext";
@@ -193,7 +189,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<Sh3DataTableEditableProps>(), {
-  emptyString: "Nenhum Registro encontrado",
+  emptyString: "Nenhum registro encontrado",
   dataKey: "id",
   rowExpansion: false,
   disabled: false,
@@ -247,15 +243,6 @@ const startNewRow = (startValue?: object) => {
 
 defineExpose({ startNewRow });
 
-const checkboxClass = computed(() => ({
-  root:
-    props.disabled || editingRows.value.length
-      ? "rounded flex w-5 form-bg-disabled pointer-events-none"
-      : "rounded flex w-5 bg-white",
-  input:
-    "w-5 h-5 rounded bg-transparent !ring-0 border border-surface-300 cursor-pointer",
-  box: "hidden",
-}));
 const filterHeaderClass =
   "bg-white !border-b !border-solid !border-surface-100";
 
