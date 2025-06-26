@@ -69,7 +69,7 @@ export type NotFoundProps = {
 export type AppBaseLayoutProps = {
   navbar: Sh3UserNavBarProps;
   side: AppSidebarProps;
-  toolbar: AppBaseToolbarProps & { hidden: boolean };
+  toolbar?: AppBaseToolbarProps & { hidden: boolean };
   header?: AppBaseHeaderProps;
   tabs: Sh3RouterLinkTabsProps;
 };
