@@ -88,7 +88,7 @@
         <div v-else-if="col.cellFormaterEdit">
           <component
             :is="col.cellFormaterEdit.component"
-            v-bind="{ ...col.cellFormaterEdit.props, row, field }"
+            v-bind="getCellFormaterEditProps(col.cellFormaterEdit, row, field)"
             @selected="
               (value: any) =>
                 updateRow(
@@ -250,4 +250,31 @@ const { filters } = useFilterTable(
   attrs.filterDisplay,
   toRef(props, "columns"),
 );
+
+/**
+ * Gera as propriedades (props) para o componente de edição de célula (`cellFormaterEdit`).
+ *
+ * Esta função combina as propriedades base definidas em `cellFormaterEdit.props`
+ * com informações da linha (`row`) e do campo (`field`).
+ * Se `cellFormaterEdit.propsFunction` for uma função, ela será executada com a `row`
+ * e suas propriedades resultantes serão mescladas, permitindo props dinâmicas.
+ *
+ * @param cellFormaterEdit O objeto de configuração do formatador de célula para edição.
+ * Contém `component` (o componente Vue a ser renderizado), `props` (props estáticas para o componente),
+ * e opcionalmente `propsFunction` (uma função que retorna props dinâmicas baseado na linha).
+ * @param row O objeto da linha atual do DataTable que está sendo editada.
+ * @param field O nome do campo da coluna à qual a célula editável pertence.
+ * @returns Um objeto contendo todas as propriedades combinadas que serão passadas para o componente `cellFormaterEdit.component`.
+ */
+const getCellFormaterEditProps = (
+  cellFormaterEdit: any,
+  row: object,
+  field: string,
+) => {
+  const baseProps = { ...cellFormaterEdit.props, row, field };
+  if (typeof cellFormaterEdit.propsFunction === "function") {
+    return { ...baseProps, ...cellFormaterEdit.propsFunction(row) };
+  }
+  return baseProps;
+};
 </script>
