@@ -68,11 +68,10 @@
       v-bind="{ ...col.props }"
     >
       <template #body="{ data: row, field }">
-        <Checkbox
-          v-if="col.filterType.toLowerCase() == 'boolean'"
-          v-model="row[field as string]"
-          disabled
-          :binary="true"
+        <TableInputComponent
+          v-if="col.type"
+          v-model="row[col.field]"
+          :column="col"
         />
         <div v-else-if="col.cellFormater">
           <component :is="col.cellFormater" v-bind="{ row, field }"></component>
@@ -80,22 +79,18 @@
         <div v-else>{{ getValueByPath(row, field as string) }}</div>
       </template>
       <template v-if="col.editable != false" #editor="{ data: row, field }">
-        <Checkbox
-          v-if="col.filterType.toLowerCase() == 'boolean'"
-          v-model="row[field as keyof typeof row]"
-          :binary="true"
+        <TableInputComponent
+          v-if="col.type"
+          v-model="row[col.field]"
+          :column="col"
+          edit
         />
         <div v-else-if="col.cellFormaterEdit">
           <component
             :is="col.cellFormaterEdit.component"
             v-bind="getCellFormaterEditProps(col.cellFormaterEdit, row, field)"
             @selected="
-              (value: any) =>
-                updateRow(
-                  col.cellFormaterEdit.name
-                    ? { ...row, [col.cellFormaterEdit.name]: value }
-                    : { ...row, [field]: value },
-                )
+              (value: any) => (row[col.cellFormaterEdit.name ?? field] = value)
             "
           />
         </div>
@@ -174,13 +169,13 @@ import { ref, useSlots, useAttrs, toRef } from "vue";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import InputText from "primevue/inputtext";
-import Checkbox from "primevue/checkbox";
 import { type Sh3DataTableEditableProps, filterComponents } from "./types";
 import { useFilterTable } from "../Filters/composables";
 import SearchNotFound from "./fragments/SearchNotFound.vue";
 
 import { saveTooltip, cancelTooltip } from "./fragments/tooltip";
 import { getValueByPath } from "./utils";
+import TableInputComponent from "./fragments/TableInputComponent.vue";
 
 const attrs = useAttrs();
 

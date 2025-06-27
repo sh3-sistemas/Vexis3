@@ -44,6 +44,7 @@
     "@vueuse/core": "^12.2.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dayjs": "^1.11.13",
     "flowbite": "^2.5.2",
     "graphql": "^16.9.0",
     "graphql-tag": "^2.12.6",
