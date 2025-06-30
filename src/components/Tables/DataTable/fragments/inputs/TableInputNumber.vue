@@ -1,5 +1,6 @@
 <template>
   <InputNumber
+    v-model="data"
     :prefix="preset ? presets[preset].prefix : undefined"
     :suffix="preset ? presets[preset].suffix : undefined"
     :min-fraction-digits="
@@ -8,20 +9,21 @@
     :format="!!preset"
     :readonly="!edit"
     :input-class="edit ? '' : '!border-none !shadow-none !bg-transparent'"
+    :pt-options="{ mergeProps: true }"
+    v-bind="$attrs"
   />
 </template>
 
 <script setup lang="ts">
 import InputNumber, { type InputNumberProps } from "primevue/inputnumber";
+import { type PresetsType } from "../inputFormat";
+import type { PresetKeyNumber, TableInputNumberProps } from "./type";
 
-export type TableInputNumberProps = {
-  edit: boolean;
-  preset?: null | "currency" | "percentage";
-};
-defineProps<TableInputNumberProps>();
+withDefaults(defineProps<TableInputNumberProps>(), {});
 
-type presetsType = { [key: string]: InputNumberProps };
-const presets = <presetsType>{
+const data = <any>defineModel();
+
+const presets = <PresetsType<PresetKeyNumber, InputNumberProps>>{
   currency: { prefix: "R$ ", minFractionDigits: 2 },
   percentage: { suffix: " %" },
 };

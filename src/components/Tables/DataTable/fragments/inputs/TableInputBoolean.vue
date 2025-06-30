@@ -1,9 +1,17 @@
 <template>
-  <Checkbox v-if="edit" v-model="data" binary />
+  <Checkbox
+    v-if="edit"
+    v-model="data"
+    binary
+    :pt-options="{ mergeProps: true }"
+    v-bind="checkboxProps"
+  />
   <Tag
     v-else
     :value="formatBooleanToString(data)"
     :severity="formatBoolean(data) ? 'success' : 'danger'"
+    :pt-options="{ mergeProps: true }"
+    v-bind="tagProps"
   />
 </template>
 
@@ -11,8 +19,12 @@
 import Checkbox from "primevue/checkbox";
 import Tag from "primevue/tag";
 import { formatBoolean, formatBooleanToString } from "../inputFormat";
+import type { TableInputBooleanProps } from "./type";
 
-export type TableInputBooleanProps = { edit: boolean };
+defineOptions({
+  inheritAttrs: false,
+});
+
 defineProps<TableInputBooleanProps>();
 
 const data = <any>defineModel();

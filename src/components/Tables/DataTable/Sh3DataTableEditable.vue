@@ -90,15 +90,14 @@
           :column="col"
           edit
         />
-        <div v-else-if="col.cellFormaterEdit">
-          <component
-            :is="col.cellFormaterEdit.component"
-            v-bind="{ ...col.cellFormaterEdit.props, row, field }"
-            @selected="
-              (value: any) => (row[col.cellFormaterEdit.name ?? field] = value)
-            "
-          />
-        </div>
+        <component
+          :is="col.cellFormaterEdit.component"
+          v-else-if="col.cellFormaterEdit"
+          v-bind="{ ...col.cellFormaterEdit.props, row, field }"
+          @selected="
+            (value: any) => (row[col.cellFormaterEdit.name ?? field] = value)
+          "
+        />
         <InputText
           v-else
           v-model="row[field]"
@@ -180,7 +179,7 @@ import SearchNotFound from "./fragments/SearchNotFound.vue";
 
 import { saveTooltip, cancelTooltip } from "./fragments/tooltip";
 import { getValueByPath } from "./utils";
-import TableInputComponent from "./fragments/TableInputComponent.vue";
+import TableInputComponent from "./fragments/DynamicTableInputRenderer.vue";
 
 const attrs = useAttrs();
 

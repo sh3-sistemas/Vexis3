@@ -132,7 +132,7 @@ import {
 } from "./types";
 import { ref, useSlots, toRef } from "vue";
 import { tableStyle } from "./utils";
-import TableInputComponent from "./fragments/TableInputComponent.vue";
+import TableInputComponent from "./fragments/DynamicTableInputRenderer.vue";
 
 defineOptions({
   inheritAttrs: true,

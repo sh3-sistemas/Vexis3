@@ -5,20 +5,22 @@
     :view="presets[preset ?? 'date'].view"
     :readonly="!edit"
     :input-class="edit ? '' : '!border-none !shadow-none !bg-transparent'"
+    :pt-options="{ mergeProps: true }"
+    v-bind="$attrs"
     @value-change="updateData"
   />
 </template>
 
 <script setup lang="ts">
 import DatePicker, { type DatePickerProps } from "primevue/datepicker";
+import { type PresetsType } from "../inputFormat";
 import dayjs from "dayjs";
 import { computed } from "vue";
+import type { PresetKeyDate, TableInputDateProps } from "./type";
 
-export type TableInputDateProps = {
-  edit: boolean;
-  preset?: null | "date" | "month" | "year";
-  dateFormatOutput?: string;
-};
+defineOptions({
+  inheritAttrs: false,
+});
 
 const { preset = null, dateFormatOutput = "YYYY-MM-DD" } =
   defineProps<TableInputDateProps>();
@@ -31,10 +33,9 @@ const formatedData = computed(() =>
     : dayjs(data.value).toDate(),
 );
 
-type presetsType = {
-  [key: string]: DatePickerProps & { dateFormatOutput: string };
-};
-const presets = <presetsType>{
+const presets = <
+  PresetsType<PresetKeyDate, DatePickerProps & { dateFormatOutput: string }>
+>{
   date: {
     dateFormat: "dd/mm/yy",
     view: "date",

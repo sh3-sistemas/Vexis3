@@ -1,28 +1,29 @@
 <template>
   <InputMask
-    :mask="preset ? presets[preset.toLowerCase()].mask : undefined"
+    :mask="preset ? presets[preset].mask : undefined"
     :placeholder="
-      preset && edit
-        ? presets[preset.toLowerCase()].mask?.replace(/9/g, '_')
-        : undefined
+      preset && edit ? presets[preset].mask?.replace(/9/g, '_') : undefined
     "
     unmask
     :readonly="!edit"
     :class="edit ? '' : '!border-none !shadow-none !bg-transparent'"
+    :pt-options="{ mergeProps: true }"
+    v-bind="$attrs"
   />
 </template>
 
 <script setup lang="ts">
 import InputMask, { type InputMaskProps } from "primevue/inputmask";
+import { type PresetsType } from "../inputFormat";
+import type { PresetKeyMask, TableInputMaskProps } from "./type";
 
-export type TableInputMaskProps = {
-  edit: boolean;
-  preset?: null | string;
-};
+defineOptions({
+  inheritAttrs: false,
+});
+
 defineProps<TableInputMaskProps>();
 
-type presetsType = { [key: string]: InputMaskProps };
-const presets = <presetsType>{
+const presets = <PresetsType<PresetKeyMask, InputMaskProps>>{
   cpf: { mask: "999.999.999-99" },
   cnpj: { mask: "99.999.999/9999-99" },
   tel: { mask: "(99) 9999-9999" },

@@ -18,13 +18,13 @@ import {
   MultiSelectFilter,
 } from "../../Filters";
 import type { FilterComponentProps } from "../../Filters/fragments/types";
-import { inputComponents } from "../fragments/inputFormat";
+import { type inputComponentsKeys } from "../fragments/inputFormat";
 
 type ItemColum = {
   field: any;
   header: string;
   filterType: string;
-  type?: keyof typeof inputComponents;
+  type: inputComponentsKeys;
   default: any;
   sortable: boolean;
   visible: boolean;
@@ -74,7 +74,7 @@ type DataTableFilter = {
 export type DataTableItemColumn = {
   field: string;
   header: string;
-  type?: keyof typeof inputComponents;
+  type: inputComponentsKeys;
   props?: ColumnProps & {
     input?: object | ((item: any, edit: boolean) => object);
   };
