@@ -20,5 +20,5 @@ import type { TableInputTagProps } from "./type";
 
 defineProps<TableInputTagProps>();
 
-const data = <any>defineModel();
+const data = defineModel<string | null | undefined>();
 </script>

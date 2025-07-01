@@ -7,10 +7,6 @@ import Checkbox from "primevue/checkbox";
 import type { FilterProps } from "./types";
 
 withDefaults(defineProps<FilterProps>(), {
-  col: () => ({
-    field: "",
-    header: "",
-  }),
   filterCallback: () => {},
 });
 

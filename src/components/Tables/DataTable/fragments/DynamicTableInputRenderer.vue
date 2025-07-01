@@ -16,13 +16,13 @@
 import { type DataTableItemColumn } from "../types";
 import { inputComponents } from "./inputFormat";
 
-export type inputComponentsProps = {
+export type InputComponentsProps = {
   column: DataTableItemColumn;
   edit?: boolean;
 };
 
-withDefaults(defineProps<inputComponentsProps>(), {
-  edit: <boolean>false,
+withDefaults(defineProps<InputComponentsProps>(), {
+  edit: false,
 });
 
 const data = <any>defineModel();

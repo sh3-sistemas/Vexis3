@@ -65,7 +65,7 @@ export const formatBooleanToString = (
   value: string | number | null | undefined,
 ) => (formatBoolean(value) ? "Sim" : "Não");
 
-export type inputComponentsKeys =
+export type InputComponentsKeys =
   | "boolean"
   | PresetKeyDate
   | "number"
@@ -74,7 +74,7 @@ export type inputComponentsKeys =
   | PresetKeyMask
   | "tag";
 export const inputComponents = <
-  { [key in inputComponentsKeys]: { component: object; preset?: string } }
+  { [key in InputComponentsKeys]: { component: object; preset?: string } }
 >{
   boolean: { component: markRaw(TableInputBoolean) },
   date: { component: markRaw(TableInputDate) },

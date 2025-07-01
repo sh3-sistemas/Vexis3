@@ -1,6 +1,5 @@
 <template>
   <InputNumber
-    v-model="data"
     :prefix="preset ? presets[preset].prefix : undefined"
     :suffix="preset ? presets[preset].suffix : undefined"
     :min-fraction-digits="
@@ -20,8 +19,6 @@ import { type PresetsType } from "../inputFormat";
 import type { PresetKeyNumber, TableInputNumberProps } from "./type";
 
 withDefaults(defineProps<TableInputNumberProps>(), {});
-
-const data = <any>defineModel();
 
 const presets = <PresetsType<PresetKeyNumber, InputNumberProps>>{
   currency: { prefix: "R$ ", minFractionDigits: 2 },

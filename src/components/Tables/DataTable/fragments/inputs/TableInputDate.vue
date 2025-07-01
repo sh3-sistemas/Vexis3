@@ -14,7 +14,7 @@
 <script setup lang="ts">
 import DatePicker, { type DatePickerProps } from "primevue/datepicker";
 import { type PresetsType } from "../inputFormat";
-import dayjs from "dayjs";
+import dayjs, { type ConfigType } from "dayjs";
 import { computed } from "vue";
 import type { PresetKeyDate, TableInputDateProps } from "./type";
 
@@ -22,14 +22,14 @@ defineOptions({
   inheritAttrs: false,
 });
 
-const { preset = null, dateFormatOutput = "YYYY-MM-DD" } =
+const { preset, dateFormatOutput = "YYYY-MM-DD" } =
   defineProps<TableInputDateProps>();
 
-const data = <any>defineModel();
+const data = defineModel<ConfigType | ConfigType[]>();
 
 const formatedData = computed(() =>
   Array.isArray(data.value)
-    ? data.value.map((x: string) => dayjs(x).toDate())
+    ? data.value.map((x: ConfigType) => dayjs(x).toDate())
     : dayjs(data.value).toDate(),
 );
 

@@ -27,5 +27,5 @@ defineOptions({
 
 defineProps<TableInputBooleanProps>();
 
-const data = <any>defineModel();
+const data = defineModel<string | number | null | undefined>();
 </script>

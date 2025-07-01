@@ -13,10 +13,6 @@ import type { FilterProps } from "./types";
 import Sh3MultiDropdown from "@/components/Dropdowns/Sh3MultiDropdown.vue";
 
 withDefaults(defineProps<FilterProps>(), {
-  col: () => ({
-    field: "",
-    header: "",
-  }),
   filterCallback: () => {},
 });
 

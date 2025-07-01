@@ -25,10 +25,6 @@ import Tag from "primevue/tag";
 import type { FilterProps } from "./types";
 
 withDefaults(defineProps<FilterProps>(), {
-  col: () => ({
-    field: "",
-    header: "",
-  }),
   filterCallback: () => {},
 });
 
