@@ -6,9 +6,7 @@ import Checkbox from "primevue/checkbox";
 
 import type { FilterProps } from "./types";
 
-withDefaults(defineProps<FilterProps>(), {
-  filterCallback: () => {},
-});
+defineProps<FilterProps>();
 
 const filterModel = defineModel<boolean>();
 </script>

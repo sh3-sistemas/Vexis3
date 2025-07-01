@@ -13,10 +13,9 @@
 
 <script setup lang="ts">
 import DatePicker, { type DatePickerProps } from "primevue/datepicker";
-import { type PresetsType } from "../inputFormat";
 import dayjs, { type ConfigType } from "dayjs";
 import { computed } from "vue";
-import type { PresetKeyDate, TableInputDateProps } from "./type";
+import type { PresetKeyDate, TableInputDateProps, PresetsType } from "../types";
 
 defineOptions({
   inheritAttrs: false,

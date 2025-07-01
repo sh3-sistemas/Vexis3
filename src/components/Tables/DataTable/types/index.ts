@@ -18,7 +18,7 @@ import {
   MultiSelectFilter,
 } from "../../Filters";
 import type { FilterComponentProps } from "../../Filters/fragments/types";
-import { type InputComponentsKeys } from "../fragments/inputFormat";
+import { type InputComponentsKeys } from "../fragments/types";
 
 type ItemColum = {
   field: any;

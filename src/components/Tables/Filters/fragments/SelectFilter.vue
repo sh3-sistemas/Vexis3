@@ -11,9 +11,7 @@
 import type { FilterProps } from "./types";
 import Sh3Dropdown from "@/components/Dropdowns/Sh3Dropdown.vue";
 
-withDefaults(defineProps<FilterProps>(), {
-  filterCallback: () => {},
-});
+defineProps<FilterProps>();
 
 const filterModel = defineModel<any>();
 </script>

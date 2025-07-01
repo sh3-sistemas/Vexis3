@@ -19,7 +19,7 @@
 import Checkbox from "primevue/checkbox";
 import Tag from "primevue/tag";
 import { formatBoolean, formatBooleanToString } from "../inputFormat";
-import type { TableInputBooleanProps } from "./type";
+import type { TableInputBooleanProps } from "../types";
 
 defineOptions({
   inheritAttrs: false,

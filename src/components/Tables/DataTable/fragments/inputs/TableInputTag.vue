@@ -16,7 +16,7 @@
 <script setup lang="ts">
 import Tag from "primevue/tag";
 import InputText from "primevue/inputtext";
-import type { TableInputTagProps } from "./type";
+import type { TableInputTagProps } from "../types";
 
 defineProps<TableInputTagProps>();
 

@@ -24,9 +24,7 @@ import Dropdown from "primevue/dropdown";
 import Tag from "primevue/tag";
 import type { FilterProps } from "./types";
 
-withDefaults(defineProps<FilterProps>(), {
-  filterCallback: () => {},
-});
+defineProps<FilterProps>();
 
 const filterModel = defineModel<ColumnFilterModelType>();
 </script>

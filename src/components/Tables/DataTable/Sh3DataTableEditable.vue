@@ -68,7 +68,7 @@
       v-bind="{ ...col.props }"
     >
       <template #body="{ data: row, field }">
-        <TableInputComponent
+        <DynamicTableInputRenderer
           v-if="col.type"
           v-model="row[col.field]"
           :column="col"
@@ -79,7 +79,7 @@
         <div v-else>{{ getValueByPath(row, field as string) }}</div>
       </template>
       <template v-if="col.editable != false" #editor="{ data: row, field }">
-        <TableInputComponent
+        <DynamicTableInputRenderer
           v-if="col.type"
           v-model="row[col.field]"
           :column="col"
@@ -176,7 +176,7 @@ import SearchNotFound from "./fragments/SearchNotFound.vue";
 
 import { saveTooltip, cancelTooltip } from "./fragments/tooltip";
 import { getValueByPath } from "./utils";
-import TableInputComponent from "./fragments/DynamicTableInputRenderer.vue";
+import DynamicTableInputRenderer from "./fragments/DynamicTableInputRenderer.vue";
 
 const attrs = useAttrs();
 

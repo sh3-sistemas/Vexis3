@@ -15,8 +15,11 @@
 
 <script setup lang="ts">
 import InputNumber, { type InputNumberProps } from "primevue/inputnumber";
-import { type PresetsType } from "../inputFormat";
-import type { PresetKeyNumber, TableInputNumberProps } from "./type";
+import type {
+  PresetKeyNumber,
+  TableInputNumberProps,
+  PresetsType,
+} from "../types";
 
 withDefaults(defineProps<TableInputNumberProps>(), {});
 

@@ -57,7 +57,7 @@
       v-bind="{ ...col.props }"
     >
       <template v-if="col.type" #body="slotProps">
-        <TableInputComponent
+        <DynamicTableInputRenderer
           v-model="slotProps.data[col.field]"
           :column="col"
         />
@@ -129,7 +129,7 @@ import {
 } from "./types";
 import { ref, useSlots, toRef } from "vue";
 import { tableStyle } from "./utils";
-import TableInputComponent from "./fragments/DynamicTableInputRenderer.vue";
+import DynamicTableInputRenderer from "./fragments/DynamicTableInputRenderer.vue";
 
 defineOptions({
   inheritAttrs: true,

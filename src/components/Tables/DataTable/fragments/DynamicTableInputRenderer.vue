@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { type DataTableItemColumn } from "../types";
-import { inputComponents } from "./inputFormat";
+import { inputComponents } from "./types";
 
 export type InputComponentsProps = {
   column: DataTableItemColumn;

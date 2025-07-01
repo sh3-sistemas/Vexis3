@@ -14,8 +14,7 @@
 
 <script setup lang="ts">
 import InputMask, { type InputMaskProps } from "primevue/inputmask";
-import { type PresetsType } from "../inputFormat";
-import type { PresetKeyMask, TableInputMaskProps } from "./type";
+import type { PresetKeyMask, TableInputMaskProps, PresetsType } from "../types";
 
 defineOptions({
   inheritAttrs: false,
