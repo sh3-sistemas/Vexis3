@@ -5,6 +5,7 @@ import TableInputDate from "../inputs/TableInputDate.vue";
 import TableInputNumber from "../inputs/TableInputNumber.vue";
 import TableInputMask from "../inputs/TableInputMask.vue";
 import TableInputTag from "../inputs/TableInputTag.vue";
+import TableInputText from "../inputs/TableInputText.vue";
 
 import type { CheckboxProps, TagProps, InputTextProps } from "primevue";
 
@@ -39,6 +40,10 @@ export type TableInputTagProps = {
   tagProps?: TagProps;
 };
 
+export type TableInputTextProps = {
+  edit: boolean;
+};
+
 export type InputComponentsKeys =
   | "boolean"
   | PresetKeyDate
@@ -46,7 +51,8 @@ export type InputComponentsKeys =
   | PresetKeyNumber
   | "mask"
   | PresetKeyMask
-  | "tag";
+  | "tag"
+  | "text";
 export const inputComponents = <
   { [key in InputComponentsKeys]: { component: object; preset?: string } }
 >{
@@ -64,6 +70,7 @@ export const inputComponents = <
   tel: { component: markRaw(TableInputMask), preset: "tel" },
   cel: { component: markRaw(TableInputMask), preset: "cel" },
   tag: { component: markRaw(TableInputTag) },
+  text: { component: markRaw(TableInputText) },
 };
 
 export type PresetsType<Keys extends string | number | symbol, T> = {
