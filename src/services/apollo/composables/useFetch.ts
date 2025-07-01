@@ -3,7 +3,11 @@ import { inject, reactive, toRefs, type Ref } from "vue";
 
 import { logErrorMessages } from "@vue/apollo-util";
 import type { FetchParams, RefetechFn, UseFetchState } from "./types";
-import { ApolloError, NetworkStatus } from "@apollo/client";
+import {
+  ApolloError,
+  NetworkStatus,
+  type ApolloQueryResult,
+} from "@apollo/client";
 import type { ClientDict } from "../types";
 
 export type FetchQuery<T> = ({
@@ -19,7 +23,9 @@ export type FetchQuery<T> = ({
 /**
  *
  */
-export default function useFetch<T>() {
+export default function useFetch<T>(
+  onDone?: (result: ApolloQueryResult<T>) => void,
+) {
   const clients = inject<ClientDict<T>>("clients") as ClientDict<T>;
   const state: UseFetchState<T> = reactive({
     data: {} as any,
@@ -46,6 +52,7 @@ export default function useFetch<T>() {
       state.data = result.data;
       state.count =
         result.data && Array.isArray(result.data) ? result.data.length : 0;
+      if (onDone && !result.loading) onDone(result);
     });
 
     onError((error) => {

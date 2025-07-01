@@ -11,6 +11,7 @@
     <span v-if="showComplement" class="text-center px-8 mb-6 text-slate-500"
       >{{ complement }}
     </span>
+    <slot></slot>
   </div>
 </template>
 

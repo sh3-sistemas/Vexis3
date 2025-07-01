@@ -1,4 +1,4 @@
-import type { OperationVariables } from "@apollo/client";
+import type { ApolloQueryResult, OperationVariables } from "@apollo/client";
 import type { DocumentParameter } from "@vue/apollo-composable/dist/useQuery.js";
 
 export type FetchOptions = {
@@ -43,4 +43,9 @@ export type Fetch<T> = {
    * Um objeto que contém as opções adicionais para a busca, como clientId, paginação, etc.
    */
   options: FetchOptions;
+
+  /**
+   * Função de callback para o retorno do resultado da query
+   */
+  onDone?: (result: ApolloQueryResult<T>) => void;
 };

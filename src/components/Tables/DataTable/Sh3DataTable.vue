@@ -2,7 +2,6 @@
   <DataTable
     v-model:filters="filters"
     v-model:expanded-rows="expandedRows"
-    filter-display="row"
     :value="items"
     paginator
     striped-rows
@@ -10,6 +9,7 @@
     :rows-per-page-options="[10, 15, 25, 50]"
     paginator-template="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink RowsPerPageDropdown"
     current-page-report-template="{first} a {last} de {totalRecords}"
+    :selection-mode="selectionMode ?? undefined"
     :pt-options="{ mergeProps: true }"
     :pt="tableStyle"
     v-bind="$attrs"
@@ -39,9 +39,6 @@
       :selection-mode="selectionMode"
       header-style="width: 3rem"
       :filter-header-class="filterHeaderClass"
-      :pt="{
-        rowRadioButton: 'bg-red-500 text-red-600',
-      }"
     >
     </Column>
     <Column
@@ -67,7 +64,7 @@
       </template>
 
       <template
-        v-if="!col.filter?.disabled"
+        v-if="col.filter && !col.filter.disabled"
         #filter="{ filterModel, filterCallback }"
       >
         <component

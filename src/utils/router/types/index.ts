@@ -16,5 +16,6 @@ declare module "vue-router" {
     label?: string;
     icon?: CustomIcon;
     isTab?: boolean;
+    showMenu?: boolean;
   }
 }

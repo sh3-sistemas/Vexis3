@@ -5,7 +5,6 @@
     v-model:editing-rows="editingRows"
     v-model:expanded-rows="expandedRows"
     v-model:filters="filters"
-    filter-display="row"
     edit-mode="row"
     :value="items"
     :selection-mode="undefined"
@@ -49,11 +48,7 @@
       :selection-mode="selectionMode"
       class="w-10"
       :pt-options="{ mergeProps: true }"
-      :pt="{
-        headerCell: '!p-2',
-        pcHeaderCheckbox: checkboxClass,
-        pcRowCheckbox: checkboxClass,
-      }"
+      :pt="{ headerCell: '!p-2' }"
       :filter-header-class="filterHeaderClass"
     />
     <Column
@@ -93,7 +88,9 @@
         <component
           :is="col.cellFormaterEdit.component"
           v-else-if="col.cellFormaterEdit"
-          v-bind="{ ...col.cellFormaterEdit.props, row, field }"
+          v-bind="
+            getCellFormaterEditProps(col.cellFormaterEdit.props, row, field)
+          "
           @selected="
             (value: any) => (row[col.cellFormaterEdit.name ?? field] = value)
           "
@@ -106,7 +103,7 @@
       </template>
 
       <template
-        v-if="!col.filter?.disabled"
+        v-if="col.filter && !col.filter.disabled"
         #filter="{ filterModel, filterCallback }"
       >
         <component
@@ -169,7 +166,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, useSlots, useAttrs, toRef } from "vue";
+import { ref, useSlots, useAttrs, toRef } from "vue";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import InputText from "primevue/inputtext";
@@ -188,7 +185,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<Sh3DataTableEditableProps>(), {
-  emptyString: "Nenhum Registro encontrado",
+  emptyString: "Nenhum registro encontrado",
   dataKey: "id",
   rowExpansion: false,
   disabled: false,
@@ -242,15 +239,6 @@ const startNewRow = (startValue?: object) => {
 
 defineExpose({ startNewRow });
 
-const checkboxClass = computed(() => ({
-  root:
-    props.disabled || editingRows.value.length
-      ? "rounded flex w-5 form-bg-disabled pointer-events-none"
-      : "rounded flex w-5 bg-white",
-  input:
-    "w-5 h-5 rounded bg-transparent !ring-0 border border-surface-300 cursor-pointer",
-  box: "hidden",
-}));
 const filterHeaderClass =
   "bg-white !border-b !border-solid !border-surface-100";
 
@@ -258,4 +246,31 @@ const { filters } = useFilterTable(
   attrs.filterDisplay,
   toRef(props, "columns"),
 );
+
+/**
+ * Gera as propriedades (props) para o componente de edição de célula (`cellFormaterEdit`).
+ *
+ * Esta função combina as propriedades base definidas em `cellFormaterEdit.props`
+ * com informações da linha (`row`) e do campo (`field`).
+ * Se `cellFormaterEdit.propsFunction` for uma função, ela será executada com a `row`
+ * e suas propriedades resultantes serão mescladas, permitindo props dinâmicas.
+ *
+ * @param cellFormaterEdit O objeto de configuração do formatador de célula para edição.
+ * Contém `component` (o componente Vue a ser renderizado), `props` (props estáticas para o componente),
+ * e opcionalmente `propsFunction` (uma função que retorna props dinâmicas baseado na linha).
+ * @param row O objeto da linha atual do DataTable que está sendo editada.
+ * @param field O nome do campo da coluna à qual a célula editável pertence.
+ * @returns Um objeto contendo todas as propriedades combinadas que serão passadas para o componente `cellFormaterEdit.component`.
+ */
+const getCellFormaterEditProps = (
+  cellFormaterEdit: any,
+  row: object,
+  field: string,
+) => {
+  const baseProps = { ...cellFormaterEdit.props, row, field };
+  if (typeof cellFormaterEdit.propsFunction === "function") {
+    return { ...baseProps, ...cellFormaterEdit.propsFunction(row) };
+  }
+  return baseProps;
+};
 </script>

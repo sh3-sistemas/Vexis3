@@ -7,8 +7,14 @@ import type {
 } from "primevue";
 import type Pusher from "pusher-js";
 import type { FunctionalComponent, SVGAttributes } from "vue";
+import type { DynamicDialogInstance as PrimevueDynamicDialogInstance } from "primevue/dynamicdialogoptions";
 
-export type { DynamicDialogInstance } from "primevue/dynamicdialogoptions";
+export type DynamicDialogInstance<T> = Omit<
+  PrimevueDynamicDialogInstance,
+  "data"
+> & {
+  data: T;
+};
 
 /**
  * Defines valid properties in common Icon properties component.
