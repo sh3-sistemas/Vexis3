@@ -45,6 +45,20 @@ const presets = <
   year: { dateFormat: "yy", view: "year", dateFormatOutput: "YYYY" },
 };
 
+/**
+ * Converte o valor do DatePicker para o formato de saida, definido pelo props dateFormatOutput, e atualiza o Model.
+ *
+ * @param {Date | Date[] | (Date | null)[] | null | undefined} value - O valor a ser convertido.
+ *
+ * @example
+ * dateFormatOutput= "YYYY-MM"
+ * updateData(Sat Feb 01 2025 00:00:00 GMT-0300 (Horário Padrão de Brasília));
+ * // Retorna 02/2025
+ * @example
+ * dateFormatOutput= "YYYY-MM"
+ * updateData([Sun Jun 01 2025 00:00:00 GMT-0300 (Horário Padrão de Brasília), Sat Mar 01 2025 00:00:00 GMT-0300 (Horário Padrão de Brasília)]);
+ * // Retorna [06/2025, 03/2025]
+ */
 const updateData = (
   value: Date | Date[] | (Date | null)[] | null | undefined,
 ) => {
