@@ -3,7 +3,6 @@
  * [Primevue Based](https://v3.primevue.org/datatable)
  * @module dataTables
  */
-import type { ColumnProps } from "primevue";
 import type { DataTableProps } from "primevue/datatable";
 import { FilterMatchMode, FilterOperator } from "@primevue/core/api";
 import { markRaw } from "vue";
@@ -18,23 +17,21 @@ import {
   MultiSelectFilter,
 } from "../../Filters";
 import type { FilterComponentProps } from "../../Filters/fragments/types";
-import { type InputComponentsKeys } from "../fragments/types";
+import { type DataTableItemColumnPropsVariations } from "../fragments/types";
 
 type ItemColum = {
   field: any;
   header: string;
   filterType: string;
-  type: InputComponentsKeys;
   default: any;
   sortable: boolean;
   visible: boolean;
   editable: boolean;
   cellFormater: object;
   cellFormaterEdit: { component: object; props: object; name?: string };
-  props?: ColumnProps;
   filter?: DataTableFilter;
   //TODO: Realizar tipagem correta desses valores em breve
-};
+} & DataTableItemColumnPropsVariations;
 
 export type Sh3DataTableEditableProps = DataTableProps & {
   dataKey: string;
@@ -75,12 +72,8 @@ type DataTableFilter = {
 export type DataTableItemColumn = {
   field: string;
   header: string;
-  type: InputComponentsKeys;
-  props?: ColumnProps & {
-    input?: object | ((item: any, edit: boolean) => object);
-  };
   filter?: DataTableFilter;
-};
+} & DataTableItemColumnPropsVariations;
 
 export type SelectionMode = "single" | "multiple" | undefined | null;
 

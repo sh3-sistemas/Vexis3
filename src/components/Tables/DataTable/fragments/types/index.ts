@@ -1,48 +1,43 @@
-import { markRaw } from "vue";
+import type {
+  ColumnProps,
+  CheckboxProps,
+  TagProps,
+  InputTextProps,
+  DatePickerProps,
+  InputMaskProps,
+  InputNumberProps,
+} from "primevue";
 
-import TableInputBoolean from "../inputs/TableInputBoolean.vue";
-import TableInputDate from "../inputs/TableInputDate.vue";
-import TableInputNumber from "../inputs/TableInputNumber.vue";
-import TableInputMask from "../inputs/TableInputMask.vue";
-import TableInputTag from "../inputs/TableInputTag.vue";
-import TableInputText from "../inputs/TableInputText.vue";
-
-import type { CheckboxProps, TagProps, InputTextProps } from "primevue";
-
-export type TableInputBooleanProps = {
+interface CommonInputProps {
   edit: boolean;
+}
+export interface TableInputBooleanProps extends CommonInputProps {
   checkboxProps?: CheckboxProps;
   tagProps?: TagProps;
-};
+}
 
 export type PresetKeyDate = "date" | "month" | "year";
-export type TableInputDateProps = {
-  edit: boolean;
+export interface TableInputDateProps extends CommonInputProps {
   preset?: PresetKeyDate;
   dateFormatOutput?: string;
-};
+}
 
 export type PresetKeyMask = "cpf" | "cnpj" | "tel" | "cel" | "cep";
-export type TableInputMaskProps = {
-  edit: boolean;
+export interface TableInputMaskProps extends CommonInputProps {
   preset?: PresetKeyMask;
-};
+}
 
 export type PresetKeyNumber = "currency" | "percentage";
-export type TableInputNumberProps = {
-  edit: boolean;
+export interface TableInputNumberProps extends CommonInputProps {
   preset?: PresetKeyNumber;
-};
+}
 
-export type TableInputTagProps = {
-  edit: boolean;
+export interface TableInputTagProps extends CommonInputProps {
   inputProps?: InputTextProps;
   tagProps?: TagProps;
-};
+}
 
-export type TableInputTextProps = {
-  edit: boolean;
-};
+export interface TableInputTextProps extends CommonInputProps {}
 
 export type InputComponentsKeys =
   | "boolean"
@@ -53,25 +48,45 @@ export type InputComponentsKeys =
   | PresetKeyMask
   | "tag"
   | "text";
-export const inputComponents = <
-  { [key in InputComponentsKeys]: { component: object; preset?: string } }
->{
-  boolean: { component: markRaw(TableInputBoolean) },
-  date: { component: markRaw(TableInputDate) },
-  month: { component: markRaw(TableInputDate), preset: "month" },
-  year: { component: markRaw(TableInputDate), preset: "year" },
-  number: { component: markRaw(TableInputNumber) },
-  currency: { component: markRaw(TableInputNumber), preset: "currency" },
-  percentage: { component: markRaw(TableInputNumber), preset: "percentage" },
-  mask: { component: markRaw(TableInputMask) },
-  cpf: { component: markRaw(TableInputMask), preset: "cpf" },
-  cnpj: { component: markRaw(TableInputMask), preset: "cnpj" },
-  cep: { component: markRaw(TableInputMask), preset: "cep" },
-  tel: { component: markRaw(TableInputMask), preset: "tel" },
-  cel: { component: markRaw(TableInputMask), preset: "cel" },
-  tag: { component: markRaw(TableInputTag) },
-  text: { component: markRaw(TableInputText) },
+
+export type ItemColumnProps<T> = ColumnProps & {
+  input?: T | ((item: any, edit: boolean) => T);
 };
+/**
+ * Representa todas as variações possíveis de colunas com entrada customizada para uso em tabelas dinâmicas.
+ *
+ * Cada variação é discriminada por um valor fixo na propriedade `type`, permitindo configurar
+ * a interface e o comportamento da coluna de acordo com o tipo de entrada necessário.
+ *
+ * A propriedade `props` aceita um objeto ou função que define as propriedades específicas
+ * do componente de entrada, via `ItemColumnProps<T>`.
+ *
+ */
+export type DataTableItemColumnPropsVariations =
+  | {
+      type?: "boolean";
+      props?: ItemColumnProps<TableInputBooleanProps>;
+    }
+  | {
+      type?: PresetKeyDate;
+      props?: ItemColumnProps<TableInputDateProps & DatePickerProps>;
+    }
+  | {
+      type?: "number" | PresetKeyNumber;
+      props?: ItemColumnProps<TableInputNumberProps & InputNumberProps>;
+    }
+  | {
+      type?: "mask" | PresetKeyMask;
+      props?: ItemColumnProps<TableInputMaskProps & InputMaskProps>;
+    }
+  | {
+      type?: "tag";
+      props?: ItemColumnProps<TableInputTagProps>;
+    }
+  | {
+      type?: "text";
+      props?: ItemColumnProps<TableInputTextProps & InputTextProps>;
+    };
 
 export type PresetsType<Keys extends string | number | symbol, T> = {
   [key in Keys]: T;
