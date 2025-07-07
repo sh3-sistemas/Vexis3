@@ -6,7 +6,10 @@
     :endpoint="false"
     :disabled="!options.crud.save"
     :add-classes="{
-      ObjectElement: { container: 'bg-mercury-50 p-3' },
+      ObjectElement: { container: 'bg-mercury-50 my-1.5 p-3 rounded-md' },
+      TextElement: {
+        input: 'read-only:bg-mercury-50 read-only:text-mercury-800',
+      },
       ...(!options.crud.edit ? disableAll : {}),
     }"
     v-bind="$attrs"
