@@ -69,7 +69,10 @@
           hideDelay: 50,
         }"
         name="cancel"
-        container-class="2xl:col-start-11"
+        :container-class="
+          '2xl:col-start-11 ' +
+          (options.crud.edit ? 'col-start-7 lg:col-start-9' : '')
+        "
         button-label="Cancelar"
         :columns="{ default: 3, lg: 2, '2xl': 1 }"
         outlined
@@ -85,7 +88,10 @@
         name="submit"
         severity="success"
         :container-class="
-          '2xl:col-start-12' + (options.crud.edit ? '' : ' cursor-not-allowed')
+          '2xl:col-start-12 ' +
+          (options.crud.edit
+            ? 'col-start-10 lg:col-start-11'
+            : 'cursor-not-allowed')
         "
         button-label="Salvar"
         :columns="{ default: 3, lg: 2, '2xl': 1 }"
