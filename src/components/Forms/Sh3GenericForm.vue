@@ -149,6 +149,10 @@ const disableAll = {
     container: "pointer-events-none",
     inputContainer: "form-bg-disabled",
   },
+  DateElement: {
+    container: "pointer-events-none",
+    inputContainer: "form-bg-disabled",
+  },
   TextareaElement: {
     container: "pointer-events-none",
     inputContainer: "form-bg-disabled",
