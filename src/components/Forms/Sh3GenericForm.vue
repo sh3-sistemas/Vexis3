@@ -2,6 +2,7 @@
   <Vueform
     ref="form$"
     size="md"
+    :format-load
     :display-errors="false"
     :endpoint="false"
     :disabled="!options.crud.save"
@@ -151,27 +152,30 @@ const deletion = () => {
 };
 
 const disableAll = {
-  TextElement: {
+  CheckboxElement: {
     container: "pointer-events-none",
-    inputContainer: "form-bg-disabled",
+    input: "opacity-50 form-bg-disabled",
   },
   DateElement: {
     container: "pointer-events-none",
     inputContainer: "form-bg-disabled",
   },
+  ObjectElement: {
+    container: "border border-mercury-200 my-1.5 p-3 rounded-md",
+  },
   TextareaElement: {
     container: "pointer-events-none",
     inputContainer: "form-bg-disabled",
   },
-  RadiogroupElement: { wrapper: "opacity-50 pointer-events-none " },
+  TextElement: {
+    container: "pointer-events-none",
+    inputContainer: "form-bg-disabled",
+  },
   RadioElement: {
     wrapper: "pointer-events-none",
     input: "opacity-50 form-bg-disabled",
   },
-  CheckboxElement: {
-    container: "pointer-events-none",
-    input: "opacity-50 form-bg-disabled",
-  },
+  RadiogroupElement: { wrapper: "opacity-50 pointer-events-none" },
 };
 
 provide(
