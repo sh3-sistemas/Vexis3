@@ -1,7 +1,9 @@
 <template>
-  <div class="sh3-filter-tag flex items-center gap-x-1">
-    <div class="sh3-filter-tag--title font-bold">Filtros aplicados:</div>
-    <div class="tags-wrapper flex gap-x-1">
+  <div class="sh3-filter-tag flex items-center gap-x-4">
+    <span class="sh3-filter-tag--title whitespace-nowrap"
+      >Filtros aplicados:</span
+    >
+    <div class="tags-wrapper flex gap-x-2 overflow-x-auto">
       <Tag
         v-for="{ field, icon, value } in filters"
         :key="field"
