@@ -163,6 +163,10 @@ const disableAll = {
   ObjectElement: {
     container: "border border-mercury-200 my-1.5 p-3 rounded-md",
   },
+  SelectElement: {
+    container: "pointer-events-none",
+    input: "form-bg-disabled",
+  },
   TextareaElement: {
     container: "pointer-events-none",
     inputContainer: "form-bg-disabled",
