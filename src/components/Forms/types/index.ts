@@ -8,6 +8,7 @@
  *
  */
 import type { DefineComponent } from "vue";
+import type Sh3GenericForm from "../Sh3GenericForm.vue";
 /**
  * **SH3 - Sh3GenericForm**
  *
@@ -33,8 +34,12 @@ export type FormOptions = {
 export interface Sh3GenericFormProps {
   submitForm: () => void;
   deleteRegister: () => void;
+  formatLoad?: () => void;
   options?: FormOptions;
 }
+
+export type GenericFormInstanceType = InstanceType<typeof Sh3GenericForm>;
+
 declare module "vue" {
   export interface GlobalComponents {
     Sh3GenericForm: DefineComponent<Sh3GenericFormProps, any, any>;

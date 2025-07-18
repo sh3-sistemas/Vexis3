@@ -7,6 +7,11 @@
  * @module links
  *
  */
+import type {
+  BreadcrumbEmits,
+  BreadcrumbProps,
+  BreadcrumbSlots,
+} from "primevue";
 import type { DefineComponent } from "vue";
 /**
  * **SH3 - Sh3Breadcrumb**
@@ -30,7 +35,11 @@ import type { DefineComponent } from "vue";
 
 declare module "vue" {
   export interface GlobalComponents {
-    Sh3Breadcrumb: DefineComponent<any, any, any>;
+    Sh3Breadcrumb: DefineComponent<
+      BreadcrumbProps,
+      BreadcrumbSlots,
+      BreadcrumbEmits
+    >;
     Sh3MiniLink: DefineComponent<any, any, any>;
   }
 }
