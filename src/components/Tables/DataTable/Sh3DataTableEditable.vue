@@ -70,7 +70,7 @@
       <template #body="{ data: row, field }">
         <DynamicTableInputRenderer
           v-if="col.type"
-          v-model="row[col.field]"
+          :data="getValueByPath(row, col.field)"
           :column="col"
         />
         <div v-else-if="col.cellFormater">
@@ -81,16 +81,15 @@
       <template v-if="col.editable != false" #editor="{ data: row, field }">
         <DynamicTableInputRenderer
           v-if="col.type"
-          v-model="row[col.field]"
+          :data="getValueByPath(row, col.field)"
           :column="col"
           edit
+          @change="(value: any) => updateValueByPath(row, col.field, value)"
         />
         <component
           :is="col.cellFormaterEdit.component"
           v-else-if="col.cellFormaterEdit"
-          v-bind="
-            getCellFormaterEditProps(col.cellFormaterEdit.props, row, field)
-          "
+          v-bind="getCellFormaterEditProps(col.cellFormaterEdit, row, field)"
           @selected="
             (value: any) => (row[col.cellFormaterEdit.name ?? field] = value)
           "
@@ -175,7 +174,7 @@ import { useFilterTable } from "../Filters/composables";
 import SearchNotFound from "./fragments/SearchNotFound.vue";
 
 import { saveTooltip, cancelTooltip } from "./fragments/tooltip";
-import { getValueByPath } from "./utils";
+import { getValueByPath, updateValueByPath } from "./utils";
 import DynamicTableInputRenderer from "./fragments/DynamicTableInputRenderer.vue";
 
 const attrs = useAttrs();

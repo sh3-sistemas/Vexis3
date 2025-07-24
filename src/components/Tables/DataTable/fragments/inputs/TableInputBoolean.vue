@@ -1,15 +1,16 @@
 <template>
   <Checkbox
     v-if="edit"
-    v-model="data"
+    :default-value="formatBoolean(value)"
     binary
     :pt-options="{ mergeProps: true }"
     v-bind="checkboxProps"
+    @value-change="(value) => $parent?.$emit('change', value)"
   />
   <Tag
     v-else
-    :value="formatBooleanToString(data)"
-    :severity="formatBoolean(data) ? 'success' : 'danger'"
+    :value="formatBooleanToString(value)"
+    :severity="formatBoolean(value) ? 'success' : 'danger'"
     :pt-options="{ mergeProps: true }"
     v-bind="tagProps"
   />
@@ -26,6 +27,4 @@ defineOptions({
 });
 
 defineProps<TableInputBooleanProps>();
-
-const data = defineModel<string | number | null | undefined>();
 </script>

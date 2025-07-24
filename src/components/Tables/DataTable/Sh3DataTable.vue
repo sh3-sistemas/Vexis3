@@ -58,7 +58,7 @@
     >
       <template v-if="col.type" #body="slotProps">
         <DynamicTableInputRenderer
-          v-model="slotProps.data[col.field]"
+          :data="getValueByPath(slotProps.data, col.field)"
           :column="col"
         />
       </template>
@@ -130,6 +130,7 @@ import {
 import { ref, useSlots, toRef } from "vue";
 import { tableStyle } from "./utils";
 import DynamicTableInputRenderer from "./fragments/DynamicTableInputRenderer.vue";
+import { getValueByPath } from "./utils";
 
 defineOptions({
   inheritAttrs: true,

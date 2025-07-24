@@ -1,7 +1,7 @@
 <template>
   <component
     :is="inputComponents[column.type!].component"
-    v-model="data"
+    :value="data"
     :edit="edit"
     :preset="inputComponents[column.type!].preset"
     v-bind="
@@ -17,6 +17,7 @@ import { type DataTableItemColumn } from "../types";
 import { inputComponents } from "./inputFormat";
 
 export type InputComponentsProps = {
+  data: any;
   column: DataTableItemColumn;
   edit?: boolean;
 };
@@ -25,5 +26,5 @@ withDefaults(defineProps<InputComponentsProps>(), {
   edit: false,
 });
 
-const data = <any>defineModel();
+defineEmits(["change"]);
 </script>

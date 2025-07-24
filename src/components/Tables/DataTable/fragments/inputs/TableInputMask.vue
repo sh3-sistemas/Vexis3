@@ -1,5 +1,6 @@
 <template>
   <InputMask
+    :default-value="value"
     :mask="preset ? presets[preset].mask : undefined"
     :placeholder="
       preset && edit ? presets[preset].mask?.replace(/9/g, '_') : undefined
@@ -9,6 +10,7 @@
     :class="edit ? '' : '!border-none !shadow-none !bg-transparent'"
     :pt-options="{ mergeProps: true }"
     v-bind="$attrs"
+    @value-change="(value) => $parent?.$emit('change', value)"
   />
 </template>
 

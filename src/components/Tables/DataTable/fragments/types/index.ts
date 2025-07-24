@@ -7,32 +7,38 @@ import type {
   InputMaskProps,
   InputNumberProps,
 } from "primevue";
+import { type ConfigType } from "dayjs";
 
 interface CommonInputProps {
   edit: boolean;
 }
 export interface TableInputBooleanProps extends CommonInputProps {
+  value: string | number | null | undefined;
   checkboxProps?: CheckboxProps;
   tagProps?: TagProps;
 }
 
 export type PresetKeyDate = "date" | "month" | "year";
 export interface TableInputDateProps extends CommonInputProps {
+  value: ConfigType | ConfigType[];
   preset?: PresetKeyDate;
   dateFormatOutput?: string;
 }
 
 export type PresetKeyMask = "cpf" | "cnpj" | "tel" | "cel" | "cep";
 export interface TableInputMaskProps extends CommonInputProps {
+  value: null | string;
   preset?: PresetKeyMask;
 }
 
 export type PresetKeyNumber = "currency" | "percentage";
 export interface TableInputNumberProps extends CommonInputProps {
+  value: number;
   preset?: PresetKeyNumber;
 }
 
 export interface TableInputTagProps extends CommonInputProps {
+  value: string | null | undefined;
   inputProps?: InputTextProps;
   tagProps?: TagProps;
 }

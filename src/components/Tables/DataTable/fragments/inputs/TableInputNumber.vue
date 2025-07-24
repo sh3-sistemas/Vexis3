@@ -1,5 +1,6 @@
 <template>
   <InputNumber
+    :default-value="value"
     :prefix="preset ? presets[preset].prefix : undefined"
     :suffix="preset ? presets[preset].suffix : undefined"
     :min-fraction-digits="
@@ -10,6 +11,7 @@
     :input-class="edit ? '' : '!border-none !shadow-none !bg-transparent'"
     :pt-options="{ mergeProps: true }"
     v-bind="$attrs"
+    @value-change="(value) => $parent?.$emit('change', value)"
   />
 </template>
 
