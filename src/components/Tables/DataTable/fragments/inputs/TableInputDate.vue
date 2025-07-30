@@ -7,7 +7,7 @@
     :input-class="edit ? '' : '!border-none !shadow-none !bg-transparent'"
     :pt-options="{ mergeProps: true }"
     v-bind="$attrs"
-    @value-change="updateData"
+    @value-change="(value) => $parent?.$emit('change', updateData(value))"
   />
 </template>
 
@@ -21,15 +21,16 @@ defineOptions({
   inheritAttrs: false,
 });
 
-const { preset, dateFormatOutput = "YYYY-MM-DD" } =
-  defineProps<TableInputDateProps>();
-
-const data = defineModel<ConfigType | ConfigType[]>();
+const {
+  value: data,
+  preset,
+  dateFormatOutput = "YYYY-MM-DD",
+} = defineProps<TableInputDateProps>();
 
 const formatedData = computed(() =>
-  Array.isArray(data.value)
-    ? data.value.map((x: ConfigType) => dayjs(x).toDate())
-    : dayjs(data.value).toDate(),
+  Array.isArray(data)
+    ? data.map((x: ConfigType) => dayjs(x).toDate())
+    : dayjs(data).toDate(),
 );
 
 const presets = <
@@ -65,7 +66,7 @@ const updateData = (
     ? presets[preset].dateFormatOutput
     : dateFormatOutput;
 
-  data.value = Array.isArray(value)
+  return Array.isArray(value)
     ? value.map((x) => dayjs(x).format(dateFormat))
     : dayjs(value).format(dateFormat);
 };
