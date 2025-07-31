@@ -5,6 +5,9 @@ import type { OverlayPanelProps } from "primevue/overlaypanel";
 import type { IconProps } from "@/types";
 import type { DefineComponent } from "vue";
 import type { ButtonProps, ButtonSlots, ButtonEmits } from "primevue";
+
+export * from "./globals";
+
 /**
  * Defines valid properties in IconButton component.
  */
