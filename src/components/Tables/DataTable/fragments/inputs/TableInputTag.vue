@@ -1,7 +1,13 @@
 <template>
-  <Tag v-if="!edit" :pt-options="{ mergeProps: true }" v-bind="tagProps" />
+  <Tag
+    v-if="!edit"
+    :value="value"
+    :pt-options="{ mergeProps: true }"
+    v-bind="tagProps"
+  />
   <InputText
     v-else
+    :value="value"
     :pt-options="{ mergeProps: true }"
     v-bind="inputProps"
     @value-change="(value) => $parent?.$emit('change', value)"

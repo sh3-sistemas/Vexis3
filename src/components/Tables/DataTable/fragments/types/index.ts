@@ -28,6 +28,7 @@ export interface TableInputDateProps extends CommonInputProps {
 export type PresetKeyMask = "cpf" | "cnpj" | "tel" | "cel" | "cep";
 export interface TableInputMaskProps extends CommonInputProps {
   value: null | string;
+  mask: string | string[] | undefined;
   preset?: PresetKeyMask;
 }
 
