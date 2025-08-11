@@ -1,10 +1,11 @@
 import {
   ApolloClient,
   InMemoryCache,
-  createHttpLink,
   type DocumentNode,
   type NormalizedCacheObject,
 } from "@apollo/client/core";
+import createUploadLink from "apollo-upload-client/createUploadLink.mjs";
+import { onError } from "@apollo/client/link/error";
 import {
   crudError,
   networkError,
@@ -12,23 +13,16 @@ import {
   unauthorizedError,
 } from "./error";
 
-import { onError } from "@apollo/client/link/error";
-
 type Headers = {
   Authorization?: string;
-  "Content-Type"?: string;
 };
 
-/**
- *
- */
 function getHeaders() {
   const headers: Headers = {};
   const token = localStorage.getItem("access-token");
   if (token) {
     headers["Authorization"] = `Bearer ${token}`;
   }
-  headers["Content-Type"] = "application/json";
   return headers;
 }
 
@@ -36,12 +30,14 @@ export const createSH3ApolloClient = (
   uri: string,
 ): ApolloClient<NormalizedCacheObject> => {
   const cache = new InMemoryCache();
-  const httpLink = createHttpLink({
+
+/**
+* Utiliza a biblioteca apollo-upload-client para habilitar o recurso de upload nos sistemas
+* @see Documentação: https://www.notion.so/Apollo-Upload-Client-21628ec02ee980e88f6adaac6a7641ec
+*/
+  const httpLink = createUploadLink({
     uri,
-    fetch: (uri, options) => {
-      if (options) options.headers = getHeaders();
-      return fetch(uri, options);
-    },
+    headers: getHeaders(),
   });
 
   // Handle errors
