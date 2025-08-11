@@ -31,6 +31,10 @@ export const createSH3ApolloClient = (
 ): ApolloClient<NormalizedCacheObject> => {
   const cache = new InMemoryCache();
 
+/**
+* Utiliza a biblioteca apollo-upload-client para habilitar o recurso de upload nos sistemas
+* @see Documentação: https://www.notion.so/Apollo-Upload-Client-21628ec02ee980e88f6adaac6a7641ec
+*/
   const httpLink = createUploadLink({
     uri,
     headers: getHeaders(),
