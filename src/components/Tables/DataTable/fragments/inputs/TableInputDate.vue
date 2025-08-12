@@ -27,11 +27,12 @@ const {
   dateFormatOutput = "YYYY-MM-DD",
 } = defineProps<TableInputDateProps>();
 
-const formatedData = computed(() =>
-  Array.isArray(data)
+const formatedData = computed(() => {
+  if (!data) return undefined;
+  return Array.isArray(data)
     ? data.map((x: ConfigType) => dayjs(x).toDate())
-    : dayjs(data).toDate(),
-);
+    : dayjs(data).toDate();
+});
 
 const presets = <
   PresetsType<PresetKeyDate, DatePickerProps & { dateFormatOutput: string }>

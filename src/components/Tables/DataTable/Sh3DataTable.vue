@@ -47,11 +47,7 @@
       :field="col.field"
       :header="col.header"
       :filter-header-class="filterHeaderClass"
-      :pt="{
-        filterElementContainer: 'flex-auto',
-        filterMenuIcon: '!min-w-4',
-        filterClearIcon: '!min-w-4',
-      }"
+      :pt="ptColumnFilters"
       reorderable-column
       show-clear-button
       v-bind="{ ...col.props }"
@@ -60,19 +56,21 @@
         <DynamicTableInputRenderer
           :data="getValueByPath(slotProps.data, col.field)"
           :column="col"
+          :type="col.type"
+          :props="col.props"
         />
       </template>
 
       <template
         v-if="col.filter && !col.filter.disabled"
-        #filter="{ filterModel, filterCallback }"
+        #filter="{ filterModel, filterCallback, applyFilter }"
       >
-        <component
-          :is="filterComponents[col.filter?.type ?? 'TextFilter']"
+        <FilterRender
           v-model="filterModel.value"
+          :column="col"
           :filter-callback="filterCallback"
-          :col="col"
-          v-bind="{ ...col.filter?.props }"
+          :apply-filter="applyFilter"
+          :mode="($attrs.filterDisplay ?? $attrs['filter-display']) as string"
         />
       </template>
     </Column>
@@ -125,12 +123,11 @@ import {
   type Action,
   type DataTableItemColumn,
   type Sh3DataTableProps,
-  filterComponents,
 } from "./types";
 import { ref, useSlots, toRef } from "vue";
-import { tableStyle } from "./utils";
+import { tableStyle, getValueByPath, ptColumnFilters } from "./utils";
 import DynamicTableInputRenderer from "./fragments/DynamicTableInputRenderer.vue";
-import { getValueByPath } from "./utils";
+import FilterRender from "./fragments/FilterRender.vue";
 
 defineOptions({
   inheritAttrs: true,
@@ -157,7 +154,7 @@ const filterHeaderClass =
   "bg-white !border-b !border-solid !border-surface-100";
 
 const { filters } = useFilterTable(
-  attrs.filterDisplay,
+  attrs.filterDisplay ?? attrs["filter-display"],
   toRef(props, "columns"),
 );
 </script>

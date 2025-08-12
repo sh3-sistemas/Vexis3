@@ -2,8 +2,10 @@ import { markRaw } from "vue";
 
 import TableInputBoolean from "./inputs/TableInputBoolean.vue";
 import TableInputDate from "./inputs/TableInputDate.vue";
-import TableInputNumber from "./inputs/TableInputNumber.vue";
 import TableInputMask from "./inputs/TableInputMask.vue";
+import TableInputMultiSelect from "./inputs/TableInputMultiSelect.vue";
+import TableInputNumber from "./inputs/TableInputNumber.vue";
+import TableInputSelect from "./inputs/TableInputSelect.vue";
 import TableInputTag from "./inputs/TableInputTag.vue";
 import TableInputText from "./inputs/TableInputText.vue";
 import { type InputComponentsKeys } from "./types";
@@ -77,6 +79,13 @@ export const inputComponents = <
   cep: { component: markRaw(TableInputMask), preset: "cep" },
   tel: { component: markRaw(TableInputMask), preset: "tel" },
   cel: { component: markRaw(TableInputMask), preset: "cel" },
+  multiSelect: { component: markRaw(TableInputMultiSelect) },
+  multiSelectTag: {
+    component: markRaw(TableInputMultiSelect),
+    preset: "multiSelectTag",
+  },
+  select: { component: markRaw(TableInputSelect) },
+  selectTag: { component: markRaw(TableInputSelect), preset: "selectTag" },
   tag: { component: markRaw(TableInputTag) },
   text: { component: markRaw(TableInputText) },
 };

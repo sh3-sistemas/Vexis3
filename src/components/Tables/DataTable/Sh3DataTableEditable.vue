@@ -56,13 +56,10 @@
       :key="col.field"
       :field="col.field"
       :header="col.header"
-      :sortable="col.sortable"
       :filter-header-class="filterHeaderClass"
       :pt="{
         pcSortBadge: { root: 'hidden' },
-        filterElementContainer: 'flex-auto',
-        filterMenuIcon: '!min-w-4',
-        filterClearIcon: '!min-w-4',
+        ...ptColumnFilters,
       }"
       show-clear-button
       v-bind="{ ...col.props }"
@@ -71,7 +68,8 @@
         <DynamicTableInputRenderer
           v-if="col.type"
           :data="getValueByPath(row, col.field)"
-          :column="col"
+          :type="col.type"
+          :props="col.props"
         />
         <div v-else-if="col.cellFormater">
           <component :is="col.cellFormater" v-bind="{ row, field }"></component>
@@ -82,7 +80,8 @@
         <DynamicTableInputRenderer
           v-if="col.type"
           :data="getValueByPath(row, col.field)"
-          :column="col"
+          :type="col.type"
+          :props="col.props"
           edit
           @change="(value: any) => updateValueByPath(row, col.field, value)"
         />
@@ -103,14 +102,14 @@
 
       <template
         v-if="col.filter && !col.filter.disabled"
-        #filter="{ filterModel, filterCallback }"
+        #filter="{ filterModel, filterCallback, applyFilter }"
       >
-        <component
-          :is="filterComponents[col.filter?.type ?? 'TextFilter']"
+        <FilterRender
           v-model="filterModel.value"
+          :column="col"
           :filter-callback="filterCallback"
-          :col="col"
-          v-bind="{ ...col.filter?.props }"
+          :apply-filter="applyFilter"
+          :mode="props.filterDisplay"
         />
       </template>
     </Column>
@@ -165,19 +164,18 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, useSlots, useAttrs, toRef } from "vue";
+import { ref, useSlots, toRef } from "vue";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import InputText from "primevue/inputtext";
-import { type Sh3DataTableEditableProps, filterComponents } from "./types";
+import { type Sh3DataTableEditableProps } from "./types";
 import { useFilterTable } from "../Filters/composables";
 import SearchNotFound from "./fragments/SearchNotFound.vue";
 
 import { saveTooltip, cancelTooltip } from "./fragments/tooltip";
-import { getValueByPath, updateValueByPath } from "./utils";
+import { getValueByPath, updateValueByPath, ptColumnFilters } from "./utils";
 import DynamicTableInputRenderer from "./fragments/DynamicTableInputRenderer.vue";
-
-const attrs = useAttrs();
+import FilterRender from "./fragments/FilterRender.vue";
 
 defineOptions({
   inheritAttrs: false,
@@ -242,7 +240,7 @@ const filterHeaderClass =
   "bg-white !border-b !border-solid !border-surface-100";
 
 const { filters } = useFilterTable(
-  attrs.filterDisplay,
+  props.filterDisplay,
   toRef(props, "columns"),
 );
 
