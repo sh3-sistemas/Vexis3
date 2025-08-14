@@ -96,7 +96,7 @@
         <InputText
           v-else
           v-model="row[field]"
-          :type="col.filterType.toLowerCase()"
+          :type="col.filterType?.toLowerCase() ?? 'text'"
         />
       </template>
 
