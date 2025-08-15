@@ -4,6 +4,7 @@ import "vue-toastification/dist/index.css";
 
 import type { App, Plugin } from "vue";
 import * as components from "./components";
+import { pt_BR } from "./utils/locale";
 
 /** PrimeVue Config. */
 import PrimeVue from "primevue/config";
@@ -42,6 +43,7 @@ export default {
           },
         },
       },
+      locale: pt_BR,
     });
 
     app.directive("ripple", Ripple);

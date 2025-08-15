@@ -29,7 +29,7 @@ const props = defineProps<TableInputMaskProps>();
 
 const presets = <PresetsType<PresetKeyMask, TableInputMaskProps>>{
   cpf: { mask: "999.999.999-99" },
-  cpfCnpj: { mask: ["(99) 9 9999-9999", "99.999.999/9999-99"] },
+  cpfCnpj: { mask: ["999.999.999-99", "99.999.999/9999-99"] },
   cnpj: { mask: "99.999.999/9999-99" },
   tel: { mask: "(99) 9999-9999" },
   cel: { mask: "(99) 9 9999-9999" },

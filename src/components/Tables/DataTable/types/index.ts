@@ -5,18 +5,6 @@
  */
 import type { DataTableProps } from "primevue/datatable";
 import { FilterMatchMode, FilterOperator } from "@primevue/core/api";
-import { markRaw } from "vue";
-import {
-  SelectFilter,
-  SelectFilterTag,
-  TextFilter,
-  DateFilter,
-  BooleanFilter,
-  NumberFilter,
-  MaskFilter,
-  MultiSelectFilter,
-} from "../../Filters";
-import type { FilterComponentProps } from "../../Filters/fragments/types";
 import { type DataTableItemColumnPropsVariations } from "../fragments/types";
 
 type ItemColum = {
@@ -42,17 +30,6 @@ export type Sh3DataTableEditableProps = DataTableProps & {
   disabled: boolean;
 };
 
-export const filterComponents = {
-  SelectFilter: markRaw(SelectFilter),
-  SelectFilterTag: markRaw(SelectFilterTag),
-  TextFilter: markRaw(TextFilter),
-  DateFilter: markRaw(DateFilter),
-  BooleanFilter: markRaw(BooleanFilter),
-  NumberFilter: markRaw(NumberFilter),
-  MaskFilter: markRaw(MaskFilter),
-  MultiSelectFilter: markRaw(MultiSelectFilter),
-};
-
 export type Action = {
   color: string;
   icon: string;
@@ -64,10 +41,8 @@ export type Action = {
 type DataTableFilter = {
   operator: keyof typeof FilterOperator;
   matchMode: keyof typeof FilterMatchMode;
-  type: keyof typeof filterComponents;
   disabled: boolean;
-  props?: FilterComponentProps;
-};
+} & DataTableItemColumnPropsVariations;
 
 export type DataTableItemColumn = {
   field: string;
