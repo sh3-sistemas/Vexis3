@@ -47,6 +47,8 @@ export default function useFetchApi<T, P extends Record<string, any>>(
   );
   const fetchApi = (fetchUrl: string) => {
     {
+      if (!fetchUrl) return;
+
       state.loading = true;
       fetch(fetchUrl)
         .then((res) => {
