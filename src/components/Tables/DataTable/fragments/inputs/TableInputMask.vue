@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import InputMask, { type InputMaskProps } from "primevue/inputmask";
+import InputMask from "primevue/inputmask";
 import type { PresetKeyMask, TableInputMaskProps, PresetsType } from "../types";
 import { computed, useTemplateRef } from "vue";
 
@@ -27,8 +27,9 @@ defineOptions({
 
 const props = defineProps<TableInputMaskProps>();
 
-const presets = <PresetsType<PresetKeyMask, InputMaskProps>>{
+const presets = <PresetsType<PresetKeyMask, TableInputMaskProps>>{
   cpf: { mask: "999.999.999-99" },
+  cpfCnpj: { mask: ["(99) 9 9999-9999", "99.999.999/9999-99"] },
   cnpj: { mask: "99.999.999/9999-99" },
   tel: { mask: "(99) 9999-9999" },
   cel: { mask: "(99) 9 9999-9999" },
@@ -60,12 +61,7 @@ const getMask = (mask: string[]): string => {
 };
 
 const dynamicMask = computed(() => {
-  if (props.preset) return presets[props.preset].mask;
-
-  if (props.mask) {
-    return Array.isArray(props.mask) ? getMask(props.mask) : props.mask;
-  }
-
-  return undefined;
+  const mask = props.mask ?? presets[props.preset ?? "cpf"].mask;
+  return Array.isArray(mask) ? getMask(mask) : mask;
 });
 </script>
