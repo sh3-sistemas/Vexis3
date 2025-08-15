@@ -75,6 +75,7 @@ export const inputComponents = <
   percentage: { component: markRaw(TableInputNumber), preset: "percentage" },
   mask: { component: markRaw(TableInputMask) },
   cpf: { component: markRaw(TableInputMask), preset: "cpf" },
+  cpfCnpj: { component: markRaw(TableInputMask), preset: "cpfCnpj" },
   cnpj: { component: markRaw(TableInputMask), preset: "cnpj" },
   cep: { component: markRaw(TableInputMask), preset: "cep" },
   tel: { component: markRaw(TableInputMask), preset: "tel" },
