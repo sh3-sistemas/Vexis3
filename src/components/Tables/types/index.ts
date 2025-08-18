@@ -18,6 +18,11 @@ export type FetchOptions = {
    * Normalmente usado para operações de paginação.
    */
   page: number;
+
+  /**
+   * Indica se os dados devem ser carregados automaticamente ao montar o componente.
+   */
+  loadOnMount?: boolean;
 };
 
 export type Fetch<T> = {
