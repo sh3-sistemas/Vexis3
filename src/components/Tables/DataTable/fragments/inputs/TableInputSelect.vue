@@ -3,7 +3,7 @@
     <Tag
       v-if="preset == 'selectTag'"
       v-bind="tagOption"
-      :value="tagOption.name"
+      :value="tagOption?.name"
       :pt-options="{ mergeProps: true }"
     />
     <span v-else>
@@ -23,7 +23,7 @@
     <template v-if="preset == 'selectTag'" #option="slotProps">
       <Tag
         v-bind="slotProps.option"
-        :value="slotProps.option.name"
+        :value="slotProps.option?.name"
         :pt-options="{ mergeProps: true }"
       />
     </template>
