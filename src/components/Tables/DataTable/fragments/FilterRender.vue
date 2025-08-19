@@ -78,12 +78,12 @@ const clearFilter = () => {
 };
 
 const getPlaceholder = (type: string) => {
-  if (type == "tag") return { inputProps: { placeholder: "Insira filtro" } };
+  if (type == "tag") return { inputProps: { placeholder: "Insira filtragem" } };
 
   if (["select", "selectTag", "multiSelect", "multiSelectTag"].includes(type))
-    return { placeholder: "Selecione filtro" };
+    return { placeholder: "Selecione filtragem" };
 
-  return { placeholder: "Insira filtro" };
+  return { placeholder: "Insira filtragem" };
 };
 
 watch(data, (newData) => (localValue.value = newData));
