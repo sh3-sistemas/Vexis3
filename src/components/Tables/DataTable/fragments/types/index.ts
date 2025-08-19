@@ -77,7 +77,7 @@ export type InputComponentsKeys =
   | "text";
 
 export type ItemColumnProps<T> = ColumnProps & {
-  input?: T | ((item: any, edit: boolean) => T);
+  input?: T | ((item: any, edit: boolean, row?: object) => T);
 };
 /**
  * Representa todas as variações possíveis de colunas com entrada customizada para uso em tabelas dinâmicas.

@@ -6,7 +6,9 @@
     :props="{
       input: {
         ...getPlaceholder(column.filter?.type ?? 'text'),
-        ...column.filter?.props?.input,
+        ...(typeof column.filter?.props?.input == 'function'
+          ? column.filter?.props?.input(localValue, true)
+          : column.filter?.props?.input),
       },
     }"
     :fluid="true"

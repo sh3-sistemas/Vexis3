@@ -24,7 +24,7 @@ export type InputComponentsProps = {
 
 withDefaults(defineProps<InputComponentsProps>(), {
   edit: false,
-  row: () => ({}),
+  row: undefined,
 });
 
 defineEmits(["change"]);
