@@ -55,7 +55,7 @@
       <template v-if="col.type" #body="slotProps">
         <DynamicTableInputRenderer
           :data="getValueByPath(slotProps.data, col.field)"
-          :column="col"
+          :row="slotProps.data"
           :type="col.type"
           :props="col.props"
         />

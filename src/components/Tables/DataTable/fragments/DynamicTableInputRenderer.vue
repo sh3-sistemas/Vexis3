@@ -5,7 +5,9 @@
     :edit="edit"
     :preset="inputComponents[type!].preset"
     v-bind="
-      typeof props?.input == 'function' ? props.input(data, edit) : props?.input
+      typeof props?.input == 'function'
+        ? props.input(data, edit, row)
+        : props?.input
     "
   />
 </template>
@@ -17,10 +19,12 @@ import { inputComponents } from "./inputFormat";
 export type InputComponentsProps = {
   data: any;
   edit?: boolean;
+  row?: object;
 } & DataTableItemColumnPropsVariations;
 
 withDefaults(defineProps<InputComponentsProps>(), {
   edit: false,
+  row: () => ({}),
 });
 
 defineEmits(["change"]);

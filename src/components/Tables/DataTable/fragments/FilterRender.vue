@@ -3,7 +3,12 @@
     :data="localValue"
     class="p-column-filter w-full"
     :type="column.filter?.type ?? 'text'"
-    :props="{ input: column.filter?.props?.input }"
+    :props="{
+      input: {
+        ...getPlaceholder(column.filter?.type ?? 'text'),
+        ...column.filter?.props?.input,
+      },
+    }"
     :fluid="true"
     edit
     @change="update"
@@ -11,7 +16,7 @@
   <div v-if="mode == 'menu'">
     <Sh3Button
       label="Limpar seleção"
-      class="text-sm p-0 mb-4"
+      class="text-sm p-0 mb-4 underline hover:no-underline"
       link
       @click="clearFilter"
     />
@@ -68,6 +73,15 @@ const clearFilter = () => {
   data.value = undefined;
   props.filterCallback();
   props.applyFilter();
+};
+
+const getPlaceholder = (type: string) => {
+  if (type == "tag") return { inputProps: { placeholder: "Insira filtro" } };
+
+  if (["select", "selectTag", "multiSelect", "multiSelectTag"].includes(type))
+    return { placeholder: "Selecione filtro" };
+
+  return { placeholder: "Insira filtro" };
 };
 
 watch(data, (newData) => (localValue.value = newData));

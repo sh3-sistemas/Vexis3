@@ -68,6 +68,7 @@
         <DynamicTableInputRenderer
           v-if="col.type"
           :data="getValueByPath(row, col.field)"
+          :row="row"
           :type="col.type"
           :props="col.props"
         />
@@ -80,6 +81,7 @@
         <DynamicTableInputRenderer
           v-if="col.type"
           :data="getValueByPath(row, col.field)"
+          :row="row"
           :type="col.type"
           :props="col.props"
           edit
