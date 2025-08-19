@@ -89,21 +89,19 @@ const filterRow = (
   name: string,
   filter: DataTableFilterMetaData,
 ): WhereFilter | null => {
-  if (
-    filter.value &&
-    typeof filter.value == "object" &&
-    !Array.isArray(filter.value)
-  )
+  const valueExist = filter.value != null && filter.value.length != 0;
+  if (!valueExist) return null;
+
+  if (typeof filter.value == "object" && !Array.isArray(filter.value))
     return customFilter(name, filter);
+
   const key = (filter.matchMode ??
     "equals") as keyof typeof matchModeToOperator;
-  return filter.value != null
-    ? <WhereFilter>{
-        column: name,
-        operator: matchModeToOperator[key],
-        value: getMatchModeValue(filter),
-      }
-    : null;
+  return <WhereFilter>{
+    column: name,
+    operator: matchModeToOperator[key],
+    value: getMatchModeValue(filter),
+  };
 };
 
 const customFilter = (
