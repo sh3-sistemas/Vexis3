@@ -231,8 +231,8 @@ const startNewRow = (startValue?: object) => {
     }
   });
 
-  items.value[items.value.length] = newRow;
-  editingRows.value.push(items.value[items.value.length - 1]);
+  items.value = [...items.value, newRow];
+  editingRows.value = [...editingRows.value, newRow];
   selected.value = [];
 };
 
