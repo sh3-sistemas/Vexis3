@@ -6,6 +6,8 @@ import type {
   DatePickerProps,
   InputMaskProps,
   InputNumberProps,
+  MultiSelectProps,
+  SelectProps,
 } from "primevue";
 import { type ConfigType } from "dayjs";
 
@@ -32,10 +34,24 @@ export interface TableInputMaskProps extends CommonInputProps {
   preset?: PresetKeyMask;
 }
 
+export type PresetKeyMultiSelect = "multiSelectTag";
+export interface TableInputMultiSelectProps extends CommonInputProps {
+  value: any;
+  options: any[];
+  preset?: PresetKeyMultiSelect;
+}
+
 export type PresetKeyNumber = "currency" | "percentage";
 export interface TableInputNumberProps extends CommonInputProps {
   value: number;
   preset?: PresetKeyNumber;
+}
+
+export type PresetKeySelect = "selectTag";
+export interface TableInputSelectProps extends CommonInputProps {
+  value: any;
+  options: any[];
+  preset?: PresetKeySelect;
 }
 
 export interface TableInputTagProps extends CommonInputProps {
@@ -53,11 +69,15 @@ export type InputComponentsKeys =
   | PresetKeyNumber
   | "mask"
   | PresetKeyMask
+  | "multiSelect"
+  | PresetKeyMultiSelect
+  | "select"
+  | PresetKeySelect
   | "tag"
   | "text";
 
 export type ItemColumnProps<T> = ColumnProps & {
-  input?: T | ((item: any, edit: boolean) => T);
+  input?: T | ((item: any, edit: boolean, row?: object) => T);
 };
 /**
  * Representa todas as variações possíveis de colunas com entrada customizada para uso em tabelas dinâmicas.
@@ -79,8 +99,16 @@ export type DataTableItemColumnPropsVariations =
       props?: ItemColumnProps<TableInputDateProps & DatePickerProps>;
     }
   | {
+      type?: "multiSelect" | PresetKeyMultiSelect;
+      props?: ItemColumnProps<TableInputMultiSelectProps & MultiSelectProps>;
+    }
+  | {
       type?: "number" | PresetKeyNumber;
       props?: ItemColumnProps<TableInputNumberProps & InputNumberProps>;
+    }
+  | {
+      type?: "select" | PresetKeySelect;
+      props?: ItemColumnProps<TableInputSelectProps & SelectProps>;
     }
   | {
       type?: "mask" | PresetKeyMask;

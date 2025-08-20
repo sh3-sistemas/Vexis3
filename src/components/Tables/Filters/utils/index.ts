@@ -28,7 +28,7 @@ export const matchModeToOperator = {
 };
 
 const matchModeValue = {
-  startsWith: (value: string) => value.concat("%"),
+  startsWith: (value: string) => String(value).concat("%"),
   contains: (value: string) => "%".concat(value, "%"),
   notContains: (value: string) => "%".concat(value, "%"),
   endsWith: (value: string) => "%".concat(value),
@@ -73,6 +73,7 @@ const filterMenu = (
   name: string,
   filter: DataTableOperatorFilterMetaData,
 ): WhereFilter | null => {
+  if (!filter.operator) return convertFilters(name, filter.constraints[0]);
   const operator = filter.operator.toUpperCase();
   const operatorFilter = {
     [operator]: [
@@ -88,17 +89,19 @@ const filterRow = (
   name: string,
   filter: DataTableFilterMetaData,
 ): WhereFilter | null => {
-  if (filter.value && typeof filter.value == "object")
+  const valueExist = filter.value != null && filter.value.length != 0;
+  if (!valueExist) return null;
+
+  if (typeof filter.value == "object" && !Array.isArray(filter.value))
     return customFilter(name, filter);
+
   const key = (filter.matchMode ??
     "equals") as keyof typeof matchModeToOperator;
-  return filter.value != null
-    ? <WhereFilter>{
-        column: name,
-        operator: matchModeToOperator[key],
-        value: getMatchModeValue(filter),
-      }
-    : null;
+  return <WhereFilter>{
+    column: name,
+    operator: matchModeToOperator[key],
+    value: getMatchModeValue(filter),
+  };
 };
 
 const customFilter = (
@@ -120,7 +123,7 @@ const convertFilters = (
     return filterObject(name, filter);
   } else {
     const filterOperator = <DataTableOperatorFilterMetaData>filter;
-    return filterOperator.operator
+    return filterOperator.constraints
       ? filterMenu(name, filterOperator)
       : filterRow(name, <DataTableFilterMetaData>filter);
   }

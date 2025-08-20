@@ -8,6 +8,14 @@ export const tableStyle = {
   },
 };
 
+export const ptColumnFilters = {
+  filterElementContainer: "flex-auto",
+  filterMenuIcon: "!min-w-4",
+  filterClearIcon: "!min-w-4",
+  pcFilterClearButton: { root: "hidden" },
+  pcFilterApplyButton: { root: "hidden" },
+};
+
 export const getValueByPath = (obj: Record<string, any>, path: string) => {
   return path.split(".").reduce((acc, part) => acc && acc[part], obj);
 };
