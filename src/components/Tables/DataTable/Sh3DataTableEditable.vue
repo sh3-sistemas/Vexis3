@@ -21,8 +21,8 @@
       <Sh3Button
         text
         icon="pi pi-trash"
-        :severity="selected.length < 1 ? '' : 'danger'"
-        :disabled="selected.length < 1"
+        :severity="selected.length < 1 || disabled ? '' : 'danger'"
+        :disabled="selected.length < 1 || disabled"
         @click="emits('deleteSelection')"
       />
     </template>
@@ -48,7 +48,16 @@
       :selection-mode="selectionMode"
       class="w-10"
       :pt-options="{ mergeProps: true }"
-      :pt="{ headerCell: '!p-2' }"
+      :pt="{
+        headerCell: '!p-auto',
+        ...(disabled
+          ? {
+              pcHeaderCheckbox: { root: 'p-disabled' },
+              pcRowRadiobutton: { root: 'p-disabled' },
+              pcRowCheckbox: { root: 'p-disabled' },
+            }
+          : {}),
+      }"
       :filter-header-class="filterHeaderClass"
     />
     <Column
