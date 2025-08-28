@@ -11,6 +11,9 @@
       TextElement: {
         input: 'read-only:bg-mercury-50 read-only:text-mercury-800',
       },
+      TextareaElement: {
+        input: 'read-only:bg-mercury-50 read-only:text-mercury-800',
+      },
       ...(!options.crud.edit ? disableAll : {}),
     }"
     v-bind="$attrs"

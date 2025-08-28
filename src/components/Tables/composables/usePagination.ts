@@ -1,9 +1,9 @@
 import type { DataTablePageEvent, DataViewPageEvent } from "primevue";
-import { toRefs, watchEffect } from "vue";
+import type { Filters } from "@/types";
 import type { Fetch } from "../types";
+import { toRefs, watchEffect } from "vue";
 import { useFetch } from "@/services";
 import { filtersToLighthouse } from "../Filters/utils";
-import type { Filters } from "@/types";
 
 /**
  *
@@ -16,6 +16,7 @@ export default function usePagination<T>(config: Fetch<T>) {
   const { fetch, data, refetch, loading } = useFetch<T>(onDone?.value);
   const limit = options.value.limit ?? 10;
   const page = options.value.page ?? 1;
+  const loadOnMount = options.value.loadOnMount ?? true;
 
   const getData = async () =>
     await fetch({
@@ -24,7 +25,9 @@ export default function usePagination<T>(config: Fetch<T>) {
       options: options.value,
     });
 
-  watchEffect(async () => getData());
+  watchEffect(async () => {
+    if (loadOnMount) getData();
+  });
 
   const getPage = async (pageEvent: DataTablePageEvent | DataViewPageEvent) => {
     const { page, rows } = pageEvent;
@@ -44,5 +47,5 @@ export default function usePagination<T>(config: Fetch<T>) {
     });
   };
 
-  return { getPage, fetch, data, loading, refetch };
+  return { getPage, fetch, data, loading, refetch, getData };
 }

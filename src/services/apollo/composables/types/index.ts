@@ -35,11 +35,11 @@ export type ToastResponse = {
   enable: boolean;
 };
 
-export type UseCrudProps<T> = {
+export type UseCrudProps<T, R = T> = {
   crud: CrudOperations;
   clientId: string;
   toastResponse: ToastResponse;
-  variablesCallback?: (localizar: T, form: T) => T;
+  variablesCallback?: (localizar: T, form: R) => R;
   onDoneCallback?: (event: CrudEventKey, response: object) => void;
 };
 
