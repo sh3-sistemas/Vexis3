@@ -1,15 +1,10 @@
 <template>
-  <span v-if="!edit">
-    <Tag
-      v-if="preset == 'multiSelectTag'"
-      v-bind="tagOption"
-      :value="tagOption.name"
-      :pt-options="{ mergeProps: true }"
-    />
-    <span v-else>
-      {{ value }}
-    </span>
-  </span>
+  <Tag
+    v-if="!edit && preset == 'multiSelectTag'"
+    v-bind="tagOption"
+    :value="tagOption.name"
+    :pt-options="{ mergeProps: true }"
+  />
   <MultiSelect
     v-else
     :default-value="value"
@@ -17,6 +12,8 @@
     :option-label="preset ? presets[preset].optionLabel : undefined"
     :option-value="preset ? presets[preset].optionValue : undefined"
     :pt-options="{ mergeProps: true }"
+    :pt="edit ? {} : nonEditPT"
+    :disabled="!edit"
     :max-selected-labels="1"
     v-bind="$attrs"
     @value-change="(value: any) => $parent?.$emit('change', value)"
@@ -52,4 +49,10 @@ const tagOption = computed(() => {
     ? props.options.find((x) => x.value == props.value)
     : undefined;
 });
+
+const nonEditPT = {
+  root: "!border-none !shadow-none !bg-transparent !opacity-100",
+  label: "!text-inherit",
+  dropdown: "hidden",
+};
 </script>
