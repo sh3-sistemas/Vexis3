@@ -28,8 +28,10 @@ declare module "dayjs" {
      * @description Verifica se uma data é a mesma ou posterior a outra.
      * @param target Data para comparar.
      * @param unit Unidade de tempo para comparação (ex: 'day', 'month', 'year').
+     *
+     * @see https://day.js.org/docs/en/plugin/is-same-or-after
      */
-    isSameOrAfter(target: dayjs.Dayjs, unit?: dayjs.UnitType): boolean;
+    isSameOrAfter(target: dayjs.Dayjs | string, unit?: dayjs.UnitType): boolean;
 
     /**
      * @description Verifica se uma data está entre duas outras.
@@ -37,10 +39,12 @@ declare module "dayjs" {
      * @param end Data de fim do intervalo.
      * @param unit Unidade de tempo para comparação (ex: 'day', 'month', 'year').
      * @param inclusivity Se o intervalo deve incluir os pontos finais ('()', '[]', etc.).
+     *
+     * @see https://day.js.org/docs/en/plugin/is-between
      */
     isBetween(
-      start: dayjs.Dayjs,
-      end: dayjs.Dayjs,
+      start: dayjs.Dayjs | string,
+      end: dayjs.Dayjs | string,
       unit?: dayjs.UnitType,
       inclusivity?: string,
     ): boolean;
