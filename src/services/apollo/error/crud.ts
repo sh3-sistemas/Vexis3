@@ -33,7 +33,11 @@ export const crudError = (error: ErrorResponse) => {
     );
 
     validations?.forEach((validation) => {
-      toast.error(validation);
+      if (validation.startsWith("[warning]")) {
+        toast.warning(validation.replace("[warning]", "").trim());
+      } else {
+        toast.error(validation);
+      }
     });
   });
 };
