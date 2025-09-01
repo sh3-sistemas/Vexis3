@@ -64,7 +64,7 @@ export type UseFetchState<T> = Omit<
   count: number;
   loading: Ref<boolean> | undefined;
   refetch: RefetechFn<T>;
-  data: T;
+  data: T | null;
 };
 
 export type RefetechFn<T> = (
