@@ -1,29 +1,37 @@
 import type { DataTablePageEvent, DataViewPageEvent } from "primevue";
 import type { Filters } from "@/types";
-import type { Fetch } from "../types";
+import type { FetchPagination } from "../types";
 import { toRefs, watchEffect } from "vue";
 import { useFetch } from "@/services";
 import { filtersToLighthouse } from "../Filters/utils";
+import type { OperationVariables } from "@apollo/client";
 
 /**
+ * Fornece a funcionalidade de fetch e paginação encapsuladas.
+ * @see useFetch
  *
- * @param fetch
- * @param config
- * @param refetch
+ * @param config Configuração da paginação e busca.
  */
-export default function usePagination<T>(config: Fetch<T>) {
+export default function usePagination<
+  TData,
+  TVariables extends OperationVariables = OperationVariables,
+>(config: FetchPagination<TData, TVariables>) {
   const { query, options, filterQuery, onDone } = toRefs(config);
-  const { fetch, data, refetch, loading } = useFetch<T>(onDone?.value);
+
   const limit = options.value.limit ?? 10;
   const page = options.value.page ?? 1;
   const loadOnMount = options.value.loadOnMount ?? true;
 
-  const getData = async () =>
-    await fetch({
+  const { fetch, data, refetch, loading } = useFetch<TData, TVariables>(
+    {
       query: query.value,
       variables: { first: limit, page, ...filterQuery.value },
       options: options.value,
-    });
+    },
+    onDone?.value,
+  );
+
+  const getData = async () => await fetch();
 
   watchEffect(async () => {
     if (loadOnMount) getData();
@@ -33,8 +41,9 @@ export default function usePagination<T>(config: Fetch<T>) {
     const { page, rows } = pageEvent;
     const filter: Filters = filterQuery?.value ?? {};
 
-    /*Type guard para resolver conflito de tipos entre DataTablePageEvent e DataViewPageEvent*/
+    // Type guard para resolver conflito de tipos entre DataTablePageEvent e DataViewPageEvent
     const filters = "filters" in pageEvent ? pageEvent.filters : {};
+
     await refetch.value({
       ...filter,
       where: {

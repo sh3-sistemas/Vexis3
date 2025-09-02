@@ -1,14 +1,7 @@
 import type { FetchParams, RefetechFn, UseFetchState } from "./types";
-import { provideApolloClients, useQuery } from "@vue/apollo-composable";
-import {
-  ref,
-  inject,
-  reactive,
-  toRefs,
-  type Ref,
-  isRef,
-  type UnwrapRef,
-} from "vue";
+import type { ClientDict } from "../types";
+import { provideApolloClients, useLazyQuery } from "@vue/apollo-composable";
+import { inject, reactive, toRefs, type Ref, watch } from "vue";
 import { logErrorMessages } from "@vue/apollo-util";
 import {
   ApolloError,
@@ -16,7 +9,6 @@ import {
   type ApolloQueryResult,
   type OperationVariables,
 } from "@apollo/client";
-import type { ClientDict } from "../types";
 
 export type FetchQuery<T> = ({
   query,
@@ -33,68 +25,48 @@ export type FetchQuery<T> = ({
  * @param onDone Callback opcional a ser executado quando a query for concluída com sucesso.
  */
 export default function useFetch<
-  TData = any,
+  TData,
   TVariables extends OperationVariables = OperationVariables,
->(onDone?: (result: ApolloQueryResult<TData>) => void) {
+>(
+  { query, variables, options }: FetchParams<TData, TVariables>,
+  onDone?: (result: ApolloQueryResult<TData>) => void,
+) {
   const clients = inject<ClientDict<TData>>("clients") as ClientDict<TData>;
-
-  // Controle dinâmico da query
-  const queryDocument = ref<any | null>(null);
-  const queryVariables = ref<any>();
-  const queryOptions = ref<any>({
-    // aguarda a chamada de fetch()
-    enabled: false,
-  });
-
-  const { loading, error, onResult, onError, refetch, networkStatus } =
-    provideApolloClients(clients)(() =>
-      useQuery<TData, TVariables>(queryDocument, queryVariables, queryOptions),
-    );
-
-  // O estado reativo que será exposto para o componente.
-  const state = reactive<UseFetchState<TData>>({
-    data: null as TData | null,
+  const state: UseFetchState<TData> = reactive({
+    data: {} as any,
     count: 0,
-    loading,
-    refetch: refetch as RefetechFn<TData>,
-    networkStatus: networkStatus as unknown as NetworkStatus,
+    loading: undefined,
+    refetch: () => undefined,
+    networkStatus: NetworkStatus.setVariables,
   });
 
-  onResult((result) => {
-    if (!result.loading) {
-      const resultData = isRef(result.data) ? result.data.value : result.data;
-      state.data = (resultData as UnwrapRef<TData>) ?? null;
-      state.count =
-        resultData && Array.isArray(result.data) ? result.data.length : 0;
-      if (onDone && !result.loading) onDone(result);
+  const { loading, onResult, onError, load, refetch } = provideApolloClients(
+    clients,
+  )(() => useLazyQuery<TData>(query, variables, options));
+
+  // Atualiza o estado de loading reativamente
+  watch(loading, (newValue: Ref<boolean, boolean>) => {
+    state.loading = newValue;
+  });
+
+  state.refetch = refetch;
+
+  onResult((queryResult) => {
+    if (queryResult.data) {
+      state.data = queryResult.data;
+      state.count = Array.isArray(queryResult.data)
+        ? queryResult.data.length
+        : 0;
     }
+    if (onDone && !queryResult.loading) onDone(queryResult);
   });
 
   onError((error) => {
-    // poderá ser ajustado futuramente para os diferentes ambientes
-    if (import.meta.env.DEV) {
+    if (import.meta.env.NODE_ENV !== "production") {
       logErrorMessages(error);
     }
-    // Resetar o estado em caso de erro.
-    state.data = null;
-    state.count = 0;
+    state.data = {} as TData;
   });
 
-  const fetch = async <
-    FData = TData,
-    FVars extends OperationVariables = TVariables,
-  >({
-    query,
-    variables,
-    options,
-  }: FetchParams<FData, FVars>) => {
-    queryDocument.value = query;
-    queryVariables.value = variables;
-    // Comportamento de lazy query
-    queryOptions.value = { ...options, enabled: true };
-
-    return { loading, error, refetch };
-  };
-
-  return { ...toRefs(state), fetch };
+  return { ...toRefs(state), fetch: load };
 }
