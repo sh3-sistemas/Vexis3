@@ -1,14 +1,14 @@
-import { provideApolloClients, useQuery } from "@vue/apollo-composable";
-import { inject, reactive, toRefs, type Ref } from "vue";
-
-import { logErrorMessages } from "@vue/apollo-util";
 import type { FetchParams, RefetechFn, UseFetchState } from "./types";
+import type { ClientDict } from "../types";
+import { provideApolloClients, useLazyQuery } from "@vue/apollo-composable";
+import { inject, reactive, toRefs, type Ref, watch } from "vue";
+import { logErrorMessages } from "@vue/apollo-util";
 import {
   ApolloError,
   NetworkStatus,
   type ApolloQueryResult,
+  type OperationVariables,
 } from "@apollo/client";
-import type { ClientDict } from "../types";
 
 export type FetchQuery<T> = ({
   query,
@@ -21,13 +21,18 @@ export type FetchQuery<T> = ({
 }>;
 
 /**
- *
+ * Um composable para executar queries GraphQL do Apollo de forma imperativa (lazy).
+ * @param onDone Callback opcional a ser executado quando a query for concluída com sucesso.
  */
-export default function useFetch<T>(
-  onDone?: (result: ApolloQueryResult<T>) => void,
+export default function useFetch<
+  TData,
+  TVariables extends OperationVariables = OperationVariables,
+>(
+  { query, variables, options }: FetchParams<TData, TVariables>,
+  onDone?: (result: ApolloQueryResult<TData>) => void,
 ) {
-  const clients = inject<ClientDict<T>>("clients") as ClientDict<T>;
-  const state: UseFetchState<T> = reactive({
+  const clients = inject<ClientDict<TData>>("clients") as ClientDict<TData>;
+  const state: UseFetchState<TData> = reactive({
     data: {} as any,
     count: 0,
     loading: undefined,
@@ -35,36 +40,33 @@ export default function useFetch<T>(
     networkStatus: NetworkStatus.setVariables,
   });
 
-  // Encapsulate the query inside an async function that you will return
-  const fetch: FetchQuery<T> = async ({
-    query,
-    variables = {},
-    options = {},
-  }: FetchParams) => {
-    const { loading, error, onError, onResult, refetch } = provideApolloClients(
-      clients,
-    )(() => useQuery<T>(query, variables, options));
+  const { loading, onResult, onError, load, refetch } = provideApolloClients(
+    clients,
+  )(() => useLazyQuery<TData>(query, variables, options));
 
-    state.loading = loading;
-    state.refetch = refetch;
+  // Atualiza o estado de loading reativamente
+  watch(loading, (newValue: Ref<boolean, boolean>) => {
+    state.loading = newValue;
+  });
 
-    onResult((result) => {
-      state.data = result.data;
-      state.count =
-        result.data && Array.isArray(result.data) ? result.data.length : 0;
-      if (onDone && !result.loading) onDone(result);
-    });
+  state.refetch = refetch;
 
-    onError((error) => {
-      if (import.meta.env.NODE_ENV !== "production") {
-        logErrorMessages(error);
-      }
+  onResult((queryResult) => {
+    if (queryResult.data) {
+      state.data = queryResult.data;
+      state.count = Array.isArray(queryResult.data)
+        ? queryResult.data.length
+        : 0;
+    }
+    if (onDone && !queryResult.loading) onDone(queryResult);
+  });
 
-      state.data = {} as T;
-    });
+  onError((error) => {
+    if (import.meta.env.NODE_ENV !== "production") {
+      logErrorMessages(error);
+    }
+    state.data = {} as TData;
+  });
 
-    return { loading, error, refetch };
-  };
-
-  return { ...toRefs(state), fetch };
+  return { ...toRefs(state), fetch: load };
 }

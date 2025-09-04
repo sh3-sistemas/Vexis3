@@ -49,12 +49,12 @@ export type UseCrudEmits = (
 ) => void;
 
 export type FetchParams<
-  TResult = unknown,
+  TData = unknown,
   TVariables extends OperationVariables = OperationVariables,
 > = {
-  query: DocumentParameter<TResult, TVariables>;
+  query: DocumentParameter<TData, TVariables>;
   variables: VariablesParameter<TVariables>;
-  options: OptionsParameter<TResult, TVariables>;
+  options: OptionsParameter<TData, TVariables>;
 };
 
 export type UseFetchState<T> = Omit<
@@ -64,7 +64,7 @@ export type UseFetchState<T> = Omit<
   count: number;
   loading: Ref<boolean> | undefined;
   refetch: RefetechFn<T>;
-  data: T;
+  data: T | null;
 };
 
 export type RefetechFn<T> = (
