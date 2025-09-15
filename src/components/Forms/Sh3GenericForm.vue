@@ -162,6 +162,7 @@ const disableAll = {
   DateElement: {
     container: "pointer-events-none",
     inputContainer: "form-bg-disabled",
+    input: "form-bg-disabled",
   },
   ObjectElement: {
     container: "border border-mercury-200 my-1.5 p-3 rounded-md",
