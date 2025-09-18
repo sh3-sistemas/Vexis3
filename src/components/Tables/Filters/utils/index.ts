@@ -56,10 +56,11 @@ const filterObject = (
   name: string,
   filter: string | DataTableFilterMetaData | DataTableOperatorFilterMetaData,
 ): WhereFilter | null => {
-  const condition = {
-    AND: convertFilters(name.substring(name.indexOf(".") + 1), filter),
-  };
-  return condition.AND
+  const condition = convertFilters(
+    name.substring(name.indexOf(".") + 1),
+    filter,
+  );
+  return condition
     ? <WhereFilter>{
         HAS: {
           relation: name.split(".")[0],
@@ -98,7 +99,7 @@ const filterRow = (
   const key = (filter.matchMode ??
     "equals") as keyof typeof matchModeToOperator;
   return <WhereFilter>{
-    column: name,
+    column: getFilterName(name),
     operator: matchModeToOperator[key],
     value: getMatchModeValue(filter),
   };
@@ -109,8 +110,8 @@ const customFilter = (
   filter: DataTableFilterMetaData,
 ): WhereFilter | null => {
   return <WhereFilter>{
-    column: name,
-    operator: filter.value.operator,
+    column: filter.value.name ?? getFilterName(name),
+    operator: filter.value.operator ?? "EQ",
     value: filter.value.value,
   };
 };
@@ -132,6 +133,4 @@ const convertFilters = (
 export const filtersToLighthouse = (
   filters: DataTableFilterMeta,
 ): WhereFilter[] =>
-  Object.keys(filters).flatMap(
-    (x) => convertFilters(getFilterName(x), filters[x]) ?? [],
-  );
+  Object.keys(filters).flatMap((x) => convertFilters(x, filters[x]) ?? []);
