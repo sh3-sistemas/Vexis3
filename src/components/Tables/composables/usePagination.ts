@@ -4,7 +4,7 @@ import type { FetchPagination } from "../types";
 import { ref, toRefs, watchEffect } from "vue";
 import { useFetch } from "@/services";
 import { filtersToLighthouse } from "../Filters/utils";
-import type { OperationVariables } from "@apollo/client";
+import type { DocumentNode, OperationVariables } from "@apollo/client";
 
 /**
  * Fornece a funcionalidade de fetch e paginação encapsuladas.
@@ -31,13 +31,8 @@ export default function usePagination<
     onDone?.value,
   );
 
-  const getData = async () => await fetch();
   const lastPageFilter = ref();
   const lastRows = ref(limit);
-
-  watchEffect(async () => {
-    if (loadOnMount) getData();
-  });
 
   const getPage = async (pageEvent: DataTablePageEvent | DataViewPageEvent) => {
     const { page, rows } = pageEvent;
@@ -82,6 +77,31 @@ export default function usePagination<
       first: lastRows.value,
     });
   };
+
+  const getData = async () => {
+    const filter: Filters = filterQuery?.value ?? {};
+    await fetch(
+      query.value as DocumentNode,
+      {
+        ...filter,
+        where: {
+          AND: filter.where
+            ? [
+                { ...filter.where },
+                ...filtersToLighthouse(lastPageFilter.value ?? {}),
+              ]
+            : filtersToLighthouse(lastPageFilter.value ?? {}),
+        },
+        page,
+        first: lastRows.value,
+      },
+      options.value,
+    );
+  };
+
+  watchEffect(async () => {
+    if (loadOnMount) getData();
+  });
 
   return { getPage, fetch, data, loading, refetch: refetchPagination, getData };
 }
