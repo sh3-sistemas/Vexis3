@@ -56,7 +56,7 @@ const tabListPT = {
 const tabPT = {
   root: ({ context }: { context: any }) => ({
     class: [
-      "w-[calc(50%-3px)] md:w-48 pt-3 rounded-t-xl border-0 font-normal",
+      "min-w-[calc(50%-3px)] md:min-w-48 pt-3 rounded-t-xl border-0 font-normal",
       {
         "bg-white !text-primary-700": context.active,
         "bg-multiply": !context.active,
