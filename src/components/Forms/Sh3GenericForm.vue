@@ -184,6 +184,12 @@ const disableAll = {
     input: "opacity-50 form-bg-disabled",
   },
   RadiogroupElement: { wrapper: "opacity-50 pointer-events-none" },
+  MatrixElement: {
+    grid: "bg-mercury-50",
+    cell: "!pb-0",
+    rowRemove: "!form-bg-disabled mt-1",
+    remove: "pointer-events-none",
+  },
 };
 
 provide(
