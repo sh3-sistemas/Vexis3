@@ -40,7 +40,7 @@
     "@primeuix/themes": "^1.1.2",
     "@primevue/forms": "^4.3.3",
     "@tailwindcss/vite": "^4.0.15",
-    "@vueform/vueform": "^1.11.0",
+    "@vueform/vueform": "^1.13.3",
     "@vueuse/core": "^12.2.0",
     "apollo-upload-client": "^18.0.1",
     "class-variance-authority": "^0.7.1",
