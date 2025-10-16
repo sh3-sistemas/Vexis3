@@ -207,7 +207,7 @@
   --vf-floating-top-sm: 0rem;
   --vf-floating-top-lg: 0.6875rem;
 
-  --vf-bg-input: #ffffff;
+  --vf-bg-input: transparent;
   --vf-bg-input-hover: var(--vf-bg-input);
   --vf-bg-input-focus: var(--vf-bg-input);
   --vf-bg-input-danger: var(--vf-bg-input);
