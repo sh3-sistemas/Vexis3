@@ -26,6 +26,9 @@ export type CrudOperations = {
   create?: DocumentNode;
   delete?: DocumentNode;
   update?: DocumentNode;
+  createMany?: DocumentNode;
+  deleteMany?: DocumentNode;
+  updateMany?: DocumentNode;
 };
 
 export type ToastResponse = {
@@ -39,7 +42,7 @@ export type UseCrudProps<T, R = T> = {
   crud: CrudOperations;
   clientId: string;
   toastResponse: ToastResponse;
-  variablesCallback?: (localizar: T, form: R) => R;
+  variablesCallback?: (localizar: T, form: R) => R | R[];
   onDoneCallback?: (event: CrudEventKey, response: object) => void;
 };
 

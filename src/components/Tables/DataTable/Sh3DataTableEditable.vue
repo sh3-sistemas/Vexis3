@@ -74,35 +74,36 @@
       v-bind="{ ...col.props }"
     >
       <template #body="{ data: row, field }">
+        <div v-if="col.cellFormater">
+          <component :is="col.cellFormater" v-bind="{ row, field }"></component>
+        </div>
         <DynamicTableInputRenderer
-          v-if="col.type"
+          v-else-if="col.type"
           :data="getValueByPath(row, col.field)"
           :row="row"
           :type="col.type"
           :props="col.props"
         />
-        <div v-else-if="col.cellFormater">
-          <component :is="col.cellFormater" v-bind="{ row, field }"></component>
-        </div>
         <div v-else>{{ getValueByPath(row, field as string) }}</div>
       </template>
+
       <template v-if="col.editable != false" #editor="{ data: row, field }">
+        <component
+          :is="col.cellFormaterEdit.component"
+          v-if="col.cellFormaterEdit"
+          v-bind="getCellFormaterEditProps(col.cellFormaterEdit, row, field)"
+          @selected="
+            (value: any) => (row[col.cellFormaterEdit?.name ?? field] = value)
+          "
+        />
         <DynamicTableInputRenderer
-          v-if="col.type"
+          v-else-if="col.type"
           :data="getValueByPath(row, col.field)"
           :row="row"
           :type="col.type"
           :props="col.props"
           edit
           @change="(value: any) => updateValueByPath(row, col.field, value)"
-        />
-        <component
-          :is="col.cellFormaterEdit.component"
-          v-else-if="col.cellFormaterEdit"
-          v-bind="getCellFormaterEditProps(col.cellFormaterEdit, row, field)"
-          @selected="
-            (value: any) => (row[col.cellFormaterEdit.name ?? field] = value)
-          "
         />
         <InputText
           v-else
@@ -124,7 +125,9 @@
         />
       </template>
     </Column>
+
     <Column
+      v-if="editCol != false"
       class="w-20"
       :exportable="false"
       :filter-header-class="filterHeaderClass"
@@ -164,6 +167,8 @@
       </template>
     </Column>
 
+    <slot name="extra-columns"></slot>
+
     <template
       v-for="(slot, index) of slotNames"
       :key="index"
@@ -197,6 +202,7 @@ const props = withDefaults(defineProps<Sh3DataTableEditableProps>(), {
   dataKey: "id",
   rowExpansion: false,
   disabled: false,
+  editCol: true,
 });
 
 const selected = defineModel<Array<object>>("selection", {

@@ -7,16 +7,16 @@ import type { DataTableProps } from "primevue/datatable";
 import { FilterMatchMode, FilterOperator } from "@primevue/core/api";
 import { type DataTableItemColumnPropsVariations } from "../fragments/types";
 
-type ItemColum = {
+export type ItemColum = {
   field: any;
   header: string;
-  filterType: string;
-  default: any;
-  sortable: boolean;
-  visible: boolean;
-  editable: boolean;
-  cellFormater: object;
-  cellFormaterEdit: { component: object; props: object; name?: string };
+  filterType?: string;
+  default?: any;
+  sortable?: boolean;
+  visible?: boolean;
+  editable?: boolean;
+  cellFormater?: object;
+  cellFormaterEdit?: { component: object; props: object; name?: string };
   filter?: DataTableFilter;
   //TODO: Realizar tipagem correta desses valores em breve
 } & DataTableItemColumnPropsVariations;
@@ -27,6 +27,7 @@ export type Sh3DataTableEditableProps = DataTableProps & {
   columns: Array<ItemColum>;
   emptyString: string;
   rowExpansion?: boolean;
+  editCol?: boolean;
   disabled: boolean;
 };
 
