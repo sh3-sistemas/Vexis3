@@ -9,6 +9,7 @@
  */
 import type { DefineComponent } from "vue";
 import type Sh3GenericForm from "../Sh3GenericForm.vue";
+import type { DialogBase } from "@/components/Dialogs";
 /**
  * **SH3 - Sh3GenericForm**
  *
@@ -33,7 +34,8 @@ export type FormOptions = {
 
 export interface Sh3GenericFormProps {
   submitForm: () => void;
-  deleteRegister: () => void;
+  deleteRegister: (data?: any) => void;
+  deleteProps?: Partial<DialogBase>;
   formatLoad?: () => void;
   options?: FormOptions;
 }

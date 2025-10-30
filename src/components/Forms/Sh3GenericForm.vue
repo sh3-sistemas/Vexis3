@@ -151,6 +151,7 @@ const deletion = () => {
     accept: () => {
       props.deleteRegister();
     },
+    ...props.deleteProps,
   });
   confirm.require(template);
 };
