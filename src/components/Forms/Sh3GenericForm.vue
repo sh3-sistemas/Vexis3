@@ -146,12 +146,12 @@ const syncForm = (data: any) =>
 const clearForm = () => (form$.value ? form$.value.reset() : null);
 const cleanForm = () => form$.value?.clean();
 const deletion = (form?: any) => {
-  const deleteProps = props.deleteProps ? props.deleteProps(form?.data) : {};
+  const deleteProps = props.deleteProps ? props.deleteProps(form) : {};
 
   const template = DialogUtils.deletionDialogBase({
     reject: () => {},
     accept: () => {
-      props.deleteRegister(form?.data);
+      props.deleteRegister(form);
     },
     ...deleteProps,
   });
