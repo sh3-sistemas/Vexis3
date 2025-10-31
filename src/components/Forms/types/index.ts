@@ -35,7 +35,7 @@ export type FormOptions = {
 export interface Sh3GenericFormProps {
   submitForm: () => void;
   deleteRegister: (data?: any) => void;
-  deleteProps?: Partial<DialogBase>;
+  deleteProps?: (data?: any) => Partial<DialogBase>;
   formatLoad?: () => void;
   options?: FormOptions;
 }
