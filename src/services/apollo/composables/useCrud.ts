@@ -52,6 +52,33 @@ export default function useCrud<T>(
       clientId: clientId.value,
     }),
   );
+  const {
+    mutate: mutateCreateMany,
+    onDone: onDoneCreateMany,
+    onError: onErrorCreateMany,
+  } = provideApolloClients(clients)(() =>
+    useMutation(crud.value?.createMany ?? defaultcrud, {
+      clientId: clientId.value,
+    }),
+  );
+  const {
+    mutate: mutateUpdateMany,
+    onDone: onDoneUpdateMany,
+    onError: onErrorUpdateMany,
+  } = provideApolloClients(clients)(() =>
+    useMutation(crud.value?.updateMany ?? defaultcrud, {
+      clientId: clientId.value,
+    }),
+  );
+  const {
+    mutate: mutateDeletionMany,
+    onDone: onDoneDeletionMany,
+    onError: onErrorDeletionMany,
+  } = provideApolloClients(clients)(() =>
+    useMutation(crud.value?.deleteMany ?? defaultcrud, {
+      clientId: clientId.value,
+    }),
+  );
 
   const onDone = (event: CrudEventKey, response: object) => {
     if (toastResponse.value.enable) {
@@ -72,10 +99,23 @@ export default function useCrud<T>(
   onDoneCreate((response) => onDone("onCreate", response));
   onDoneUpdate((response) => onDone("onUpdate", response));
   onDoneDeletion((response) => onDone("onDelete", response));
+  onDoneCreateMany((response) => onDone("onCreate", response));
+  onDoneUpdateMany((response) => onDone("onUpdate", response));
+  onDoneDeletionMany((response) => onDone("onDelete", response));
 
   onErrorUpdate((error) => onError(error));
   onErrorCreate((error) => onError(error));
   onErrorDeletion((error) => onError(error));
+  onErrorUpdateMany((error) => onError(error));
+  onErrorCreateMany((error) => onError(error));
+  onErrorDeletionMany((error) => onError(error));
 
-  return { mutateCreate, mutateDeletion, mutateUpdate };
+  return {
+    mutateCreate,
+    mutateDeletion,
+    mutateUpdate,
+    mutateCreateMany,
+    mutateDeletionMany,
+    mutateUpdateMany,
+  };
 }
