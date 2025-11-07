@@ -1,9 +1,9 @@
 <template>
   <component
-    :is="inputComponents[type!].component"
+    :is="inputComponents[resolveType(type, row)].component"
     :value="data"
     :edit="edit"
-    :preset="inputComponents[type!].preset"
+    :preset="inputComponents[resolveType(type, row)].preset"
     v-bind="
       typeof props?.input == 'function'
         ? props.input(data, edit, row)
@@ -13,7 +13,10 @@
 </template>
 
 <script setup lang="ts">
-import type { DataTableItemColumnPropsVariations } from "./types";
+import type {
+  DataTableItemColumnPropsVariations,
+  InputComponentsKeys,
+} from "./types";
 import { inputComponents } from "./inputFormat";
 
 export type InputComponentsProps = {
@@ -28,4 +31,15 @@ withDefaults(defineProps<InputComponentsProps>(), {
 });
 
 defineEmits(["change"]);
+
+const resolveType = (
+  type:
+    | InputComponentsKeys
+    | ((rowData: any) => InputComponentsKeys)
+    | undefined,
+  row: any,
+) => {
+  if (!type) return "text";
+  return typeof type == "function" ? type(row) : type;
+};
 </script>
