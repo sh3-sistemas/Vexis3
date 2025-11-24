@@ -9,7 +9,7 @@
         text
         rounded
         aria-label="Cancel"
-        @click="closeCallback"
+        @click="rejectCallback"
       />
     </div>
     <div
