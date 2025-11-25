@@ -24,7 +24,7 @@ export const createParentBreadCrumb = (
       ...parent.meta,
       breadCrumb: parent.meta
         ? parent.meta.breadCrumb
-        : [{ label: parent.title }],
+        : [{ label: parent.title, name: parent.name, path: parent.path }],
     },
   };
 };
@@ -39,7 +39,11 @@ export const createChildrenBreadCrumb = (
   return parent.children?.map((child) => {
     const breadCrumb = [
       ...(parent.meta?.breadCrumb || []),
-      { label: (child as RouteRecordRaw & { title: string }).title },
+      {
+        label: (child as RouteRecordRaw & { title: string }).title,
+        name: child.name,
+        path: parent.path,
+      },
     ];
     return {
       ...child,
@@ -52,6 +56,10 @@ export const createChildrenBreadCrumb = (
 export default function useBreadCrumbs(allMenu: Ref<Array<AllMenu>>) {
   const groupWithChildren = ref<Array<AllMenu>>([]);
 
+  /**
+   * Cria breadcrumbs para todos os menus.
+   * @returns {Array} - Um array de menus com breadcrumbs.
+   */
   const breadCrumbFilter = computed(() => {
     const mountBreadCrumbs = (menu: Array<AllMenu>) => {
       menu.forEach((parent) => {
@@ -61,9 +69,7 @@ export default function useBreadCrumbs(allMenu: Ref<Array<AllMenu>>) {
         groupWithChildren.value.push(parentBreadcrumb);
 
         if (parent.children && parent.children.length > 0) {
-          const children = createChildrenBreadCrumb(
-            parent as AllMenu & RouteRecordRaw,
-          );
+          const children = createChildrenBreadCrumb(parentBreadcrumb);
           mountBreadCrumbs(children as Array<AllMenu & RouteRecordRaw>);
         }
       });
@@ -74,6 +80,10 @@ export default function useBreadCrumbs(allMenu: Ref<Array<AllMenu>>) {
     return groupWithChildren.value.flat(1);
   });
 
+  /**
+   * Retorna o breadcrumb de um menu específico.
+   * @returns {Array} - O breadcrumb do menu específico.
+   */
   const getBreadCrumb = (
     route: RouteRecordRaw | RouteLocationNormalizedLoadedGeneric,
   ) => {
