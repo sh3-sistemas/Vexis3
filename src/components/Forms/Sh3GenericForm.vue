@@ -28,11 +28,6 @@
     >
       <Sh3FormButton
         v-if="options.crud.delete"
-        v-tooltip.bottom="{
-          value: options.crud.disabled ? '' : 'Excluir registro',
-          showDelay: 50,
-          hideDelay: 50,
-        }"
         name="delete"
         severity="danger"
         :container-class="
@@ -48,11 +43,6 @@
       <slot name="actions"></slot>
       <Sh3FormButton
         v-if="!options.crud.edit"
-        v-tooltip.bottom="{
-          value: 'Habilitar edição',
-          showDelay: 50,
-          hideDelay: 50,
-        }"
         name="edit"
         :container-class="
           options.crud.cancel
@@ -67,11 +57,6 @@
       />
       <Sh3FormButton
         v-if="options.crud.cancel"
-        v-tooltip.bottom="{
-          value: options.crud.edit ? 'Cancelar edição' : 'Retornar',
-          showDelay: 50,
-          hideDelay: 50,
-        }"
         name="cancel"
         :container-class="
           '2xl:col-start-11 ' +
@@ -84,11 +69,6 @@
         @click="emits('cancel', form$)"
       />
       <Sh3FormButton
-        v-tooltip.bottom="{
-          value: options.crud.save ? 'Salvar registro' : '',
-          showDelay: 50,
-          hideDelay: 50,
-        }"
         name="submit"
         severity="success"
         :container-class="
